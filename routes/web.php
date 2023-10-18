@@ -37,6 +37,7 @@ Route::get('/pengaduan/selesai', [PengaduanController::class, 'selesai'])->middl
 Route::resource('/pengaduan', PengaduanController::class)->middleware('auth');
 Route::resource('/tanggapan', TanggapanController::class)->middleware('auth');
 
+Route::get('/landing_page/surat', function () {return view('landing_page.surat');})->name('surat');
 Route::put('/pengajuan-surat/{pengajuan_surat}/approve', [PengajuanSuratController::class, 'approve'])->middleware('auth')->name('pengajuan_surat.approve');
 Route::put('/pengajuan-surat/{pengajuan_surat}/reject', [PengajuanSuratController::class, 'reject'])->middleware('auth')->name('pengajuan_surat.reject');
 Route::get('/pengajuan-surat/{pengajuan_surat}/preview', [PengajuanSuratController::class, 'preview'])->middleware('auth')->name('pengajuan_surat.preview.surat');

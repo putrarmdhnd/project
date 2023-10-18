@@ -6,9 +6,8 @@
             <p class="text-base text-[13px] lg:text-lg font-normal text-secondary">Semua pengajuan surat yang masuk</p>
         </div>
         @can('masyarakat')
-            <button
-                class="text-white bg-danger focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center buatSurat">Buat
-                Surat</button>
+        <a href="{{ route('surat') }}" class="text-white bg-danger focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center">Buat Surat</a>
+
         @endcan
     </div>
     <div class="overflow-x-auto">

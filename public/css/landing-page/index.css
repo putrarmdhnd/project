@@ -460,3 +460,68 @@ a {
         height: 500vh;
     }
 }
+/* Menentukan ukuran gambar */
+.gambar {
+    width: 172px;
+    height: auto;
+    float: left;
+    justify-content: center;
+     align-items: center;
+}
+ /* CSS for desktop */
+.isiSurat {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Memungkinkan konten berjajar ke bawah saat mencapai batas lebar */
+}
+
+.isiSurat1 {
+    flex: calc(14.2857% - 20px); /* 100% / 7 - 20px (untuk margin antar konten) */
+    margin: 10px; /* Tambahkan margin untuk jarak antara konten */
+    padding: 10px; /* Tambahkan padding jika diperlukan */
+}
+
+.KontenGambar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.kolom {
+    flex: 1;
+    margin: 10px;
+  }
+
+
+/* CSS for mobile */
+@media (max-width: 768px) {
+    .isiSurat {
+        flex-direction: column; /* Stack items vertically on mobile */
+        margin-left: 0; /* Remove the negative margin */
+        margin-right: 0; /* Remove the negative margin */
+    }
+
+    .kolom {
+        display: flex;
+        justify-content: space-between; /* Memisahkan elemen dalam satu kolom secara horizontal */
+    }
+
+    .isiSurat1 {
+        width: calc(50% - 10px); /* Setengah lebar dengan margin pada perangkat seluler */
+        margin: 0 5px; /* Memberi jarak antara elemen pada perangkat seluler */
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .KontenGambar {
+        text-align: center; /* Center the content */
+    }
+
+    .KontenGambar img {
+        max-width: 100px; /* Set the maximum width of the image */
+    }
+
+    .KontenGambar p {
+        font-size: 12px; /* Adjust the font size of the text */
+    }
+    
+}

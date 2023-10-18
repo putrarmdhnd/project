@@ -127,7 +127,361 @@
             </div>
         </div>
     @endif
+    @if ($pengajuan_surat->jenis_surat == 'Surat Keterangan Domisili Haji')
+    <div class="bg-white py-6 px-9 mb-5 rounded-lg w-full">
+        <div class="overflow-x">
+            <table class="w-full mt-10 bg-divide-y overflow-hidden">
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Nama
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->nama }} <br> <br></td>
 
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        NIK
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->nik }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        No KK
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->no_kk }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Tempat tanggal lahir
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->ttl }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Pekerjaan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->pekerjaan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Alamat
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->alamat }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Kewarganegaraan & Agama
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->negara_agama }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Kelamin
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->JK }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Status Perkawinan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->Status_Perkawinan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Pesan untuk petugas/admin
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $pengajuan_surat->pesan }} <br> <br></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+@endif
+@if ($pengajuan_surat->jenis_surat == 'Surat Keterangan Domisili Yayasan')
+    <div class="bg-white py-6 px-9 mb-5 rounded-lg w-full">
+        <div class="overflow-x">
+            <table class="w-full mt-10 bg-divide-y overflow-hidden">
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Nama Pimpinan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->nama_pimpinan }} <br> <br></td>
+
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        NIK
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->nik }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Kelamin
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->JK }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Tempat tanggal lahir
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->ttl }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Pekerjaan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->pekerjaan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Alamat
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->alamat }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Kewarganegaraan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kewarganegaraan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Alamat
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->alamat }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Nama Yayasan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->nama_yayasan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis / Klasifikasi Yayasan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->jenis_yayasan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Alamat Yayasan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->alamat_yayasan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Akta Pendirian
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->akta_pendirian }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        SK Kemenkumham
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->sk_kemenkumham }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jumlah Pengurus
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->jumlah_pengurus }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Penanggung Jawab Yayasan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->penanggung_jawab_yayasan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Pesan untuk petugas/admin
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $pengajuan_surat->pesan }} <br> <br></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+@endif
+@if ($pengajuan_surat->jenis_surat == 'Surat Keterangan Penguburan')
+    <div class="bg-white py-6 px-9 mb-5 rounded-lg w-full">
+        <div class="overflow-x">
+            <table class="w-full mt-10 bg-divide-y overflow-hidden">
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Nama
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->nama }} <br> <br></td>
+
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Tempat tanggal lahir
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->ttl }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        NIK
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->nik }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Kelamin
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->JK }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Kewarganegaraan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kewarganegaraan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Agama
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->agama }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Status Perkawinan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->status_perkawinan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Pekerjaan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->pekerjaan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Alamat
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->alamat }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Pada hari/Tanggal
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->hari_tanggal }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Tempat Meniggal
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->tempat_meninggal }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Dikuburkan Hari
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->dikuburkan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Waktu
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->waktu }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        tempat penguburan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->tempat_penguburan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Pesan untuk petugas/admin
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $pengajuan_surat->pesan }} <br> <br></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+@endif
     @if ($pengajuan_surat->jenis_surat == 'Surat Kelahiran')
         <div class="bg-white py-6 px-9 mb-5 rounded-lg w-full">
             <div class="flex flex-col lg:flex-row gap-5 justify-center">

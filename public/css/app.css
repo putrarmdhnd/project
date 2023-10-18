@@ -796,6 +796,7 @@ video {
 .flex {
   display: flex;
 }
+
 .inline-flex {
   display: inline-flex;
 }
@@ -1832,3 +1833,9 @@ video {
 .\[\&\>p\]\:mb-5>p {
   margin-bottom: 1.25rem;
 }
+.modal-xl {
+  width: 80vw; /* Lebar modal */
+  height: 80vh; /* Tinggi modal */
+  /* Atur properti lain sesuai kebutuhan */
+}
+

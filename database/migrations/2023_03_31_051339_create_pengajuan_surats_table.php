@@ -22,12 +22,27 @@ return new class extends Migration
                 'jenis_surat',
                 [
                     'Surat Keterangan',
-                    'Surat Pindah Penduduk',
-                    'Surat Undangan',
+                    'Surat Keterangan Domisili Haji',
+                    'Surat Keterangan Domisili Yayasan',
+                    'Surat Keterangan Penguburan',
+                    'Surat Keterangan Numpang Nikah',
+                    'Surat Keterangan Duda/Janda',
+                    'Surat Keterangan Tentang Perkawinan',
+                    'Surat Keterangan Belum Nikah',
+                    'Surat Keterangan Pindah WNI',
+                    'Surat Keterangan Pindah',
+                    'Surat Keterangan Tidak Mampu',
+                    'Surat Keterangan Usaha',
+                    'Surat Keterangan Domisili',
+                    'Surat Keterangan Beda Nama/Data',
+                    'Surat Keterangan Kehilangan',
+                    'Surat Keterangan Orang Tua Wali',
+                    'Surat Pengantar Pembuatan Kartu Keluarga',
+                    'Surat Pengantar Keterangan Catatan Kepolisian',
+                    'Surat Pernyataan Akad Nikah',
+                    'Surat Pernyataan Ahli Waris',
                     'Surat Kematian',
-                    'Surat Kelahiran',
-                    'Surat Tugas',
-                    'Surat Perjalanan Dinas'
+                    'Surat Kelahiran'
                 ]
             );
             $table->json('surat');
