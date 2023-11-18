@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Keterangan Penguburan</title>
+    <title>Surat Pengantar Keterangan Catatan Kepolisian</title>
 
     <style>
         .fs-1 {
@@ -48,68 +48,55 @@
 
 
     <!-- Kop Surat -->
-    <div align="center" style="border-bottom: 2px solid #000000; padding-bottom: 3px; margin-top: -60px !important">
+    <div align="center" style="border-bottom: 2px solid #000000; padding-bottom: 20px; margin-top: -60px !important">
         <img src="https://raw.githubusercontent.com/Ibnumaggie27/sistem-informasi-desa-palasari/main/public/img/cop.png"
             width="100%" alt="">
     </div>
-
-    <!-- No. Kode Desa -->
-
     <!-- Title -->
     <div align="center" style="text-align: center; margin-top: 1em;">
          <div  class="fw-bold fs-1 text-uppercase">
-            <span style="text-decoration: underline; padding: 10px;"> Surat Keterangan Penguburan</span>
+            <span style="text-decoration: underline; padding: 10px;" > Surat Pengantar Keterangan Catatan Kepolisian</span>
         </div>
         <p class="fs-1" style="margin-top: 1px;">Nomor : {{ $surat->nomor_surat }}</p>
     </div>
 
     <!-- Content -->
 
-    <div style="margin-top: 50px;">
-        <div class="fs-1">Yang bertanda tangan dibawah ini :</div>
+    <div style="margin-top: 10px;">
+        <div class="fs-1" style="margin-top: 10px;">Melaksanakan ketentuan Undang-undang nomor 08 tahun 1981, maka berdasarkan Surat 
+            Pengantar dari Ketua RT/RW Setempat, Pemerintah Desa Palasari Kecamatan Cipanas Kabupaten Cianjur, dengan ini menerangkan bahwa :</div>
         <table width="100%">
             <tr>
                 <td width="35%" class="fs-1">Nama</td>
-                <td class="fs-1"> : {{ $surat->nama_ttd }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">jabatan</td>
-                <td class="fs-1"> : {{ $surat->jabatan }}</td>
-            </tr>
-            <tr>
-                <td colspan="2" class="fs-1">
-                    <div style="margin-top: 10px;">
-                        Dengan ini menerangkan bahwa :
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">Nama</td>
-                <td class="fs-1"> : {{ $surat->nama }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">Tempat & Tanggal Lahir</td>
-                <td class="fs-1"> : {{ $surat->ttl }}</td>
+                <td class="fs-1"style="font-weight: bold;"> : {{ $surat->nama }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">NIK</td>
                 <td class="fs-1"> : {{ $surat->nik }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Jenis Kelamin</td>
-                <td class="fs-1"> : {{ $surat->JK }}</td>
+                <td width="35%" class="fs-1">Tempat & Tanggal Lahir</td>
+                <td class="fs-1"> : {{ $surat->ttl }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Kewarganegaraan</td>
-                <td class="fs-1"> : {{ $surat->kewarganegaraan }}</td>
+                <td width="35%" class="fs-1">Jenis Kelamin</td>
+                <td class="fs-1"> : {{ $surat->jk }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Agama</td>
                 <td class="fs-1"> : {{ $surat->agama }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">status perkawinan</td>
+                <td width="35%" class="fs-1">Warga Negara</td>
+                <td class="fs-1"> : {{ $surat->warganegara }}</td>
+            </tr>
+            <tr>
+                <td width="35%" class="fs-1">Status Perkawinan</td>
                 <td class="fs-1"> : {{ $surat->status_perkawinan }}</td>
+            </tr>
+            <tr>
+                <td width="35%" class="fs-1">Pendidikan Trakhir</td>
+                <td class="fs-1"> : {{ $surat->pendidikan_trakhir }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Pekerjaan</td>
@@ -119,47 +106,28 @@
                 <td width="35%" class="fs-1">Alamat</td>
                 <td class="fs-1"> : {{ $surat->alamat }}</td>
             </tr>
-            <tr>
-                <td colspan="2" class="fs-1">
-                    <div style="margin-top: 10px;">
-                        Nama tersebut  di atas benar-benar telah meninggal dunia :
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">hari_tanggal</td>
-                <td class="fs-1"> : {{ $surat->hari_tanggal }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">tempat Meninggal</td>
-                <td class="fs-1"> : {{ $surat->tempat_meninggal}}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">Dikuburkan Hari</td>
-                <td class="fs-1"> : {{ $surat->dikuburkan }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">waktu</td>
-                <td class="fs-1"> : {{ $surat->waktu }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">tempat Penguburan</td>
-                <td class="fs-1"> : {{ $surat->tempat_penguburan }}</td>
-            </tr>
         </table>
 
-        <div class="fs-1" style="margin-top: 20px;">Demikian Surat Keterangan ini kami buat untuk digunakan seperlunya.</div>
+        <div class="fs-1" style="margin-top: 20px;">nama tersebut di atas adalah benar warga masyarakat yang menetap dan berdomisili di 
+        kampung dan desa sebagaimana tersebut di atas. Berdasarkan catatan serta data-data yang ada pada kami, nama tersebut :</div>
+        <div class="fs-1"style="margin-top: 20px; margin-left:15px;">1. Berkelakuan baik di dalam kehidupan bermarsyarakat</div>
+        <div class="fs-1" style="margin-left:15px;">2. Tidak/belum pernah terlibat tindak pidana</div>
+        <div class="fs-1" style="margin-left:15px;">3. Tidak/belum pernah terlibat penyalahgunaan obat-obatan terlarang</div>
+        <div class="fs-1" style="margin-left:15px;">4. Tidak dalam status tahanan yang berwajib</div>
+        <div class="fs-1" style=" margin-top: 20px;">Surat Keterangan ini kami berikan kepada yang bersangkutan untuk dipergunakan sebagai pengantar guna mendapatkan Surat Keterangan Catatan Kepolisian dari Kantor Kecamatan Cipanas / 
+            Kepolisian Sektor Pacet serta untuk dipergunakan sebagai Persyaratan :</div>
+            <div class="fs-1" style="margin-top: 20px; font-weight: bold; text-align:center; text-transform: uppercase;">== {{ $surat->keperluan }} ===</div>
     </div>
 
     <br>
     <br>
     <br>
     <!-- Tanda Tangan -->
-    <div style="width: 100%; margin-top:-30px;">
+    <div style="width: 100%;margin-top:-40px">
         <div align="center" style="width: 200px; position: relative; right: -30em" class="fs-1">
             <p>Palasari, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</p>
             <p style="margin-top: -10px !important">Kepala Desa Palasari</p>
-            <img style="margin-top: -2em !important"
+            <img style="margin-top: -4em !important"
                 src="https://raw.githubusercontent.com/Ibnumaggie27/sistem-informasi-desa-palasari/main/public/img/ttd.png"
                 width="230" alt="">
 

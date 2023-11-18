@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Keterangan Penguburan</title>
+    <title>Surat Keterangan Tidak Mampu</title>
 
     <style>
         .fs-1 {
@@ -48,17 +48,15 @@
 
 
     <!-- Kop Surat -->
-    <div align="center" style="border-bottom: 2px solid #000000; padding-bottom: 3px; margin-top: -60px !important">
+    <div align="center" style="border-bottom: 2px solid #000000; padding-bottom: 20px; margin-top: -60px !important">
         <img src="https://raw.githubusercontent.com/Ibnumaggie27/sistem-informasi-desa-palasari/main/public/img/cop.png"
             width="100%" alt="">
     </div>
-
-    <!-- No. Kode Desa -->
-
     <!-- Title -->
     <div align="center" style="text-align: center; margin-top: 1em;">
+
          <div  class="fw-bold fs-1 text-uppercase">
-            <span style="text-decoration: underline; padding: 10px;"> Surat Keterangan Penguburan</span>
+            <span style="text-decoration: underline; padding: 10px;"  > Surat Keterangan Pengantar</span>
         </div>
         <p class="fs-1" style="margin-top: 1px;">Nomor : {{ $surat->nomor_surat }}</p>
     </div>
@@ -70,92 +68,76 @@
         <table width="100%">
             <tr>
                 <td width="35%" class="fs-1">Nama</td>
-                <td class="fs-1"> : {{ $surat->nama_ttd }}</td>
+                <td class="fs-1" style="font-weight: bold;"> : {{ $surat->nama_kades }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">jabatan</td>
+                <td width="35%" class="fs-1">Jabatan</td>
                 <td class="fs-1"> : {{ $surat->jabatan }}</td>
             </tr>
-            <tr>
-                <td colspan="2" class="fs-1">
-                    <div style="margin-top: 10px;">
-                        Dengan ini menerangkan bahwa :
-                    </div>
-                </td>
-            </tr>
+        </table>
+        <div class="fs-1" style="margin-top: 20px;">Dengan ini menerangkan :</div>
+        <table width="100%">
             <tr>
                 <td width="35%" class="fs-1">Nama</td>
-                <td class="fs-1"> : {{ $surat->nama }}</td>
+                <td class="fs-1" style="font-weight: bold;"> : {{ $surat->nama }}</td>
+            </tr>
+            <tr>
+                <td width="35%" class="fs-1">Nomor KK/NIK</td>
+                <td class="fs-1"> : {{ $surat->kk_nik }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Tempat & Tanggal Lahir</td>
                 <td class="fs-1"> : {{ $surat->ttl }}</td>
             </tr>
-            <tr>
-                <td width="35%" class="fs-1">NIK</td>
-                <td class="fs-1"> : {{ $surat->nik }}</td>
-            </tr>
+            
             <tr>
                 <td width="35%" class="fs-1">Jenis Kelamin</td>
-                <td class="fs-1"> : {{ $surat->JK }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">Kewarganegaraan</td>
-                <td class="fs-1"> : {{ $surat->kewarganegaraan }}</td>
+                <td class="fs-1"> : {{ $surat->jk }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Agama</td>
                 <td class="fs-1"> : {{ $surat->agama }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">status perkawinan</td>
+                <td width="35%" class="fs-1">Status perkawinan</td>
                 <td class="fs-1"> : {{ $surat->status_perkawinan }}</td>
+            </tr>
+            <tr>
+                <td width="35%" class="fs-1">Warga Negara</td>
+                <td class="fs-1"> : {{ $surat->warganegara }}</td>
+            </tr>
+            <tr>
+                <td width="35%" class="fs-1">Pendidikan</td>
+                <td class="fs-1"> : {{ $surat->pendidikan }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Pekerjaan</td>
                 <td class="fs-1"> : {{ $surat->pekerjaan }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Alamat</td>
-                <td class="fs-1"> : {{ $surat->alamat }}</td>
+                <td width="35%" class="fs-1">Nama Ayah/Ibu</td>
+                <td class="fs-1" style="font-weight: bold;"> : {{ $surat->nama_ayah_ibu }}</td>
             </tr>
             <tr>
-                <td colspan="2" class="fs-1">
-                    <div style="margin-top: 10px;">
-                        Nama tersebut  di atas benar-benar telah meninggal dunia :
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">hari_tanggal</td>
-                <td class="fs-1"> : {{ $surat->hari_tanggal }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">tempat Meninggal</td>
-                <td class="fs-1"> : {{ $surat->tempat_meninggal}}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">Dikuburkan Hari</td>
-                <td class="fs-1"> : {{ $surat->dikuburkan }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">waktu</td>
-                <td class="fs-1"> : {{ $surat->waktu }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">tempat Penguburan</td>
-                <td class="fs-1"> : {{ $surat->tempat_penguburan }}</td>
+                <td width="35%" class="fs-1">Alamat Lengkap</td>
+                <td class="fs-1"> : {{ $surat->alamat_lengkap }}</td>
             </tr>
         </table>
 
-        <div class="fs-1" style="margin-top: 20px;">Demikian Surat Keterangan ini kami buat untuk digunakan seperlunya.</div>
+        <div class="fs-1" style="margin-top: 20px;">Berdasarkan pengakuan yang bersangkutan serta Surat Keterangan dari Ketua RT/RW setempat,
+            tentang Surat Keterangan Tidak Mampu, nama tersebut diatas :</div>
+        <div class="fs-1"style="margin-left:20px;">a. Benar penduduk Desa Palasari</div>
+        <div class="fs-1"style="margin-left:20px;">b. Tergolong masyarakat kurang mampu (miskin)</div>
+        <div class="fs-1"style="margin-left:20px;">c. Perlu mendapat keringanan biaya</div>
+        <div class="fs-1">Keterangan ini dikeluarkan untuk kepentingan Administrasi</div>
+        <div class="fs-1" style="margin-top: 20px; font-weight: bold; text-align:center;">"{{ $surat->perlu }}"</div>
     </div>
 
     <br>
     <br>
     <br>
     <!-- Tanda Tangan -->
-    <div style="width: 100%; margin-top:-30px;">
+    <div style="width: 100%; margin-top:-40px;">
         <div align="center" style="width: 200px; position: relative; right: -30em" class="fs-1">
             <p>Palasari, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</p>
             <p style="margin-top: -10px !important">Kepala Desa Palasari</p>

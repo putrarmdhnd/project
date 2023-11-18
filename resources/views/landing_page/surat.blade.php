@@ -48,7 +48,7 @@
                     class="KontenGambar">
                     <img class="gambar" src="{{ asset('/img/keterangan_pengantar.png') }}"
                         alt="">
-                    <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan numpang nikah</p>
+                    <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan numpang nikah DONE</p>
                 </div>
             </a>
         </div>
@@ -60,7 +60,7 @@
                     class="KontenGambar">
                     <img class="gambar" src="{{ asset('/img/keterangan_pengantar.png') }}"
                         alt="">
-                    <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan duda/janda</p>
+                    <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan duda/janda DONE</p>
                 </div>
             </a>
         </div>
@@ -70,7 +70,7 @@
                     class="KontenGambar">
                     <img class="gambar" src="{{ asset('/img/keterangan_pengantar.png') }}"
                         alt="">
-                    <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan tentang perkawinan</p>
+                    <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan tentang perkawinan DONE</p>
                 </div>
             </a>
         </div>
@@ -82,7 +82,7 @@
                     class="KontenGambar">
                     <img class="gambar" src="{{ asset('/img/keterangan_pengantar.png') }}"
                         alt="">
-                    <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan belum nikah</p>
+                    <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan belum nikah DONE</p>
                 </div>
             </a>
         </div>
@@ -115,7 +115,7 @@
                         class="KontenGambar">
                         <img class="gambar" src="{{ asset('/img/keterangan_pengantar.png') }}"
                             alt="">
-                        <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan tidak mampu</p>
+                        <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan tidak mampu DONE</p>
                     </div>
                 </a>
             </div>
@@ -127,7 +127,7 @@
                         class="KontenGambar">
                         <img class="gambar" src="{{ asset('/img/keterangan_pengantar.png') }}"
                             alt="">
-                        <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan usaha</p>
+                        <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan usaha DONE</p>
                     </div>
                 </a>
             </div>
@@ -137,7 +137,7 @@
                         class="KontenGambar">
                         <img class="gambar" src="{{ asset('/img/keterangan_pengantar.png') }}"
                             alt="">
-                        <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan dommisili</p>
+                        <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan dommisili DONE</p>
                     </div>
                 </a>
             </div>
@@ -159,7 +159,7 @@
                         class="KontenGambar">
                         <img class="gambar" src="{{ asset('/img/keterangan_pengantar.png') }}"
                             alt="">
-                        <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan kehilangan</p>
+                        <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan kehilangan DONE</p>
                     </div>
                 </a>
             </div>
@@ -171,7 +171,7 @@
                             class="KontenGambar">
                             <img class="gambar" src="{{ asset('/img/keterangan_pengantar.png') }}"
                                 alt="">
-                            <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan orang tua wali</p>
+                            <p class="py-1 text-md text-dark" style="margin-left:5px;">surat keterangan orang tua wali DONE</p>
                         </div>
                     </a>
                 </div>
@@ -193,7 +193,7 @@
                             class="KontenGambar">
                             <img class="gambar" src="{{ asset('/img/pengantar.png') }}"
                                 alt="">
-                            <p class="py-1 text-md text-dark" style="margin-left:5px;">surat pengantar keterangan <br>catatan kepolisian SKCK</p>
+                            <p class="py-1 text-md text-dark" style="margin-left:5px;">surat pengantar keterangan <br>catatan kepolisian SKCK DONE</p>
                         </div>
                     </a>
                 </div>
