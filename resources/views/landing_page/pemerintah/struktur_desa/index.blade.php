@@ -1,79 +1,417 @@
 @extends('landing_page.layouts.app')
 
 @section('title')
-    Struktur Organisasi
+Struktur Organisasi
 @endsection
-@section('min-height', '70vh')
+
 
 @section('content')
-    <div class="mt-4 container">
-        <div class="row mb-4">
-            <div class="col-md-8">
-                <h1 id="title-board" class="">Struktur Organisasi</h1>
-            </div>
+<section id="StrukturOrganisasi" class="p-5">
+    <div class="container">
+        <div class="text-center">
+            <h4 class="HeaderArticle mb-5">Struktur Organisasi Desa</h4>
         </div>
-        <div class="row mb-4">
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="{{ route('pemerintah.organisasi.index') }}"
-                        class="list-group-item list-group-item-action {{ request()->is('pemerintah/organisasi') ? 'set-active' : '' }}">
-                        Struktur Organisasi </a>
-                    @foreach ($strukturs as $item)
-                        <a href="{{ route('pemerintah.organisasi.detail', $item->id) }}"
-                            class="list-group-item list-group-item-action {{ request()->is('pemerintah/organisasi/' . $item->id) ? 'set-active' : '' }}">
-                            {{ $item->nama }}
-                        </a>
-                    @endforeach
+    </div>
+
+    <section class="space-subHeader">
+        <div class="row d-flex">
+            <div class="card-imgStruktur col-8 justify-content-center m-auto text-center ">
+                <div class="card " style="border:1px solid black;">
+                    <img src="{{ asset('img/landing-page/struktur-organisasi.jpg') }}" width="100%" alt="" class="">
                 </div>
             </div>
-            <div class="col-md-9 mt-3 mt-md-0 mt-lg-0">
-                <div class="card">
-                    <div class="card-body">
-                        @if (check_route(['pemerintah.organisasi.detail']))
-                            @isset($jabatan->pegawai)
-                                <h4>{{ $jabatan->nama }}</h4>
-                                <div class="mt-4 mb-3">
-                                    <img src="{{ asset($jabatan->pegawai->foto ? 'storage/' . $jabatan->pegawai->foto : 'img/no-image.png') }}"
-                                        width="150" alt="{{ $jabatan->pegawai->nama }}">
-                                </div>
-                                <table class="table">
-                                    <tr>
-                                    <th width="20%" class="text-secondary">
-                                        Jabatan
-                                    </th>
-                                    <td>
-                                        : {{ $jabatan->nama }}
-                                    </td>
-                                </tr>
+        </div>
+    </section>
+</section>
 
-                                    <tr>
-                                        <th width="20%" class="text-secondary">
-                                            Nama Pejabat
-                                        </th>
-                                        <td>
-                                            : {{ $jabatan->pegawai->nama }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th width="20%" class="text-secondary">
-                                            NIP
-                                        </th>
-                                        <td>
-                                            : {{ $jabatan->pegawai->nip }}
-                                        </td>
-                                    </tr>
-                                </table>
-                            @else
-                                <h4 class="my-4 text-center">Anggota belum ditentukan</h4>
-                            @endisset
-                        @else
-                            <div class="text-center">
-                                <img src="{{ asset('storage/struktur_desa/struktur_desa.png') }}" class="img-fluid">
+
+<section id="ProfilPegawai" class="p-5 bg-light">
+    <div class="container">
+        <div class="text-center my-3 d-flex justify-content-center">
+            <div class="HeaderArticle-mengenaiDesa">
+                <h4 class="shadow mb-5">Siapa Saja Perangkat Desa Palasari?</h4>
+            </div>
+        </div>
+    </div>
+
+    <section class="space-subHeader container">
+        <div class="owl-carousel owl-carousel owl-theme owl-loaded owl-drag">
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transition: all 0.25s ease 0s; width: 16665px; transform: translate3d(-9999px, 0px, 0px);">
+                    <div class="owl-item">
+                        <!-- Your first carousel item -->
+                        <div class="col-12 ">
+                            <div class="card card-profil-desa">
+                                <div class="card-body">
+                                    <div class="col-12 text-center content-profil-desa">
+                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
+                                        <div class="mt-3">
+                                            <p>Samsudin Pataboga</p>
+                                            <i>Kepal Dusun 1</i>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex text-start mt-1 isi-profil">
+                                        <ul class="">
+                                            <li><i>Nama : </i></li>
+                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
+                                            <li><i>Status :</i></li>
+                                            <li><i>Alamat :</i></li>
+                                            <li><i>Pendidikan Terakhir :</i></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        @endif
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <!-- Your first carousel item -->
+                        <div class="col-12 ">
+                            <div class="card card-profil-desa">
+                                <div class="card-body">
+                                    <div class="col-12 text-center content-profil-desa">
+                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
+                                        <div class="mt-3">
+                                            <p>Samsudin Pataboga</p>
+                                            <i>Kepal Dusun 1</i>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex text-start mt-1 isi-profil">
+                                        <ul class="">
+                                            <li><i>Nama : </i></li>
+                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
+                                            <li><i>Status :</i></li>
+                                            <li><i>Alamat :</i></li>
+                                            <li><i>Pendidikan Terakhir :</i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <!-- Your first carousel item -->
+                        <div class="col-12 ">
+                            <div class="card card-profil-desa">
+                                <div class="card-body">
+                                    <div class="col-12 text-center content-profil-desa">
+                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
+                                        <div class="mt-3">
+                                            <p>Samsudin Pataboga</p>
+                                            <i>Kepal Dusun 1</i>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex text-start mt-1 isi-profil">
+                                        <ul class="">
+                                            <li><i>Nama : </i></li>
+                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
+                                            <li><i>Status :</i></li>
+                                            <li><i>Alamat :</i></li>
+                                            <li><i>Pendidikan Terakhir :</i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <!-- Your first carousel item -->
+                        <div class="col-12 ">
+                            <div class="card card-profil-desa">
+                                <div class="card-body">
+                                    <div class="col-12 text-center content-profil-desa">
+                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
+                                        <div class="mt-3">
+                                            <p>Samsudin Pataboga</p>
+                                            <i>Kepal Dusun 1</i>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex text-start mt-1 isi-profil">
+                                        <ul class="">
+                                            <li><i>Nama : </i></li>
+                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
+                                            <li><i>Status :</i></li>
+                                            <li><i>Alamat :</i></li>
+                                            <li><i>Pendidikan Terakhir :</i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <!-- Your first carousel item -->
+                        <div class="col-12 ">
+                            <div class="card card-profil-desa">
+                                <div class="card-body">
+                                    <div class="col-12 text-center content-profil-desa">
+                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
+                                        <div class="mt-3">
+                                            <p>Samsudin Pataboga</p>
+                                            <i>Kepal Dusun 1</i>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex text-start mt-1 isi-profil">
+                                        <ul class="">
+                                            <li><i>Nama : </i></li>
+                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
+                                            <li><i>Status :</i></li>
+                                            <li><i>Alamat :</i></li>
+                                            <li><i>Pendidikan Terakhir :</i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <!-- Your first carousel item -->
+                        <div class="col-12 ">
+                            <div class="card card-profil-desa">
+                                <div class="card-body">
+                                    <div class="col-12 text-center content-profil-desa">
+                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
+                                        <div class="mt-3">
+                                            <p>Samsudin Pataboga</p>
+                                            <i>Kepal Dusun 1</i>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex text-start mt-1 isi-profil">
+                                        <ul class="">
+                                            <li><i>Nama : </i></li>
+                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
+                                            <li><i>Status :</i></li>
+                                            <li><i>Alamat :</i></li>
+                                            <li><i>Pendidikan Terakhir :</i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <!-- Your first carousel item -->
+                        <div class="col-12 ">
+                            <div class="card card-profil-desa">
+                                <div class="card-body">
+                                    <div class="col-12 text-center content-profil-desa">
+                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
+                                        <div class="mt-3">
+                                            <p>Samsudin Pataboga</p>
+                                            <i>Kepal Dusun 1</i>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex text-start mt-1 isi-profil">
+                                        <ul class="">
+                                            <li><i>Nama : </i></li>
+                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
+                                            <li><i>Status :</i></li>
+                                            <li><i>Alamat :</i></li>
+                                            <li><i>Pendidikan Terakhir :</i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Add more items as needed -->
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".owl-carousel").owlCarousel({
+                items: 1, // You can customize the number of items displayed.
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1 // Adjust the number of items displayed on different screen sizes.
+                    },
+                    768: {
+                        items: 2
+                    },
+                    1024: {
+                        items: 3
+                    }
+                }
+            });
+        });
+    </script>
+
+</section>
+
+<section class=" p-5">
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <div class="text-center">
+                    <h4 class="HeaderArticle mb-5">Lembaga & Organisasi Desa</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-8">
+                <div class="row text-center">
+
+                    <div class="col-6 col-lg-4 mb-3">
+                        <div class="card penduduk-card">
+                            <div class="card-body">
+                                <div class="center-img">
+                                    <img src="{{ asset('img/struktur-organisasi/lembaga-desa/bpd.png') }}" class="img-round" alt="">
+                                    <p class="penduduk-card__info my-3">Badan Permusyawaratan Desa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-4 mb-3">
+                        <div class="card penduduk-card">
+                            <div class="card-body">
+                                <div class="center-img">
+                                    <img src="{{ asset('img/struktur-organisasi/lembaga-desa/karang-taruna.png') }}" class="img-round" alt="">
+                                    <p class="penduduk-card__info my-3">Karang Taruna</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-4 mb-3">
+                        <div class="card penduduk-card">
+                            <div class="card-body">
+                                <div class="center-img">
+                                    <img src="{{ asset('img/struktur-organisasi/lembaga-desa/linmas.png') }}" class="img-round" alt="">
+                                    <p class="penduduk-card__info my-3">Satuan Perlindungan Masyarakat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-4 mb-3">
+                        <div class="card penduduk-card">
+                            <div class="card-body">
+                                <div class="center-img">
+                                    <img src="{{ asset('img/struktur-organisasi/lembaga-desa/mui.png') }}" class="img-round" alt="">
+                                    <p class="penduduk-card__info my-3">Majelis Ulama Indonesia</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-4 mb-3">
+                        <div class="card penduduk-card">
+                            <div class="card-body">
+                                <div class="center-img">
+                                    <img src="{{ asset('img/struktur-organisasi/lembaga-desa/pkk.png') }}" class="img-round" alt="">
+                                    <p class="penduduk-card__info my-3">Pemberdayaan Kesejahteraan Keluarga</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-4 mb-3">
+                        <div class="card penduduk-card">
+                            <div class="card-body">
+                                <div class="center-img">
+                                    <img src="{{ asset('img/struktur-organisasi/lembaga-desa/lpmd.png') }}" class="img-round" alt="">
+                                    <p class="penduduk-card__info my-3">Lembaga Pemberdayaan Masyarakat Desa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="tg-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="th-1 fw-normal">Lembaga & Organisasi</th>
+                                <th class="th-1 fw-normal">Jumlah Anggota</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Badan Permusyawaratan Desa (BPD)</td>
+                                <td class="td-center">7</td>
+                            </tr>
+                            <tr>
+                                <td>LPMD/LKMD</td>
+                                <td class="td-center">6</td>
+                            </tr>
+                            <tr>
+                                <td>MUI</td>
+                                <td class="td-center">10</td>
+                            </tr>
+                            <tr>
+                                <td>Linmas</td>
+                                <td class="td-center">36</td>
+                            </tr>
+                            <tr>
+                                <td>PKK</td>
+                                <td class="td-center">13</td>
+                            </tr>
+                            <tr>
+                                <td>Karang Taruna</td>
+                                <td class="td-center">21</td>
+                            </tr>
+                            <tr>
+                                <td>BUMDES</td>
+                                <td class="td-center">4</td>
+                            </tr>
+                            <tr>
+                                <td>Posyandu</td>
+                                <td class="td-center">18</td>
+                            </tr>
+                            <tr>
+                                <td>Polindes</td>
+                                <td class="td-center">1</td>
+                            </tr>
+                            <tr>
+                                <td>RW</td>
+                                <td class="td-center">12</td>
+                            </tr>
+                            <tr>
+                                <td>RT</td>
+                                <td class="td-center">38</td>
+                            </tr>
+                            <tr>
+                                <td>Gakpotan</td>
+                                <td class="td-center">2</td>
+                            </tr>
+                            <tr>
+                                <td>Kelompok Tani</td>
+                                <td class="td-center">2</td>
+                            </tr>
+                            <tr>
+                                <td>DKM/Masjid</td>
+                                <td class="td-center">41</td>
+                            </tr>
+                            <tr>
+                                <td>Partai Politik</td>
+                                <td class="td-center">6</td>
+                            </tr>
+                            <tr>
+                                <td>Kelompok Senam</td>
+                                <td class="td-center">1</td>
+                            </tr>
+                            <tr>
+                                <td>Unit Simpan Pinjam</td>
+                                <td class="td-center">1</td>
+                            </tr>
+                            <tr>
+                                <td>Koperasi</td>
+                                <td class="td-center">1</td>
+                            </tr>
+                            <tr>
+                                <td>Lainnya</td>
+                                <td class="td-center">3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
+
 @endsection

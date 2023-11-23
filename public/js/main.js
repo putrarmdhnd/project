@@ -169,3 +169,5 @@ closeDialogDelete.addEventListener("click", () => {
     dialogDelete.classList.add("hidden");
     overlay.classList.add("hidden");
 });
+
+
