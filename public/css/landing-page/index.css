@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&family=Roboto&display=swap');
 
 body {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
+
 }
 
 a {
@@ -15,9 +17,11 @@ a {
 .text-primary-2 {
     color: #0091bc;
 }
+
 .text-primary-2:hover {
     color: #047293;
 }
+
 .bg-primary-2 {
     background-color: #0091bc;
 }
@@ -49,14 +53,42 @@ a {
     font-size: 12px;
 }
 
-#navbar {
-    background-color: #f8f8f8;
+.navbar {
+    padding: 0px 0px;
+    background-color: #4facfec5;
+
 }
 
 #navbar nav ul li {
-    font-size: 15px;
+    font-size: .85rem;
     font-weight: 500;
+    margin-right: 15px;
 }
+
+#navbar nav ul li a {
+    color: rgb(0, 0, 0);
+}
+
+#navbar nav ul li .pageLink:hover {
+    font-size: .90rem;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+}
+
+.login-item a:hover {
+    font-size: .90rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.login-item {
+    padding: 0px 15px 0px 15px;
+    background: #ffffff;
+    text-align: center;
+    border-radius: 2.5rem;
+    border: .12rem solid;
+}
+
 
 #carousel .c-img {
     max-height: 84vh;
@@ -66,7 +98,6 @@ a {
 
 .carousel-caption-1 {
     text-align: left;
-
     top: 30vh;
 }
 
@@ -89,20 +120,486 @@ a {
     font-weight: 800;
 }
 
-#header-section {
-    margin-top: 45px;
-    margin-bottom: 80px;
+
+
+/* Body */
+.video-wrapper video {
+    object-fit: cover;
 }
 
-#header-section h2 {
-    font-size: 25px;
-    font-weight: 700;
+.video-wrapper .video-content {
+    display: flex;
+    align-items: center;
+}
+
+
+#hero img {
+    width: 30% !important;
+}
+
+
+#BeritaPengumuman,
+.Demografi {
+    background-color: white;
+}
+
+#DataKependudukan,
+#Apbdes {
+    /*background-color: #a5d5ff;*/
+}
+
+#StrukturOrganisasi {
+    margin-top: 2rem;
+}
+
+.HeaderArticle {
+    background-color: #b7efff;
+    padding: 10px 0 10px 0;
+
+    width: 30%;
+
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.HeaderArticle h4 {
+    padding-left: 1.5rem;
+}
+
+
+.HeaderArticle-mengenaiDesa h4 {
+    background-color: #b7efff;
+    padding: 20px 20px 20px 20px;
+
+
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.space-subHeader {
+    padding: 0.5rem 0px 4rem 0px;
+}
+
+
+.MoreBeritaPengumuman {
+    text-decoration: underline;
+}
+
+.MoreBeritaPengumuman:hover {
+    padding-right: 10px;
+    text-decoration: underline;
+}
+
+.cardBeritaPengumuman {
+    margin: 0 0 1rem 0;
+}
+
+.card-demografi-penduduk {
+    background: #3393b059;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+    width: 75%;
+}
+
+.card-demografi-penduduk__info,
+.card-demografi-penduduk__jumlah {
+    font-size: 16px;
+}
+
+.card-dana-masuk {
+    background-color: #a6ffa6;
+}
+
+.card-dana-keluar {
+
+    background-color: #ffa58d;
+}
+
+.card-idm__jumlah {
+    color: rgb(40, 134, 40);
+}
+
+.card-idm__infoStatus {
+    color: rgb(255, 55, 0);
+}
+
+#apbdes {
+    width: 100%;
+    height: 500px;
+
+}
+
+#apbdesTahunan {
+    width: 100%;
+    height: 500px;
+
+}
+
+.JenisBeritaPengumuman {
+    font-size: small;
+    text-decoration: underline;
+    color: #175567;
+}
+
+.KeteranganVisiMisi {
+    margin: auto;
+}
+
+.isiContent,
+.peta-lokasi-desa__lokasi {
+    font-size: 14px;
+    text-align: justify;
+}
+
+.VisiMisiImg {
+    background-size: cover;
+    background-position: center;
+    /* Menengahkan gambar latar belakang */
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    /* Mengatur pemosisian vertikal ke tengah */
+    justify-content: center;
+    /* Mengatur pemosisian horizontal ke tengah */
+    text-align: center;
+}
+
+.img-round {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.center-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-profil-desa {
+    background: #d9f6ff;
+}
+
+.content-profil-desa p {
+    font-size: 16px;
+    font-weight: 500;
+
+    margin-bottom: 0.5rem;
+}
+
+.content-profil-desa i {
+    font-size: 14px;
+    font-weight: 100;
+    color: #0091bc;
+}
+
+.isi-profil {
+    padding: 0.8rem;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0 5px 0 5px;
+}
+
+.tg-wrap table {
+    display: block;
+    height: 425px;
+    overflow-y: scroll;
+}
+
+.tg-wrap tr {
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.tg-wrap th:first-child {
+    border-radius: 10px 0 0 0;
+}
+
+.tg-wrap .th-1 {
+    width: 90%;
+}
+
+.tg-wrap th {
+    background-color: #3393b0;
+    padding: 15px;
+    color: #000000;
+    position: sticky;
+    top: 0px;
+}
+
+.tg-wrap tr {
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.tg-wrap td {
+    padding: 15px;
+}
+
+.tg-wrap .td-center {
+    text-align: center;
+}
+
+.tg-wrap td {
+    padding: 15px;
+}
+
+.penduduk-card {
+
+    border: none;
+    border-radius: 10px;
+    height: 200px;
+}
+
+.penduduk-card__jumlah {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    margin-top: 2rem;
+}
+
+.penduduk-card__info {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+#apbdesTahunan {
+    width: 100%;
+    height: 500px;
+}
+
+.detail-pengeluaran {
+    color: rgb(255, 55, 0);
+}
+
+.Layoutcard-anggaran-pengeluaran {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+}
+.card-anggaran-pengeluaran {
+
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    border: 1px solid;
+}
+
+/* Media Query */
+
+/* CSS for mobile */
+@media (max-width: 450px) {
+
+    #hero img {
+        width: 100% !important;
+    }
+
+    .video-wrapper {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .contentVideo h2 {
+        font-size: 16px;
+    }
+
+    .contentVideo p {
+        font-size: 10px;
+    }
+
+    #MengenaiDesa {
+        margin-top: 0 !important;
+    }
+
+    .navbar-togglera:focus {
+        border: none;
+        box-shadow: 0;
+        outline: none;
+    }
+
+
+    .space-subHeader {
+        padding: 1.5rem 0px 1.5rem 0px;
+    }
+
+    .Berita {
+        padding: 0rem 1rem 0rem auto;
+        width: 50%;
+        height: auto;
+    }
+
+    .cardBeritaPengumuman h6,
+    .headGraph {
+        font-size: 12px;
+    }
+
+    .card-demografi-penduduk {
+        width: 100%;
+    }
+
+    .cardBeritaPengumuman p,
+    .card-demografi-penduduk__info,
+    .card-demografi-penduduk__jumlah {
+        font-size: 10px;
+    }
+
+    .cbodyBeritaPengumuman {
+        padding: 13px;
+    }
+
+    #MengenaiDesa {
+        padding: 0;
+    }
+
+    .card-demografi-penduduk img {
+        height: 85px;
+    }
+
+    #apbdes {
+        width: 100%;
+        height: 220px;
+
+    }
+
+
+    .HeaderArticle {
+        width: 60%;
+    }
+
+    .HeaderArticle-mengenaiDesa h4 {
+        width: 100%;
+        height: auto;
+        padding: 15px 15px 15px 15px;
+    }
+
+    .HeaderArticle h4,
+    .HeaderArticle-mengenaiDesa h4 {
+        font-size: 14px;
+    }
+
+    .headContent {
+        text-align: center;
+        font-size: 16px;
+
+        padding: 0re;
+    }
+
+    .VisiMisiImg {
+        padding: 1rem auto 1rem auto;
+    }
+
+    .isiContent {
+        padding: 0rem 2rem 0rem 2rem;
+    }
+
+    .peta-lokasi-desa__lokasi,
+    .isiContent p,
+    .headContent p,
+    .demografiCard p {
+        font-size: 13px;
+    }
+
+
+    .penduduk-card__info {
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+
+    .card-idm__text {
+        font-size: 12px;
+    }
+
+    .petaDesa {
+        width: 80%;
+        height: auto;
+    }
+
+    .demografiCard {
+        padding: .85rem 3rem .85rem auto;
+        width: 95%;
+        text-align: center;
+    }
+
+    .DemografiLay {
+        padding: .65rem 2rem .65rem 2rem;
+        text-align: center;
+    }
+
+    .isiSurat {
+        flex-direction: column;
+        /* Stack items vertically on mobile */
+        margin-left: 0;
+        /* Remove the negative margin */
+        margin-right: 0;
+        /* Remove the negative margin */
+    }
+
+    .kolom {
+        display: flex;
+        justify-content: space-between;
+        /* Memisahkan elemen dalam satu kolom secara horizontal */
+    }
+
+    .isiSurat1 {
+        width: calc(50% - 10px);
+        /* Setengah lebar dengan margin pada perangkat seluler */
+        margin: 0 5px;
+        /* Memberi jarak antara elemen pada perangkat seluler */
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .KontenGambar {
+        text-align: center;
+        /* Center the content */
+    }
+
+    .KontenGambar img {
+        max-width: 100px;
+        /* Set the maximum width of the image */
+    }
+
+    .KontenGambar p {
+        font-size: 12px;
+        /* Adjust the font size of the text */
+    }
+
+    .imgStruktur {
+        width: 100%;
+    }
+
+}
+
+/* Media query untuk tampilan laptop */
+@media (min-width: 1024px) {}
+
+
+/* // Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {}
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+    #carousel .c-img {
+        height: 500vh;
+    }
 }
 
 /* Footer */
+.footer-2-3 {
+    background-image: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%);
+}
 
 .footer-2-3 .list-space {
     margin-bottom: 1.25rem;
+    color: black;
 }
 
 .footer-2-3 .footer-text-title {
@@ -113,10 +610,6 @@ a {
 .footer-2-3 .list-menu {
     color: #707092;
     text-decoration: none !important;
-}
-
-.footer-2-3 .list-menu:hover {
-    color: #ffffff;
 }
 
 .footer-2-3 hr.hr {
@@ -143,16 +636,29 @@ a {
 }
 
 .footer-2-3 .footer-info-space {
-    padding-top: 3rem;
+    padding-top: 1rem;
 }
 
-.footer-2-3 .list-footer {
-    padding: 5rem 1rem 3rem 1rem;
-}
+.footer-2-3 .list-footer {}
 
 .footer-2-3 .info-footer {
-    padding: 0 1rem 3rem;
+    padding: 0 1rem 2rem;
 }
+
+/* Untuk membuat footer responsive */
+@media (max-width: 768px) {
+
+    /* Atur styling atau tata letak tambahan untuk perangkat dengan lebar layar kurang dari atau sama dengan 768px */
+    .footer-2-3 {
+        /* Tambahkan gaya atau tata letak yang sesuai dengan perangkat mobile di sini */
+    }
+
+    /* Misalnya, untuk mengubah ukuran teks atau mengatur margin */
+    .footer-link {
+        font-size: 14px;
+    }
+}
+
 
 /* Berita */
 
@@ -193,6 +699,7 @@ a {
     border-radius: 20px;
     position: relative;
 }
+
 #board-news #box-3 img {
     object-fit: cover;
     height: 214px;
@@ -246,6 +753,7 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 #list-news #card-news #body a:hover {
     background-color: #047fa5;
 }
@@ -261,15 +769,18 @@ a {
     border-bottom: 0px;
     z-index: 9999;
 }
+
 #list-news #latest-news #header h5 {
     color: #0091bc;
     font-size: 17px;
     font-weight: 600;
 }
+
 #list-news #latest-news #body {
     margin-top: -1px !important;
     border-top-left-radius: 0px;
 }
+
 #list-news #latest-news #body #card-new-latest h6 {
     color: #0091bc;
     font-size: 16px;
@@ -282,12 +793,14 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 /* End Berita */
 
 /* Detail Berita */
 #breadcrumb ol li {
     font-size: 14px;
 }
+
 #details-news h1 {
     font-size: 34px;
     font-weight: 600;
@@ -335,6 +848,7 @@ a {
 #table-ckeditor figure table thead {
     background-color: #ededed;
 }
+
 /* End Detail Berita */
 
 /* Pegawai */
@@ -345,11 +859,13 @@ a {
     border-bottom: 0px;
     z-index: 9999;
 }
+
 #another-pegawai #header h6 {
     color: #0091bc;
     font-size: 15px;
     font-weight: 600;
 }
+
 #another-pegawai #body {
     margin-top: -1px !important;
     border-top-left-radius: 0px;
@@ -388,6 +904,7 @@ a {
     .carousel-control-prev img {
         width: 20px;
     }
+
     .carousel-control-next img {
         width: 20px;
     }
@@ -400,6 +917,7 @@ a {
         font-weight: 600;
         font-size: 15px;
     }
+
     #card-news #info-news {
         color: #6c6c6c;
         font-size: 10px;
@@ -428,6 +946,7 @@ a {
         font-size: 17px;
         font-weight: 600;
     }
+
     #details-news #info-news {
         font-size: 12px;
     }
@@ -435,6 +954,7 @@ a {
     #details-news #content-desc {
         font-size: 14px;
     }
+
     /* End Detail Berita */
 
     footer p,
@@ -450,35 +970,32 @@ a {
     }
 }
 
-/* // Large devices (desktops, 992px and up) */
-@media (max-width: 992px) {
-}
 
-/* // X-Large devices (large desktops, 1200px and up) */
-@media (max-width: 1200px) {
-    #carousel .c-img {
-        height: 500vh;
-    }
-}
+
 /* Menentukan ukuran gambar */
 .gambar {
     width: 172px;
     height: auto;
     float: left;
     justify-content: center;
-     align-items: center;
+    align-items: center;
 }
- /* CSS for desktop */
+
+/* CSS for desktop */
 .isiSurat {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Memungkinkan konten berjajar ke bawah saat mencapai batas lebar */
+    flex-wrap: wrap;
+    /* Memungkinkan konten berjajar ke bawah saat mencapai batas lebar */
 }
 
 .isiSurat1 {
-    flex: calc(14.2857% - 20px); /* 100% / 7 - 20px (untuk margin antar konten) */
-    margin: 10px; /* Tambahkan margin untuk jarak antara konten */
-    padding: 10px; /* Tambahkan padding jika diperlukan */
+    flex: calc(14.2857% - 20px);
+    /* 100% / 7 - 20px (untuk margin antar konten) */
+    margin: 10px;
+    /* Tambahkan margin untuk jarak antara konten */
+    padding: 10px;
+    /* Tambahkan padding jika diperlukan */
 }
 
 .KontenGambar {
@@ -487,41 +1004,8 @@ a {
     align-items: center;
     text-align: center;
 }
+
 .kolom {
     flex: 1;
     margin: 10px;
-  }
-
-
-/* CSS for mobile */
-@media (max-width: 768px) {
-    .isiSurat {
-        flex-direction: column; /* Stack items vertically on mobile */
-        margin-left: 0; /* Remove the negative margin */
-        margin-right: 0; /* Remove the negative margin */
-    }
-
-    .kolom {
-        display: flex;
-        justify-content: space-between; /* Memisahkan elemen dalam satu kolom secara horizontal */
-    }
-
-    .isiSurat1 {
-        width: calc(50% - 10px); /* Setengah lebar dengan margin pada perangkat seluler */
-        margin: 0 5px; /* Memberi jarak antara elemen pada perangkat seluler */
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-    .KontenGambar {
-        text-align: center; /* Center the content */
-    }
-
-    .KontenGambar img {
-        max-width: 100px; /* Set the maximum width of the image */
-    }
-
-    .KontenGambar p {
-        font-size: 12px; /* Adjust the font size of the text */
-    }
-    
 }

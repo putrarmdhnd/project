@@ -7,11 +7,12 @@ use App\Http\Controllers\LandingPage\LembagaDesaController;
 use App\Http\Controllers\LandingPage\PegawaiController;
 use App\Http\Controllers\LandingPage\PengumumanController;
 use App\Http\Controllers\LandingPage\StrukturDesaController;
+use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
     return view('landing_page.beranda.index');
-});
+})->name('beranda');
 
 
 Route::prefix('pemerintah')->name('pemerintah.')->group(function () {
