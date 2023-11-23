@@ -9,100 +9,158 @@
     [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
             @csrf
             <h1 class="text-2xl text-center my-8">Form Pengisian Surat Keterangan Beda Nama/Data</h1>
-            <input type="hidden" value="keterangan" name="jenis_surat">
+            <input type="hidden" value="Keterangan Beda Nama Data" name="jenis_surat">
             <div class="flex flex-col lg:flex-row gap-5 justify-center">
                 <div
                     class="w-full 
                 [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
                 ">
+                <h3>Data yang tertulis di Kartu Keluarga</h3>
                     <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama</label>
-                        <input type="text" name="nama"
-                            class="mt-1 px-3 py-2 @error('nama') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Nama" value="{{ old('nama',auth()->user()->nama) }}" />
-                        @error('nama')
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger"> No. KK</label>
+                        <input type="text" name="kk"
+                            class="mt-1 px-3 py-2 @error('kk') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Masukan Nomor KK" value="{{ old('kk') }}" />
+                        @error('kk')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Tempat & Tanggal Lahir</label>
-                        <input type="text" name="ttl"
-                            class="mt-1 px-3 py-2 @error('ttl') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Contoh : Cipanas, 20 Agustus 2000" value="{{ old('ttl') }}" />
-                        @error('ttl')
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Atas nama KK</label>
+                        <input type="text" name="ankk"
+                            class="mt-1 px-3 py-2 @error('ankk') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Atas nama KK" value="{{ old('ankk') }}" />
+                        @error('ankk')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">NIK</label>
-                        <input type="text" name="nik"
-                            class="mt-1 px-3 py-2 @error('nik') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="NIK" value="{{ old('nik') }}" />
-                        @error('nik')
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Ayah Dari a.n KK</label>
+                        <input type="text" name="ayahkk"
+                            class="mt-1 px-3 py-2 @error('ayahkk') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Nama Ayah Dari a.n KK" value="{{ old('ayahkk') }}" />
+                        @error('ayahkk')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor KK</label>
-                        <input type="text" name="no_kk"
-                            class="mt-1 px-3 py-2 @error('no_kk') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Nomor KK" value="{{ old('no_kk') }}" />
-                        @error('no_kk')
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Ibu Dari a.n KK</label>
+                        <input type="text" name="ibuKK"
+                            class="mt-1 px-3 py-2 @error('ibuKK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Nama Ibu Dari a.n KK" value="{{ old('ibuKK') }}" />
+                        @error('ibuKK')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Kewarganegaraan & Agama</label>
-                        <input type="text" name="negara_agama"
-                            class="mt-1 px-3 py-2 @error('negara_agama') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Kewarganegaraan & Agama" value="{{ old('negara_agama', 'WNI & Islam') }}" />
-                        @error('negara_agama')
-                            <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
-                        @enderror
-                    </div>
+            <div id="formContainer"></div>
+            <button type="button" id="tambahForm" style="border: 1px solid #000;">Tambah Data</button>
+                 @php
+                    $formIndex = 1;
+                @endphp
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                    let formIndex = 1; // Initialize formIndex here
+                    const formContainer = document.getElementById("formContainer");
+                    const tambahFormButton = document.getElementById("tambahForm");
+
+                    tambahFormButton.addEventListener("click", function () {
+                        const newForm = document.createElement("div");
+                        newForm.innerHTML = `
+                        <div class="flex flex-col mb-6">
+                            <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama </label>
+                            <input type="text" name="nama${formIndex}"
+                                class="mt-1 px-3 py-2" placeholder="Nama Tambahan" value="{{ old('nama' . $formIndex) }}" />
+                        </div>
+                        <div class="flex flex-col mb-6">
+                            <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Ayah </label>
+                            <input type="text" name="nama_ayah${formIndex}"
+                                class="mt-1 px-3 py-2" placeholder="Nama Ayah" value="{{ old('Nama_ayah' . $formIndex) }}" />
+                        </div>
+                        <div class="flex flex-col mb-6">
+                            <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Ibu </label>
+                            <input type="text" name="nama_ibu${formIndex}"
+                                class="mt-1 px-3 py-2" placeholder="Nama Ibu" value="{{ old('nama_ibu' . $formIndex) }}" />
+                        </div>
+                        <!-- Sisipkan bagian lain sesuai kebutuhan Anda -->
+                        `;
+
+                        formContainer.appendChild(newForm);
+                        formIndex++; // Increment formIndex for the next set of input fields
+                    });
+                    });
+                </script>
                 </div>
                 <div
                     class="w-full
                 [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm">
-                    <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Pekerjaan</label>
-                        <input type="text" name="pekerjaan"
-                            class="mt-1 px-3 py-2 @error('pekerjaan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Pekerjaan" value="{{ old('pekerjaan') }}" />
-                        @error('pekerjaan')
+                <h3>input data yang ingin dibenarkan</h3>    
+                <div class="flex flex-col mb-6">
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Yang Tertulis di?</label>
+                        <input type="text" name="data_benar"
+                            class="mt-1 px-3 py-2 @error('data_benar') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Contoh : Buku Nikah" value="{{ old('data_benar') }}" />
+                        @error('data_benar')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Alamat</label>
-                        <input type="text" name="alamat"
-                            class="mt-1 px-3 py-2 @error('alamat') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Alamat" value="{{ old('alamat') }}" />
-                        @error('alamat')
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Atas Nama?</label>
+                        <input type="text" name="atas_nama"
+                            class="mt-1 px-3 py-2 @error('atas_nama') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Contoh : jaenudin & Susi" value="{{ old('atas_nama') }}" />
+                        @error('atas_nama')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Keperluan Surat</label>
-                        <input type="text" name="keperluan"
-                            class="mt-1 px-3 py-2 @error('keperluan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Keperluan Surat" value="{{ old('keperluan') }}" />
-                        @error('keperluan')
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">masukan perbaikan data</label>
+                        <input type="text" name="perbaikan_data"
+                            class="mt-1 px-3 py-2 @error('perbaikan_data') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Contoh : Nama Ayah Burhanudin : MEMED" value="{{ old('perbaikan_data') }}" />
+                        @error('perbaikan_data')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div id="formContainer1"></div>
+                    <button type="button" id="tambahForm1" style="border: 1px solid #000;">Tambah Data</button>
+                    @php
+                    $formIndex1 = 1;
+                @endphp
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                    let formIndex1 = 1; // Initialize formIndex1 here
+                    const formContainer = document.getElementById("formContainer1");
+                    const tambahFormButton = document.getElementById("tambahForm1");
+
+                    tambahFormButton.addEventListener("click", function () {
+                        const newForm = document.createElement("div");
+                        newForm.innerHTML = `
+                        <div class="flex flex-col mb-6">
+                            <label class="after:content-['*'] after:ml-0.5 after:text-danger">Masukkan perbaikan data </label>
+                            <input type="text" name="perbaikan${formIndex1}"
+                                class="mt-1 px-3 py-2" placeholder="Contoh : Nama Ayah Burhanudin : MEMED" value="{{ old('perbaikan' . $formIndex1) }}" />
+                        </div>
+                        <!-- ... (code lain) -->
+                        `;
+
+                        formContainer.appendChild(newForm);
+                        formIndex1++; // Increment formIndex1 for the next set of input fields
+                    });
+                    });
+                </script>
                     <div class="flex flex-col mb-6">
-                        <label class="after:ml-0.5 after:text-danger">Keterangan lain-lain</label>
-                        <input type="text" name="keterangan_surat"
-                            class="mt-1 px-3 py-2 @error('keterangan_surat') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Keterangan lain-lain" value="{{ old('keterangan_surat') }}" />
-                        @error('keterangan_surat')
+                        <label class="after:ml-0.5 after:text-danger">Keterangan</label>
+                        <input type="text" name="keterangan"
+                            class="mt-1 px-3 py-2 @error('keterangan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Contoh : Tertukar" value="{{ old('keterangan') }}" />
+                        @error('keterangan')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
-            </div>
-
+            </div>  
             <div class="w-full mb-6">
                 <label class="after:ml-0.5 after:text-danger">Pesan</label>
                 <small class="text-secondary">Pastikan sampaikan pesan kepada admin/petugas dengan jelas
@@ -121,4 +179,7 @@
             </div>
         </form>
     </div>
+
+
+    
 @endsection

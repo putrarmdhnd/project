@@ -55,26 +55,30 @@
     </div>
 
     <!-- No. Kode Desa -->
-
-    <div style="margin-top: 0px;">
-        <p class="fs-1">No. Kode Desa</p>
-        <p class="fs-1" style="margin-top: -15px !important;">{{ $surat->kode_desa }}</p>
-    </div>
-
     <!-- Title -->
-    <div align="center">
+    <div align="center" style="text-align: center; margin-top: 1em;">
         <div  class="fw-bold fs-1 text-uppercase">
-            <span style="border: 1px solid black; padding: 5px" > Surat Keterangan Kematian</span>
+            <span style="text-decoration: underline; padding: 10px;" > Surat Keterangan Kematian</span>
         </div>
        
-        <p class="fs-1">Nomor : {{ $surat->nomor_surat }}</p>
+        <p class="fs-1"style="margin-top: 1px;">Nomor : {{ $surat->nomor_surat }}</p>
     </div>
 
     <!-- Content -->
 
-    <div style="margin-top: 10px;">
-        <div class="fs-1" style="margin-bottom: 10px; text-align: center;">Yang bertanda tangan dibawah ini
-            menerangkan dengan sebenarnya, bahwa :</div>
+    <div style="margin-top: 20px;">
+        <div class="fs-1">Yang bertanda tangan di bawah ini :</div>
+            <table width="100%">
+                <tr>
+                    <td width="35%" class="fs-1">Nama</td>
+                    <td class="fs-1"> : {{ $surat->nama_kades }}</td>
+                </tr>
+                <tr>
+                    <td width="35%" class="fs-1">Jabatan</td>
+                    <td class="fs-1"> : {{ $surat->jabatan_kades }}</td>
+                </tr>
+            </table>
+            <div class="fs-1" style="margin-top: 20px;">Menerangkan bahwa :</div>
         <table width="100%">
             <tr>
                 <td width="35%" class="fs-1">Nama Lengkap</td>
@@ -89,60 +93,49 @@
                 <td class="fs-1"> : {{ $surat->kelamin }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Tempat & Tanggal Lahir</td>
-                <td class="fs-1"> : {{ $surat->ttl }}</td>
+                <td width="35%" class="fs-1">Umur</td>
+                <td class="fs-1"> : {{ $surat->umur }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Agama</td>
-                <td class="fs-1"> : {{ $surat->agama }}</td>
+                <td width="35%" class="fs-1">Pekerjaan</td>
+                <td class="fs-1"> : {{ $surat->pekerjaan }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Alamat</td>
-                <td class="fs-1">: {{ $surat->alamat }}
+                <td class="fs-1">: {{ $surat->alamat }}</td>
             </tr>
-            <!-- <tr>
-                <td width="35%" class="fs-1">Alamat</td>
-                <td class="fs-1">: <table width="100%">
-                        <tr>
-                            <td width="10%">Desa</td>
-                            <td>: Lorem, ipsum.</td>
-                        </tr>
-                        <tr>
-                            <td>  Kecamatan</td>
-                            <td>: Lorem, ipsum.</td>
-                        </tr>
-                        <tr>
-                            <td>  Kabupaten</td>
-                            <td>: Lorem, ipsum.</td>
-                        </tr>
-                    </table>
+            <tr>
+                <td colspan="2" class="fs-1">
+                    <div style="margin-top: 20px;">
+                        Telah meninggal dunia pada :
+                    </div>
                 </td>
-            </tr> -->
-            <tr>
-                <td width="35%" class="fs-1"><br> Telah meninggal dunia pada :</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Hari</td>
-                <td class="fs-1"> : {{ \Carbon\Carbon::parse($surat->tgl_meninggal)->isoFormat('dddd') }}</td>
+                <td class="fs-1"> : {{$surat->hari_meninggal}}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Tanggal</td>
-                <td class="fs-1"> : {{ \Carbon\Carbon::parse($surat->tgl_meninggal)->isoFormat('D MMMM Y') }}</td>
+                <td class="fs-1"> : {{$surat->tanggal_meninggal}}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Bertempat di</td>
+                <td width="35%" class="fs-1">Di</td>
                 <td class="fs-1"> : {{ $surat->tempat_meninggal }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Penyebab Kematian</td>
-                <td class="fs-1"> : {{ $surat->penyebab_meninggal }}</td>
+                <td width="35%" class="fs-1">Disebabkan Karena</td>
+                <td class="fs-1"> : {{ $surat->meninggal_karena }}</td>
             </tr>
             <tr>
-                <td colspan="2" width="35%" class="fs-1"> <br> Surat Keterangan ini dibuat berdasarkan
-                    keterangan :</td>
+                <td colspan="2" class="fs-1">
+                    <div style="margin-top: 20px;">
+                        Surat Keterangan ini dibuat atas dasar yang sebenarnya.
+                    </div>
+                </td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Nama Lengkap</td>
+                <td width="35%" class="fs-1">Nama Yang Melapor</td>
                 <td class="fs-1"> : {{ $surat->nama_pelapor }}</td>
             </tr>
             <tr>
@@ -150,25 +143,10 @@
                 <td class="fs-1"> : {{ $surat->nik_pelapor }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Tempat & Tanggal Lahir</td>
-                <td class="fs-1"> : {{ $surat->ttl_pelapor }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">Pekerjaan</td>
-                <td class="fs-1"> : {{ $surat->pekerjaan_pelapor }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">Alamat</td>
-                <td class="fs-1">: {{ $surat->alamat_pelapor }}
-            </tr>
-            <tr>
                 <td width="35%" class="fs-1">Hubungan pelapor dengan almarhum/almarhumah</td>
                 <td class="fs-1" style="text-transform: uppercase"> : {{ $surat->hub_pelapor_almarhum }}</td>
             </tr>
         </table>
-
-        <div class="fs-1" style="margin-top: 20px; text-align: center;">Demikian surat keterangan dibuat untuk dapat
-            digunakan seperlunya.</div>
     </div>
 
     <!-- Tanda Tangan -->

@@ -209,7 +209,222 @@ class PengajuanSuratController extends Controller
 
             $data = $request->except('_token');
             $data['jenis_surat'] = 'Surat Keterangan Tentang Perkawinan';
-        } elseif ($request->jenis_surat == 'kelahiran') {
+        }elseif ($request->jenis_surat == 'keterangan Numpang Nikah') {
+            $request->validate([
+                'nama' => 'required',
+                'bin' => 'required',
+                'nik' => 'required',
+                'ttl' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'status_pernikahan' => 'required',
+                'pekerjaan' => 'required',
+                'tempat_tinggal' => 'required',
+                'nama_perempuan' => 'required',
+                'bin_perempuan' => 'required',
+                'nik_perempuan' => 'required',
+                'ttl_perempuan' => 'required',
+                'kewarganegaraan_perempuan' => 'required',
+                'agama_perempuan' => 'required',
+                'status_pernikahan_perempuan' => 'required',
+                'pekerjaan_perempuan' => 'required',
+                'tempat_tinggal_perempuan' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Keterangan Numpang Nikah';
+        }elseif ($request->jenis_surat == 'keterangan Kehilangan') {
+            $request->validate([
+                'nama' => 'required',
+                'kk_nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
+                'warganegara' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Keterangan Kehilangan';
+        }elseif ($request->jenis_surat == 'keterangan Belum Nikah') {
+            $request->validate([
+                'nama' => 'required',
+                'kk_nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
+                'pekerjaan' => 'required',
+                'pendidikan_trakhir' => 'required',
+                'alamat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Keterangan Belum Nikah';
+        }elseif ($request->jenis_surat == 'keterangan Tidak Mampu') {
+            $request->validate([
+                'nama' => 'required',
+                'kk_nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
+                'warganegara' => 'required',
+                'pendidikan' => 'required',
+                'pekerjaan' => 'required',
+                'nama_ayah_ibu' => 'required',
+                'alamat_lengkap' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Keterangan Tidak Mampu';
+        }elseif ($request->jenis_surat == 'Keterangan Duda Janda') {
+            $request->validate([
+                'nama' => 'required',
+                'kk_nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
+                'warganegara' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keterangan_status' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Keterangan Duda Janda';
+        }elseif ($request->jenis_surat == 'keterangan Domisili') {
+            $request->validate([
+                'nama' => 'required',
+                'kk_nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
+                'warganegara' => 'required',
+                'pendidikan' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Keterangan Domisili';
+        }elseif ($request->jenis_surat == 'keterangan Orang Tua Wali') {
+            $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'status_kawin' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'nama_anak' => 'required',
+                'nik_anak' => 'required',
+                'ttl_anak' => 'required',
+                'jk_anak' => 'required',
+                'kewarganegaraan_anak' => 'required',
+                'agama_anak' => 'required',
+                'status_kawin_anak' => 'required',
+                'pekerjaan_anak' => 'required',
+                'alamat_anak' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Keterangan Orang Tua Wali';
+        }elseif ($request->jenis_surat == 'keterangan Usaha') {
+            $request->validate([
+                'nama' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'warganegara' => 'required',
+                'status_perkawinan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'no_kk' => 'required',
+                'nik' => 'required',
+                'alamat' => 'required',
+                'jenis_usaha' => 'required',
+                'selama' => 'required',
+                'alamat_usaha' => 'required',
+                'keperluan_surat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Keterangan Usaha';
+        }elseif ($request->jenis_surat == 'Pengantar Keterangan Catatan Kepolisian') {
+            $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'warganegara' => 'required',
+                'status_perkawinan' => 'required',
+                'pendidikan_trakhir' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Pengantar Keterangan Catatan Kepolisian';
+        }elseif ($request->jenis_surat == 'Pernyataan Akad Nikah') {
+            $request->validate([
+                'nama' => 'required',
+                'ttl' => 'required',
+                'status_pelapor' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'status' => 'required',
+                'daftar_kua' => 'required',
+                'hari_daftar' => 'required',
+                'tanggal_daftar' => 'required',
+                'keperluan' => 'required',
+                'nama_wanita' => 'required',
+                'nama_pria' => 'required',
+                'waktu_acara' => 'required',
+                'tanggal_acara' => 'required',
+                'alamat_acara' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Pernyataan Akad Nikah';
+        }elseif ($request->jenis_surat == 'Pernyataan Ahli Waris') {
+            // Inisialisasi aturan validasi
+            $rules = [
+                'nama_almarhum' => 'required',
+                'nama_pertama' => 'required',
+                'ttl_pertama' => 'required',
+                'alamat_pertama' => 'required',
+                'warisan' => 'required',
+                'nama_penerima' => 'required',
+                'ttl_penerima' => 'required',
+                'alamat_penerima' => 'required',
+            ];
+        
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Pernyataan Ahli Waris';
+        }elseif ($request->jenis_surat == 'Keterangan Beda Nama Data') {
+            // Inisialisasi aturan validasi
+            $rules = [
+                'kk' => 'required',
+                'ankk' => 'required',
+                'ayahkk' => 'required',
+                'ibukk' => 'required',
+                'data_benar' => 'required',
+                'atas_nama' => 'required',
+                'perbaikan_data' => 'required',
+                'keterangan' => 'required',
+            ];
+        
+            $data = $request->except('_token');
+            $data['jenis_surat'] = 'Surat Keterangan Beda Nama Data';
+        }elseif ($request->jenis_surat == 'kelahiran') {
             $request->validate([
                 'hari' => 'required',
                 'tanggal' => 'required',
@@ -218,20 +433,15 @@ class PengajuanSuratController extends Controller
                 'kelamin' => 'required',
                 'nama_anak' => 'required',
                 'nama_ibu' => 'required',
-                'nik_ibu' => 'required',
-                'ttl_ibu' => 'required',
-                'pekerjaan_ibu' => 'required',
-                'alamat_ibu' => 'required',
+                'umur' => 'required',
+                'agama' => 'required',
                 'nama_ayah' => 'required',
-                'nik_ayah' => 'required',
-                'ttl_ayah' => 'required',
+                'umur_ayah' => 'required',
+                'agama_ayah' => 'required',
                 'pekerjaan_ayah' => 'required',
-                'alamat_ayah' => 'required',
+                'warganegara' => 'required',
+                'alamat' => 'required',
                 'nama_pelapor' => 'required',
-                'nik_pelapor' => 'required',
-                'ttl_pelapor' => 'required',
-                'pekerjaan_pelapor' => 'required',
-                'alamat_pelapor' => 'required',
                 'hub_pelapor_anak' => 'required',
             ]);
 
@@ -241,18 +451,16 @@ class PengajuanSuratController extends Controller
             $request->validate([
                 'nama' => 'required',
                 'nik' => 'required',
-                'ttl' => 'required',
                 'kelamin' => 'required',
-                'agama' => 'required',
+                'umur' => 'required',
+                'pekerjaan' => 'required',
                 'alamat' => 'required',
-                'tgl_meninggal' => 'required',
+                'hari_meninggal' => 'required',
+                'tanggal_meninggal' => 'required',
                 'tempat_meninggal' => 'required',
-                'penyebab_meninggal' => 'required',
+                'meninggal_karena' => 'required',
                 'nama_pelapor' => 'required',
                 'nik_pelapor' => 'required',
-                'ttl_pelapor' => 'required',
-                'pekerjaan_pelapor' => 'required',
-                'alamat_pelapor' => 'required',
                 'hub_pelapor_almarhum' => 'required',
             ]);
 
@@ -344,6 +552,66 @@ class PengajuanSuratController extends Controller
                         'title' => 'Proses Surat Keterangan tentang perkawinan',
                         'pengajuan_surat' => $pengajuanSurat
                     ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang Nikah') {
+                    return view('pengajuan_surat.proses_surat_keterangan_numpang_nikah', [
+                        'title' => 'Proses Surat Keterangan numpang nikah',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
+                    return view('pengajuan_surat.proses_surat_keterangan_orang_tua_wali', [
+                        'title' => 'Proses Surat Keterangan orang tua wali',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Kehilangan') {
+                    return view('pengajuan_surat.proses_surat_keterangan_kehilangan', [
+                        'title' => 'Proses Surat Keterangan kehilangan',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Belum Nikah') {
+                    return view('pengajuan_surat.proses_surat_keterangan_belum_nikah', [
+                        'title' => 'Proses Surat Keterangan Belum Nikah',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tidak Mampu') {
+                    return view('pengajuan_surat.proses_surat_keterangan_tidak_mampu', [
+                        'title' => 'Proses Surat Keterangan Tidak Mampu',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Duda Janda') {
+                    return view('pengajuan_surat.proses_surat_keterangan_duda_janda', [
+                        'title' => 'Proses Surat Keterangan Duda Janda',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili') {
+                    return view('pengajuan_surat.proses_surat_keterangan_domisili', [
+                        'title' => 'Proses Surat Keterangan Domisili',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Usaha') {
+                    return view('pengajuan_surat.proses_surat_keterangan_usaha', [
+                        'title' => 'Proses Surat Keterangan Usaha',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Keterangan Catatan Kepolisian') {
+                    return view('pengajuan_surat.proses_surat_pengantar_keterangan_catatan_kepolisian', [
+                        'title' => 'Proses Surat Keterangan catatan Kepolisian',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Akad Nikah') {
+                    return view('pengajuan_surat.proses_surat_pernyataan_akad_nikah', [
+                        'title' => 'Proses Surat pernyataan Akad Nikah',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Ahli Waris') {
+                    return view('pengajuan_surat.proses_surat_pernyataan_ahli_waris', [
+                        'title' => 'Proses Surat pernyataan Ahli Waris',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Beda Nama Data') {
+                    return view('pengajuan_surat.proses_surat_keterangan_beda_nama_data', [
+                        'title' => 'Proses Surat Keterangan Beda Nama Data',
+                        'pengajuan_surat' => $pengajuanSurat
+                    ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Kelahiran') {
                     return view('pengajuan_surat.proses_surat_kelahiran', [
                         'title' => 'Proses Surat Keterangan Kelahiran',
@@ -391,7 +659,6 @@ class PengajuanSuratController extends Controller
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'JK' => 'required',
-                'kode_desa' => 'required',
                 'nomor_surat' => 'required',
             ]);
 
@@ -449,7 +716,244 @@ class PengajuanSuratController extends Controller
             ]);
 
             $data = $request->except('_token');
-        } elseif ($pengajuanSurat->jenis_surat === 'Surat Kelahiran') {
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang Nikah') {
+            $request->validate([
+                'nama' => 'required',
+                'bin' => 'required',
+                'nik' => 'required',
+                'ttl' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'status_pernikahan' => 'required',
+                'pekerjaan' => 'required',
+                'tempat_tinggal' => 'required',
+                'nama_perempuan' => 'required',
+                'bin_perempuan' => 'required',
+                'nik_perempuan' => 'required',
+                'ttl_perempuan' => 'required',
+                'kewarganegaraan_perempuan' => 'required',
+                'agama_perempuan' => 'required',
+                'status_pernikahan_perempuan' => 'required',
+                'pekerjaan_perempuan' => 'required',
+                'tempat_tinggal_perempuan' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
+            $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'status_kawin' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'nama_anak' => 'required',
+                'nik_anak' => 'required',
+                'ttl_anak' => 'required',
+                'jk_anak' => 'required',
+                'kewarganegaraan_anak' => 'required',
+                'agama_anak' => 'required',
+                'status_kawin_anak' => 'required',
+                'pekerjaan_anak' => 'required',
+                'alamat_anak' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Kehilangan') {
+            $request->validate([
+                'nama' => 'required',
+                'kk_nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
+                'warganegara' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Belum Nikah') {
+            $request->validate([
+                'nama' => 'required',
+                'kk_nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
+                'pekerjaan' => 'required',
+                'pendidikan_trakhir' => 'required',
+                'alamat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tidak Mampu') {
+            $request->validate([
+                'nama' => 'required',
+                'kk_nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
+                'warganegara' => 'required',
+                'pendidikan' => 'required',
+                'pekerjaan' => 'required',
+                'nama_ayah_ibu' => 'required',
+                'alamat_lengkap' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Duda Janda') {
+            $request->validate([
+                'nama' => 'required',
+                'kk_nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
+                'warganegara' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keterangan_status' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili') {
+            $request->validate([
+                'nama' => 'required',
+                'kk_nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
+                'warganegara' => 'required',
+                'pendidikan' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Usaha') {
+            $request->validate([
+                'nama' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'warganegara' => 'required',
+                'status_perkawinan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'no_kk' => 'required',
+                'nik' => 'required',
+                'alamat' => 'required',
+                'jenis_usaha' => 'required',
+                'selama' => 'required',
+                'alamat_usaha' => 'required',
+                'keperluan_surat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Keterangan Catatan Kepolisian') {
+            $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'ttl' => 'required',
+                'jk' => 'required',
+                'agama' => 'required',
+                'warganegara' => 'required',
+                'status_perkawinan' => 'required',
+                'pendidikan_trakhir' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Akad Nikah') {
+            $request->validate([
+                'nama' => 'required',
+                'ttl' => 'required',
+                'status_pelapor' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'status' => 'required',
+                'daftar_kua' => 'required',
+                'hari_daftar' => 'required',
+                'tanggal_daftar' => 'required',
+                'keperluan' => 'required',
+                'nama_wanita' => 'required',
+                'nama_pria' => 'required',
+                'waktu_acara' => 'required',
+                'tanggal_acara' => 'required',
+                'alamat_acara' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Ahli Waris') {
+            $rules = [
+                'nama_almarhum' => 'required',
+                'nama_pertama' => 'required',
+                'ttl_pertama' => 'required',
+                'alamat_pertama' => 'required',
+                'warisan' => 'required',
+                'nama_penerima' => 'required',
+                'ttl_penerima' => 'required',
+                'alamat_penerima' => 'required',
+            ];
+        
+            $request->validate($rules);
+        
+            $data = $request->except('_token');
+        
+            // Periksa setiap input tambahan
+            for ($i = 1; $i <= 10; $i++) {
+                if ($request->has('nama' . $i)) {
+                    $data['nama' . $i] = $request['nama' . $i];
+                    $data['ttl' . $i] = $request['ttl' . $i];
+                    $data['alamat' . $i] = $request['alamat' . $i];
+                }
+            }
+        
+            // Update data sesuai dengan $data
+            $pengajuanSurat->update($data);
+        
+            // Redirect atau lakukan tindakan lain yang sesuai
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Beda Nama Data') {
+            $rules = [
+                'kk' => 'required',
+                'ankk' => 'required',
+                'ayahkk' => 'required',
+                'ibuKK' => 'required',
+                'data_benar' => 'required',
+                'atas_nama' => 'required',
+                'perbaikan_data' => 'required',
+                'keterangan' => 'required',
+            ];
+        
+            $request->validate($rules);
+        
+            $data = $request->except('_token');
+        
+            // Periksa setiap input tambahan
+            for ($i = 1; $i <= 10; $i++) {
+                if ($request->has('nama' . $i)) {
+                    $data['nama' . $i] = $request['nama' . $i];
+                    $data['nama_ayah' . $i] = $request['nama_ayah' . $i];
+                    $data['nama_ibu' . $i] = $request['nama_ibu' . $i];
+                }
+            }
+            for ($i = 1; $i <= 10; $i++) {
+                if ($request->has("perbaikan$i")) {
+                    $data["perbaikan$i"] = $request["perbaikan$i"];
+                }
+            }
+            // Update data sesuai dengan $data
+            $pengajuanSurat->update($data);
+        
+            // Redirect atau lakukan tindakan lain yang sesuai
+        }elseif ($pengajuanSurat->jenis_surat === 'Surat Kelahiran') {
             $request->validate([
                 'hari' => 'required',
                 'tanggal' => 'required',
@@ -458,22 +962,16 @@ class PengajuanSuratController extends Controller
                 'kelamin' => 'required',
                 'nama_anak' => 'required',
                 'nama_ibu' => 'required',
-                'nik_ibu' => 'required',
-                'ttl_ibu' => 'required',
-                'pekerjaan_ibu' => 'required',
-                'alamat_ibu' => 'required',
+                'umur' => 'required',
+                'agama' => 'required',
                 'nama_ayah' => 'required',
-                'nik_ayah' => 'required',
-                'ttl_ayah' => 'required',
+                'umur_ayah' => 'required',
+                'agama_ayah' => 'required',
                 'pekerjaan_ayah' => 'required',
-                'alamat_ayah' => 'required',
+                'warganegara' => 'required',
+                'alamat' => 'required',
                 'nama_pelapor' => 'required',
-                'nik_pelapor' => 'required',
-                'ttl_pelapor' => 'required',
-                'pekerjaan_pelapor' => 'required',
-                'alamat_pelapor' => 'required',
                 'hub_pelapor_anak' => 'required',
-                'nomor_surat' => 'required',
             ]);
 
             $data = $request->except('_token');
@@ -481,20 +979,17 @@ class PengajuanSuratController extends Controller
             $request->validate([
                 'nama' => 'required',
                 'nik' => 'required',
-                'ttl' => 'required',
                 'kelamin' => 'required',
-                'agama' => 'required',
+                'umur' => 'required',
+                'pekerjaan' => 'required',
                 'alamat' => 'required',
-                'tgl_meninggal' => 'required',
+                'hari_meninggal' => 'required',
+                'tanggal_meninggal' => 'required',
                 'tempat_meninggal' => 'required',
-                'penyebab_meninggal' => 'required',
+                'meninggal_karena' => 'required',
                 'nama_pelapor' => 'required',
                 'nik_pelapor' => 'required',
-                'ttl_pelapor' => 'required',
-                'pekerjaan_pelapor' => 'required',
-                'alamat_pelapor' => 'required',
                 'hub_pelapor_almarhum' => 'required',
-                'nomor_surat' => 'required',
             ]);
 
             $data = $request->except('_token');
@@ -529,6 +1024,32 @@ class PengajuanSuratController extends Controller
                     $html = 'pengajuan_surat.templates.surat_keterangan_domisili_yayasan';
                 }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Penguburan') {
                     $html = 'pengajuan_surat.templates.surat_keterangan_penguburan';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tentang Perkawinan') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_tentang_perkawinan';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang Nikah') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_numpang_nikah';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_orang_tua_wali';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Kehilangan') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_kehilangan';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Belum Nikah') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_belum_nikah';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tidak Mampu') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_tidak_mampu';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Duda Janda') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_duda_janda';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_domisili';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Usaha') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_usaha';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Keterangan Catatan Kepolisian') {
+                    $html = 'pengajuan_surat.templates.surat_pengantar_keterangan_catatan_kepolisian';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Akad Nikah') {
+                    $html = 'pengajuan_surat.templates.surat_pernyataan_akad_nikah';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Ahli Waris') {
+                    $html = 'pengajuan_surat.templates.surat_pernyataan_ahli_waris';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Beda Nama Data') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_beda_nama_data';
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Kelahiran') {
                     $html = 'pengajuan_surat.templates.surat_kelahiran';
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Kematian') {
@@ -548,6 +1069,32 @@ class PengajuanSuratController extends Controller
                 $html = 'pengajuan_surat.templates.surat_keterangan_domisili_yayasan';
             }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Penguburan') {
                 $html = 'pengajuan_surat.templates.surat_keterangan_penguburan';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tentang Perkawinan') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_tentang_perkawinan';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang Nikah') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_numpang_nikah';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_orang_tua_wali';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Kehilangan') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_kehilangan';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Belum Nikah') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_belum_nikah';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tidak Mampu') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_tidak_mampu';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Duda Janda') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_duda_janda';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_domisili';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Usaha') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_usaha';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Keterangan Catatan Kepolisian') {
+                $html = 'pengajuan_surat.templates.surat_pengantar_keterangan_catatan_kepolisian';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Akad Nikah') {
+                $html = 'pengajuan_surat.templates.surat_pernyataan_akad_nikah';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Ahli Waris') {
+                $html = 'pengajuan_surat.templates.surat_pernyataan_ahli_waris';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Beda Nama Data') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_beda_nama_data';
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Kelahiran') {
                 $html = 'pengajuan_surat.templates.surat_kelahiran';
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Kematian') {
@@ -576,6 +1123,32 @@ class PengajuanSuratController extends Controller
                     $html = 'pengajuan_surat.templates.surat_keterangan_domisili_yayasan';
                 }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Penguburan') {
                     $html = 'pengajuan_surat.templates.surat_keterangan_penguburan';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tentang Perkawinan') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_tentang_perkawinan';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang Nikah') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_numpang_nikah';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_orang_tua_wali';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Kehilangan') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_kehilangan';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Belum Nikah') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_belum_nikah';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tidak Mampu') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_tidak_mampu';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Duda Janda') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_duda_janda';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_domisili';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Usaha') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_usaha';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Keterangan Catatan Kepolisian') {
+                    $html = 'pengajuan_surat.templates.surat_pengantar_keterangan_catatan_kepolisian';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Akad Nikah') {
+                    $html = 'pengajuan_surat.templates.surat_pernyataan_akad_nikah';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Ahli Waris') {
+                    $html = 'pengajuan_surat.templates.surat_pernyataan_ahli_waris';
+                }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Beda Nama Data') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_beda_nama_data';
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Kelahiran') {
                     $html = 'pengajuan_surat.templates.surat_kelahiran';
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Kematian') {
@@ -595,6 +1168,32 @@ class PengajuanSuratController extends Controller
                 $html = 'pengajuan_surat.templates.surat_keterangan_domisili_yayasan';
             }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Penguburan') {
                 $html = 'pengajuan_surat.templates.surat_keterangan_penguburan';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tentang Perkawinan') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_tentang_perkawinan';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang_nikah') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_numpang_nikah';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_orang_tua_wali';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Kehilangan') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_kehilangan';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Belum Nikah') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_belum_nikah';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tidak Mampu') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_tidak_mampu';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Duda Janda') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_duda_janda';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_domisili';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Usaha') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_usaha';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Keterangan Catatan Kepolisian') {
+                $html = 'pengajuan_surat.templates.surat_pengantar_keterangan_catatan_kepolisian';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Akad Nikah') {
+                $html = 'pengajuan_surat.templates.surat_pernyataan_akad_nikah';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Ahli Waris') {
+                $html = 'pengajuan_surat.templates.surat_pernyataan_ahli_waris';
+            }elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Beda Nama Data') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_beda_nama_data';
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Kelahiran') {
                 $html = 'pengajuan_surat.templates.surat_kelahiran';
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Kematian') {

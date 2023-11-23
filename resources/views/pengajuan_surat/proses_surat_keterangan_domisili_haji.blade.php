@@ -20,15 +20,6 @@
                 [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
                 ">
                     <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">No. Kode Desa</label>
-                        <input type="text" name="kode_desa"
-                            class="mt-1 px-3 py-2 @error('kode_desa') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Masukkan Nomor Kode Desa" value="{{ old('kode_desa') }}" required />
-                        @error('kode_desa')
-                            <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="flex flex-col mb-6">
                         <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Surat</label>
                         <small class="text-secondary">Contoh penulisan : 474.3 / 016 / I / 2022</small>
                         <input type="text" name="nomor_surat"
@@ -38,7 +29,15 @@
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
-
+                    <div class="flex flex-col mb-6">
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Kepentingan Surat</label>
+                        <input type="text" name="penting"
+                            class="mt-1 px-3 py-2 @error('penting') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Kepentingan Surat" value="{{ old('penting') }}" required />
+                        @error('penting')
+                            <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
                 <div
                     class="w-full

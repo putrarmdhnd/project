@@ -9,7 +9,7 @@
     [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
             @csrf
             <h1 class="text-2xl text-center my-8">Form Pengisian Surat Keterangan Tentang Perkawinan</h1>
-            <input type="hidden" value="keterangan tentang perkawinan" name="jenis_surat">
+            <input type="hidden" value="keterangan Tentang Perkawinan" name="jenis_surat">
             <div class="flex flex-col lg:flex-row gap-5 justify-center">
                 <div
                     class="w-full 

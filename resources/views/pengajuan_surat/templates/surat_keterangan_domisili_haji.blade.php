@@ -54,40 +54,27 @@
     </div>
 
     <!-- No. Kode Desa -->
-
-    <div style="margin-top: 1em;">
-        <p class="fs-1">No. Kode Desa</p>
-        <p class="fs-1" style="margin-top: -15px !important;">{{ $surat->kode_desa }}</p>
-    </div>
-
     <!-- Title -->
     <div align="center" style="text-align: center; margin-top: 1em;">
-        {{-- <table class="table" style="margin-right: -50% !important;">
-            <tbody>
-                <tr>
-                    <td rowspan="2" class="td fw-bold fs-1 text-uppercase">Surat</td>
-                    <td colspan="2" class="td fw-bold fs-1 text-uppercase" style="width: 150px;">Keterangan</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="td fw-bold fs-1 text-uppercase">Pengantar</td>
-                </tr>
-            </tbody>
-        </table> --}}
-
+        
          <div  class="fw-bold fs-1 text-uppercase">
-            <span style="border: 1px solid black; padding: 10px" > Surat Keterangan Domisili Haji</span>
+            <span  style="text-decoration: underline; padding: 10px;" > Surat Keterangan Domisili Haji</span>
         </div>
-        <p class="fs-1">Nomor : {{ $surat->nomor_surat }}</p>
+        <p class="fs-1" style="margin-top: 1px;">Nomor : {{ $surat->nomor_surat }}</p>
     </div>
 
     <!-- Content -->
 
-    <div style="margin-top: 50px;">
-        <div class="fs-1" style="margin-bottom: 10px;">Yang bertanda tangan dibawah ini menerangkan bahwa :</div>
+    <div style="margin-top: 30px;">
+        <div class="fs-1" style="margin-bottom: 10px;">yang bertanda tangan dibawah ini, Kepala Desa Palasari Kecamatan Cipanas Kabupaten Cianjur, dengan ini menerangkan bahwa :</div>
         <table width="100%">
             <tr>
                 <td width="35%" class="fs-1">Nama</td>
-                <td class="fs-1"> : {{ $surat->nama }}</td>
+                <td class="fs-1" style="font-weight: bold;"> : {{ $surat->nama }}</td>
+            </tr>
+            <tr>
+                <td width="35%" class="fs-1">Jenis Kelamin</td>
+                <td class="fs-1"> : {{ $surat->JK }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Tempat & Tanggal Lahir</td>
@@ -106,6 +93,10 @@
                 <td class="fs-1"> : {{ $surat->negara_agama }}</td>
             </tr>
             <tr>
+                <td width="35%" class="fs-1">Status Perkawinan</td>
+                <td class="fs-1"> : {{ $surat->Status_Perkawinan }}</td>
+            </tr>
+            <tr>
                 <td width="35%" class="fs-1">Pekerjaan</td>
                 <td class="fs-1"> : {{ $surat->pekerjaan }}</td>
             </tr>
@@ -113,32 +104,42 @@
                 <td width="35%" class="fs-1">Alamat</td>
                 <td class="fs-1"> : {{ $surat->alamat }}</td>
             </tr>
-            <tr>
-                <td width="35%" class="fs-1">Jenis Kelamin</td>
-                <td class="fs-1"> : {{ $surat->JK }}</td>
-            </tr>
-            <tr>
-                <td width="35%" class="fs-1">Status Perkawinan</td>
-                <td class="fs-1"> : {{ $surat->Status_Perkawinan }}</td>
-            </tr>
         </table>
 
-        <div class="fs-1" style="margin-top: 20px;">Demikian untuk dapat dipergunakan sebagaimana mestinya.</div>
+        <div class="fs-1" style="margin-top: 20px;">Nama tersebut adalah benar warga masyarakat yang menetap dan berdomisili di kampung dan Desa sebagaimana tersebut diatas .</div>
+        <div class="fs-1">Surat Keterangan ini kami berikan kepada yang bersangkutan untuk dipergunakan sebagai pelengkap <span style="font-weight: bold; text-decoration: underline; font-style: italic;">{{ $surat->penting }}</span>.</div>
+        <div class="fs-1">Demikian agar yang berkepentingan maklum.</div>
     </div>
 
     <br>
     <br>
     <br>
     <!-- Tanda Tangan -->
-    <div style="width: 100%;">
-        <div align="center" style="width: 200px; position: relative; right: -30em" class="fs-1">
-            <p>Palasari, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</p>
-            <p style="margin-top: -10px !important">Kepala Desa Palasari</p>
-            <img style="margin-top: -2em !important"
-                src="https://raw.githubusercontent.com/Ibnumaggie27/sistem-informasi-desa-palasari/main/public/img/ttd.png"
-                width="230" alt="">
-
-            <p style="margin-top: -30px !important">H.Ridwan.SH</p>
+    <div style="width: 100%; margin-top: -40px;">
+        <div style="width: 50%; float: left; margin-left: -5%;" class="fs-1">
+            <div align="center"class="fs-1">
+                <p style="margin-top: 42px !important">Tanda Tangan Ysb,</p>
+                <p style="margin-top: 114px !important">H.Ridwan.SH</p>
+            </div>
+        </div>
+        <div style="width: 50%; float: right; margin-right: 0;" class="fs-1">
+            <div align="center" class="fs-1">
+                <p>Palasari, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</p>
+                <p style="margin-top: -10px !important">Kepala Desa Palasari</p>
+                <img style="margin-top: -4em !important"
+                    src="https://raw.githubusercontent.com/Ibnumaggie27/sistem-informasi-desa-palasari/main/public/img/ttd.png"
+                    width="230" alt="">
+    
+                <p style="margin-top: -30px !important">H.Ridwan.SH</p>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;margin-top:-40px">
+        <div align="center" class="fs-1">
+            <p>Mencatat:</p>
+            <p style="margin-top: -10px !important">camat Kecamatan Cipanas</p>
+            <p style="margin-top: 90px; font-weight: bold; text-decoration: underline; !important">FIRMAN EDI. S.STP., M.Si</p>
+            <p style="margin-top: -15px !important">NIP. 197604121996121001</p>
         </div>
     </div>
 </body>
