@@ -7,9 +7,9 @@ Struktur Organisasi
 
 @section('content')
 <section id="StrukturOrganisasi" class="p-5">
-    <div class="container">
-        <div class="text-center">
-            <h4 class="HeaderArticle mb-5">Struktur Organisasi Desa</h4>
+    <div class="container mb-3">
+        <div class="HeaderArticle">
+            <h4 class="">Struktur Organisasi Desa</h4>
         </div>
     </div>
 
@@ -247,9 +247,9 @@ Struktur Organisasi
 <section class=" p-5">
     <div class="container">
         <div class="row">
-            <div class="container">
-                <div class="text-center">
-                    <h4 class="HeaderArticle mb-5">Lembaga & Organisasi Desa</h4>
+            <div class="container mb-3">
+                <div class="HeaderArticle">
+                    <h4 class="">Lembaga & Organisasi Desa</h4>
                 </div>
             </div>
         </div>

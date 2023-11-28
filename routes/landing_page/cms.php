@@ -8,6 +8,7 @@ use App\Http\Controllers\LandingPage\CMS\LembagaDesaController;
 use App\Http\Controllers\LandingPage\CMS\PegawaiController;
 use App\Http\Controllers\LandingPage\CMS\PengumumanController;
 use App\Http\Controllers\landingPage\CMS\StrukturDesaController;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('cms')->middleware(['auth', 'petugasAdmin'])->name('cms.')->group(function () {
     Route::get('/', function () {
