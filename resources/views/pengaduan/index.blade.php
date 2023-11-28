@@ -2,19 +2,19 @@
 @section('content')
     <div class="bg-white py-4 px-9 mb-5 rounded-lg flex justify-between items-center">
         <div class="">
-            <h1 class="text-lg lg:text-2xl text-danger font-semibold mb-2">{{ $title }}</h1>
+            <h1 class="text-lg lg:text-2xl headDash font-bold mb-2">{{ $title }}</h1>
             <p class="text-base font-normal text-secondary">Semua pengaduan yang masuk</p>
         </div>
         @can('masyarakat')
             <a href="/pengaduan/create"
-                class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Buat
+                class="text-black themeColor focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center text-decoration-none">Buat
                 Pengaduan</a>
         @endcan
     </div>
     <div class="overflow-x-auto">
         <table class="w-full rounded-lg bg-white divide-y divide-gray overflow-hidden mb-5">
-            <thead class="bg-danger">
-                <tr class="text-white text-left">
+            <thead class="themeColor">
+                <tr class="text-black text-left">
                     <th class="font-semibold text-sm uppercase px-4 py-4">#</th>
                     <th class="font-semibold text-sm uppercase px-4 py-4">Tanggal</th>
                     @canany(['petugas', 'admin'])

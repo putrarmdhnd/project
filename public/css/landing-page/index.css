@@ -13,7 +13,6 @@ a {
 }
 
 /* Custom Class */
-
 .text-primary-2 {
     color: #0091bc;
 }
@@ -199,7 +198,7 @@ a {
 }
 
 .card-demografi-penduduk {
-    background: #3393b059;
+    background: #d9f6ff;
     display: flex;
     justify-content: center;
     margin: auto;
@@ -386,10 +385,20 @@ a {
 
     padding: 1rem;
 }
+
 .card-anggaran-pengeluaran {
 
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     border: 1px solid;
+}
+
+.isiSurat1 {
+    /* 100% / 7 - 20px (untuk margin antar konten) */
+    margin: 10px;
+}
+.isiSurat1 a{
+    /* 100% / 7 - 20px (untuk margin antar konten) */
+    text-decoration: none;
 }
 
 /* Media Query */
@@ -435,6 +444,19 @@ a {
         height: auto;
     }
 
+    .Layoutcard-anggaran-pengeluaran {
+        width: 50%;
+
+    }
+
+    .jenis-pengeluaran {
+        font-size: 10px;
+    }
+
+    .detail-pengeluaran {
+        font-size: 10px;
+    }
+
     .cardBeritaPengumuman h6,
     .headGraph {
         font-size: 12px;
@@ -470,7 +492,7 @@ a {
 
 
     .HeaderArticle {
-        width: 60%;
+        width: 70%;
     }
 
     .HeaderArticle-mengenaiDesa h4 {
@@ -549,7 +571,6 @@ a {
     }
 
     .isiSurat1 {
-        width: calc(50% - 10px);
         /* Setengah lebar dengan margin pada perangkat seluler */
         margin: 0 5px;
         /* Memberi jarak antara elemen pada perangkat seluler */
@@ -576,10 +597,35 @@ a {
         width: 100%;
     }
 
+    .jenis-surat {
+        font-size: 10px;
+    }
+
+    .jenis-surat-nama {
+        font-size: 9px;
+    }
+
+
+    .ImgSurat {
+        padding: 0;
+    }
 }
 
 /* Media query untuk tampilan laptop */
-@media (min-width: 1024px) {}
+@media (min-width: 1280px) {
+    .card-bodySurat {
+        padding: 1rem;
+    }
+
+    .ImgSurat {
+        padding: 1rem;
+    }
+
+    .pilihan-surat {
+        padding: 2.5rem;
+    }
+
+}
 
 
 /* // Large devices (desktops, 992px and up) */
@@ -989,14 +1035,6 @@ a {
     /* Memungkinkan konten berjajar ke bawah saat mencapai batas lebar */
 }
 
-.isiSurat1 {
-    flex: calc(14.2857% - 20px);
-    /* 100% / 7 - 20px (untuk margin antar konten) */
-    margin: 10px;
-    /* Tambahkan margin untuk jarak antara konten */
-    padding: 10px;
-    /* Tambahkan padding jika diperlukan */
-}
 
 .KontenGambar {
     display: flex;
@@ -1008,4 +1046,19 @@ a {
 .kolom {
     flex: 1;
     margin: 10px;
+}
+
+
+
+.costum-button {
+    text-decoration: none;
+    background-color: #b7efff;
+    color: black;
+    padding: .75rem;
+}
+
+.HeaderArticle-pembuatan-surat p {
+    background-color: #ffffff;
+    color: #000000;
+
 }

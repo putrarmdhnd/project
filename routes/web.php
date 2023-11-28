@@ -22,7 +22,7 @@ require __DIR__ . '/landing_page/landing_page.php';
 
 Route::get('/dashboard', function () {
     return view('index', [
-        'title'           => 'Dasbor',
+        'title'           => 'Dashboard',
         'total_laporan'   => Pengaduan::all()->count(),
         'laporan_selesai' => Pengaduan::where('status', 'selesai')->count(),
         'total_tanggapan' => Tanggapan::all()->count(),
@@ -37,7 +37,11 @@ Route::get('/pengaduan/selesai', [PengaduanController::class, 'selesai'])->middl
 Route::resource('/pengaduan', PengaduanController::class)->middleware('auth');
 Route::resource('/tanggapan', TanggapanController::class)->middleware('auth');
 
-Route::get('/landing_page/surat', function () {return view('landing_page.surat');})->name('surat');
+Route::get('/pengajuan-surat/surat', function () {
+    return view('pengajuan_surat.surat', [
+        'title'           => 'Pilih-Surat',
+    ]);
+})->name('surat');
 Route::put('/pengajuan-surat/{pengajuan_surat}/approve', [PengajuanSuratController::class, 'approve'])->middleware('auth')->name('pengajuan_surat.approve');
 Route::put('/pengajuan-surat/{pengajuan_surat}/reject', [PengajuanSuratController::class, 'reject'])->middleware('auth')->name('pengajuan_surat.reject');
 Route::get('/pengajuan-surat/{pengajuan_surat}/preview', [PengajuanSuratController::class, 'preview'])->middleware('auth')->name('pengajuan_surat.preview.surat');
@@ -53,5 +57,3 @@ Route::group(['middleware' => ['auth', 'hanyaAdmin']], function () {
 
 //  Control Management System Landing Page
 require __DIR__ . '/landing_page/cms.php';
-
-

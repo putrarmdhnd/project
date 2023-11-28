@@ -2,18 +2,18 @@
 @section('content')
     <div class="bg-white py-4 px-9 mb-5 rounded-lg flex justify-between items-center">
         <div class="">
-            <h1 class="text-lg lg:text-2xl text-danger font-semibold mb-2">Pengajuan Surat Online</h1>
+            <h1 class="text-lg lg:text-2xl font-bold mb-2 headDash">Pengajuan Surat Online</h1>
             <p class="text-base text-[13px] lg:text-lg font-normal text-secondary">Semua pengajuan surat yang masuk</p>
         </div>
         @can('masyarakat')
-        <a href="{{ route('surat') }}" class="text-white bg-danger focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center">Buat Surat</a>
+        <a href="{{ route('surat') }}" class="text-black focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center text-decoration-none" style="background-color: #b7efff;">Buat Surat</a>
 
         @endcan
     </div>
     <div class="overflow-x-auto">
         <table class="w-full rounded-lg bg-white divide-y divide-gray overflow-hidden mb-5">
-            <thead class="bg-danger">
-                <tr class="text-white text-left">
+            <thead class="">
+                <tr class=" text-left">
                     <th class="font-semibold text-sm uppercase px-4 py-4">#</th>
                     <th class="font-semibold text-sm uppercase px-4 py-4">Tanggal</th>
                     <th class="font-semibold text-sm uppercase px-4 py-4">Pengaju</th>

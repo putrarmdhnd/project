@@ -83,7 +83,7 @@
     </div>
     <div class="flex justify-between">
         <button type="submit"
-            class="text-white gap-x-8 bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+            class="text-black gap-x-8 themeColor focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
         </form>
         <button id="closeDialogEdit"
             class="text-white bg-secondary focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">

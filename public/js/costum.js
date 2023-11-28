@@ -15,8 +15,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let cardimgStruktur = document.querySelectorAll(".card-imgStruktur");
 
+  let detailPembelanjaan = document.querySelectorAll(".detailPembelanjaan");
+
   function checkViewportWidth() {
+
     if (window.innerWidth <= 450) {
+      detailPembelanjaan.forEach(function (element) {
+        element.classList.remove("m-4");
+      });
+
       cardimgStruktur.forEach(function (element) {
         element.classList.add("col-12");
         element.classList.remove("col-8");
@@ -45,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
         element.classList.add("text-center");
       });
 
+
+
       beritaPengumuman.classList.add("container");
       tentangDesa.classList.add("container");
 
@@ -52,6 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       penduduk.classList.remove("p-5");
       penduduk.classList.add("p-3");
+
+
 
     } else {
 

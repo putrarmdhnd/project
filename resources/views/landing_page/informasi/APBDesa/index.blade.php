@@ -35,56 +35,53 @@ APBDesa
 
             <section class="space-subHeader px-5">
                 <div class="row">
-                    <div class="col-12 d-flex">
-                        <div class="col-md-6 my-3 p-3">
-                            <div class="card card-idm card-idm__skor  card-dana-masuk">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p class="card-idm__text">Pendapatan Desa <br>Tahun 2023</p>
-                                        </div>
-                                        <div class="col-md-6 text-center center-v">
-                                            <p class="card-idm__jumlah fs-4">Rp1.224.779.772,-</p>
-                                        </div>
+                    <div class="col-md-6 my-3">
+                        <div class="card card-idm card-idm__skor  card-dana-masuk card-dana-masuk-pageApbdes">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="card-idm__text">Pendapatan Desa <br>Tahun 2023</p>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 my-3 p-3">
-                            <div class="card card-idm card-idm__status card-dana-keluar">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p class="card-idm__text">Belanja Desa <br>Tahun 2023</p>
-                                        </div>
-                                        <div class="col-md-6 text-center center-v ">
-                                            <p class="card-idm__infoStatus fs-4">Rp1.174.779.772,-</p>
-                                        </div>
+                                    <div class="col-md-6 text-center center-v">
+                                        <p class="card-idm__jumlah fs-4">Rp1.224.779.772,-</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 m-4">
+                    <div class="col-md-6 my-3">
+                        <div class="card card-idm card-idm__status card-dana-keluar card-dana-keluar-pageApbdes">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="card-idm__text">Belanja Desa <br>Tahun 2023</p>
+                                    </div>
+                                    <div class="col-md-6 text-center center-v ">
+                                        <p class="card-idm__infoStatus fs-4">Rp1.174.779.772,-</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 detailPembelanjaan m-4">
                         <div class="row">
                             <div class="col-12">
                                 <h5>Detail Belanja Desa</h5>
                             </div>
-                            <div class="row">
                                 <div class="col-4 Layoutcard-anggaran-pengeluaran">
                                     <div class="card card-anggaran-pengeluaran">
                                         <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                            <p class="card-text text-start fw-bold">Pemeliharaan Kantor Desa</p>
+                                            <p class="card-text text-start fw-bold jenis-pengeluaran">Pemeliharaan Kantor Desa</p>
                                             <p class="card-text text-start detail-pengeluaran">Rp.25.000.000</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-4 Layoutcard-anggaran-pengeluaran">
-                                    <div class="card card-anggaran-pengeluaran" >
+                                    <div class="card card-anggaran-pengeluaran">
                                         <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                            <p class="card-text text-start fw-bold">Musyawarah Besar Desa</p>
+                                            <p class="card-text text-start fw-bold jenis-pengeluaran">Musyawarah Besar Desa</p>
                                             <p class="card-text text-start detail-pengeluaran">Rp.3.000.000</p>
                                         </div>
                                     </div>
@@ -93,13 +90,13 @@ APBDesa
                                     <div class="card card-anggaran-pengeluaran">
                                         <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                            <p class="card-text text-start fw-bold">Jumat Bersih</p>
+                                            <p class="card-text text-start fw-bold jenis-pengeluaran">Jumat Bersih</p>
                                             <p class="card-text text-start detail-pengeluaran">Rp.10.000.000</p>
                                         </div>
                                     </div>
                                 </div>
 
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

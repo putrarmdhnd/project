@@ -10,7 +10,7 @@
             <li>
                 <a href="/dashboard" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                            class="bx bx-home {{ Request::is('/dashboard') ? 'text-danger' : '' }}"></i></span>
+                            class="bx bx-home {{ Request::is('/dashboard') ? 'text-primary' : '' }}"></i></span>
                     <span class="text-sm font-medium">Dashboard</span>
                 </a>
             </li>
@@ -19,7 +19,7 @@
                     <a href="/pengaduan/create"
                         class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                         <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                                class="bx bxs-edit {{ Request::is('pengaduan/create') ? 'text-danger' : '' }}"></i></span>
+                                class="bx bxs-edit {{ Request::is('pengaduan/create') ? 'text-primary' : '' }}"></i></span>
                         <span class="text-sm font-medium">Buat Pengaduan</span>
                     </a>
                 </li>
@@ -28,7 +28,7 @@
                 <a href="{{ route('pengajuan-surat.index') }}"
                     class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                            class="bx bx-envelope {{ Request::is('pengajuan-surat') ? 'text-danger' : '' }}"></i></span>
+                            class="bx bx-envelope {{ Request::is('pengajuan-surat') ? 'text-primary' : '' }}"></i></span>
                     <span class="text-sm font-medium">Pengajuan Surat Online</span>
                 </a>
             </li>
@@ -36,7 +36,7 @@
             <li>
                 <a href="/pengaduan" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                            class="bx bx-notepad {{ Request::is('pengaduan*') && !Request::is('pengaduan/create') && !Request::is('pengaduan/selesai') && !Request::is('pengaduan/proses') && !Request::is('pengaduan/belum') ? 'text-danger' : '' }}"></i></span>
+                            class="bx bx-notepad {{ Request::is('pengaduan*') && !Request::is('pengaduan/create') && !Request::is('pengaduan/selesai') && !Request::is('pengaduan/proses') && !Request::is('pengaduan/belum') ? 'text-primary' : '' }}"></i></span>
                     <span class="text-sm font-medium">Semua Pengaduan</span>
                 </a>
             </li>
@@ -46,7 +46,7 @@
                     <a href="/pengaduan/belum"
                         class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                         <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                                class="bx bx-time-five {{ Request::is('pengaduan/belum') ? 'text-danger' : '' }}"></i></span>
+                                class="bx bx-time-five {{ Request::is('pengaduan/belum') ? 'text-primary' : '' }}"></i></span>
                         <span class="text-sm font-medium">Pengaduan Belum Ditanggapi</span>
                     </a>
                 </li>
@@ -54,7 +54,7 @@
                     <a href="/pengaduan/proses"
                         class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                         <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                                class="bx bx-loader-circle {{ Request::is('pengaduan/proses') ? 'text-danger' : '' }}"></i></span>
+                                class="bx bx-loader-circle {{ Request::is('pengaduan/proses') ? 'text-primary' : '' }}"></i></span>
                         <span class="text-sm font-medium">Pengaduan Diproses</span>
                     </a>
                 </li>
@@ -62,7 +62,7 @@
                     <a href="/pengaduan/selesai"
                         class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                         <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                                class="bx bx-check-circle {{ Request::is('pengaduan/selesai') ? 'text-danger' : '' }}"></i></span>
+                                class="bx bx-check-circle {{ Request::is('pengaduan/selesai') ? 'text-primary' : '' }}"></i></span>
                         <span class="text-sm font-medium">Pengaduan Selesai</span>
                     </a>
                 </li>
@@ -72,7 +72,7 @@
                 <li>
                     <a href="/tanggapan" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                         <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                                class="bx bx-comment-dots {{ Request::is('tanggapan*') && !Request::is('tanggapan/proses') && !Request::is('tanggapan/selesai') ? 'text-danger' : '' }}"></i></span>
+                                class="bx bx-comment-dots {{ Request::is('tanggapan*') && !Request::is('tanggapan/proses') && !Request::is('tanggapan/selesai') ? 'text-primary' : '' }}"></i></span>
                         <span class="text-sm font-medium">Semua Tanggapan</span>
                     </a>
                 </li>
@@ -83,7 +83,7 @@
                     <a href="/pengguna/masyarakat"
                         class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                         <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                                class="bx bx-group {{ Request::is('pengguna/masyarakat*') ? 'text-danger' : '' }}"></i></span>
+                                class="bx bx-group {{ Request::is('pengguna/masyarakat*') ? 'text-primary' : '' }}"></i></span>
                         <span class="text-sm font-medium">Data Masyarakat</span>
                     </a>
                 </li>
@@ -91,14 +91,14 @@
                     <a href="/pengguna/petugas"
                         class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                         <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                                class="bx bx-user-check {{ Request::is('pengguna/petugas*') ? 'text-danger' : '' }}"></i></span>
+                                class="bx bx-user-check {{ Request::is('pengguna/petugas*') ? 'text-primary' : '' }}"></i></span>
                         <span class="text-sm font-medium">Data Petugas</span>
                     </a>
                 </li>
                 <li>
                     <a href="/pengguna" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                         <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                                class="bx bx-user-check {{ Request::is('pengguna') ? 'text-danger' : '' }}"></i></span>
+                                class="bx bx-user-check {{ Request::is('pengguna') ? 'text-primary' : '' }}"></i></span>
                         <span class="text-sm font-medium">Semua Pengguna</span>
                     </a>
                 </li>
@@ -108,8 +108,8 @@
                 <a href="{{ route('cms.index') }}"
                     class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i
-                            class="bx bx-envelope {{ Request::is('cms') ? 'text-danger' : '' }}"></i></span>
-                    <span class="text-sm font-medium">edit pemerintah</span>
+                            class="bx bx-edit {{ Request::is('cms') ? 'text-primary' : '' }}"></i></span>
+                    <span class="text-sm font-medium">Setting Landing Page</span>
                 </a>
             </li>
             @endcan
