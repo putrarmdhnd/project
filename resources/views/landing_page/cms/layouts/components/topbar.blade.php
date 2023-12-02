@@ -1,33 +1,16 @@
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-    <!-- Sidebar Toggle (Topbar) -->
-    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-        <i class="fa fa-bars"></i>
-    </button>
-
-    <!-- Topbar Navbar -->
-    <ul class="navbar-nav ml-auto">
-
-        <div class="topbar-divider d-none d-sm-block"></div>
-
-        <!-- Nav Item - User Information -->
-        <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                <img class="img-profile rounded-circle" src="{{ url('') }}/dashboard/img/undraw_profile.svg">
-            </a>
-            <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
-                </a>
-            </div>
-        </li>
-
-    </ul>
-
+<nav class="top-0 w-full fixed inset-x-0 flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg shadow-sm z-3" style="    background-image: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%);">
+    <div class="w-full flex justify-between items-center px-3">
+        <span class="text-2xl text-black top-5 cursor-pointer flex items-center">
+            <i class="bx bx-menu mr-2" onclick="openSidebar()"></i>
+            <a href="{{ route('beranda') }}"><img src="{{ asset('img/desa.png') }}" width="150" alt="Logo!"></a>
+        </span>
+        <span class="text-black bg-light top-5 items-center rounded-5" style="padding: .50rem; border: 1px solid;">
+            <span class="mx-3 font-medium lg:text-base text-sm capitalize">
+                {{ auth()->user()->nama }}
+            </span>
+            <img class=" inline-block h-6 w-6 lg:h-8 lg:w-8 rounded-full themeColor" src="{{ asset('img/user.png') }}" alt="{{ auth()->user()->nama }}">
+        </span>
+    </div>
 </nav>
 <!-- End of Topbar -->

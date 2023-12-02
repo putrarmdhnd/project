@@ -1,35 +1,37 @@
 @extends('landing_page.layouts.app')
 
 @section('title')
-    {{ $berita->judul }}
+{{ $berita->judul }}
 @endsection
 @section('content')
-    <div id="breadcrumb" class="container my-4 my-md-4 my-lg-5">
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
-            aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}">Beranda</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('informasi.berita.index') }}">Berita</a></li>
-                <li class="breadcrumb-item">{{ $berita->judul_singkat }}</li>
-            </ol>
-        </nav>
-    </div>
+<div class="bg-light">
+    <article id="breadcrumb" class="container px-5 bg-white" style="padding-top: 5rem;">
+        <div id="details-news">
+            <div class="bg-light p-3">
+                <h1><b>{{ $berita->judul }}</b></h1>
+                <h6 class="ml-3 text-decoration-underline ">Berita</h6>
+            </div>
 
-    <div id="details-news" class="container">
-        <h1>{{ $berita->judul }}</h1>
-        <p id="info-news" class="my-4"><i class="fa-solid fa-calendar-days me-1"></i>
-            {{ \Carbon\Carbon::parse($berita->created_at)->isoFormat('MMMM , D , Y') }}
+            <div class="d-flex justify-content-between mt-4 mx-3">
+                <p id="info-news" class="">Ditulis oleh : <b>{{ $berita->author->nama }}</b></p>
+                <p id="info-news" class=""> {{ \Carbon\Carbon::parse($berita->created_at)->isoFormat('MMMM , D , Y') }} </p>
 
-            <i class="fa-solid fa-user ms-2 me-1"></i>
-            {{ $berita->author->nama }}
-        </p>
+            </div>
 
-        @if ($berita->gambar)
+
+            <div id="thumbnail" class="bg-dark">
+            @if ($berita->gambar)
             <img id="thumbnail" src="{{ asset('storage/' . $berita->gambar) }}">
-        @endif
+            @endif
+            </div>
 
-        <div id="content-desc" class="my-5 lh-lg" align="justify">
-            {!! $berita->deskripsi !!}
+            <div id="content-desc" class="py-5 lh-lg">
+                {!! $berita->deskripsi !!}
+            </div>
         </div>
-    </div>
+    </article>
+</div>
+
+
+
 @endsection

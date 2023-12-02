@@ -37,7 +37,7 @@
     <!-- End Navbar -->
 
 
-    <main style="min-height:100vh">
+    <main style="min-height:100vh" >
         @yield('content')
     </main>
 

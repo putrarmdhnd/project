@@ -41,8 +41,8 @@ html {
   -o-tab-size: 4;
   tab-size: 4;
   /* 3 */
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  /*font-family: "Poppins", sans-serif;
+  font-weight: 400;*/
 
 }
 
@@ -56,6 +56,10 @@ body {
   /* 1 */
   line-height: inherit;
   /* 2 */
+  font-family: Outfit, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  letter-spacing: .01em;
+  line-height: 1.6;
 }
 
 /*
@@ -2217,15 +2221,16 @@ video {
   color: #3393b0;
 }
 
-.themeColor{
+.themeColor {
   background-color: #b7efff;
 }
 
-@media (max-width: 450px){
-  .pilihSurat h1{
+@media (max-width: 450px) {
+  .pilihSurat h1 {
     font-size: 18px
   }
-  .pilihSurat p{
+
+  .pilihSurat p {
     font-size: 14px
   }
 }
