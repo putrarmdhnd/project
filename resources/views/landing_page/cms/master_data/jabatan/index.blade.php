@@ -3,7 +3,7 @@
     <div class="container-fluid ">
 
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4 col-md-6">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 col-12">
             <h1 class="h3 mb-0 text-gray-800">Data Jabatan</h1>
             <button type="button" class="btn btn-sm btn-primary shadow-sm mt-3 mt-md-0 mt-lg-0" data-toggle="modal"
                 data-target="#addJabatanModal">
@@ -21,7 +21,7 @@
             </div>
         @endif
 
-        <div class="card shadow mb-4 col-md-6">
+        <div class="card shadow mb-4 col-12">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Data Jabatan</h6>
             </div>

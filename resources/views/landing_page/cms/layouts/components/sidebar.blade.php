@@ -1,102 +1,56 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        {{-- <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div> --}}
-        <div class="sidebar-brand-text mx-3">CMS</div>
-    </a>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="/cms">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
-    <li class="nav-item">
-        <!-- collapsed -->
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pemerintah"
-            aria-expanded="true" aria-controls="pemerintah">
-            <i class="fa-solid fa-building-ngo"></i>
-            <span>Pemerintah</span>
-        </a>
-        <div id="pemerintah" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner roun ded">
-                <h6 class="collapse-header">Pemerintah</h6>
-                <a class="collapse-item {{ set_active(['cms.struktur-desa.index', 'cms.struktur-desa.create', 'cms.struktur-desa.edit']) }}"
-                    class="collapse-item" href="{{ route('cms.struktur-desa.index') }}">Struktur Organisasi</a>
-                <a class="collapse-item {{ set_active(['cms.lembaga-desa.index', 'cms.lembaga-desa.create', 'cms.lembaga-desa.edit']) }}"
-                    class="collapse-item" href="{{ route('cms.lembaga-desa.index') }}">Lembaga Desa</a>
-
-
-            </div>
+<div class="sidebar hidden z-30 fixed inset-y-0 bg-black">
+    <div class="flex flex-col w-72 bg-dark overflow-hidden shadow-md h-full">
+        <div class="flex items-center py-3 px-5 shadow-sm shadow-secondary">
+            <span class="text-2xl text-gray top-5 left-4 cursor-pointer flex items-center" onclick="openSidebar()">
+                <i class="bx bx-x mr-3"></i> <img src="{{ asset('img/desaa.png') }}" width="150" alt="Logo!">
+            </span>
         </div>
-
-    </li>
-
-    <li class="nav-item">
-        <!-- collapsed -->
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#informasi"
-            aria-expanded="true" aria-controls="informasi">
-            <i class="fa-solid fa-circle-info"></i>
-            <span>Informasi</span>
-        </a>
-        <div id="informasi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner roun ded">
-                <h6 class="collapse-header">Informasi</h6>
-                <a class="collapse-item {{ set_active(['cms.berita.index', 'cms.berita.create', 'cms.berita.edit']) }}"
-                    class="collapse-item" href="{{ route('cms.berita.index') }}">Berita</a>
-                <a class="collapse-item {{ set_active(['cms.pengumuman.index', 'cms.pengumuman.create', 'cms.pengumuman.edit']) }}"
-                    class="collapse-item" href="{{ route('cms.pengumuman.index') }}">Pengumuman</a>
-                <a class="collapse-item {{ set_active(['cms.galeri.index', 'cms.galeri.create', 'cms.galeri.edit']) }}"
-                    class="collapse-item" href="{{ route('cms.galeri.index') }}">Galeri</a>
-                <a class="collapse-item {{ set_active(['cms.apb.index', 'cms.apb.create', 'cms.apb.edit']) }}"
-                    class="collapse-item" href="{{ route('cms.apb.index') }}">APB Desa</a>
-
-            </div>
-        </div>
-
-    </li>
-
-    <li class="nav-item">
-        <!-- collapsed -->
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#master_data"
-            aria-expanded="true" aria-controls="master_data">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Master Data</span>
-        </a>
-        <div id="master_data" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner roun ded">
-                <h6 class="collapse-header">Master Data</h6>
-                <a class="collapse-item {{ set_active(['cms.pegawai.index', 'cms.pegawai.create', 'cms.pegawai.edit']) }}"
-                    class="collapse-item" href="{{ route('cms.pegawai.index') }}">Pegawai</a>
-                <a class="collapse-item {{ set_active(['cms.jabatan.index', 'cms.jabatan.create', 'cms.jabatan.edit']) }}"
-                    class="collapse-item" href="{{ route('cms.jabatan.index') }}">Jabatan</a>
-
-            </div>
-        </div>
-
-    </li>
-    <li class="nav-item">
-        <div class="nav-link">
-            <a href="{{ '/dashboard ' }}" class="btn btn-secondary btn-block">
-                <i class="fas fa-arrow-left"></i> Kembali
-            </a>
-        </div>
-    </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        <ul class="flex flex-col px-2 py-4 [&>li>a]:text-gray [&>li>a]:flex [&>li>a]:flex-row [&>li>a]:items-center [&>li>a]:h-12">
+            <li>
+                <a href="/LandingPage" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-home {{ Request::is('/dashboard') ? 'text-primary' : '' }}"></i></span>
+                    <span class="text-sm font-medium">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('cms.struktur-desa.index') }}" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-building {{ Request::is('/dashboard') ? 'text-primary' : '' }}"></i></span>
+                    <span class="text-sm font-medium">Lembaga Desa</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('cms.pegawai.index') }}" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class=" bx bx-user {{ Request::is('/dashboard') ? 'text-primary' : '' }}"></i></span>
+                    <span class="text-sm font-medium">Pegawai</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('cms.jabatan.index') }}" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-bookmarks {{ Request::is('/dashboard') ? 'text-primary' : '' }}"></i></span>
+                    <span class="text-sm font-medium">Jabatan Pegawai</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('cms.apb.index') }}" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-money-withdraw {{ Request::is('/dashboard') ? 'text-primary' : '' }}"></i></span>
+                    <span class="text-sm font-medium">APBDes</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('cms.berita.index') }}" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-info-circle {{ Request::is('/dashboard') ? 'text-primary' : '' }}"></i></span>
+                    <span class="text-sm font-medium">Berita & Pengumuman</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ '/dashboard ' }}" class="btn btn-secondary btn-block transition-transform ease-in duration-200 my-5">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="fas fa-arrow-left {{ Request::is('/dashboard') ? 'text-primary' : '' }}"></i></span>
+                    <span class="text-sm font-medium">Kembali</span>
+                </a>
+            </li>
+        </ul>
     </div>
+</div>
 
-</ul>
 <!-- End of Sidebar -->

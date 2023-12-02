@@ -22,7 +22,12 @@
                         <a class="nav-link pageLink" href="{{ route('pemerintah.organisasi.index') }}">Pemerintahaan</a>
                     </li>
                     <li class="nav-item nav-item-costume login-item">
-                        <a class="nav-link" href="{{ route('pengajuan-surat.create') }}">Login</a>
+                        @auth
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+
+                        @else
+                        <a class="nav-link" href="/dashboard">Login</a>
+                        @endif
                     </li>
                 </ul>
             </div>
