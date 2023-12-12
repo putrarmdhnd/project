@@ -40,7 +40,7 @@
                         <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
                         <div class="card-body cbodyBeritaPengumuman">
                             <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="card-title text-dark">Judul Berita&Pengumuman</h6>
+                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
                         </div>
                     </a>
                 </div>
@@ -51,7 +51,7 @@
                         <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
                         <div class="card-body cbodyBeritaPengumuman">
                             <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="card-title text-dark">Judul Berita&Pengumuman</h6>
+                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
                         </div>
                     </a>
                 </div>
@@ -62,7 +62,7 @@
                         <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
                         <div class="card-body cbodyBeritaPengumuman">
                             <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="card-title text-dark">Judul Berita&Pengumuman</h6>
+                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
                         </div>
                     </a>
                 </div>
@@ -73,7 +73,7 @@
                         <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
                         <div class="card-body cbodyBeritaPengumuman">
                             <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="card-title text-dark">Judul Berita&Pengumuman</h6>
+                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
                         </div>
                     </a>
                 </div>
@@ -84,7 +84,7 @@
                         <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
                         <div class="card-body cbodyBeritaPengumuman">
                             <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="card-title text-dark">Judul Berita&Pengumuman</h6>
+                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
                         </div>
                     </a>
                 </div>
@@ -95,11 +95,12 @@
                         <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
                         <div class="card-body cbodyBeritaPengumuman">
                             <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="card-title text-dark">Judul Berita&Pengumuman</h6>
+                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
                         </div>
                     </a>
                 </div>
             </div>
+            
         </div>
     </article>
 </section>
