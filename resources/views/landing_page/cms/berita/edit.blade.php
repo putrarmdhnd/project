@@ -36,8 +36,8 @@
                             <label for="gambar" class="form-label">Thumbnail</label>
 
                             @if ($berita->gambar)
-                                <div class="my-5">
-                                    <img src="{{ asset('storage/' . $berita->gambar) }}" width="500" alt="">
+                                <div class="thumbnail-container">
+                                    <img src="{{ asset('storage/' . $berita->gambar) }}" class="thumbnail-image object-cover" width="500" alt="">
                                     <label for="gambar" class="form-label">Thumbnail Saat ini</label>
                                 </div>
                             @endif

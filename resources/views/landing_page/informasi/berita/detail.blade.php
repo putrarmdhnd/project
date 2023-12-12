@@ -20,12 +20,12 @@
 
 
             <div id="thumbnail" class="bg-dark">
-            @if ($berita->gambar)
-            <img id="thumbnail" src="{{ asset('storage/' . $berita->gambar) }}">
-            @endif
+                @if ($berita->gambar)
+                <img id="thumbnail" src="{{ asset('storage/' . $berita->gambar) }}">
+                @endif
             </div>
 
-            <div id="content-desc" class="py-5 lh-lg">
+            <div id="content-desc" class="py-5 px-5 lh-lg content-p" style="font-size: 16px; letter-spacing: .05em; line-height: 1.6em; text-align: justify;">
                 {!! $berita->deskripsi !!}
             </div>
         </div>

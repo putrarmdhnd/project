@@ -12,6 +12,7 @@ Informasi Berita
         <h4 class="">Berita &amp; Pengumuman</h4>
     </div>
 </div>
+
 <div id="board-news" class="container">
     <div class="row my-4">
         <div class="col-6 align-self-center">
@@ -94,18 +95,59 @@ Informasi Berita
 
 <div id="list-news" class="mt-5 container ">
     <div class="row">
-        <div class="col-md-8">
+
+        @forelse ($beritas as $berita)
+        <div class="col-4">
+            <div class="card cardBeritaPengumuman" style="border: none;">
+                <a href="{{ route('informasi.berita.detail', $berita->slug) }}">
+                    <div class="card-body artikel-card">
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="thumbnail" class="col-12">
+                                    <div class="thumbnail-container rounded-20 overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
+                                        <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20 bg-light p-2" alt="..." style="object-fit: contain;">
+                                    </div>
+                                    <p class="JenisBeritaPengumuman my-3">Berita</p>
+                                    <p class="artikel-judul">{{ $berita->judul }}</p>
+                                </div>
+
+                                <div class="col-12 mt-3">
+                                    <p class="artikel-penulis">
+                                        <i class="fa fa-user"></i> <span>{{ $berita->author->nama }}</span>
+                                    </p>
+                                    <p class="artikel-tanggal mt-2">
+                                        <i class="fa fa-calendar"></i> <span>{{ \Carbon\Carbon::parse($berita->created_at)->isoFormat('MMMM , D , Y') }}</span>
+                                    </p>
+                                </div>
+                                <div class="col-md-6 mt-4">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        @empty
+        <div id="card-news" class="row mb-4">
+            <h5 class="text-center text-secondary">Berita belum ditemukan</h5>
+        </div>
+        @endforelse
+        <div class="col-8">
             @forelse ($beritas as $berita)
             <div id="card-news" class="row mb-4" onclick="window.location.href='{{ route('informasi.berita.detail', $berita->slug) }}';">
                 <div id="thumbnail" class="col-5">
-                    <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar :'img/no-picture.png') }}" width="100%" class="object-cover d-block rounded-20" alt="...">
+                    <div class="thumbnail-container rounded-20 overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
+                        <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="...">
+                    </div>
                 </div>
                 <div id="body" class="col-7">
                     <div>
                         <h4>{{ $berita->judul }}</h4>
-                        <p id="info-news"><i class="fa-solid fa-calendar-days me-1"></i>
+                        <p id="info-news">
+                            <i class="fa-solid fa-calendar-days me-1"></i>
                             {{ \Carbon\Carbon::parse($berita->created_at)->isoFormat('MMMM , D , Y') }}
-
                             <i class="fa-solid fa-user ms-2 me-1"></i>
                             {{ $berita->author->nama }}
                         </p>
@@ -113,8 +155,7 @@ Informasi Berita
                             {{ $berita->deskripsi_singkat }}
                         </p>
 
-                        <a href="{{ route('informasi.berita.detail', $berita->slug) }}" class="btn btn-sm bg-primary-2 d-none d-md-inline d-lg-inline text-white">Lihat
-                            Selengkapnya</a>
+                        <a href="{{ route('informasi.berita.detail', $berita->slug) }}" class="btn btn-sm bg-primary-2 d-none d-md-inline d-lg-inline text-white">Lihat Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -125,7 +166,7 @@ Informasi Berita
             @endforelse
 
         </div>
-        <div class="col-md-4">
+        <!--<div class="col-md-4">
             <div id="latest-news">
                 <div id="header" class="card col-6">
                     <h5 class="mt-2 mx-4">TERBARU</h5>
@@ -149,7 +190,7 @@ Informasi Berita
                     @endforeach
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 

@@ -394,11 +394,41 @@ a {
     border: 1px solid;
 }
 
+.artikel-card {
+    min-height: 360px;
+    border: 2px solid #E0E0E0;
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0px;
+  }
+
+  .artikel-thumbnail {
+    width: 100% !important;
+  }
+
+  .artikel-judul {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0px;
+    line-height: 1.45;
+    color: #0091bc;
+  }
+
+  .artikel-tanggal,
+  .artikel-penulis {
+    font-size: .8rem;
+    color: gray;
+
+  }
+
+
 .isiSurat1 {
     /* 100% / 7 - 20px (untuk margin antar konten) */
     margin: 10px;
 }
-.isiSurat1 a{
+
+.isiSurat1 a {
     /* 100% / 7 - 20px (untuk margin antar konten) */
     text-decoration: none;
 }
