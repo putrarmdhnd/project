@@ -100,8 +100,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Create series for the first chart
   var series1 = chart1.series.push(
     am5percent.PieSeries.new(root1, {
-      valueField: "value",
-      categoryField: "category",
+      valueField: "pengeluaran",
+      categoryField: "judulPengeluaran",
       endAngle: 270
     })
   );
@@ -109,14 +109,8 @@ document.addEventListener("DOMContentLoaded", function () {
   series1.states.create("hidden", {
     endAngle: -90
   });
-
-  // Set data for the first chart
-  series1.data.setAll([
-    { category: "Aplikasi Web Desa", value: 501.9 },
-    { category: "Acara 1 Muharom", value: 301.9 },
-    { category: "Kerja Bakti", value: 201.1 }
-  ]);
-
+  var subsetData = chartBeranda.slice(1);
+  series1.data.setAll(subsetData);
   series1.appear(1000, 100);
 });
 

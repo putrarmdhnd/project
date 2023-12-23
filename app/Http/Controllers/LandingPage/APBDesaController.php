@@ -13,8 +13,10 @@ class APBDesaController extends Controller
     {
         $apb = ApbDesa::paginate(6);
         $data = DB::table('apb_desas')->get();
+        $latestJumlah = ApbDesa::latest('created_at')->value('jumlah');
+
         $apb_terbaru = ApbDesa::orderBy('created_at', 'desc')->limit(3)->get();
-        return view('landing_page.informasi.APBDesa.index', compact('apb', 'apb_terbaru','data'));
+        return view('landing_page.informasi.APBDesa.index', compact('apb', 'apb_terbaru','data','latestJumlah'));
     }
 
     public function show(ApbDesa $apb)

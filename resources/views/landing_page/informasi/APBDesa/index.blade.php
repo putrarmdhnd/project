@@ -23,6 +23,12 @@ APBDesa
     </section>
     <script>
         var chartData = @json($data);
+    var latestJumlah = @json($latestJumlah);
+
+    // Tambahkan nilai 'latestJumlah' ke setiap objek dalam 'chartData'
+    chartData.forEach(function (data) {
+        data.jumlah = latestJumlah;
+    });
     </script>
 </section>
 
@@ -83,17 +89,23 @@ APBDesa
                             <div class="col-12">
                                 <h5>Detail Belanja Desa</h5>
                             </div>
+                            @foreach ($apb->items() as $index => $item)
+                            @if ($index >= 1)
                                 <div class="col-4 Layoutcard-anggaran-pengeluaran">
                                     <div class="card card-anggaran-pengeluaran">
-                                        @foreach ($apb->items() as $item)
-                                        <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text text-start fw-bold jenis-pengeluaran">{{ $item->judulPengeluaran }}</p>
-                                            <p class="card-text text-start detail-pengeluaran">{{ $item->pengeluaran }}</p>
+                                        <div class="row">
+                                            <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                @isset($item->judulPengeluaran)
+                                                    <p class="card-text text-start fw-bold jenis-pengeluaran">{{ $item->judulPengeluaran }}</p>
+                                                    <p class="card-text text-start detail-pengeluaran">{{ number_format($item->pengeluaran, 0, ',', '.') }}-</p>
+                                                @endisset
+                                            </div>
                                         </div>
-                                    @endforeach
                                     </div>
                                 </div>
+                            @endif
+                        @endforeach
                         </div>
                     </div>
                 </div>
