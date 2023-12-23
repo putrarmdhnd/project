@@ -21,40 +21,65 @@
     </div>
 </div>
 
-
-<!-- Berita Dan Pengumuman -->
-<section id="BeritaPengumuman" class="pt-3 ">
-    <div class="container p-0">
-        <div data-aos="fade-right" data-aos-offset="100" data-aos-delay="200" class="HeaderArticle my-3">
-            <h4 class="">Berita & Pengumuman</h4>
+<!-- Mengenai Desa -->
+<section id="MengenaiDesa" class="p-5 bg-light ">
+    <div class="container">
+        <div class="text-center my-3 d-flex justify-content-center">
+            <div data-aos="zoom-out-down" data-aos-offset="100" data-aos-delay="200" class="HeaderArticle-mengenaiDesa">
+                <h4 class="shadow mb-5">Apa itu Desa Palasari ?</h4>
+            </div>
         </div>
     </div>
-    <article class="space-subHeader container">
-        <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="500" class="row">
-            <div class="col-md-12 text-end pb-3 "><a href="{{ route('informasi.berita.index') }}" class="text-black MoreBeritaPengumuman">Lihat Selengkapnya <svg xmlns="http://www.w3.org/2000/svg" style="width: 1.25rem;" viewBox="0 0 32 32">
-                        <path d="m31.71 15.29-10-10-1.42 1.42 8.3 8.29H0v2h28.59l-8.29 8.29 1.41 1.41 10-10a1 1 0 0 0 0-1.41z" data-name="3-Arrow Right" />
-                    </svg></a></div>
-                    <div class="row">
-                        @foreach($beritas as $berita)
-                            <div class="col-4 Berita">
-                                <div class="card cardBeritaPengumuman">
-                                    <a class="" href="">
-                                        <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="card-img-top BeritaImg" alt="..." style="width: 100%; height: 270px;">
-                                        <div class="card-body cbodyBeritaPengumuman">
-                                            <p class="JenisBeritaPengumuman">{{ $berita->tipe }}</p>
-                                            <h6 class="artikel-judul">{{ $berita->judul }}</h6>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
+
+    <section id="sejarah-desa" class="">
+        <article class="space-subHeader container">
+            <div class="row">
+                <div class="col-md-6 VisiMisiImg">
+                    <div data-aos="fade-right" class="">
+                        <img src="{{ asset('img/landing-page/carousel-3.jpg') }}" width="80%" class="img-fluid" alt="Gambar Mengenai Desa" style="border-radius: 1rem;">
                     </div>
-        </div>
-    </article>
+                </div>
+                <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="500" class="KeteranganVisiMisi col-md-6 aos-init aos-animate">
+                    <div class="row">
+                        <div class=" ">
+                            <h5 class="fw-bold py-3 headContent">SEJARAH DESA</h5>
+                        </div>
+                        <div class="isiContent">
+                            <p>Desa Palasari merupakan pemekaran dari desa Cimacan Kecamatan Cipanas (Dahulu Kecamatan Pacet)
+                                pada Tanggal 17 Januari 1980. Desa Palasari Berada di kaki Gunung Gede Pangrango Yang Terdapat Tugu Kerajaan Prabu Siliwanggi,Tugu Tersebut menandakan 3 (Tiga) Daerah kekuasaanya yaitu cianjur, Sukabumi, dan Bogor.
+                                Pemerintah Desa Palasari Sejak Tahun 1980 Mengalami Pergantian Kepala Desa sebanyak 15 kali dan yang menjabat saat ini adalah H.Ridwan.SH</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <section id="visi-misi" class="">
+        <article class="space-subHeader container">
+            <div class="row">
+                <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="500" class="KeteranganVisiMisi col-md-6 aos-init aos-animate">
+                    <div class="row">
+                        <div class="">
+                            <h5 class="fw-bold py-3 headContent">VISI & MISI</h5>
+                        </div>
+                        <div class="isiContent">
+                            <p>“PALASARI LEBIH CERDAS, SEJAHTERA, ADIL DAN BERAKHLAKUL KARIMAH “</p>
+                            <p>Meningkatkan SDM dan SDA Desa Palasari untuk kesejahteraan masyarakat Desa Palasari serta Meningkatkan Pembinaan yang berakhlaqul karimah dalam kehidupan bermasyarakat dan bernegara dan Mewujudkan iklim demokrasi ditingkat desa.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 VisiMisiImg">
+                    <div data-aos="fade-right" class="">
+                        <img src="{{ asset('img/landing-page/carousel-2.png') }}" width="80%" class="img-fluid rounded-20" alt="Gambar Mengenai Desa" style="border-radius: 1rem;">
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
 </section>
 
 <!-- Data Kependudukan -->
-<section id="DataKependudukan" class="p-3 bg-light">
+<section id="DataKependudukan" class="p-3 ">
     <div class="container p-0">
         <div data-aos="fade-right" data-aos-offset="100" data-aos-delay="200" class="HeaderArticle my-3">
             <h4 class="">Data Kependudukan</h4>
@@ -125,7 +150,7 @@
                                     </div>
                                     <div class="col-md-6 text-center center-v">
                                         @if($item->anggaran !== null)
-                                            <p class="card-idm__jumlah fs-4">Rp{{ number_format($item->anggaran, 0, ',', '.') }}-</p>
+                                        <p class="card-idm__jumlah fs-4">Rp{{ number_format($item->anggaran, 0, ',', '.') }}-</p>
                                         @endif
                                     </div>
                                     @endforeach
@@ -145,7 +170,7 @@
                                     <div class="col-md-6 text-center center-v ">
                                         @if($latestItem = $item->latest()->first())
                                         <p class="card-idm__jumlah fs-4">Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}-</p>
-                                    @endif
+                                        @endif
                                     </div>
                                     @endisset
                                     @endforeach
@@ -159,73 +184,73 @@
     </div>
 </section>
 
-
-
-<!-- Mengenai Desa -->
-<section id="MengenaiDesa" class="p-5 bg-light ">
-    <div class="container">
-        <div class="text-center my-3 d-flex justify-content-center">
-            <div data-aos="zoom-out-down" data-aos-offset="100" data-aos-delay="200" class="HeaderArticle-mengenaiDesa">
-                <h4 class="shadow mb-5">Apa itu Desa Palasari ?</h4>
-            </div>
+<!-- Berita Dan Pengumuman -->
+<section id="BeritaPengumuman" class="pt-3 bg-light">
+    <div class="container p-0">
+        <div data-aos="fade-right" data-aos-offset="100" data-aos-delay="200" class="HeaderArticle my-3">
+            <h4 class="">Berita & Pengumuman</h4>
         </div>
     </div>
+    <article class="space-subHeader container">
+        <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="500" class="row">
+            <div class="col-md-12 text-end pb-3 "><a href="{{ route('informasi.berita.index') }}" class="text-black MoreBeritaPengumuman">Lihat Selengkapnya <svg xmlns="http://www.w3.org/2000/svg" style="width: 1.25rem;" viewBox="0 0 32 32">
+                        <path d="m31.71 15.29-10-10-1.42 1.42 8.3 8.29H0v2h28.59l-8.29 8.29 1.41 1.41 10-10a1 1 0 0 0 0-1.41z" data-name="3-Arrow Right" />
+                    </svg></a></div>
+            <div class="row">
+                @foreach($beritas as $berita)
+                <div class="col-4 Berita">
+                    <div class="card cardBeritaPengumuman" style="border: none;">
+                        <a href="{{ route('informasi.berita.detail', $berita->slug) }}">
+                            <div class="card-body artikel-card">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div id="thumbnail" class="col-12">
+                                            <div class="thumbnail-container rounded-20 overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
+                                                <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20 bg-light p-2" alt="..." style="object-fit: contain;">
+                                            </div>
+                                            <p class="JenisBeritaPengumuman my-3">{{ $berita->tipe }}</p>
+                                            <p class="artikel-judul">{{ $berita->judul_singkat }}</p>
+                                            <p id="desc" class=" d-block desc text-black my-1" align="justify" style="font-size: 12px;">
+                                                {{ $berita->deskripsi_singkat }}
+                                            </p>
+                                        </div>
 
-    <section id="sejarah-desa" class="">
-        <article class="space-subHeader container">
-            <div class="row">
-                <div class="col-md-6 VisiMisiImg">
-                    <div data-aos="fade-right" class="">
-                        <img src="{{ asset('img/landing-page/carousel-3.jpg') }}" width="80%" class="img-fluid" alt="Gambar Mengenai Desa" style="border-radius: 1rem;">
+                                        <div class="col-12 mt-3">
+                                            <p class="artikel-penulis">
+                                                <i class="fa fa-user"></i> <span>{{ $berita->author->nama }}</span>
+                                            </p>
+                                            <p class="artikel-tanggal mt-2">
+                                                <i class="fa fa-calendar"></i> <span>{{ \Carbon\Carbon::parse($berita->created_at)->isoFormat('MMMM , D , Y') }}</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6 mt-4">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="500" class="KeteranganVisiMisi col-md-6 aos-init aos-animate">
-                    <div class="row">
-                        <div class=" ">
-                            <h5 class="fw-bold py-3 headContent">SEJARAH DESA</h5>
-                        </div>
-                        <div class="isiContent">
-                            <p>Desa Palasari merupakan pemekaran dari desa Cimacan Kecamatan Cipanas (Dahulu Kecamatan Pacet)
-                                pada Tanggal 17 Januari 1980. Desa Palasari Berada di kaki Gunung Gede Pangrango Yang Terdapat Tugu Kerajaan Prabu Siliwanggi,Tugu Tersebut menandakan 3 (Tiga) Daerah kekuasaanya yaitu cianjur, Sukabumi, dan Bogor.
-                                Pemerintah Desa Palasari Sejak Tahun 1980 Mengalami Pergantian Kepala Desa sebanyak 15 kali dan yang menjabat saat ini adalah H.Ridwan.SH</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-        </article>
-    </section>
-    <section id="visi-misi" class="">
-        <article class="space-subHeader container">
-            <div class="row">
-                <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="500" class="KeteranganVisiMisi col-md-6 aos-init aos-animate">
-                    <div class="row">
-                        <div class="">
-                            <h5 class="fw-bold py-3 headContent">VISI & MISI</h5>
-                        </div>
-                        <div class="isiContent">
-                            <p>“PALASARI LEBIH CERDAS, SEJAHTERA, ADIL DAN BERAKHLAKUL KARIMAH “</p>
-                            <p>Meningkatkan SDM dan SDA Desa Palasari untuk kesejahteraan masyarakat Desa Palasari serta Meningkatkan Pembinaan yang berakhlaqul karimah dalam kehidupan bermasyarakat dan bernegara dan Mewujudkan iklim demokrasi ditingkat desa.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 VisiMisiImg">
-                    <div data-aos="fade-right" class="">
-                        <img src="{{ asset('img/landing-page/carousel-2.png') }}" width="80%" class="img-fluid rounded-20" alt="Gambar Mengenai Desa" style="border-radius: 1rem;">
-                    </div>
-                </div>
-            </div>
-        </article>
-    </section>
+        </div>
+    </article>
 </section>
 
-<section class="pt-5 Demografi">
-    <article class="space-subHeader container">
+<section class="pt-2 Demografi bg-light">
+    <div class="container p-0">
+        <div data-aos="fade-right" data-aos-offset="100" data-aos-delay="200" class="HeaderArticle my-3">
+            <h4 class="">Demografi Desa</h4>
+        </div>
+    </div>
+    <article class=" space-subHeader container">
         <div class="row d-block">
             <div data-aos="fade-up" data-aos-offset="100" data-aos-delay="300" class="DemografiLay KeteranganVisiMisi col-md-6 aos-init aos-animate">
                 <div class="row">
-                    <div class=" card border-0 shadow ">
+                    <div class="mt-3 card border-0 shadow ">
                         <div class="card-body demografiCard">
-                            <h5 class="fw-bold my-2 headContent">DEMOGRAFI DESA</h5>
+                            <h5 class="fw-bold my-2 headContent">Peta Desa</h5>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.4224179847984!2d107.03244507462495!3d-6.718196365684395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69b3c15cf56f1b%3A0x321b4a4d7a9721a9!2sKantor%20Desa%20Palasari!5e0!3m2!1sid!2sid!4v1692723106353!5m2!1sid!2sid" class="" width="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style=" border: 2px solid; "></iframe>
                             <p>Desa Palasari, desa yang berbatasan dengan desa cimacan. kondisi Geografis, Ketinggian Tanah Dari, Permukaan Laut : 500-1000 Mdpl, Curah Hujan : 3.145 mm/th, Tofografi : Dataran Tinggi, Suhu Udara Rata-Rata : 21 derajat celcius</p>
 

@@ -10,21 +10,23 @@ class BeritaController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->search){
-            $beritas = Berita::with('author')->where('judul','like','%'.$request->search.'%')->orWhere('deskripsi','like','%'.$request->search.'%')->paginate(6);
-        }else{
+        if ($request->search) {
+            $beritas = Berita::with('author')->where('judul', 'like', '%' . $request->search . '%')->orWhere('deskripsi', 'like', '%' . $request->search . '%')->paginate(6);
+        } else {
             $beritas = Berita::with('author')->paginate(6);
         }
 
-        $berita_terbaru = Berita::with('author')->orderBy('created_at','desc')->limit(3)->get();
+        $berita_terbaru = Berita::with('author')->orderBy('created_at', 'desc')->limit(3)->get();
 
         $top_berita = Berita::whereTipe('Pengumuman')->get();
 
-        return view('landing_page.informasi.berita.index',compact('beritas','berita_terbaru','top_berita'));
+        return view('landing_page.informasi.berita.index', compact('beritas', 'berita_terbaru', 'top_berita'));
     }
 
-    public function show($slug){
+    public function show($slug)
+    {
         $berita = Berita::with('author')->whereSlug($slug)->first();
-        return view('landing_page.informasi.berita.detail',compact('berita'));
+        $berita_terbaru = Berita::with('author')->orderBy('created_at', 'desc')->limit(3)->get();
+        return view('landing_page.informasi.berita.detail', compact('berita', 'berita_terbaru'));
     }
 }

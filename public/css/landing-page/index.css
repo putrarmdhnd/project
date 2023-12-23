@@ -398,7 +398,6 @@ a {
     min-height: 360px;
     border: 2px solid #E0E0E0;
     border-radius: 10px;
-    margin-bottom: 1.25rem;
     padding-bottom: 0px;
   }
 
@@ -1030,7 +1029,7 @@ a {
     }
 
     #details-news #content-desc {
-        font-size: 14px;
+        font-size: 10px;
     }
 
     /* End Detail Berita */
