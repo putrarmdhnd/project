@@ -21,7 +21,7 @@
             <div class="col-md-12 ">
                 <form action="{{ route('cms.apb.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="type" value="apb"> <!-- Tambahkan input type -->
+                    <input type="hidden" name="type" value="pengeluaran">
                     <div class="card">
                         <div class="card-header">
                             <h6>Tambah APB Desa</h6>
@@ -29,23 +29,29 @@
                         <div class="card-body">
                             <div class="row mb-3">
                                 <div class="col-md-4">
-                                    <label for="tahun" class="form-label">Tahun <span
+                                    <label for="judulPengeluaran" class="form-label">Judul Kegiatan <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" name="tahun" value="{{ old('tahun') }}" class="form-control"
-                                        id="tahun" placeholder="Masukkan tahun">
+                                    <input type="text" name="judulPengeluaran" value="{{ old('judulPengeluaran') }}" class="form-control"
+                                        id="judulPengeluaran" placeholder="Masukkan jumlah">
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="anggaran" class="form-label">Jumlah Anggaran</label>
-                                    <input type="text" name="anggaran" value="{{ old('anggaran') }}" class="form-control"
-                                        id="anggaran" placeholder="Masukkan Anggaran">
+                                    <label for="pengeluaran" class="form-label">pengeluaran <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" name="pengeluaran" value="{{ old('pengeluaran') }}" class="form-control"
+                                        id="pengeluaran" placeholder="Masukkan anggaran">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="gambar" class="form-label">Gambar</label>
+                                    <input type="file" name="gambar" value="{{ old('gambar') }}" class="form-control"
+                                        id="gambar" placeholder="Masukkan gambar">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary col-12 mt-4">Submit</button>
-                    
                 </form>
             </div>
         </div>
+
     </div>
 @endsection

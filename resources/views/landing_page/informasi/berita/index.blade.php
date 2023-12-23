@@ -29,15 +29,15 @@ Informasi Berita
         @if (isset($top_berita[0]))
         <div class="col-md-8">
             <a href="{{ route('informasi.berita.detail', $top_berita[0]->slug) }}" id="box">
-                <div class="overlay">
+                <div class="overlay" >
                     <img src="{{ asset('img/landing-page/news/overlay.png') }}" class="d-block w-100" alt="...">
                 </div>
-                <img src="{{ asset('storage/' . $top_berita[0]->gambar) }}" class="card-img-top BeritaImg" alt="...">
+                <img src="{{ asset('storage/' . $top_berita[0]->gambar) }}" class="card-img-top BeritaImg" alt="..." style="margin-top:10px;">
 
-                <div id="category" class="p-4">
-                    <span class="badge text-bg-danger fs-6">TOP NEWS</span>
+                <div id="category" class="p-4"style="margin-top:245px;">
+                    <span class="badge text-bg-danger fs-6">Pengumuman</span>
                 </div>
-                <div id="body" class="p-4 col-md-9 text-white">
+                <div id="body" class="p-4 col-md-9 text-white"style="margin-top:245px;">
                     <p><i class="fa-solid fa-calendar-days me-1" style="color: #ffffff;"></i>
                         {{ \Carbon\Carbon::parse($top_berita[0]->created_at)->isoFormat('MMMM , D , Y') }}
                     </p>
@@ -107,7 +107,7 @@ Informasi Berita
                                     <div class="thumbnail-container rounded-20 overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
                                         <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20 bg-light p-2" alt="..." style="object-fit: contain;">
                                     </div>
-                                    <p class="JenisBeritaPengumuman my-3">Berita</p>
+                                    <p class="JenisBeritaPengumuman my-3">{{ $berita->tipe }}</p>
                                     <p class="artikel-judul">{{ $berita->judul }}</p>
                                 </div>
 

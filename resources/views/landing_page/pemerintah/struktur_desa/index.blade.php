@@ -38,185 +38,44 @@ Struktur Organisasi
         <div class="owl-carousel owl-carousel owl-theme owl-loaded owl-drag">
             <div class="owl-stage-outer">
                 <div class="owl-stage" style="transition: all 0.25s ease 0s; width: 16665px; transform: translate3d(-9999px, 0px, 0px);">
+                    @isset($strukturs)
+                    @foreach ($strukturs as $item)
                     <div class="owl-item">
                         <!-- Your first carousel item -->
                         <div class="col-12 ">
                             <div class="card card-profil-desa">
                                 <div class="card-body">
+                                    @isset($item->pegawai)
+                                    @foreach($item->pegawai as $pegawai)
                                     <div class="col-12 text-center content-profil-desa">
-                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
+                                        <div class="img-round center-img">
+                                            <img alt="" class="img-round" src="{{ asset($pegawai->foto ? 'storage/' . $pegawai->foto : 'img/no-image.png') }}" style="border-radius: 50%;">
+                                        </div>
                                         <div class="mt-3">
-                                            <p>Samsudin Pataboga</p>
-                                            <i>Kepal Dusun 1</i>
+                                            <p>{{ $pegawai->nama }}</p>
+                                            <i>{{ $item->nama }}</i>
                                         </div>
                                     </div>
                                     <div class="row d-flex text-start mt-1 isi-profil">
                                         <ul class="">
-                                            <li><i>Nama : </i></li>
-                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
-                                            <li><i>Status :</i></li>
-                                            <li><i>Alamat :</i></li>
-                                            <li><i>Pendidikan Terakhir :</i></li>
+                                            <li><i>{{ $pegawai->nama }}</i></li>
+                                            <li><i>{{ $pegawai->ttl }}</i></li>
+                                            <li><i>{{ $pegawai->status }}</i></li>
+                                            <li><i>{{ $pegawai->alamat }}</i></li>
+                                            <li><i>{{ $pegawai->pendidikan }}</i></li>
                                         </ul>
                                     </div>
+                                    @endforeach
+                                    @endisset
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="owl-item">
-                        <!-- Your first carousel item -->
-                        <div class="col-12 ">
-                            <div class="card card-profil-desa">
-                                <div class="card-body">
-                                    <div class="col-12 text-center content-profil-desa">
-                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
-                                        <div class="mt-3">
-                                            <p>Samsudin Pataboga</p>
-                                            <i>Kepal Dusun 1</i>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex text-start mt-1 isi-profil">
-                                        <ul class="">
-                                            <li><i>Nama : </i></li>
-                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
-                                            <li><i>Status :</i></li>
-                                            <li><i>Alamat :</i></li>
-                                            <li><i>Pendidikan Terakhir :</i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item">
-                        <!-- Your first carousel item -->
-                        <div class="col-12 ">
-                            <div class="card card-profil-desa">
-                                <div class="card-body">
-                                    <div class="col-12 text-center content-profil-desa">
-                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
-                                        <div class="mt-3">
-                                            <p>Samsudin Pataboga</p>
-                                            <i>Kepal Dusun 1</i>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex text-start mt-1 isi-profil">
-                                        <ul class="">
-                                            <li><i>Nama : </i></li>
-                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
-                                            <li><i>Status :</i></li>
-                                            <li><i>Alamat :</i></li>
-                                            <li><i>Pendidikan Terakhir :</i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item">
-                        <!-- Your first carousel item -->
-                        <div class="col-12 ">
-                            <div class="card card-profil-desa">
-                                <div class="card-body">
-                                    <div class="col-12 text-center content-profil-desa">
-                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
-                                        <div class="mt-3">
-                                            <p>Samsudin Pataboga</p>
-                                            <i>Kepal Dusun 1</i>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex text-start mt-1 isi-profil">
-                                        <ul class="">
-                                            <li><i>Nama : </i></li>
-                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
-                                            <li><i>Status :</i></li>
-                                            <li><i>Alamat :</i></li>
-                                            <li><i>Pendidikan Terakhir :</i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item">
-                        <!-- Your first carousel item -->
-                        <div class="col-12 ">
-                            <div class="card card-profil-desa">
-                                <div class="card-body">
-                                    <div class="col-12 text-center content-profil-desa">
-                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
-                                        <div class="mt-3">
-                                            <p>Samsudin Pataboga</p>
-                                            <i>Kepal Dusun 1</i>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex text-start mt-1 isi-profil">
-                                        <ul class="">
-                                            <li><i>Nama : </i></li>
-                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
-                                            <li><i>Status :</i></li>
-                                            <li><i>Alamat :</i></li>
-                                            <li><i>Pendidikan Terakhir :</i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item">
-                        <!-- Your first carousel item -->
-                        <div class="col-12 ">
-                            <div class="card card-profil-desa">
-                                <div class="card-body">
-                                    <div class="col-12 text-center content-profil-desa">
-                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
-                                        <div class="mt-3">
-                                            <p>Samsudin Pataboga</p>
-                                            <i>Kepal Dusun 1</i>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex text-start mt-1 isi-profil">
-                                        <ul class="">
-                                            <li><i>Nama : </i></li>
-                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
-                                            <li><i>Status :</i></li>
-                                            <li><i>Alamat :</i></li>
-                                            <li><i>Pendidikan Terakhir :</i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item">
-                        <!-- Your first carousel item -->
-                        <div class="col-12 ">
-                            <div class="card card-profil-desa">
-                                <div class="card-body">
-                                    <div class="col-12 text-center content-profil-desa">
-                                        <div class="img-round center-img"><img alt="" class="img-round" src="{{ asset('img/struktur-organisasi/SAMSUDIN POTABOGA.jpg') }}" style="border-radius: 50%;"></div>
-                                        <div class="mt-3">
-                                            <p>Samsudin Pataboga</p>
-                                            <i>Kepal Dusun 1</i>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex text-start mt-1 isi-profil">
-                                        <ul class="">
-                                            <li><i>Nama : </i></li>
-                                            <li><i>TTL : Kalobang, 18 Juli 1999</i></li>
-                                            <li><i>Status :</i></li>
-                                            <li><i>Alamat :</i></li>
-                                            <li><i>Pendidikan Terakhir :</i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+                    @endisset
                 </div>
             </div>
         </div>
-        <!-- Add more items as needed -->
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

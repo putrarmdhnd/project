@@ -56,7 +56,7 @@
                                     <th>Level</th>
                                     <th>Jabatan</th>
                                     <th>Pegawai</th>
-                                    <th>NIP</th>
+                                    <th>Alamat</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -68,7 +68,7 @@
                                         <td>{{ $pegawai->is_kepala_jabatan ? 'Kepala Jabatan' : 'Anggota' }}</td>
                                         <td>{{ $pegawai->jabatan_pegawai->nama }}</td>
                                         <td>{{ $pegawai->nama }}</td>
-                                        <td>{{ $pegawai->nip }}</td>
+                                        <td>{{ $pegawai->alamat }}</td>
                                         <td>
                                             <div class="d-flex justify-content-evenly">
                                                 <div class="pr-2">

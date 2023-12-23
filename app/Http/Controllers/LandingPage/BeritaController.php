@@ -18,7 +18,7 @@ class BeritaController extends Controller
 
         $berita_terbaru = Berita::with('author')->orderBy('created_at','desc')->limit(3)->get();
 
-        $top_berita = Berita::whereTipe('TOP NEWS')->get();
+        $top_berita = Berita::whereTipe('Pengumuman')->get();
 
         return view('landing_page.informasi.berita.index',compact('beritas','berita_terbaru','top_berita'));
     }

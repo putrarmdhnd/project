@@ -32,14 +32,24 @@
                                     id="nama" placeholder="Masukkan nama pegawai">
                             </div>
                             <div class="mb-3">
-                                <label for="nip" class="form-label">NIP</label>
-                                <input type="text" name="nip" value="{{ old('nip') }}" class="form-control"
-                                    id="nip" placeholder="Masukkan nip pegawai">
+                                <label for="ttl" class="form-label">Tempat Tanggal Lahir <span class="text-danger">*</span></label>
+                                <input type="text" name="ttl" value="{{ old('ttl') }}" class="form-control"
+                                    id="ttl" placeholder="Masukkan Tempat Tanggal Lahir pegawai">
                             </div>
                             <div class="mb-3">
-                                <label for="keterangan" class="form-label">Keterangan</label>
-                                <input type="text" name="keterangan" value="{{ old('keterangan') }}" class="form-control"
-                                    id="keterangan" placeholder="Masukkan keterangan pegawai">
+                                <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
+                                <input type="text" name="status" value="{{ old('status') }}" class="form-control"
+                                    id="status" placeholder="Masukkan Status pegawai">
+                            </div>
+                            <div class="mb-3">
+                                <label for="alamat" class="form-label">Alamat <span class="text-danger">*</span></label>
+                                <input type="text" name="alamat" value="{{ old('alamat') }}" class="form-control"
+                                    id="alamat" placeholder="Masukkan Alamat pegawai">
+                            </div>
+                            <div class="mb-3">
+                                <label for="pendidikan" class="form-label">Pendidikan Trakhir</label>
+                                <input type="text" name="pendidikan" value="{{ old('pendidikan') }}" class="form-control"
+                                    id="pendidikan" placeholder="Masukkan Pendidikan pegawai">
                             </div>
                             <div class="mb-3">
                                 <label for="foto" class="form-label">Foto</label>

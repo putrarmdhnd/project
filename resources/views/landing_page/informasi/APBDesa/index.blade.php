@@ -21,6 +21,9 @@ APBDesa
             </div>
         </div>
     </section>
+    <script>
+        var chartData = @json($data);
+    </script>
 </section>
 
 <section>
@@ -39,12 +42,18 @@ APBDesa
                         <div class="card card-idm card-idm__skor  card-dana-masuk card-dana-masuk-pageApbdes">
                             <div class="card-body">
                                 <div class="row">
+                                    @foreach ($apb->items() as $item)
                                     <div class="col-md-6">
-                                        <p class="card-idm__text">Pendapatan Desa <br>Tahun 2023</p>
+                                        @isset($item->tahun)
+                                        <p class="card-idm__text">Pendapatan Desa <br>Tahun {{ $item->tahun }}</p>
+                                        @endisset
                                     </div>
                                     <div class="col-md-6 text-center center-v">
-                                        <p class="card-idm__jumlah fs-4">Rp1.224.779.772,-</p>
+                                        @if($item->anggaran !== null)
+                                            <p class="card-idm__jumlah fs-4">Rp{{ number_format($item->anggaran, 0, ',', '.') }}-</p>
+                                        @endif
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -53,12 +62,18 @@ APBDesa
                         <div class="card card-idm card-idm__status card-dana-keluar card-dana-keluar-pageApbdes">
                             <div class="card-body">
                                 <div class="row">
+                                    @foreach ($apb->items() as $item)
+                                    @isset($item->tahun)
                                     <div class="col-md-6">
-                                        <p class="card-idm__text">Belanja Desa <br>Tahun 2023</p>
+                                        <p class="card-idm__text">Belanja Desa <br>Tahun {{ $item->tahun }}</p>
                                     </div>
                                     <div class="col-md-6 text-center center-v ">
-                                        <p class="card-idm__infoStatus fs-4">Rp1.174.779.772,-</p>
+                                        @if($latestItem = $item->latest()->first())
+                                        <p class="card-idm__jumlah fs-4">Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}-</p>
+                                    @endif
                                     </div>
+                                    @endisset
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -70,33 +85,15 @@ APBDesa
                             </div>
                                 <div class="col-4 Layoutcard-anggaran-pengeluaran">
                                     <div class="card card-anggaran-pengeluaran">
+                                        @foreach ($apb->items() as $item)
                                         <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                            <p class="card-text text-start fw-bold jenis-pengeluaran">Pemeliharaan Kantor Desa</p>
-                                            <p class="card-text text-start detail-pengeluaran">Rp.25.000.000</p>
+                                            <p class="card-text text-start fw-bold jenis-pengeluaran">{{ $item->judulPengeluaran }}</p>
+                                            <p class="card-text text-start detail-pengeluaran">{{ $item->pengeluaran }}</p>
                                         </div>
+                                    @endforeach
                                     </div>
                                 </div>
-                                <div class="col-4 Layoutcard-anggaran-pengeluaran">
-                                    <div class="card card-anggaran-pengeluaran">
-                                        <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text text-start fw-bold jenis-pengeluaran">Musyawarah Besar Desa</p>
-                                            <p class="card-text text-start detail-pengeluaran">Rp.3.000.000</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4 Layoutcard-anggaran-pengeluaran">
-                                    <div class="card card-anggaran-pengeluaran">
-                                        <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text text-start fw-bold jenis-pengeluaran">Jumat Bersih</p>
-                                            <p class="card-text text-start detail-pengeluaran">Rp.10.000.000</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            
                         </div>
                     </div>
                 </div>
@@ -104,5 +101,4 @@ APBDesa
         </div>
     </div>
 </section>
-
 @endsection

@@ -16,7 +16,10 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Data APB Desa</h1>
-            <a href="{{ route('cms.apb.create') }}" class="btn btn-sm btn-primary shadow-sm mt-3 mt-md-0 mt-lg-0"><i
+            <a href="{{ route('cms.apb.create', ['type' => 'pengeluaran']) }}" class="btn btn-sm btn-primary shadow-sm mt-3 mt-md-0 mt-lg-0"><i
+                    class="fas fa-plus-circle"></i>
+                Tambah Kegiatan</a>
+            <a href="{{ route('cms.apb.create', ['type' => 'apb']) }}" class="btn btn-sm btn-primary shadow-sm mt-3 mt-md-0 mt-lg-0"><i
                     class="fas fa-plus-circle"></i>
                 Tambah APB Desa</a>
         </div>

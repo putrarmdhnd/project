@@ -31,8 +31,8 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>NIP</th>
-                                <th>Keterangan</th>
+                                <th>Tempat Tanggal Lahir</th>
+                                <th>Alamat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -42,8 +42,8 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->nip }}</td>
-                                    <td>{{ $item->keterangan }}</td>
+                                    <td>{{ $item->ttl }}</td>
+                                    <td>{{ $item->alamat }}</td>
                                     <td class="">
                                         <div class="d-flex justify-content-evenly">
                                             <div class="pr-2">

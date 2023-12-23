@@ -34,73 +34,21 @@
             <div class="col-md-12 text-end pb-3 "><a href="{{ route('informasi.berita.index') }}" class="text-black MoreBeritaPengumuman">Lihat Selengkapnya <svg xmlns="http://www.w3.org/2000/svg" style="width: 1.25rem;" viewBox="0 0 32 32">
                         <path d="m31.71 15.29-10-10-1.42 1.42 8.3 8.29H0v2h28.59l-8.29 8.29 1.41 1.41 10-10a1 1 0 0 0 0-1.41z" data-name="3-Arrow Right" />
                     </svg></a></div>
-            <div class="col-4 Berita">
-                <div class="card cardBeritaPengumuman">
-                    <a class="" href="">
-                        <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
-                        <div class="card-body cbodyBeritaPengumuman">
-                            <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-4 Berita">
-                <div class="card cardBeritaPengumuman">
-                    <a class="" href="">
-                        <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
-                        <div class="card-body cbodyBeritaPengumuman">
-                            <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-4 Berita">
-                <div class="card cardBeritaPengumuman">
-                    <a class="" href="">
-                        <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
-                        <div class="card-body cbodyBeritaPengumuman">
-                            <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-4 Berita">
-                <div class="card cardBeritaPengumuman">
-                    <a class="" href="">
-                        <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
-                        <div class="card-body cbodyBeritaPengumuman">
-                            <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-4 Berita">
-                <div class="card cardBeritaPengumuman">
-                    <a class="" href="">
-                        <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
-                        <div class="card-body cbodyBeritaPengumuman">
-                            <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-4 Berita">
-                <div class="card cardBeritaPengumuman">
-                    <a class="" href="">
-                        <img src="{{ asset('img/landing-page/c2j.jpg') }}" class="card-img-top BeritaImg" alt="...">
-                        <div class="card-body cbodyBeritaPengumuman">
-                            <p class="JenisBeritaPengumuman">Berita</p>
-                            <h6 class="artikel-judul">Judul Berita&Pengumuman</h6>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
+                    <div class="row">
+                        @foreach($beritas as $berita)
+                            <div class="col-4 Berita">
+                                <div class="card cardBeritaPengumuman">
+                                    <a class="" href="">
+                                        <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="card-img-top BeritaImg" alt="..." style="width: 100%; height: 270px;">
+                                        <div class="card-body cbodyBeritaPengumuman">
+                                            <p class="JenisBeritaPengumuman">{{ $berita->tipe }}</p>
+                                            <h6 class="artikel-judul">{{ $berita->judul }}</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
         </div>
     </article>
 </section>
@@ -169,12 +117,18 @@
                         <div class="card card-idm card-idm__skor card-dana-masuk">
                             <div class="card-body">
                                 <div class="row">
+                                    @foreach($apb as $item)
                                     <div class="col-md-6">
-                                        <p class="card-idm__text text-start">Pendapatan Desa <br>Tahun 2023</p>
+                                        @isset($item->tahun)
+                                        <p class="card-idm__text">Pendapatan Desa <br>Tahun {{ $item->tahun }}</p>
+                                        @endisset
                                     </div>
-                                    <div class="col-md-6 text-center center-v card-dana-masuk">
-                                        <p class="card-idm__jumlah fs-4">Rp1.224.779.772,-</p>
+                                    <div class="col-md-6 text-center center-v">
+                                        @if($item->anggaran !== null)
+                                            <p class="card-idm__jumlah fs-4">Rp{{ number_format($item->anggaran, 0, ',', '.') }}-</p>
+                                        @endif
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -183,12 +137,18 @@
                         <div class="card card-idm card-idm__status card-dana-keluar">
                             <div class="card-body">
                                 <div class="row">
+                                    @foreach($apb as $item)
+                                    @isset($item->tahun)
                                     <div class="col-md-6">
-                                        <p class="card-idm__text text-start">Belanja Desa <br>Tahun 2023</p>
+                                        <p class="card-idm__text">Belanja Desa <br>Tahun {{ $item->tahun }}</p>
                                     </div>
-                                    <div class="col-md-6 text-center center-v card-dana-keluar">
-                                        <p class="card-idm__infoStatus fs-4">Rp1.174.779.772,-</p>
+                                    <div class="col-md-6 text-center center-v ">
+                                        @if($latestItem = $item->latest()->first())
+                                        <p class="card-idm__jumlah fs-4">Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}-</p>
+                                    @endif
                                     </div>
+                                    @endisset
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
