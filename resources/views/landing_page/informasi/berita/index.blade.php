@@ -7,12 +7,12 @@ Informasi Berita
 
 @section('content')
 <!-- Board News -->
-<div class="container" style="margin-top: 5rem; margin-bottom: 5rem;">
+<div class="container" style="margin-top: 5rem; margin-bottom: 3rem;">
     <div data-aos="fade-right" data-aos-offset="100" data-aos-delay="200" class="HeaderArticle my-3 aos-init aos-animate">
         <h4 class="">Berita &amp; Pengumuman</h4>
     </div>
 </div>
-
+<!--
 <div id="board-news" class="container">
     <div class="row my-4">
         <div class="col-6 align-self-center">
@@ -29,15 +29,15 @@ Informasi Berita
         @if (isset($top_berita[0]))
         <div class="col-md-8">
             <a href="{{ route('informasi.berita.detail', $top_berita[0]->slug) }}" id="box">
-                <div class="overlay" >
+                <div class="overlay">
                     <img src="{{ asset('img/landing-page/news/overlay.png') }}" class="d-block w-100" alt="...">
                 </div>
                 <img src="{{ asset('storage/' . $top_berita[0]->gambar) }}" class="card-img-top BeritaImg" alt="..." style="margin-top:10px;">
 
-                <div id="category" class="p-4"style="margin-top:245px;">
+                <div id="category" class="p-4" style="margin-top:245px;">
                     <span class="badge text-bg-danger fs-6">Pengumuman</span>
                 </div>
-                <div id="body" class="p-4 col-md-9 text-white"style="margin-top:245px;">
+                <div id="body" class="p-4 col-md-9 text-white" style="margin-top:245px;">
                     <p><i class="fa-solid fa-calendar-days me-1" style="color: #ffffff;"></i>
                         {{ \Carbon\Carbon::parse($top_berita[0]->created_at)->isoFormat('MMMM , D , Y') }}
                     </p>
@@ -90,10 +90,11 @@ Informasi Berita
 
     @endif
 </div>
+-->
 <!--End  Board News -->
 
 
-<div id="list-news" class="mt-5 container ">
+<div id="list-news" class="container">
     <div class="row">
 
         @forelse ($beritas as $berita)
@@ -108,7 +109,10 @@ Informasi Berita
                                         <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20 bg-light p-2" alt="..." style="object-fit: contain;">
                                     </div>
                                     <p class="JenisBeritaPengumuman my-3">{{ $berita->tipe }}</p>
-                                    <p class="artikel-judul">{{ $berita->judul }}</p>
+                                    <p class="artikel-judul">{{ $berita->judul_singkat }}</p>
+                                    <p id="desc" class=" d-block desc text-black my-1" align="justify" style="font-size: 12px;">
+                                        {{ $berita->deskripsi_singkat }}
+                                    </p>
                                 </div>
 
                                 <div class="col-12 mt-3">
@@ -134,6 +138,7 @@ Informasi Berita
             <h5 class="text-center text-secondary">Berita belum ditemukan</h5>
         </div>
         @endforelse
+        <!--
         <div class="col-8">
             @forelse ($beritas as $berita)
             <div id="card-news" class="row mb-4" onclick="window.location.href='{{ route('informasi.berita.detail', $berita->slug) }}';">
@@ -166,7 +171,7 @@ Informasi Berita
             @endforelse
 
         </div>
-        <!--<div class="col-md-4">
+        <div class="col-md-4">
             <div id="latest-news">
                 <div id="header" class="card col-6">
                     <h5 class="mt-2 mx-4">TERBARU</h5>
@@ -190,7 +195,8 @@ Informasi Berita
                     @endforeach
                 </div>
             </div>
-        </div>-->
+        </div>
+    -->
     </div>
 </div>
 

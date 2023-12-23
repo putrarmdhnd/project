@@ -13,10 +13,10 @@
                         <a class="nav-link pageLink" href="{{ route('beranda') }}">Beranda</a>
                     </li>
                     <li class="nav-item nav-item-costume ">
-                        <a class="nav-link pageLink" href="{{ route('informasi.apb.index') }}">APBDes</a>
+                        <a class="nav-link pageLink" href="{{ route('informasi.berita.index') }}">Berita</a>
                     </li>
                     <li class="nav-item nav-item-costume ">
-                        <a class="nav-link pageLink" href="#">Informasi Pendataan</a>
+                        <a class="nav-link pageLink" href="{{ route('informasi.apb.index') }}">APBDes</a>
                     </li>
                     <li class="nav-item nav-item-costume" style="padding-right: 30px;">
                         <a class="nav-link pageLink" href="{{ route('pemerintah.organisasi.index') }}">Pemerintahaan</a>
