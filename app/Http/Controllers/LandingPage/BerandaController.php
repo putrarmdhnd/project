@@ -5,6 +5,7 @@ namespace App\Http\Controllers\LandingPage;
 use App\Http\Controllers\Controller;
 use App\Models\LandingPage\ApbDesa;
 use App\Models\LandingPage\Berita;
+use Illuminate\Support\Facades\DB;
 
 class BerandaController extends Controller
 {
@@ -12,6 +13,7 @@ class BerandaController extends Controller
     {
         $apb = ApbDesa::all();
         $beritas = Berita::all();
-        return view('landing_page.beranda.index', compact('apb','beritas'));
+        $chart = DB::table('apb_desas')->get();
+        return view('landing_page.beranda.index', compact('apb','beritas','chart'));
     }
 }

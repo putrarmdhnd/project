@@ -136,6 +136,9 @@
                 <div class="col-12 d-block justify-content-center mx-auto">
                     <h5 class="headGraph text-center">Grafik Pemakaian APBDes</h5>
                     <div id="apbdes" class="text-center"></div>
+                    <script>
+                        var chartBeranda = @json($chart);
+                    </script>
                 </div>
                 <div ata-aos="flip-up" data-aos-offset="200" data-aos-delay="500" class="row">
                     <div class="col-md-6 mb-3">
