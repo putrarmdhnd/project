@@ -16,7 +16,7 @@ class UserController extends Controller
     }
     
     public function masyarakat() {
-        return view('pengguna/index', [
+        return view('kelola_data_masyarakat/index', [
             'title' => 'Data Masyarakat',
             'page'  => 'masyarakat',
             'users' => User::where('level', 'masyarakat')->get()

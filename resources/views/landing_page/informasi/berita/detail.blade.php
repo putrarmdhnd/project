@@ -43,7 +43,7 @@
                         @foreach ($berita_terbaru as $berita_baru)
                         <a href="{{ route('informasi.berita.detail', $berita_baru->slug) }}">
                             <div id="card-new-latest" class="row mb-1">
-                                <div class="col-6 bg-dark">
+                                <div class="col-6 bg-dark" style="border-radius: 10px;">
                                     <img src="{{ asset($berita_baru->gambar ? 'storage/' . $berita_baru->gambar : 'img/no-picture.png') }}" width="100%" height="103" class=" d-block" style="object-fit: contain;">
                                 </div>
                                 <div class="col-6">
