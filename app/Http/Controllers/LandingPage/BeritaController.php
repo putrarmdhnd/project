@@ -26,7 +26,7 @@ class BeritaController extends Controller
     public function show($slug)
     {
         $berita = Berita::with('author')->whereSlug($slug)->first();
-        $berita_terbaru = Berita::with('author')->orderBy('created_at', 'desc')->limit(3)->get();
+        $berita_terbaru = Berita::with('author')->orderBy('created_at', 'desc')->limit(4)->get();
         return view('landing_page.informasi.berita.detail', compact('berita', 'berita_terbaru'));
     }
 }

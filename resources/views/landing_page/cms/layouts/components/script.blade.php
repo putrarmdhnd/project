@@ -8,3 +8,5 @@
 <!-- Custom scripts for all pages-->
 <script src="{{ url('') }}/dashboard_cms/js/sb-admin-2.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js" defer></script>
+
