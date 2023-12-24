@@ -233,7 +233,7 @@
                                 <div class="col-4">
                                     <br>
                                     <div class="thumbnail-container rounded-20 overflow-hidden rounded-lg" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                        <img src="{{ asset('img/kependudukan/PKH.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="..." style="object-fit: contain;">
+                                        <img src="{{ asset('img/kependudukan/PKH.png    ') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="..." style="object-fit: contain;">
                                     </div>
                                 </div>
                                 <div class="col-8">
@@ -260,7 +260,7 @@
                                 <div class="col-4">
                                     <br>
                                     <div class="thumbnail-container  overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                        <img src="{{ asset('img/kependudukan/kematian.svg') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="..." style="object-fit: contain;">
+                                        <img src="{{ asset('img/kependudukan/sembako.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="..." style="object-fit: contain;">
                                     </div>
                                 </div>
 
@@ -288,7 +288,7 @@
                                 <div class="col-4">
                                     <br>
                                     <div class="thumbnail-container  overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                        <img src="{{ asset('img/kependudukan/kematian.svg') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="..." style="object-fit: contain;">
+                                        <img src="{{ asset('img/kependudukan/pangan-non-tunai.jpg') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="..." style="object-fit: contain;">
                                     </div>
                                 </div>
 
@@ -316,7 +316,7 @@
                                 <div class="col-4">
                                     <br>
                                     <div class="thumbnail-container  overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                        <img src="{{ asset('img/kependudukan/kematian.svg') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="..." style="object-fit: contain;">
+                                        <img src="{{ asset('img/kependudukan/pangan-stunting.jpg') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="..." style="object-fit: contain;">
                                     </div>
                                 </div>
 
@@ -344,7 +344,7 @@
                                 <div class="col-4">
                                     <br>
                                     <div class="thumbnail-container  overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                        <img src="{{ asset('img/kependudukan/kematian.svg') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="..." style="object-fit: contain;">
+                                        <img src="{{ asset('img/kependudukan/beras.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20" alt="..." style="object-fit: contain;">
                                     </div>
                                 </div>
 
