@@ -49,7 +49,9 @@ Route::get('/pengajuan-surat/{pengajuan_surat}/download', [PengajuanSuratControl
 Route::resource('/pengajuan-surat', PengajuanSuratController::class)->middleware('auth');
 
 Route::group(['middleware' => ['auth', 'hanyaAdmin']], function () {
-    Route::get('/pengguna/masyarakat', [UserController::class, 'masyarakat']);
+    Route::get('/pengelolaan-data/masyarakat', [UserController::class, 'masyarakat']);
+    Route::get('/data/kependudukan', [UserController::class, 'Kependudukan']);
+
     Route::get('/pengguna/petugas', [UserController::class, 'petugas']);
     Route::resource('/pengguna', UserController::class);
 });
