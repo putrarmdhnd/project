@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a href="/data/kependudukan" class="card-body p-1 themeColor" >
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Jumlah Penduduk</p>

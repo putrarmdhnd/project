@@ -22,6 +22,13 @@ class UserController extends Controller
             'users' => User::where('level', 'masyarakat')->get()
         ]);
     }
+    public function Kependudukan() {
+        return view('kelola_data_masyarakat/kependudukan', [
+            'title' => 'Data Kependudukan',
+            'page'  => 'kependudukan',
+            //'users' => User::where('level', 'masyarakat')->get()
+        ]);
+    }
     
     public function petugas() {
         return view('pengguna/index', [
