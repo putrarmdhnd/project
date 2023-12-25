@@ -2224,6 +2224,10 @@ video {
 .themeColor {
   background-color: #b7efff;
 }
+.themeColor th {
+  background-color: #b7efff !important;
+}
+
 
 @media (max-width: 450px) {
   .pilihSurat h1 {
