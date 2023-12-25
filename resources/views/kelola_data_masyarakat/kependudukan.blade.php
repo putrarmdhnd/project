@@ -58,7 +58,7 @@
                     <td class="text-center align-middle font-table">Example District</td>
                     <td class="text-center align-middle font-table">Example Regency</td>
                     <td class="text-center align-middle font-table">
-                        <button class="text-primary text-center editPengguna" data-user="">
+                        <button class="text-primary text-center detailKependudukan" data-user="">
                             <i class='bx bx-edit-alt'></i>
                         </button>
                     </td>

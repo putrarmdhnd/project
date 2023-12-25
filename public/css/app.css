@@ -2238,3 +2238,8 @@ video {
     font-size: 14px
   }
 }
+
+#modalKependudukan {
+  max-height: 90vh; /* Set the maximum height of the modal content */
+  overflow-y: auto; /* Enable vertical scrolling if the content exceeds the height */
+}
