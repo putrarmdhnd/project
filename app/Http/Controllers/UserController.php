@@ -29,6 +29,13 @@ class UserController extends Controller
             //'users' => User::where('level', 'masyarakat')->get()
         ]);
     }
+    public function input() {
+        return view('kelola_data_masyarakat/input', [
+            'title' => 'input Kependudukan',
+            'page'  => 'input',
+            //'users' => User::where('level', 'masyarakat')->get()
+        ]);
+    }
     
     public function petugas() {
         return view('pengguna/index', [
@@ -47,7 +54,6 @@ class UserController extends Controller
             'title' => 'Tambah Petugas',
         ]);
     }
-
     public function store(Request $request) {
         $validated = $request->validate([
             'username' => 'required|min:6|unique:users',
@@ -69,7 +75,7 @@ class UserController extends Controller
             return redirect()->back()->with('gagal', 'Gagal menambahkan petugas!');
         }
     }
-
+    
     public function update(Request $request, User $pengguna) {
         $validated = $request->validate([
             'username' => 'required|min:6|unique:users,username,' . $pengguna->id . ',id',
