@@ -7,30 +7,34 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('pengguna/index', [
             'title' => 'Data Pengguna',
             'page'  => 'pengguna',
             'users' => User::all()
         ]);
     }
-    
-    public function masyarakat() {
+
+    public function masyarakat()
+    {
         return view('kelola_data_masyarakat/index', [
             'title' => 'Data Masyarakat',
             'page'  => 'masyarakat',
             'users' => User::where('level', 'masyarakat')->get()
         ]);
     }
-    public function Kependudukan() {
+    public function Kependudukan()
+    {
         return view('kelola_data_masyarakat/kependudukan', [
             'title' => 'Data Kependudukan',
             'page'  => 'kependudukan',
             //'users' => User::where('level', 'masyarakat')->get()
         ]);
     }
-    
-    public function petugas() {
+
+    public function petugas()
+    {
         return view('pengguna/index', [
             'title' => 'Data Petugas',
             'page'  => 'petugas',
@@ -38,17 +42,19 @@ class UserController extends Controller
         ]);
     }
 
-    public function edit(){
-        
+    public function edit()
+    {
     }
 
-    public function create() {
+    public function create()
+    {
         return view('pengguna/create', [
             'title' => 'Tambah Petugas',
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'username' => 'required|min:6|unique:users',
             'nama' => 'required',
@@ -70,7 +76,8 @@ class UserController extends Controller
         }
     }
 
-    public function update(Request $request, User $pengguna) {
+    public function update(Request $request, User $pengguna)
+    {
         $validated = $request->validate([
             'username' => 'required|min:6|unique:users,username,' . $pengguna->id . ',id',
             'nama' => 'required',
@@ -91,7 +98,8 @@ class UserController extends Controller
     }
 
 
-    public function destroy(User $user, $id) {
+    public function destroy(User $user, $id)
+    {
         if (User::destroy($id)) {
             return redirect()->back()->with('berhasil', 'Berhasil menghapus pengguna!');
         } else {

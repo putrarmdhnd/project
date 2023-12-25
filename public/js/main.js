@@ -34,6 +34,7 @@ var closeDialogDetail = document.getElementById("closeDialogDetail");
 var overlay = document.getElementById("overlay");
 var dialogDetail = document.getElementById("dialogDetail");
 var dialogEdit = document.getElementById("dialogEdit");
+var modalKependudukan= document.getElementById("modalKependudukan");
 var modalBuatSurat = document.getElementById("modalBuatSurat");
 var body = document.querySelector(".dialog-body");
 var bodyEdit = document.querySelector(".dialog-body-edit");
@@ -147,6 +148,49 @@ editPengguna.forEach((o) => {
 
 closeDialogEdit.addEventListener("click", () => {
     dialogEdit.classList.add("hidden");
+    overlay.classList.add("hidden");
+});
+
+var detailKependudukan = document.querySelectorAll(".detailKependudukan");
+
+var noKK = document.getElementById("noKK");
+var nama = document.getElementById("nama");
+var telepon = document.getElementById("telepon");
+var password = document.getElementById("password");
+var admin = document.getElementById("role-admin");
+var petugas = document.getElementById("role-petugas");
+var masyarakat = document.getElementById("role-masyarakat");
+var formDetailKependudukan = document.getElementById("formDetailKependudukan");
+
+detailKependudukan.forEach((o) => {
+    o.addEventListener("click", () => {
+        overlay.classList.remove("hidden");
+        modalKependudukan.classList.remove("hidden");
+
+        const data = JSON.parse(`${o.dataset.user}`);
+        username.setAttribute("value", data.username);
+        nama.setAttribute("value", data.nama);
+        telepon.setAttribute("value", data.telepon);
+        password.setAttribute("value", data.password);
+
+        formDetailKependudukan.setAttribute("action", "/penduduk/" + data.id);
+
+        console.log(data)
+        if (data.level == "admin") {
+            admin.selected = true;
+            console.log('admin')
+        } else if (data.level == "petugas") {
+            console.log('petugas')
+            petugas.selected = true;
+        } else {
+            console.log('masyarakat')
+            masyarakat.selected = true;
+        }
+    });
+});
+
+closeDialogKependudukan.addEventListener("click", () => {
+    modalKependudukan.classList.add("hidden");
     overlay.classList.add("hidden");
 });
 
