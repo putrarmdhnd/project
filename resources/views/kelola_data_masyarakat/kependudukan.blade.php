@@ -71,7 +71,7 @@
             </thead>
             <tbody>
                 <!-- Example row, replace with your actual data -->
-                @foreach($coba as $item)
+                @foreach($penduduk as $item)
                 <tr>
                     <td class="text-center align-middle font-table">{{ $item->id }}</td>
                     <td class="text-center align-middle font-table">{{ $item->noKK }}</td>
@@ -92,7 +92,7 @@
                         </button>
                     </td>
                     <td class="text-center align-middle font-table">
-                        <button class="text-danger text-center deletePengguna" data-id="">
+                        <button class="text-danger text-center deletePenduduk" data-id="{{ $item->id }}">
                             <i class="bx bxs-trash"></i>
                         </button>
                     </td>

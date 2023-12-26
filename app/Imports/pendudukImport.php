@@ -40,9 +40,9 @@ class pendudukImport implements ToModel
             'kecamatan' => $row[25],
             'kabupaten' => $row[26],
             'provinsi' => $row[27],
-            'tanggalDikeluarkan' => $row[28],
-            'tipePenduduk' => $row[29],
-            'statusNik' => $row[30],
+            'tanggalDikeluarkan' => $row[28] ?? null,
+            'tipePenduduk' => $row[29] ?? null,
+            'statusNik' => $row[30] ?? null,
         ]);
     }
 }

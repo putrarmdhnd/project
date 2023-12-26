@@ -36,7 +36,7 @@
             </div>
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/kematian">
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Kematian</p>

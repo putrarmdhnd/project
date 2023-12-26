@@ -51,14 +51,17 @@ Route::resource('/pengajuan-surat', PengajuanSuratController::class)->middleware
 
 Route::group(['middleware' => ['auth', 'hanyaAdmin']], function () {
     Route::get('/pengelolaan-data/masyarakat', [UserController::class, 'masyarakat']);
+    Route::get('/pengguna/petugas', [UserController::class, 'petugas']);
+    Route::resource('/pengguna', UserController::class);
+
+    Route::get('/data/kematian', [UserController::class, 'Kematian']);
+    Route::get('/data/input-kematian', [UserController::class, 'KematianInput']);
+
     Route::get('/data/kependudukan', [KependudukanController::class, 'Kependudukan']);
     Route::get('/data/input', [KependudukanController::class, 'input']);
     Route::post('/data/store', [KependudukanController::class, 'store'])->name('data.store');
     Route::post('/data/import', [KependudukanController::class, 'import'])->name('import');
-    
-
-    Route::get('/pengguna/petugas', [UserController::class, 'petugas']);
-    Route::resource('/pengguna', UserController::class);
+    Route::resource('/penduduk', KependudukanController::class);
 });
 
 

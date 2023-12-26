@@ -34,7 +34,7 @@ var closeDialogDetail = document.getElementById("closeDialogDetail");
 var overlay = document.getElementById("overlay");
 var dialogDetail = document.getElementById("dialogDetail");
 var dialogEdit = document.getElementById("dialogEdit");
-var modalKependudukan= document.getElementById("modalKependudukan");
+var modalKependudukan = document.getElementById("modalKependudukan");
 var modalBuatSurat = document.getElementById("modalBuatSurat");
 var body = document.querySelector(".dialog-body");
 var bodyEdit = document.querySelector(".dialog-body-edit");
@@ -69,9 +69,15 @@ closeDialogDetail.addEventListener("click", () => {
 
 var deleteBtn = document.querySelectorAll(".deleteBtn");
 var dialogDelete = document.getElementById("dialogDelete");
+
 var closeDialogDelete = document.getElementById("closeDialogDelete");
 var closeDialogSurat = document.getElementById("closeDialogSurat");
 const formDelete = document.querySelector("#formDelete");
+
+
+var closeDialogPenduduk = document.getElementById("closeDialogPenduduk");
+var dialogDeletePenduduk = document.getElementById("dialogDeletePenduduk");
+const formDeletePenduduk = document.querySelector("#formDeletePenduduk");
 
 deleteBtn.forEach((o) => {
     o.addEventListener("click", () => {
@@ -105,6 +111,15 @@ deletePengguna.forEach((o) => {
         overlay.classList.remove("hidden");
         dialogDelete.classList.remove("hidden");
         formDelete.setAttribute("action", "/pengguna/" + o.dataset.id);
+    });
+});
+
+var deletePenduduk = document.querySelectorAll(".deletePenduduk");
+deletePenduduk.forEach((o) => {
+    o.addEventListener("click", () => {
+        overlay.classList.remove("hidden");
+        dialogDeletePenduduk.classList.remove("hidden");
+        formDeletePenduduk.setAttribute("action", "/penduduk/" + o.dataset.id);
     });
 });
 
