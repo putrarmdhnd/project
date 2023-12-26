@@ -26,7 +26,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Angka</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">5322</p>
+                                        <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\penduduk::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
