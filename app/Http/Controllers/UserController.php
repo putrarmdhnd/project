@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\penduduk;
 
 class UserController extends Controller
 {
@@ -22,13 +23,20 @@ class UserController extends Controller
             'users' => User::where('level', 'masyarakat')->get()
         ]);
     }
-    public function Kependudukan() {
-        return view('kelola_data_masyarakat/kependudukan', [
-            'title' => 'Data Kependudukan',
-            'page'  => 'kependudukan',
-            //'users' => User::where('level', 'masyarakat')->get()
+
+    public function Kematian() {
+        return view('kelola_data_masyarakat/kematian', [
+            'title' => 'Data Kematian',
+            'page'  => 'kematian'
         ]);
     }
+    public function KematianInput() {
+        return view('kelola_data_masyarakat/input', [
+            'title' => 'Input Kematian',
+            'page'  => 'Input Kematian'
+        ]);
+    }
+
     public function input() {
         return view('kelola_data_masyarakat/input', [
             'title' => 'input Kependudukan',

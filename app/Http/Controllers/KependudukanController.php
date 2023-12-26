@@ -6,22 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\penduduk;
 use App\Imports\pendudukImport;
+use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel; // Tambahkan use statement untuk model Kependudukan
 
 class KependudukanController extends Controller
 {
     public function index() {
-        $coba = penduduk::all();
-        return view('data.kependudukan', compact('coba'));
+        $penduduk = penduduk::all();
+        return view('data.kependudukan', compact('penduduk'));
     }
 
     public function Kependudukan() {
-        $coba = penduduk::all(); // Ubah 'coba' menjadi variabel yang sesuai
     
         return view('kelola_data_masyarakat.kependudukan', [
-            'coba'  => $coba, // Sesuaikan nama variabel dengan yang Anda gunakan di tampilan
+            'penduduk'  => penduduk::all(), // Sesuaikan nama variabel dengan yang Anda gunakan di tampilan
             'title' => 'Data Kependudukan',
-            'page'  => 'kependudukan',
+            'page'  => 'kependudukan'
             //'users' => User::where('level', 'masyarakat')->get()
         ]);
     }
@@ -81,5 +81,12 @@ class KependudukanController extends Controller
 
         Excel::import(new pendudukImport, \public_path('/pendudukdata/'.$namafile));
         return \redirect()->back();
+    }
+    public function destroy(penduduk $item, $id) {
+        if (penduduk::destroy($id)) {
+            return redirect()->back()->with('berhasil', 'Berhasil menghapus pengguna!');
+        } else {
+            return redirect()->back()->with('gagal', 'Gagal menghapus pengguna!');
+        }
     }
 }
