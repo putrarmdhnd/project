@@ -39,16 +39,18 @@ class KematianController extends Controller
     public function kirim(Request $request)
     { {
             $request->validate([
-                'NIK' => 'required|numeric',
+                'nik' => 'required|numeric',
                 // Tambahkan aturan validasi lainnya sesuai kebutuhan
             ]);
 
             // Ambil data dari tabel kependudukan berdasarkan NIK
-            $pendudukan = penduduk::where('nik', $request->NIK)->first();
+            $nik_pendudukan = penduduk::where('nik', $request->nik)->first();
+            $nama_pendudukan = penduduk::where('nik', $request->nik)->first('namaLengkap');
 
             // Simpan data ke tabel kematian
             $kematian = new Kematian();
-            $kematian->NIK = $pendudukan->NIK;
+            $kematian->NIK = $nik_pendudukan->NIK;
+            $kematian->namaLengkap = $nama_pendudukan->namaLengkap;
             // Tambahkan kolom-kolom lain sesuai kebutuhan
             $kematian->save();
 
