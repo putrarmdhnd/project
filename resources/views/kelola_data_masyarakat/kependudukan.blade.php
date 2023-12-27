@@ -108,6 +108,9 @@
             <!-- Add more rows as needed -->
         </tbody>
     </table>
+    <div class="d-flex justify-content-center mt-4">
+        {{ $penduduk->links() }}
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function() {

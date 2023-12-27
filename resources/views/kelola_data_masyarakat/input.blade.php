@@ -267,6 +267,9 @@
                     @error('noKK')
                     <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
+                    <button class="text-primary text-center detailKependudukan" data-user="">
+                        <i class='bx bx-edit-alt'></i>
+                    </button>
                 </div>
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
