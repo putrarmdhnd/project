@@ -24,7 +24,7 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="/data/import" method="POST" enctype="multipart/form-data">
+                            <form action="/data/importkematian" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="form-group">
@@ -49,27 +49,44 @@
             <thead class="themeColor text-white">
                 <tr>
                     <th rowspan="2" class="text-center align-middle font-table">No</th>
-                    <th rowspan="2" class="text-center align-middle font-table">No KK</th>
                     <th rowspan="2" class="text-center align-middle font-table">NIK</th>
-                    <th rowspan="2" class="text-center align-middle font-table">Nama</th>
-                    <th rowspan="2" class="text-center align-middle font-table">Jenis Kelamin</th>
-                    <th colspan="2" class="text-center align-middle font-table">Kelahiran</th>
-                    <th colspan="2" class="text-center align-middle font-table">Kematian</th>
+                    <th rowspan="2" class="text-center align-middle font-table">Nama Lengkap</th>
+                    <th rowspan="2" class="text-center align-middle font-table">Tempat Tanggal Lahir</th>
+                    <th rowspan="2" class="text-center align-middle font-table">Tempat Tanggal Kematian</th>
+                    <th rowspan="2" class="text-center align-middle font-table">Nama Pelapor</th>
+                    <th rowspan="2" class="text-center align-middle font-table">NIK Pelapor</th>
+                    <th rowspan="2" class="text-center align-middle font-table">Nomor Yang Bisa Di Hubungi</th>
                     <th colspan="2" class="text-center align-middle font-table">Aksi</th>
                 </tr>
                 <tr>
-                    <th class="text-center align-middle font-table">Tempat</th>
-                    <th class="text-center align-middle font-table">Tanggal</th>
-                    <th class="text-center align-middle font-table">Tempat</th>
-                    <th class="text-center align-middle font-table">Tanggal</th>
+                   
                     <th class="text-center align-middle font-table">Detail</th>
                     <th class="text-center align-middle font-table">Hapus</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Example row, replace with your actual data -->
-
-                <!-- Add more rows as needed -->
+                @foreach($kematian as $item)
+                <tr>
+                    <td class="text-center align-middle font-table">{{ $item->id }}</td>
+                    <td class="text-center align-middle font-table">{{ $item->NIK }}</td>
+                    <td class="text-center align-middle font-table">{{ $item->namaLengkap }}</td>
+                    <td class="text-center align-middle font-table">{{ $item->ttl }}</td>
+                    <td class="text-center align-middle font-table">{{ $item->ttm }}</td>
+                    <td class="text-center align-middle font-table">{{ $item->namaPelapor }}</td>
+                    <td class="text-center align-middle font-table">{{ $item->nikPelapor }}</td>
+                    <td class="text-center align-middle font-table">{{ $item->noDapatDihubungi }}</td>
+                    <td class="text-center align-middle font-table">
+                        <button class="text-primary text-center detailKependudukan" data-user="">
+                            <i class='bx bx-edit-alt'></i>
+                        </button>
+                    </td>
+                    <td class="text-center align-middle font-table">
+                        <button class="text-danger text-center deletePenduduk" data-id="{{ $item->id }}">
+                            <i class="bx bxs-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
 

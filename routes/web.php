@@ -7,6 +7,7 @@ use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\PengajuanSuratController;
 use App\Http\Controllers\TanggapanController;
 use App\Http\Controllers\KependudukanController;
+use App\Http\Controllers\KematianController;
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
 
@@ -54,8 +55,11 @@ Route::group(['middleware' => ['auth', 'hanyaAdmin']], function () {
     Route::get('/pengguna/petugas', [UserController::class, 'petugas']);
     Route::resource('/pengguna', UserController::class);
 
-    Route::get('/data/kematian', [UserController::class, 'Kematian']);
-    Route::get('/data/input-kematian', [UserController::class, 'KematianInput']);
+    Route::get('/data/kematian', [KematianController::class, 'Kematian']);
+    Route::get('/data/input-kematian', [KematianController::class, 'KematianInput']);
+    Route::post('/data/kirim', [KematianController::class, 'kirim'])->name('data.kirim');
+    Route::post('/data/importkematian', [KematianController::class, 'importkematian'])->name('importkematian');
+    Route::get('/get-data-by-nik/{NIK}', [KematianController::class, 'getDataByNIK']);
 
     Route::get('/data/kependudukan', [KependudukanController::class, 'Kependudukan']);
     Route::get('/data/input', [KependudukanController::class, 'input']);
