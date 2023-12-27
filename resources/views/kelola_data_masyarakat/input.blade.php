@@ -247,6 +247,19 @@
 @endif
 
 @if ($title == 'Input Kematian')
+
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+    @error('NIK')
+    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+    @enderror
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Get Data
+    </button>
+
+</div>
+
 <div class="bg-white py-6 px-9 mb-5 rounded-lg">
     <form action="{{ route('data.kirim') }}" method="POST" enctype="multipart/form-data" class="
     [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
@@ -263,14 +276,16 @@
                 ">
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
-                    <input type="text" name="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" value="{{ old('NIK') }}" />
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
                     @error('NIK')
                     <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
+
                 </div>
+
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
-                    <input type="text" name="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" value="{{ old('namaLengkap') }}" />
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
                     @error('namaLengkap')
                     <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
@@ -316,32 +331,46 @@
         <br>
         <br>
 
-
         <div class="flex justify-end">
             <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
         </div>
     </form>
 </div>
-<script>
-    document.getElementById('NIK').addEventListener('blur', function () {
-        let NIK = pendudukan;
 
-        axios.get('/get-data-by-nik/' + NIK)
-            .then(function (response) {
-                // Mengisi input lainnya dengan data yang diterima dari server
-                document.getElementById('namaLengkap').value = response.data.namaLengkap;
-                // Tambahkan baris ini untuk setiap input yang perlu diisi otomatis
-                // document.getElementById('ttl').value = response.data.ttl;
-                // document.getElementById('ttm').value = response.data.ttm;
-                // document.getElementById('namaPelapor').value = response.data.namaPelapor;
-                // document.getElementById('nikPelapor').value = response.data.nikPelapor;
-                // document.getElementById('noDapatDihubungi').value = response.data.noDapatDihubungi;
-            })
-            .catch(function (error) {
-                console.error('Error fetching data:', error);
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
     });
 </script>
+
+
 @endif
 
 @endsection

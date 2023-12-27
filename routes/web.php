@@ -57,9 +57,10 @@ Route::group(['middleware' => ['auth', 'hanyaAdmin']], function () {
 
     Route::get('/data/kematian', [KematianController::class, 'Kematian']);
     Route::get('/data/input-kematian', [KematianController::class, 'KematianInput']);
+    Route::get('/get-data-by-nik/{NIK_CARI}', [KematianController::class, 'getDataByNIK']);
     Route::post('/data/kirim', [KematianController::class, 'kirim'])->name('data.kirim');
     Route::post('/data/importkematian', [KematianController::class, 'importkematian'])->name('importkematian');
-    Route::get('/get-data-by-nik/{NIK}', [KematianController::class, 'getDataByNIK']);
+    
 
     Route::get('/data/kependudukan', [KependudukanController::class, 'Kependudukan']);
     Route::get('/data/input', [KependudukanController::class, 'input']);

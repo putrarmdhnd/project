@@ -24,26 +24,34 @@ class UserController extends Controller
         ]);
     }
 
-    // public function Kematian() {
-    //     return view('kelola_data_masyarakat/kematian', [
-    //         'title' => 'Data Kematian',
-    //         'page'  => 'kematian'
-    //     ]);
-    // }
-    // public function KematianInput() {
-    //     return view('kelola_data_masyarakat/input', [
-    //         'title' => 'Input Kematian',
-    //         'page'  => 'Input Kematian'
-    //     ]);
-    // }
+    public function Kematian() {
+        return view('kelola_data_masyarakat/kematian', [
+            'title' => 'Data Kematian',
+            'page'  => 'kematian'
+        ]);
+    }
+    
+    public function getDataByNIK($NIK){
+        $pendudukan = penduduk::find($NIK);
+       return response()->json($pendudukan);
+   }
 
-    // public function input() {
-    //     return view('kelola_data_masyarakat/input', [
-    //         'title' => 'input Kependudukan',
-    //         'page'  => 'input',
-    //         //'users' => User::where('level', 'masyarakat')->get()
-    //     ]);
-    // }
+    public function KematianInput() {
+        return view('kelola_data_masyarakat/input', [
+            'title' => 'Input Kematian',
+            'page'  => 'Input Kematian'
+        ]);
+    }
+
+    public function input() {
+        return view('kelola_data_masyarakat/input', [
+            'title' => 'input Kependudukan',
+            'page'  => 'input',
+            //'users' => User::where('level', 'masyarakat')->get()
+        ]);
+    }
+
+    
     
     public function petugas() {
         return view('pengguna/index', [
