@@ -54,7 +54,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Angka</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">42</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\kematian::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>

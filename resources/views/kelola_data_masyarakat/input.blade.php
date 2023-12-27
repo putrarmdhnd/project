@@ -248,7 +248,7 @@
 
 @if ($title == 'Input Kematian')
 <div class="bg-white py-6 px-9 mb-5 rounded-lg">
-    <form action="{{ route('data.store') }}" method="POST" enctype="multipart/form-data" class="
+    <form action="{{ route('data.kirim') }}" method="POST" enctype="multipart/form-data" class="
     [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
     [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
     [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
@@ -263,8 +263,8 @@
                 ">
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
-                    <input type="text" name="noKK" class="mt-1 px-3 py-2 @error('noKK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor KK" value="{{ old('noKK') }}" />
-                    @error('noKK')
+                    <input type="text" name="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" value="{{ old('NIK') }}" />
+                    @error('NIK')
                     <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
                     <button class="text-primary text-center detailKependudukan" data-user="">
@@ -280,36 +280,36 @@
                 </div>
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Tempat Tanggal Lahir</label>
-                    <input type="text" name="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" value="{{ old('NIK') }}" />
-                    @error('NIK')
+                    <input type="text" name="ttl" class="mt-1 px-3 py-2 @error('ttl') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Tempat Tanggal Lahir" value="{{ old('ttl') }}" />
+                    @error('ttl')
                     <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Tempat Tanggal Kematian</label>
-                    <input type="text" name="jk" class="mt-1 px-3 py-2 @error('jk') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Jenis Kelamin" value="{{ old('jk') }}" />
-                    @error('jk')
-                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="flex flex-col mb-6">
-                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">NIK Pelapor</label>
-                    <input type="text" name="tempatLahir" class="mt-1 px-3 py-2 @error('tempatLahir') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Tempat Lahir" value="{{ old('tempatLahir') }}" />
-                    @error('tempatLahir')
+                    <input type="text" name="ttm" class="mt-1 px-3 py-2 @error('ttm') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Tempat Tanggal Kematian" value="{{ old('ttm') }}" />
+                    @error('ttm')
                     <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Pelapor</label>
-                    <input type="text" name="tanggalLahir" class="mt-1 px-3 py-2 @error('tanggalLahir') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Tanggal Lahir" value="{{ old('tanggalLahir') }}" />
-                    @error('tanggalLahir')
+                    <input type="text" name="namaPelapor" class="mt-1 px-3 py-2 @error('namaPelapor') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Pelapor" value="{{ old('namaPelapor') }}" />
+                    @error('namaPelapor')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">NIK Pelapor</label>
+                    <input type="text" name="nikPelapor" class="mt-1 px-3 py-2 @error('nikPelapor') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan Pelapor" value="{{ old('nikPelapor') }}" />
+                    @error('nikPelapor')
                     <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor yang dapat di hubungi</label>
-                    <input type="text" name="agama" class="mt-1 px-3 py-2 @error('agama') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Agama" value="{{ old('agama') }}" />
-                    @error('agama')
+                    <input type="text" name="noDapatDihubungi" class="mt-1 px-3 py-2 @error('noDapatDihubungi') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor yang Dapat di Hubungi" value="{{ old('noDapatDihubungi') }}" />
+                    @error('noDapatDihubungi')
                     <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
                 </div>
@@ -325,6 +325,26 @@
         </div>
     </form>
 </div>
+<script>
+    document.getElementById('NIK').addEventListener('blur', function () {
+        let NIK = pendudukan;
+
+        axios.get('/get-data-by-nik/' + NIK)
+            .then(function (response) {
+                // Mengisi input lainnya dengan data yang diterima dari server
+                document.getElementById('namaLengkap').value = response.data.namaLengkap;
+                // Tambahkan baris ini untuk setiap input yang perlu diisi otomatis
+                // document.getElementById('ttl').value = response.data.ttl;
+                // document.getElementById('ttm').value = response.data.ttm;
+                // document.getElementById('namaPelapor').value = response.data.namaPelapor;
+                // document.getElementById('nikPelapor').value = response.data.nikPelapor;
+                // document.getElementById('noDapatDihubungi').value = response.data.noDapatDihubungi;
+            })
+            .catch(function (error) {
+                console.error('Error fetching data:', error);
+            });
+    });
+</script>
 @endif
 
 @endsection
