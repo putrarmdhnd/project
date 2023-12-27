@@ -251,11 +251,9 @@
 <div class="flex flex-col mb-6">
     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
     <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
-    @error('NIK')
-    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
-    @enderror
+
     <button type="button" class="text-primary text-center" id="getDataButton">
-        <i class='bx bx-edit-alt'></i> Get Data
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
     </button>
 
 </div>
