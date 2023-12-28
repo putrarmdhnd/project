@@ -64,7 +64,7 @@
             </div>
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/kelahiran">
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Kelahiran</p>
@@ -82,7 +82,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Angka</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">155</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\kelahiran::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
             </div>
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/miskin">
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Masyarakat Miskin</p>
@@ -110,7 +110,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Angka</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">533</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\miskin::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
         <div class="row">
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/ibuhamil">
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Ibu Hamil</p>
@@ -147,7 +147,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Data</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">23</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\ibuhamil::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
             </div>
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/bayi1sampai5tahun">
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Bayi 1-5 tahun</p>
@@ -175,7 +175,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Data</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">2353</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\bayi1sampai5tahun::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
@@ -185,7 +185,7 @@
             </div>
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/anakyatim">
                         <div class="row justify-content-around">
                             <div class="col-12">
                                 <p class="fw-bold text-black text-center " style="font-size: 18px;">Anak yatim usia 1 - 12 tahun</p>
@@ -203,7 +203,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Data</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">53</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\anakyatim::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
@@ -223,7 +223,7 @@
         <div class="row">
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/pkh">
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Program Keluarga Harapan</p>
@@ -240,7 +240,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Data</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">22</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\pkh::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
@@ -250,7 +250,7 @@
             </div>
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/bansos">
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Bantuan Sosial</p>
@@ -268,7 +268,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Data</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">66</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\bansos::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
@@ -278,7 +278,7 @@
             </div>
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/bpn">
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Bantuan Pangan Non Tunai</p>
@@ -296,7 +296,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Data</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">66</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\bpn::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
@@ -306,7 +306,7 @@
             </div>
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/bps">
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Bantuan Pangan Stunting</p>
@@ -324,7 +324,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Data</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">66</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\bps::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
@@ -334,7 +334,7 @@
             </div>
             <div class="col-4 py-2">
                 <div class="card border border-gray-200 rounded-b-lg shadow-md">
-                    <a class="card-body p-1 themeColor" href="#goal-1">
+                    <a class="card-body p-1 themeColor" href="/data/bbp">
                         <div class="row justify-content-around">
                             <div class="col-12 ">
                                 <p class="fw-bold text-black text-center" style="font-size: 18px;">Bantuan Beras Pemerintah</p>
@@ -352,7 +352,7 @@
                                     <p class="card-text text-right">
                                         <medium class="text-muted">Total Data</medium>
                                         <br>
-                                    <p class="text-right fw-bolder" style="font-size: 40px;">66</p>
+                                    <p class="text-right fw-bolder" style="font-size: 40px;">{{ \App\Models\bbp::count('NIK') }}</p>
                                     </p>
                                 </div>
                             </div>
