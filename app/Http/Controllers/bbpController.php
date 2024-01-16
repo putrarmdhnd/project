@@ -15,7 +15,7 @@ class bbpController extends Controller
     public function bbp()
     {
         return view('kelola_data_masyarakat/bbp', [
-            'kelahiran'  => bbp::all(),
+            'bbp'  => bbp::all(),
             'title' => 'Data masyakarat Bantuan Beras Pemerintah',
             'page'  => 'bbp'
         ]);

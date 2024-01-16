@@ -51,11 +51,11 @@
                     <th rowspan="2" class="text-center align-middle font-table">No</th>
                     <th rowspan="2" class="text-center align-middle font-table">NIK</th>
                     <th rowspan="2" class="text-center align-middle font-table">Nama Lengkap</th>
-                    <th rowspan="2" class="text-center align-middle font-table">Tempat Tanggal Lahir</th>
+                    {{-- <th rowspan="2" class="text-center align-middle font-table">Tempat Tanggal Lahir</th>
                     <th rowspan="2" class="text-center align-middle font-table">Tempat Tanggal Kematian</th>
                     <th rowspan="2" class="text-center align-middle font-table">Nama Pelapor</th>
                     <th rowspan="2" class="text-center align-middle font-table">NIK Pelapor</th>
-                    <th rowspan="2" class="text-center align-middle font-table">Nomor Yang Bisa Di Hubungi</th>
+                    <th rowspan="2" class="text-center align-middle font-table">Nomor Yang Bisa Di Hubungi</th> --}}
                     <th colspan="2" class="text-center align-middle font-table">Aksi</th>
                 </tr>
                 <tr>
@@ -65,16 +65,16 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach($kematian as $item)
+                @foreach($bbp as $item)
                 <tr>
                     <td class="text-center align-middle font-table">{{ $item->id }}</td>
                     <td class="text-center align-middle font-table">{{ $item->NIK }}</td>
                     <td class="text-center align-middle font-table">{{ $item->namaLengkap }}</td>
-                    <td class="text-center align-middle font-table">{{ $item->ttl }}</td>
+                    {{-- <td class="text-center align-middle font-table">{{ $item->ttl }}</td>
                     <td class="text-center align-middle font-table">{{ $item->ttm }}</td>
                     <td class="text-center align-middle font-table">{{ $item->namaPelapor }}</td>
                     <td class="text-center align-middle font-table">{{ $item->nikPelapor }}</td>
-                    <td class="text-center align-middle font-table">{{ $item->noDapatDihubungi }}</td>
+                    <td class="text-center align-middle font-table">{{ $item->noDapatDihubungi }}</td> --}}
                     <td class="text-center align-middle font-table">
                         <button class="text-primary text-center detailKependudukan" data-user="">
                             <i class='bx bx-edit-alt'></i>
@@ -86,7 +86,7 @@
                         </button>
                     </td>
                 </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
 

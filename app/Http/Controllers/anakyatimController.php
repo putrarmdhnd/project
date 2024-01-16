@@ -14,7 +14,7 @@ class anakyatimController extends Controller
     public function anakyatim()
     {
         return view('kelola_data_masyarakat/anakyatim', [
-            'kelahiran'  => anakyatim::all(),
+            'anakyatim'  => anakyatim::all(),
             'title' => 'Data masyakarat Anak Yatim 1 Sampai 12 Tahun',
             'page'  => 'anakyatim'
         ]);

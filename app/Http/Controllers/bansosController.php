@@ -14,7 +14,7 @@ class bansosController extends Controller
     public function bansos()
     {
         return view('kelola_data_masyarakat/bansos', [
-            'kelahiran'  => bansos::all(),
+            'bansos'  => bansos::all(),
             'title' => 'Data masyakarat Bantuan Sosial',
             'page'  => 'bansos'
         ]);

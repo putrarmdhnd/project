@@ -14,7 +14,7 @@ class bpnController extends Controller
     public function bpn()
     {
         return view('kelola_data_masyarakat/bpn', [
-            'kelahiran'  => bpn::all(),
+            'bpn'  => bpn::all(),
             'title' => 'Data masyakarat Bantuan Pangan Non Tunai',
             'page'  => 'bpn'
         ]);

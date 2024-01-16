@@ -29,12 +29,22 @@
 
                 </div>
             @endif
-
-            @if ($pengajuan_surat->status == 'Diproses')
-                <a href="{{ route('pengajuan-surat.edit', $pengajuan_surat->id) }}"
-                    class="text-white bg-danger focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">Proses
-                    Surat</a>
-            @endif
+            @canany(['admin'])
+            @if ($pengajuan_surat->status == 'Diproses' && in_array($pengajuan_surat->jenis_surat, ['Surat Pengantar Keterangan Catatan Kepolisian', 'Surat Keterangan Tentang Perkawinan']))
+        <a href="{{ route('pengajuan-surat.edit', $pengajuan_surat->id) }}"
+            class="text-white bg-danger focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">
+            Proses Surat
+        </a>
+    @endif
+            @endcanany
+            @canany(['petugas'])
+            @if ($pengajuan_surat->status == 'Diproses' && in_array($pengajuan_surat->jenis_surat, ['Surat Kematian', 'Surat Keterangan Tentang Perkawinan']))
+        <a href="{{ route('pengajuan-surat.edit', $pengajuan_surat->id) }}"
+            class="text-white bg-danger focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">
+            Proses Surat
+        </a>
+    @endif
+            @endcanany
         @endcanany
     </div>
 

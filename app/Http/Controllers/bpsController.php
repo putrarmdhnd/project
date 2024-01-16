@@ -14,7 +14,7 @@ class bpsController extends Controller
     public function bps()
     {
         return view('kelola_data_masyarakat/bps', [
-            'kelahiran'  => bps::all(),
+            'bps'  => bps::all(),
             'title' => 'Data Bantuan Pangan Stunting',
             'page'  => 'bps'
         ]);

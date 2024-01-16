@@ -14,7 +14,7 @@ class MiskinController extends Controller
     public function Miskin()
     {
         return view('kelola_data_masyarakat/masyarakatmiskin', [
-            'kelahiran'  => miskin::all(),
+            'miskin'  => miskin::all(),
             'title' => 'Data masyakarat miskin',
             'page'  => 'masyarakatmiskin'
         ]);
