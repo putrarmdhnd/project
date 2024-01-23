@@ -55,9 +55,14 @@ Route::get('/pengajuan-surat/surat', function () {
     ]);
 })->name('surat');
 Route::put('/pengajuan-surat/{pengajuan_surat}/approve', [PengajuanSuratController::class, 'approve'])->middleware('auth')->name('pengajuan_surat.approve');
+Route::put('/pengajuan-surat/{pengajuan_surat}/verifikasi', [PengajuanSuratController::class, 'verifikasi'])->middleware('auth')->name('pengajuan_surat.verifikasi');
 Route::put('/pengajuan-surat/{pengajuan_surat}/reject', [PengajuanSuratController::class, 'reject'])->middleware('auth')->name('pengajuan_surat.reject');
 Route::get('/pengajuan-surat/{pengajuan_surat}/preview', [PengajuanSuratController::class, 'preview'])->middleware('auth')->name('pengajuan_surat.preview.surat');
+Route::get('/pengajuan-surat/{pengajuan_surat}/previewew', [PengajuanSuratController::class, 'previewew'])->middleware('auth')->name('pengajuan_surat.previewew.surat');
 Route::get('/pengajuan-surat/{pengajuan_surat}/download', [PengajuanSuratController::class, 'download'])->middleware('auth')->name('pengajuan_surat.download.surat');
+Route::get('/pengajuan-surat/{pengajuan_surat}/downloaded', [PengajuanSuratController::class, 'downloaded'])->middleware('auth')->name('pengajuan_surat.downloaded.surat');
+Route::get('/pengajuan-surat/{pengajuan_surat}/basah', [PengajuanSuratController::class, 'basah'])->middleware('auth')->name('pengajuan_surat.basah');
+Route::put('/pengajuan-surat/{pengajuan_surat}/updatebasah', [PengajuanSuratController::class, 'updatebasah'])->middleware('auth')->name('pengajuan_surat.updatebasah');
 Route::resource('/pengajuan-surat', PengajuanSuratController::class)->middleware('auth');
 
 Route::group(['middleware' => ['auth', 'hanyaAdmin']], function () {

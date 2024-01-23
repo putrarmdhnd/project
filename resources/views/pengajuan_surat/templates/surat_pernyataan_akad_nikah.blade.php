@@ -175,11 +175,11 @@
             <p class="fs-1" style="margin-top: 20px;">Nomor : {{ $surat->nomor_surat }}</p>
             <p style="margin-top: -10px !important">Mengetahui,</p>
             <p style="margin-top: -15px !important">Kepala Desa Palasari</p>
-            <img style="margin-top: -5em !important"
-                src="https://raw.githubusercontent.com/Ibnumaggie27/sistem-informasi-desa-palasari/main/public/img/ttd.png"
-                width="230" alt="">
+            <img style="margin-top: -1em !important"
+                src="https://raw.githubusercontent.com/Ibnumaggie27/project/main/public/img/barttd.png"
+                width="120" alt="">
 
-            <p style="margin-top: -40px !important">H.Ridwan.SH</p>
+            <p style="margin-top: -2px !important">H.Ridwan.SH</p>
         </div>
     </div>
 </body>

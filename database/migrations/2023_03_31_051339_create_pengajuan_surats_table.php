@@ -46,7 +46,7 @@ return new class extends Migration
                 ]
             );
             $table->json('surat');
-            $table->enum('status', ['Pending', 'Menunggu Persetujuan', 'Diproses', 'Selesai', 'Ditolak']);
+            $table->enum('status', ['Pending', 'verifikasi', 'Diproses', 'Selesai','beres', 'Ditolak']);
             $table->timestamps();
         });
     }
