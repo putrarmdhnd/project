@@ -40,6 +40,9 @@ class KematianController extends Controller
     { {
             $request->validate([
                 'nik' => 'required|numeric',
+                'namaLengkap' => 'required',
+                'ttl' => 'required|numeric',
+                'ttm' => 'required|numeric',
                 // Tambahkan aturan validasi lainnya sesuai kebutuhan
             ]);
 
