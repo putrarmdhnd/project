@@ -40,10 +40,12 @@ class KematianController extends Controller
     { {
             $request->validate([
                 'nik' => 'required|numeric',
-                'namaLengkap' => 'required',
-                'ttl' => 'required|numeric',
-                'ttm' => 'required|numeric',
-                // Tambahkan aturan validasi lainnya sesuai kebutuhan
+                'namaLengkap' => 'required|numeric',
+                'ttl' => 'required',
+                'ttm' => 'required',
+                'namaPelapor' => 'required',
+                'nikPelapor' => 'required',
+                'noDapatDihubungi' => 'required',
             ]);
 
             // Ambil data dari tabel kependudukan berdasarkan NIK
@@ -54,11 +56,16 @@ class KematianController extends Controller
             $kematian = new Kematian();
             $kematian->NIK = $nik_pendudukan->NIK;
             $kematian->namaLengkap = $nama_pendudukan->namaLengkap;
+            $kematian->ttl = $request->ttl;
+            $kematian->ttm = $request->ttm;
+            $kematian->namaPelapor = $request->namaPelapor;
+            $kematian->nikPelapor = $request->nikPelapor;
+            $kematian->noDapatDihubungi = $request->noDapatDihubungi;
             // Tambahkan kolom-kolom lain sesuai kebutuhan
             $kematian->save();
 
             // Tampilkan pesan sukses atau redirect ke halaman tertentu
-            return redirect()->back()->with('success', 'Data kematian berhasil disimpan');
+            return redirect('data/kematian')->with('berhasil', 'Berhasil menambahkan petugas!');
         }
     }
 

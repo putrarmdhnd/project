@@ -98,6 +98,52 @@
         <!-- Formulir Tambahan -->
         <div id="formContainer"></div>
         <button type="button" id="tambahForm" style="border: 1px solid #000;">Tambah Penerima Ahli Waris</button>
+        <div class="flex flex-col mb-6">
+            <label class="after:content-['*'] after:ml-0.5 after:text-danger">Foto surat Pengantar RT</label>
+            <input type="file" name="fotoketeranganrt"
+                class="mt-1 px-3 py-2 @error('fotoketeranganrt') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                accept="image/*" />
+            @error('fotoketeranganrt')
+                <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="flex flex-col mb-6">
+            <label class="after:content-['*'] after:ml-0.5 after:text-danger">Foto KTP</label>
+            <input type="file" name="fotoktp"
+                class="mt-1 px-3 py-2 @error('fotoktp') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                accept="image/*" />
+            @error('fotoktp')
+                <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="flex flex-col mb-6">
+            <label class="after:content-['*'] after:ml-0.5 after:text-danger">Foto KK</label>
+            <input type="file" name="fotokk"
+                class="mt-1 px-3 py-2 @error('fotokk') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                accept="image/*" />
+            @error('fotokk')
+                <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="flex flex-col mb-6">
+            <label class="after:content-['*'] after:ml-0.5 after:text-danger">Keperluan Tanda Tangan</label>
+            <div class="relative">
+                <select
+                    class="appearance-none px-3 py-2 @error('kttd') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                    id="grid-state" name="kttd">
+                    <option value="">Pilih Jenis Tanda Tangan</option>
+                    <option value="basah">Tanda Tangan & Cap Basah</option>
+                    <option value="barcode">Tanda Tangan Barcode</option>
+                </select>
+                <div
+                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <i class='bx bx-chevron-down text-xl'></i>
+                </div>
+            </div>
+            @error('kttd')
+                <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+            @enderror
+        </div>
         <div class="w-full mb-6">
             <label class="after:ml-0.5 after:text-danger">Pesan</label>
             <small class="text-secondary">Pastikan sampaikan pesan kepada admin/petugas dengan jelas

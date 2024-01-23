@@ -29,6 +29,12 @@ class UserSeeder extends Seeder
             'password' => bcrypt('petugas123'),
             'level' => 'petugas',
         ]);
+        User::create([
+            'nama' => 'kasi kesra',
+            'username' => 'kesra@example.com',
+            'password' => bcrypt('kesra123'),
+            'level' => 'kesra',
+        ]);
 
         // Tambahkan user lainnya sesuai kebutuhan
     }

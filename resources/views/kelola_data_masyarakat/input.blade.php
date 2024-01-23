@@ -367,8 +367,865 @@
         });
     });
 </script>
-
-
 @endif
 
+@if ($title == 'Input Kelahiran')
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
+    </button>
+
+</div>
+<div class="bg-white py-6 px-9 mb-5 rounded-lg">
+    <form action="{{ route('data.kirimKelahiran') }}" method="POST" enctype="multipart/form-data" class="
+    [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
+    [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+    [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
+    [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
+        @csrf
+
+        <h1 class="text-2xl text-center my-8">Form Pengisian Data Kelahiran</h1>
+        <div class="flex flex-col lg:flex-row gap-5 justify-center">
+            <div class="w-full 
+                [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                
+                ">
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+                    @error('NIK')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
+                    @error('namaLengkap')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex justify-end">
+            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
+    });
+</script>
+@endif
+
+@if ($title == 'Input miskin')
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
+    </button>
+
+</div>
+<div class="bg-white py-6 px-9 mb-5 rounded-lg">
+    <form action="{{ route('data.kirimMasyarakatMiskin') }}" method="POST" enctype="multipart/form-data" class="
+    [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
+    [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+    [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
+    [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
+        @csrf
+
+        <h1 class="text-2xl text-center my-8">Form Pengisian Data Masyarakat Miskin</h1>
+        <div class="flex flex-col lg:flex-row gap-5 justify-center">
+            <div class="w-full 
+                [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                
+                ">
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+                    @error('NIK')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
+                    @error('namaLengkap')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex justify-end">
+            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
+    });
+</script>
+@endif
+
+@if ($title == 'Input ibu_hamil')
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
+    </button>
+
+</div>
+<div class="bg-white py-6 px-9 mb-5 rounded-lg">
+    <form action="{{ route('data.kirimIbuHamil') }}" method="POST" enctype="multipart/form-data" class="
+    [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
+    [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+    [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
+    [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
+        @csrf
+
+        <h1 class="text-2xl text-center my-8">Form Pengisian Data Ibu Hamil</h1>
+        <div class="flex flex-col lg:flex-row gap-5 justify-center">
+            <div class="w-full 
+                [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                
+                ">
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+                    @error('NIK')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
+                    @error('namaLengkap')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex justify-end">
+            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
+    });
+</script>
+@endif
+
+@if ($title == 'Input bayi')
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
+    </button>
+
+</div>
+<div class="bg-white py-6 px-9 mb-5 rounded-lg">
+    <form action="{{ route('data.kirimbayi1sampai5tahun') }}" method="POST" enctype="multipart/form-data" class="
+    [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
+    [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+    [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
+    [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
+        @csrf
+
+        <h1 class="text-2xl text-center my-8">Form Pengisian Data Bayi 1 Sampai 5 Tahun</h1>
+        <div class="flex flex-col lg:flex-row gap-5 justify-center">
+            <div class="w-full 
+                [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                
+                ">
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+                    @error('NIK')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
+                    @error('namaLengkap')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex justify-end">
+            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
+    });
+</script>
+@endif
+
+@if ($title == 'Input yatim')
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
+    </button>
+
+</div>
+<div class="bg-white py-6 px-9 mb-5 rounded-lg">
+    <form action="{{ route('data.kirimanakyatim') }}" method="POST" enctype="multipart/form-data" class="
+    [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
+    [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+    [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
+    [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
+        @csrf
+
+        <h1 class="text-2xl text-center my-8">Form Pengisian Data Anak Yatim</h1>
+        <div class="flex flex-col lg:flex-row gap-5 justify-center">
+            <div class="w-full 
+                [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                
+                ">
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+                    @error('NIK')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
+                    @error('namaLengkap')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex justify-end">
+            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
+    });
+</script>
+@endif
+
+@if ($title == 'Input pkh')
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
+    </button>
+
+</div>
+<div class="bg-white py-6 px-9 mb-5 rounded-lg">
+    <form action="{{ route('data.kirimpkh') }}" method="POST" enctype="multipart/form-data" class="
+    [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
+    [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+    [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
+    [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
+        @csrf
+
+        <h1 class="text-2xl text-center my-8">Form Pengisian Data Program Keluarga Harapan</h1>
+        <div class="flex flex-col lg:flex-row gap-5 justify-center">
+            <div class="w-full 
+                [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                
+                ">
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+                    @error('NIK')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
+                    @error('namaLengkap')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex justify-end">
+            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
+    });
+</script>
+@endif
+
+@if ($title == 'Input bansos')
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
+    </button>
+
+</div>
+<div class="bg-white py-6 px-9 mb-5 rounded-lg">
+    <form action="{{ route('data.kirimabansos') }}" method="POST" enctype="multipart/form-data" class="
+    [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
+    [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+    [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
+    [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
+        @csrf
+
+        <h1 class="text-2xl text-center my-8">Form Pengisian Data Bantuan Sosial</h1>
+        <div class="flex flex-col lg:flex-row gap-5 justify-center">
+            <div class="w-full 
+                [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                
+                ">
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+                    @error('NIK')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
+                    @error('namaLengkap')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex justify-end">
+            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
+    });
+</script>
+@endif
+
+@if ($title == 'Input bpn')
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
+    </button>
+
+</div>
+<div class="bg-white py-6 px-9 mb-5 rounded-lg">
+    <form action="{{ route('data.kirimbpn') }}" method="POST" enctype="multipart/form-data" class="
+    [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
+    [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+    [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
+    [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
+        @csrf
+
+        <h1 class="text-2xl text-center my-8">Form Pengisian Data Bantuan Pangan Non Tunai</h1>
+        <div class="flex flex-col lg:flex-row gap-5 justify-center">
+            <div class="w-full 
+                [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                
+                ">
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+                    @error('NIK')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
+                    @error('namaLengkap')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex justify-end">
+            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
+    });
+</script>
+@endif
+
+@if ($title == 'Input bps')
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
+    </button>
+
+</div>
+<div class="bg-white py-6 px-9 mb-5 rounded-lg">
+    <form action="{{ route('data.kirimbps') }}" method="POST" enctype="multipart/form-data" class="
+    [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
+    [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+    [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
+    [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
+        @csrf
+
+        <h1 class="text-2xl text-center my-8">Form Pengisian Data Bantuan Pangan Stunting</h1>
+        <div class="flex flex-col lg:flex-row gap-5 justify-center">
+            <div class="w-full 
+                [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                
+                ">
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+                    @error('NIK')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
+                    @error('namaLengkap')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex justify-end">
+            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
+    });
+</script>
+@endif
+
+@if ($title == 'Input bbp')
+<div class="flex flex-col mb-6">
+    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+    <input type="text" name="nikCari" id="NIKInput" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+
+    <button type="button" class="text-primary text-center" id="getDataButton">
+        <i class='bx bx-edit-alt'></i> Cari Nomor Induk Penduduk
+    </button>
+
+</div>
+<div class="bg-white py-6 px-9 mb-5 rounded-lg">
+    <form action="{{ route('data.kirimbbp') }}" method="POST" enctype="multipart/form-data" class="
+    [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
+    [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+    [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
+    [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
+        @csrf
+
+        <h1 class="text-2xl text-center my-8">Form Pengisian Data Bantuan Beras Pemerintah</h1>
+        <div class="flex flex-col lg:flex-row gap-5 justify-center">
+            <div class="w-full 
+                [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                
+                ">
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Induk Kependudukan</label>
+                    <input type="text" name="nik" id="NIK" class="mt-1 px-3 py-2 @error('NIK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nomor Induk Kependudukan" />
+                    @error('NIK')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+
+                </div>
+
+                <div class="flex flex-col mb-6">
+                    <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Lengkap</label>
+                    <input type="text" name="namaLengkap" id="namaLengkap" class="mt-1 px-3 py-2 @error('namaLengkap') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" placeholder="Nama Lengkap" />
+                    @error('namaLengkap')
+                    <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="flex justify-end">
+            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#getDataButton').click(function() {
+            let NIK_CARI = $('#NIKInput').val();
+
+            // Make an AJAX request to fetch data based on NIK
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: `/get-data-by-nik/${NIK_CARI}`,
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if (response) {
+                        $('#NIK').val(response.NIK);
+                        $('#namaLengkap').val(response.namaLengkap);
+                        // Add similar lines for other input fields
+                    } else {
+                        console.error('No data found for the provided NIK.');
+                    }
+                }
+
+
+            });
+        });
+    });
+</script>
+@endif
 @endsection

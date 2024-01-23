@@ -7,8 +7,11 @@
         <div class="text-center lg:text-left">
             <h1 class="text-lg lg:text-2xl text-danger font-semibold mb-2">Detail Pengajuan Surat</h1>
             <p class="text-base text-[13px] lg:text-lg font-normal text-secondary">{{ $pengajuan_surat->jenis_surat }}</p>
+            @canany(['admin'])
+            <p class="text-base text-[13px] lg:text-lg font-normal text-secondary">Jenis Surat : {{ $surat->kttd }}</p>
+            @endcanany
         </div>
-        @canany(['admin', 'petugas'])
+        @canany(['admin', 'petugas','kesra'])
             @if ($pengajuan_surat->status == 'Pending')
                 <div class="mt-5 lg:mt-0 flex flex-col lg:flex-row justify-center text-center">
                     <form action="{{ route('pengajuan_surat.reject', $pengajuan_surat->id) }}" method="post">
@@ -17,24 +20,41 @@
                         <button type="submit"
                             class="text-white bg-danger focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center">Tolak</button>
                     </form>
-                    <form class="mt-3 ml-0 lg:ml-3 lg:mt-0" action="{{ route('pengajuan_surat.approve', $pengajuan_surat->id) }}"
+                    <form class="mt-3 ml-0 lg:ml-3 lg:mt-0" action="{{ route('pengajuan_surat.verifikasi', $pengajuan_surat->id) }}"
                         method="post">
                         @csrf
                         @method('PUT')
                         <button type="submit"
-                            class="text-dark bg-warning focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">Setujui
-                            & Proses
-                            Surat</button>
+                            class="text-dark bg-warning focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">Verifikasi</button>
                     </form>
 
                 </div>
             @endif
-
+            @canany(['admin'])
             @if ($pengajuan_surat->status == 'Diproses')
-                <a href="{{ route('pengajuan-surat.edit', $pengajuan_surat->id) }}"
-                    class="text-white bg-danger focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">Proses
-                    Surat</a>
-            @endif
+        <a href="{{ route('pengajuan-surat.edit', $pengajuan_surat->id) }}"
+            class="text-white bg-danger focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">
+            Proses Surat
+        </a>
+        <a href="{{ route('pengajuan_surat.basah', $pengajuan_surat->id) }}"
+            class="text-white bg-danger focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">
+            Proses Surat basah
+        </a>
+    @endif
+            @endcanany
+            @canany(['kesra'])
+            @if ($pengajuan_surat->status == 'verifikasi' && in_array($pengajuan_surat->jenis_surat, ['Surat Keterangan Domisili Haji','Surat Keterangan Domisili Yayasan']))
+            <form class="mt-3 ml-0 lg:ml-3 lg:mt-0" action="{{ route('pengajuan_surat.approve', $pengajuan_surat->id) }}"
+                method="post">
+                @csrf
+                @method('PUT')
+                <button type="submit"
+                    class="text-dark bg-warning focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">Setujui
+                    & Proses
+                    Surat</button>
+            </form>
+    @endif
+            @endcanany
         @endcanany
     </div>
 
@@ -206,6 +226,63 @@
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
+                        Foto KTP
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if ($surat->fotoktp)
+                            <a href="{{ asset('uploads/' . $surat->fotoktp) }}" data-lightbox="fotoktp">
+                                <img src="{{ asset('uploads/' . $surat->fotoktp) }}" alt="Foto KTP" class="max-w-[300px] mx-auto">
+                            </a>
+                        @else
+                            Foto tidak tersedia
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Foto KK
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if ($surat->fotokk)
+                        <a href="{{asset('uploads/' . $surat->fotokk) }}" data-lightbox="fotokk">
+                            <img src="{{ asset('uploads/' . $surat->fotokk) }}" alt="Foto KK" class="max-w-[300px] mx-auto">
+                        </a>
+                            @else
+                            Foto tidak tersedia
+                        @endif
+                    </td>
+                </tr>
+        
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Foto Keterangan RT
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if ($surat->fotoketeranganrt)
+                        <a href="{{asset('uploads/' . $surat->fotoketeranganrt) }}" data-lightbox="fotoketeranganrt">
+                            <img src="{{ asset('uploads/' . $surat->fotoketeranganrt) }}" alt="Foto Keterangan RT/RW" class="max-w-[300px] mx-auto">
+                        </a>
+                            @else
+                            Foto tidak tersedia
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
                         Pesan untuk petugas/admin
                     </td>
                 </tr>
@@ -343,6 +420,14 @@
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
                         Pesan untuk petugas/admin
                     </td>
                 </tr>
@@ -472,6 +557,14 @@
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
                         Pesan untuk petugas/admin
                     </td>
                 </tr>
@@ -567,6 +660,14 @@
                 </tr>
                 <tr>
                     <td>{{ $surat->alamat_perempuan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
@@ -749,6 +850,14 @@
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
                         Pesan untuk petugas/admin
                     </td>
                 </tr>
@@ -913,6 +1022,14 @@
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
                         Pesan untuk petugas/admin
                     </td>
                 </tr>
@@ -1035,6 +1152,14 @@
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
                         Pesan untuk petugas/admin
                     </td>
                 </tr>
@@ -1122,6 +1247,14 @@
                 </tr>
                 <tr>
                     <td>{{ $surat->alamat }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
@@ -1239,6 +1372,14 @@
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
                         Pesan untuk petugas/admin
                     </td>
                 </tr>
@@ -1337,6 +1478,14 @@
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
                         Pesan untuk petugas/admin
                     </td>
                 </tr>
@@ -1432,6 +1581,14 @@
                 </tr>
                 <tr>
                     <td>{{ $surat->alamat }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
@@ -1565,6 +1722,14 @@
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
                         Pesan untuk petugas/admin
                     </td>
                 </tr>
@@ -1668,6 +1833,14 @@
             </tr>
             <tr>
                 <td>{{ $surat->keperluan }} <br> <br></td>
+            </tr>
+            <tr>
+                <td class="w-[40%] lg:w-[15%] font-bold">
+                    Jenis Tanda Tangan
+                </td>
+            </tr>
+            <tr>
+                <td>{{ $surat->kttd }} <br> <br></td>
             </tr>
             <tr>
                 <td class="w-[40%] lg:w-[15%] font-bold">
@@ -1809,6 +1982,14 @@
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
                         Pesan untuk petugas/admin
                     </td>
                 </tr>
@@ -1916,6 +2097,14 @@
                 </tr>
                 <tr>
                     <td>{{ $surat->alamat_penerima }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
@@ -2037,6 +2226,14 @@
                 </tr>
                 <tr>
                     <td>{{ $surat->keterangan }} <br> <br></td>
+                </tr>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
                 </tr>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
@@ -2213,6 +2410,14 @@
                         <tr>
                             <td>{{ $surat->hub_pelapor_anak }} <br> <br></td>
                         </tr>
+                        <tr>
+                            <td class="w-[40%] lg:w-[15%] font-bold">
+                                Jenis Tanda Tangan
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{ $surat->kttd }} <br> <br></td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -2350,7 +2555,14 @@
                         <tr>
                             <td>{{ $surat->hub_pelapor_almarhum }} <br> <br></td>
                         </tr>
-
+                        <tr>
+                            <td class="w-[40%] lg:w-[15%] font-bold">
+                                Jenis Tanda Tangan
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{ $surat->kttd }} <br> <br></td>
+                        </tr>
                     </table>
                 </div>
             </div>
