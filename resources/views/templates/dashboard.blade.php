@@ -34,12 +34,18 @@
                     <i class="bx bx-menu mr-2" onclick="openSidebar()"></i>
                     <a href="{{ route('beranda') }}"><img src="{{ asset('img/desa.png') }}" width="150" alt="Logo!"></a>
                 </span>
-                <span class="text-black bg-light top-5 items-center rounded-5" style="padding: .50rem; border: 1px solid;">
-                    <span class="mx-3 font-medium lg:text-base text-sm capitalize">
-                        {{ auth()->user()->nama }}
+                <span class="text-black bg-light top-5 items-center rounded-5" style="padding: .50rem; border: 1px solid; display: inline-block; overflow: hidden;">
+                    <span class="mx-3 font-medium lg:text-base text-sm capitalize" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden; max-width: 120px;">
+
+                        <!-- Display full name on larger screens -->
+                        <span id="usernameLargeScreen" class="lg:inline">{{ auth()->user()->nama }}</span>
+
+                        <!-- Display abbreviated name on smaller screens -->
+                        <span id="usernameSmallScreen" class="lg:hidden">{{ substr(auth()->user()->nama, 0, 12) . '...' }}</span>
                     </span>
                     <img class=" inline-block h-6 w-6 lg:h-8 lg:w-8 rounded-full themeColor" src="{{ asset('img/user.png') }}" alt="{{ auth()->user()->nama }}">
                 </span>
+
             </div>
         </nav>
 
@@ -51,7 +57,10 @@
     @include('templates/modal')
     <div id="overlay" class="fixed hidden z-40 w-screen h-screen inset-0 bg-secondary bg-opacity-40"></div>
 
+    <script src="{{ asset('/js/costum.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/tabel.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/main.js') }}" type="text/javascript"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
     <!-- Bootstrap JavaScript CDN -->

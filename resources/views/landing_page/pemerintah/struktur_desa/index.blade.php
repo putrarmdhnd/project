@@ -113,9 +113,8 @@ Struktur Organisasi
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-md-8">
+            <div class="iconLembagaDesa col-md-8">
                 <div class="row text-center">
-
                     <div class="col-6 col-lg-4 mb-3">
                         <div class="card penduduk-card">
                             <div class="card-body">
@@ -179,7 +178,7 @@ Struktur Organisasi
 
                 </div>
             </div>
-            <div class="col-md-4 mb-5">
+            <div class="AnggotaLembaga col-md-4 mb-5">
                 <div class="tg-wrap">
                     <table>
                         <thead>

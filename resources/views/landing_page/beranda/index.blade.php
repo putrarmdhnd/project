@@ -4,7 +4,7 @@
 @section('content')
 <div class="content-wrapper">
     <div class="d-sm-block">
-        <section class="wrapper video-wrapper bg-overlay ratio ratio-21x9" id="hero">
+        <section class="wrapper video-wrapper bg-overlay ratio ratio-21x9 shadow" id="hero">
             <video poster="{{ asset('img/landing-page/carousel-2.png') }}" src="{{ asset('img/landing-page/luwu.mp4') }}" autoplay="" loop="" playsinline="" muted="" __idm_id__="3162113"></video>
             <div class="video-content">
                 <div class="container text-center">
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <div data-aos="flip-right" data-aos-offset="100" data-aos-delay="600" class="col-md-6 col-lg-4 mb-3 text-center">
+                <div data-aos="flip-right" data-aos-offset="100" data-aos-delay="600" class="iconKeluarga  col-lg-4 mb-3 text-center">
                     <div class="card card-demografi-penduduk shadow">
                         <div class="card-body">
                             <p class="card-demografi-penduduk__info mb-4 fw-semibold">Total Penduduk</p><img src="{{ asset('img/landing-page/iconPenduduk.svg') }}" alt="icon jumlah perempuan" height="100">
@@ -144,16 +144,16 @@
                     <div class="col-md-6 mb-3">
                         <div class="card card-idm card-idm__skor card-dana-masuk">
                             <div class="card-body">
-                                <div class="row">
+                                <div class="row d-block">
                                     @foreach($apb as $item)
-                                    <div class="col-md-6">
+                                    <div class="col-12">
                                         @isset($item->tahun)
                                         <p class="card-idm__text">Pendapatan Desa <br>Tahun {{ $item->tahun }}</p>
                                         @endisset
                                     </div>
-                                    <div class="col-md-6 text-center center-v">
+                                    <div class="col-12 text-center center-v">
                                         @if($item->anggaran !== null)
-                                        <p class="card-idm__jumlah fs-4">Rp{{ number_format($item->anggaran, 0, ',', '.') }}-</p>
+                                        <p class="card-idm__jumlah fw-bold">Rp{{ number_format($item->anggaran, 0, ',', '.') }}</p>
                                         @endif
                                     </div>
                                     @endforeach
@@ -164,15 +164,15 @@
                     <div class="col-md-6">
                         <div class="card card-idm card-idm__status card-dana-keluar">
                             <div class="card-body">
-                                <div class="row">
+                                <div class="row d-block">
                                     @foreach($apb as $item)
                                     @isset($item->tahun)
-                                    <div class="col-md-6">
+                                    <div class="col-12">
                                         <p class="card-idm__text">Belanja Desa <br>Tahun {{ $item->tahun }}</p>
                                     </div>
-                                    <div class="col-md-6 text-center center-v ">
+                                    <div class="col-12 text-center center-v ">
                                         @if($latestItem = $item->latest()->first())
-                                        <p class="card-idm__jumlah fs-4">Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}-</p>
+                                        <p class="card-idm__belanja fw-bold">- Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}</p>
                                         @endif
                                     </div>
                                     @endisset
@@ -201,20 +201,20 @@
                     </svg></a></div>
             <div class="row">
                 @foreach($beritas as $berita)
-                <div class="col-4 Berita">
-                    <div class="card cardBeritaPengumuman" style="border: none;">
-                        <a href="{{ route('informasi.berita.detail', $berita->slug) }}">
+                <div class="col-4 Berita d-flex">
+                    <div class="card cardBeritaPengumuman flex-fill" style="border: none;">
+                        <a href="{{ route('informasi.berita.detail', $berita->slug) }}" class="h-100 d-flex flex-column">
                             <div class="card-body artikel-card">
                                 <div class="row">
                                     <div class="col-12">
                                         <div id="thumbnail" class="col-12">
                                             <div class="thumbnail-container rounded-20 overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                                <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20 bg-light p-2" alt="..." style="object-fit: contain;">
+                                                <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 bg-light" alt="..." style="object-fit: contain;">
                                             </div>
                                             <p class="JenisBeritaPengumuman my-3">{{ $berita->tipe }}</p>
-                                            <p class="artikel-judul">{{ $berita->judul_singkat }}</p>
+                                            <p class="artikel-judul">{{ substr($berita->judul_singkat, 0, 42) . '...' }}</p>
                                             <p id="desc" class=" d-block desc text-black my-1" align="justify" style="font-size: 12px;">
-                                                {{ $berita->deskripsi_singkat }}
+                                                {{ substr($berita->deskripsi_singkat, 0, 110) . '...' }}
                                             </p>
                                         </div>
 
@@ -241,7 +241,7 @@
     </article>
 </section>
 
-<section class="pt-2 Demografi bg-light">
+<section id="Demografi" class="pt-2 Demografi bg-light">
     <div class="container p-0">
         <div data-aos="fade-right" data-aos-offset="100" data-aos-delay="200" class="HeaderArticle my-3">
             <h4 class="">Demografi Desa</h4>
@@ -289,8 +289,5 @@
         </div>
     </article>
 </section>
-
-
-
 
 @endsection

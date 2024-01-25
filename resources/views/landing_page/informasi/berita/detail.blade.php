@@ -6,7 +6,7 @@
 @section('content')
 <div class="container-fluid" style="padding-top: 5rem; padding-bottom: 3rem;">
     <div class="row">
-        <div class="col-8 bg-light">
+        <div class="BeritaDetail col-8 bg-light">
             <article id="breadcrumb" class="card container px-5 bg-white">
                 <div id="details-news">
                     <div class="bg-light p-3">
@@ -27,13 +27,14 @@
                         @endif
                     </div>
 
-                    <div id="content-desc" class="py-5 px-5 lh-lg content-p" style="font-size: 16px; letter-spacing: .05em; line-height: 1.6em; text-align: justify;">
-                        {!! $berita->deskripsi !!}
+                    <div class=" overflow-hidden">
+                        <div id="content-desc" class="content-desc py-5 px-5 lh-lg content-p thumbnail-image object-cover" alt="..." style="object-fit: contain;"> {!! $berita->deskripsi !!}</div>
                     </div>
+
                 </div>
             </article>
         </div>
-        <div class="col-4">
+        <div class="LatestNews col-4">
             <div class="bg-white">
                 <div id="latest-news">
                     <div id="body" class="card py-3 px-4">

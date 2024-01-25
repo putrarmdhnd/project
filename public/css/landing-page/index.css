@@ -205,7 +205,7 @@ a {
     justify-content: center;
     margin: auto;
 
-    width: 75%;
+
 }
 
 .card-demografi-penduduk__info,
@@ -224,10 +224,14 @@ a {
 
 .card-idm__jumlah {
     color: rgb(40, 134, 40);
+
+    font-size: 28px;
 }
 
-.card-idm__infoStatus {
+.card-idm__belanja {
     color: rgb(255, 55, 0);
+    
+    font-size: 28px;
 }
 
 #apbdes {
@@ -395,31 +399,30 @@ a {
 }
 
 .artikel-card {
-    min-height: 360px;
     border: 2px solid #E0E0E0;
     border-radius: 10px;
     padding-bottom: 0px;
-  }
+}
 
-  .artikel-thumbnail {
+.artikel-thumbnail {
     width: 100% !important;
-  }
+}
 
-  .artikel-judul {
+.artikel-judul {
     font-size: 1.2rem;
     font-weight: 600;
     margin-top: 1rem;
     margin-bottom: 0px;
     line-height: 1.45;
     color: #0091bc;
-  }
+}
 
-  .artikel-tanggal,
-  .artikel-penulis {
+.artikel-tanggal,
+.artikel-penulis {
     font-size: .8rem;
     color: gray;
 
-  }
+}
 
 
 .isiSurat1 {
@@ -486,6 +489,10 @@ a {
 
     .detail-pengeluaran {
         font-size: 10px;
+    }
+
+    .card-idm__jumlah , .card-idm__belanja {
+        font-size: 18px;
     }
 
     .cardBeritaPengumuman h6,
@@ -640,6 +647,15 @@ a {
     .ImgSurat {
         padding: 0;
     }
+
+    .content-desc p {
+        font-size: 12px;
+    }
+
+    .textDashboard {
+        font-size: 11px;
+    }
+
 }
 
 /* Media query untuk tampilan laptop */
@@ -667,7 +683,15 @@ a {
     #carousel .c-img {
         height: 500vh;
     }
+
+    /* font untuk dashboard */
+
+    .textDashboardBottom {
+        font-size: 12px;
+        line-height: 1.5rem;
+    }
 }
+
 
 /* Footer */
 .footer-2-3 {
@@ -1094,7 +1118,38 @@ a {
 
 }
 
-.font-table{
+.font-table {
     font-size: 12px;
-    
+
 }
+
+/* Ukuran layar antara 768 dan 991 piksel */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* Gaya untuk tablet dalam orientasi potrait */
+
+    .HeaderArticle {
+        width: 45%;
+    }
+
+    .artikel-judul {
+        font-size: 14px;
+    }
+}
+
+/*CSS untuk tabel*/
+
+/* Adjust the existing styles */
+.textTabelTop,
+.textTable {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+/* Optionally, you can add max-width to prevent extremely long content from causing issues */
+.textTabelTop,
+.textTable {
+    max-width: 200px; /* Adjust the value based on your needs */
+}
+

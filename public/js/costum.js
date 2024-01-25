@@ -1,86 +1,265 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Your code here
-  let beritaPengumuman = document.querySelector("#BeritaPengumuman");
-  let tentangDesa = document.querySelector("#MengenaiDesa");
-  let APBDesa = document.querySelector("#Apbdes");
-  let penduduk = document.querySelector("#DataKependudukan");
+  // Tampilan Berita
+  const iconKeluarga = document.querySelectorAll(".iconKeluarga");
+  const descElements = document.querySelectorAll('.desc');
+  const latestNewsElements = document.getElementById('latest-news');
+  const colDetailBerita = document.querySelectorAll(".BeritaDetail");
+  const padBerita = document.querySelectorAll(".Berita");
+  const padContentDesc = document.querySelectorAll(".content-desc");
 
-  let angkaJumlahPenduduk = document.querySelectorAll(".card-demografi-penduduk__jumlah");
-  let titleJumlahPenduduk = document.querySelectorAll(".card-demografi-penduduk__info");
+  //Tampilan Kepemerintahan
+  const iconLembagaDesa = document.querySelectorAll(".iconLembagaDesa");
+  const AnggotaLembaga = document.querySelectorAll(".AnggotaLembaga");
 
-  let layoutCard = document.querySelectorAll(".layout-card");
-  let cardDanaMasuk = document.querySelectorAll(".card-dana-masuk");
-  let cardDanaKeluar = document.querySelectorAll(".card-dana-keluar");
+  //Tampilan Landing-Page
+  var demografiElement = document.getElementById('Demografi');
+  const beritaPengumuman = document.querySelector("#BeritaPengumuman");
+  const tentangDesa = document.querySelector("#MengenaiDesa");
+  const APBDesa = document.querySelector("#Apbdes");
+  const penduduk = document.querySelector("#DataKependudukan");
 
-  let cardimgStruktur = document.querySelectorAll(".card-imgStruktur");
+  const angkaJumlahPenduduk = document.querySelectorAll(".card-demografi-penduduk__jumlah");
+  const titleJumlahPenduduk = document.querySelectorAll(".card-demografi-penduduk__info");
 
-  let detailPembelanjaan = document.querySelectorAll(".detailPembelanjaan");
+  const layoutCard = document.querySelectorAll(".layout-card");
+  const cardDanaMasuk = document.querySelectorAll(".card-dana-masuk");
+  const cardDanaKeluar = document.querySelectorAll(".card-dana-keluar");
 
+  const cardimgStruktur = document.querySelectorAll(".card-imgStruktur");
+
+  const detailPembelanjaan = document.querySelectorAll(".detailPembelanjaan");
+
+  //Tampilan Dashboard
+  const textDashboard = document.querySelectorAll(".textDashboard");
+  const textDashboardBottom = document.querySelectorAll(".textDashboardBottom");
+
+  const layoutWelcome = document.querySelectorAll(".layoutWelcome");
+  const layoutBaganWelcome = document.querySelectorAll(".layoutBaganWelcome");
+  const textheadDash = document.querySelectorAll(".headDash");
+
+  const layoutBtnPengaduan = document.querySelectorAll(".layoutBtnPengaduan")
+  const btnPengaduan = document.querySelectorAll(".btnPengaduan")
+
+  //Table Tampilan,layout, dan text
+  const textTabelTop = document.querySelectorAll(".textTabelTop")
+  const textTabel = document.querySelectorAll(".textTable")
+
+  //Tampilan header username
+
+  const usernameLargeScreen = document.getElementById("usernameLargeScreen");
+  const usernameSmallScreen = document.getElementById("usernameSmallScreen");
+
+  // Check viewport width and apply styles accordingly
   function checkViewportWidth() {
-
     if (window.innerWidth <= 450) {
-      detailPembelanjaan.forEach(function (element) {
-        element.classList.remove("m-4");
-      });
-
-      cardimgStruktur.forEach(function (element) {
-        element.classList.add("col-12");
-        element.classList.remove("col-8");
-      });
-
-      layoutCard.forEach(function (element) {
-        element.classList.add("d-block");
-        element.classList.remove("d-flex");
-        element.classList.remove("m-2");
-      });
-
-      cardDanaMasuk.forEach(function (element) {
-        element.classList.remove("col-6");
-        element.classList.add("col-12");
-      });
-
-      cardDanaKeluar.forEach(function (element) {
-        element.classList.remove("col-6");
-        element.classList.add("col-12");
-      });
-
-      angkaJumlahPenduduk.forEach(function (element) {
-        element.classList.add("text-center");
-      });
-      titleJumlahPenduduk.forEach(function (element) {
-        element.classList.add("text-center");
-      });
-
-
-
-      beritaPengumuman.classList.add("container");
-      tentangDesa.classList.add("container");
-
-      APBDesa.classList.remove("mt-5");
-
-      penduduk.classList.remove("p-5");
-      penduduk.classList.add("p-3");
-
-
-
-    } else {
-
-      beritaPengumuman.classList.remove("container");
-      tentangDesa.classList.remove("container");
-
-      angkaJumlahPenduduk.forEach(function (element) {
-        element.classList.remove("text-center");
-      });
-      titleJumlahPenduduk.forEach(function (element) {
-        element.classList.remove("text-center");
-      });
-
+      applyStylesForMobileScreens()
+    }
+    else if (window.innerWidth <= 1200) {
+      applyStylesForSmallerScreens();
+    }
+    else {
+      applyStylesForLargerScreens();
     }
   }
-  checkViewportWidth();
+
+  // Apply styles for smaller screens
+  function applyStylesForMobileScreens() {
+    removeDescElementsForMobile()
+    removeLatestNewsElement();
+    adjustColumnWidths();
+    addContainerClassToElement(demografiElement);
+    addContainerClassToElement(beritaPengumuman);
+    addContainerClassToElement(tentangDesa);
+    removeUserName(usernameLargeScreen)
+    // ... Add more styles for smaller screens if needed
+  }
+  // Apply styles for smaller screens
+  function applyStylesForSmallerScreens() {
+    removeDescElements();
+    removeLatestNewsElement();
+    adjustColumnWidths();
+    addContainerClassToElement(demografiElement);
+    addContainerClassToElement(beritaPengumuman);
+    addContainerClassToElement(tentangDesa);
+    adjustMobile()
+    removeUserName(usernameSmallScreen)
+    // ... Add more styles for smaller screens if needed
+  }
+
+
+  // Apply styles for larger screens
+  function applyStylesForLargerScreens() {
+    removeContainerClassFromElement(demografiElement);
+
+  }
+
+  function adjustMobile() {
+
+    // Lembaga dan organisasi untuk tampilan tablet
+    iconLembagaDesa.forEach(function (element) {
+      element.classList.remove("col-md-8");
+      element.classList.add("col-6");
+    });
+    AnggotaLembaga.forEach(function (element) {
+      element.classList.remove("col-md-4");
+      element.classList.add("col-6");
+    });
+
+  }
+
+  // Remove description elements
+  function removeDescElements() {
+    //Tampilan Berita
+    descElements.forEach(function (element) {
+      element.remove();
+    });
+
+    padContentDesc.forEach(function (element) {
+      element.classList.remove("px-5");
+      element.classList.add("px-2");
+    });
+
+    padBerita.forEach(function (element) {
+      element.classList.add("py-2");
+    });
+
+
+    // Dashboard Tampilan Tablet
+    textDashboard.forEach(function (element) {
+      element.classList.remove("text-base");
+    });
+    textDashboardBottom.forEach(function (element) {
+      element.classList.remove("text-base");
+
+      element.style.lineHeight = '1rem';
+    });
+
+    btnPengaduan.forEach(function (element) {
+      element.classList.remove("px-5");
+      element.classList.add("px-4");
+    });
+
+    //Tabel text
+    textTabel.forEach(function (element) {
+      element.style.fontSize = '12px';
+    });
+
+  }
+
+  function removeDescElementsForMobile() {
+    descElements.forEach(function (element) {
+      element.remove();
+    });
+
+    padContentDesc.forEach(function (element) {
+      element.classList.remove("px-5");
+      element.classList.add("px-2");
+    });
+
+
+    // Dashboard Tampilan Mobile
+    textDashboard.forEach(function (element) {
+      element.classList.remove("text-lg");
+      element.classList.remove("text-base");
+
+    });
+    textDashboardBottom.forEach(function (element) {
+      element.classList.remove("text-base");
+      element.classList.add("mt-1");
+
+      element.style.fontSize = '8px';
+      element.style.lineHeight = '12px';
+    });
+
+    layoutWelcome.forEach(function (element) {
+      element.classList.remove("flex");
+      element.classList.add("d-block");
+
+      element.classList.remove("py-4");
+      element.classList.add("py-5");
+      element.classList.add("pt-4");
+    });
+
+    layoutBaganWelcome.forEach(function (element) {
+
+      element.classList.remove("px-9");
+      element.classList.add("px-4");
+
+    });
+
+    layoutBtnPengaduan.forEach(function (element) {
+
+      element.classList.add("float-end");
+
+    });
+    btnPengaduan.forEach(function (element) {
+      element.classList.remove("px-5");
+      element.classList.add("px-3");
+
+      element.style.fontSize = '8px';
+    });
+
+    textheadDash.forEach(function (element) {
+      element.classList.remove("text-lg");
+    });
+
+    //Tabel text
+    textTabelTop.forEach(function (element) {
+      element.style.fontSize = '11px';
+    });
+    textTabel.forEach(function (element) {
+      element.style.fontSize = '10px';
+    });
+
+  }
+
+  // Remove latest news element
+  function removeLatestNewsElement() {
+    if (latestNewsElements) {
+      latestNewsElements.remove();
+    }
+  }
+
+  function removeUserName(element) {
+    if (element) {
+      element.remove();
+    }
+  }
+
+  // Adjust column widths for various elements
+  function adjustColumnWidths() {
+    colDetailBerita.forEach(function (element) {
+      element.classList.remove("col-8");
+      element.classList.add("col-12");
+    });
+
+    // ... Add more adjustments for column widths if needed
+  }
+
+  // Add 'container' class to an element
+  function addContainerClassToElement(element) {
+    if (element) {
+      element.classList.add('container');
+    }
+  }
+
+  // Remove 'container' class from an element
+  function removeContainerClassFromElement(element) {
+    if (element) {
+      element.classList.remove('container');
+    }
+  }
+
+  // Event listener for viewport width changes
   window.addEventListener("resize", checkViewportWidth);
+
+  // Initial check on page load
+  checkViewportWidth();
 });
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   var root1 = am5.Root.new("apbdes");
@@ -134,7 +313,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
   valueAxis.min = 0;
-  valueAxis.title.text = "Jumlah";
+  valueAxis.title.text = "Pengeluaran";
 
   // Create series
   function createSeries(field, name, stacked) {
@@ -147,7 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
     series.columns.template.width = am4core.percent(95);
   }
   createSeries("anggaran", "Anggaran");
-  createSeries("jumlah", "Jumlah");
+  createSeries("jumlah", "Pengeluaran");
   // Add legend
   chart.legend = new am4charts.Legend();
 });
