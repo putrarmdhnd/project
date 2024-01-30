@@ -62,6 +62,10 @@ document.addEventListener("DOMContentLoaded", function () {
   //Layout col pada pembuatan surat online
   const colPembuatanSurat__Online = document.querySelectorAll(".layout__surat");
 
+  //pembuatan layout up button pada mobile dan screen besar
+  const btnDown_largeKependudukan = document.getElementById("btn__down_largeKependudukan");
+  const btnUP_mobileKependudukan = document.getElementById("btn__up_mobileKependudukan");
+
   // Check viewport width and apply styles accordingly
   function checkViewportWidth() {
     if (window.innerWidth <= 450) {
@@ -85,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addContainerClassToElement(tentangDesa);
     removeElement(usernameLargeScreen);
     removeElement(imageLargeScreen);
+    removeElement(btnDown_largeKependudukan);
 
     // ... Add more styles for smaller screens if needed
   }
@@ -99,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     adjustMobile();
     removeElement(usernameSmallScreen);
     removeElement(imageSmallScreen);
+    removeElement(btnUP_mobileKependudukan);
     // ... Add more styles for smaller screens if needed
   }
 
@@ -107,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function applyStylesForLargerScreens() {
     removeContainerClassFromElement(demografiElement);
     removeElement(imageSmallScreen);
+    removeElement(btnUP_mobileKependudukan);
   }
 
   function adjustMobile() {

@@ -5,7 +5,7 @@
 <div class="layoutWelcome bg-white py-4 px-9 mb-5 rounded-lg">
     <div class="row d-flex align-items-center">
         <div class="col-12"></div>
-        <div class="col-8">
+        <div class="col-12">
             <h1 class="text-lg lg:text-2xl headDash fw-bolder mb-2">Data Penduduk Desa Palasari</h1>
             <p class="textDashboard text-base text-[13px] lg:text-lg font-normal text-secondary">Semua data dari masyarakat Desa Palasari Kecamatan Cipanas</p>
         </div>
@@ -35,18 +35,27 @@
             </div>
         </div>
         <div class="col-12 mt-5">
-            <div class="row align-items-center py-2">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <input type="text" id="searchInput" class="form-control" placeholder="Search">
-                        <button class="btn btn-outline-secondary" type="button">Search</button>
-                    </div>
-                </div>
-                <div class="col-md-6 d-flex justify-content-end p-2">
-                    <a href="/data/input" class="text-black focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center text-decoration-none" style="background-color: #b7efff;">Tambah Data</a>
-                    <a href="#" class="text-black focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center text-decoration-none ms-2" style="background-color: #b7efff;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <div id="btn__up_mobileKependudukan" class="col-md-6 d-flex justify-content-end py-2">
+                <div class="layoutBtnPengaduan">
+                    <a href="/data/input" class="btnPengaduan text-black focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center text-decoration-none" style="background-color: #b7efff;">Tambah Data</a>
+                    <a href="#" class="btnPengaduan text-black focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center text-decoration-none ms-2" style="background-color: #b7efff;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Import Data
                     </a>
+                </div>
+            </div>
+            <div class="row align-items-center py-2">
+                <div class="col-md-6 py-2">
+                    <div class="input-group">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search">
+                    </div>
+                </div>
+                <div id="btn__down_largeKependudukan" class="col-md-6 d-flex justify-content-end py-2">
+                    <div class="layoutBtnPengaduan">
+                        <a href="/data/input" class="btnPengaduan text-black focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center text-decoration-none" style="background-color: #b7efff;">Tambah Data</a>
+                        <a href="#" class="btnPengaduan text-black focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center text-decoration-none ms-2" style="background-color: #b7efff;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Import Data
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
