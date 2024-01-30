@@ -22,7 +22,7 @@
     @endcan
 </div>
 <div class="layoutBaganWelcome bg-white py-6 px-9 rounded-lg">
-    <ol class="items-center px-1 flex rounded-md">
+    <ol class="items-center px-1 d-flex rounded-md">
         <li class="relative mb-6 lg:mb-0">
             <div class="flex items-center">
                 <div class="flex z-10 justify-center items-center w-8 h-8 rounded-full bg-primary shrink-0">

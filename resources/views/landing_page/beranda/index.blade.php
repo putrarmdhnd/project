@@ -36,19 +36,22 @@
             <div class="row">
                 <div class="col-md-6 VisiMisiImg">
                     <div data-aos="fade-right" class="">
-                        <img src="{{ asset('img/landing-page/carousel-3.jpg') }}" width="80%" class="img-fluid" alt="Gambar Mengenai Desa" style="border-radius: 1rem;">
+                        <img src="{{ asset('img/landing-page/carousel-3.jpg') }}" height="100%" class="img-fluid" alt="Gambar Mengenai Desa" style="border-radius: 1rem;">
                     </div>
                 </div>
                 <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="500" class="KeteranganVisiMisi col-md-6 aos-init aos-animate">
-                    <div class="row">
-                        <div class=" ">
+                    <div class="row p-3">
+                        <div class="card-body card_color p-3 rounded-20 border">
+
                             <h5 class="fw-bold py-3 headContent">SEJARAH DESA</h5>
+
+                            <div class="isiContent card_color">
+                                <p>Desa Palasari merupakan pemekaran dari desa Cimacan Kecamatan Cipanas (Dahulu Kecamatan Pacet)
+                                    pada Tanggal 17 Januari 1980. Desa Palasari Berada di kaki Gunung Gede Pangrango Yang Terdapat Tugu Kerajaan Prabu Siliwanggi,Tugu Tersebut menandakan 3 (Tiga) Daerah kekuasaanya yaitu cianjur, Sukabumi, dan Bogor.
+                                    Pemerintah Desa Palasari Sejak Tahun 1980 Mengalami Pergantian Kepala Desa sebanyak 15 kali dan yang menjabat saat ini adalah H.Ridwan.SH</p>
+                            </div>
                         </div>
-                        <div class="isiContent">
-                            <p>Desa Palasari merupakan pemekaran dari desa Cimacan Kecamatan Cipanas (Dahulu Kecamatan Pacet)
-                                pada Tanggal 17 Januari 1980. Desa Palasari Berada di kaki Gunung Gede Pangrango Yang Terdapat Tugu Kerajaan Prabu Siliwanggi,Tugu Tersebut menandakan 3 (Tiga) Daerah kekuasaanya yaitu cianjur, Sukabumi, dan Bogor.
-                                Pemerintah Desa Palasari Sejak Tahun 1980 Mengalami Pergantian Kepala Desa sebanyak 15 kali dan yang menjabat saat ini adalah H.Ridwan.SH</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -57,20 +60,28 @@
     <section id="visi-misi" class="">
         <article class="space-subHeader container">
             <div class="row">
-                <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="500" class="KeteranganVisiMisi col-md-6 aos-init aos-animate">
-                    <div class="row">
-                        <div class="">
-                            <h5 class="fw-bold py-3 headContent">VISI & MISI</h5>
-                        </div>
-                        <div class="isiContent">
-                            <p>“PALASARI LEBIH CERDAS, SEJAHTERA, ADIL DAN BERAKHLAKUL KARIMAH “</p>
-                            <p>Meningkatkan SDM dan SDA Desa Palasari untuk kesejahteraan masyarakat Desa Palasari serta Meningkatkan Pembinaan yang berakhlaqul karimah dalam kehidupan bermasyarakat dan bernegara dan Mewujudkan iklim demokrasi ditingkat desa.</p>
-                        </div>
+                <div id="img_Smallscreen" class="col-md-6 VisiMisiImg">
+                    <div data-aos="fade-right" class="">
+                        <img src="{{ asset('img/landing-page/carousel-2.png') }}" height="100%" class="img-fluid rounded-20" alt="Gambar Mengenai Desa" style="border-radius: 1rem;">
                     </div>
                 </div>
-                <div class="col-md-6 VisiMisiImg">
+                <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="500" class="KeteranganVisiMisi col-md-6 aos-init aos-animate">
+                    <div class="row p-3">
+                        <div class="card-body card_color p-3 rounded-20 border">
+
+                            <h5 class="fw-bold py-3 headContent">VISI & MISI</h5>
+
+                            <div class="isiContent">
+                                <p>“PALASARI LEBIH CERDAS, SEJAHTERA, ADIL DAN BERAKHLAKUL KARIMAH “</p>
+                                <p>Meningkatkan SDM dan SDA Desa Palasari untuk kesejahteraan masyarakat Desa Palasari serta Meningkatkan Pembinaan yang berakhlaqul karimah dalam kehidupan bermasyarakat dan bernegara dan Mewujudkan iklim demokrasi ditingkat desa.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="img_Largescreen" class="col-md-6 VisiMisiImg">
                     <div data-aos="fade-right" class="">
-                        <img src="{{ asset('img/landing-page/carousel-2.png') }}" width="80%" class="img-fluid rounded-20" alt="Gambar Mengenai Desa" style="border-radius: 1rem;">
+                        <img src="{{ asset('img/landing-page/carousel-2.png') }}" height="100%" class="img-fluid rounded-20" alt="Gambar Mengenai Desa" style="border-radius: 1rem;">
                     </div>
                 </div>
             </div>
@@ -90,7 +101,7 @@
         <section class="mt-5">
             <div class="row mt-3">
                 <div data-aos="flip-right" data-aos-offset="100" data-aos-delay="200" class="col-6 col-lg-4 mb-3 text-center">
-                    <div class="card card-demografi-penduduk shadow">
+                    <div class="card card-demografi-penduduk card_color shadow">
                         <div class="card-body">
                             <p class="card-demografi-penduduk__info mb-4 fw-semibold">Perempuan</p><img src="{{ asset('img/landing-page/iconPendudukPerempuan.svg') }}" alt="icon jumlah perempuan" height="100">
                             <p id="jumlahPerempuan" class="card-demografi-penduduk__jumlah mb-0 mt-4 fw-semibold">1802</p>
@@ -98,7 +109,7 @@
                     </div>
                 </div>
                 <div data-aos="flip-right" data-aos-offset="100" data-aos-delay="400" class="col-6 col-lg-4 mb-3 text-center">
-                    <div class="card card-demografi-penduduk shadow">
+                    <div class="card card-demografi-penduduk card_color shadow">
                         <div class="card-body">
                             <p class="card-demografi-penduduk__info mb-4 fw-semibold">Laki-Laki</p><img src="{{ asset('img/landing-page/iconPendudukLaki.svg') }}" alt="icon jumlah perempuan" height="100">
                             <p id="jumlahLaki" class="card-demografi-penduduk__jumlah mb-0 mt-4 fw-semibold">1849</p>
@@ -106,7 +117,7 @@
                     </div>
                 </div>
                 <div data-aos="flip-right" data-aos-offset="100" data-aos-delay="600" class="iconKeluarga  col-lg-4 mb-3 text-center">
-                    <div class="card card-demografi-penduduk shadow">
+                    <div class="card card-demografi-penduduk card_color shadow">
                         <div class="card-body">
                             <p class="card-demografi-penduduk__info mb-4 fw-semibold">Total Penduduk</p><img src="{{ asset('img/landing-page/iconPenduduk.svg') }}" alt="icon jumlah perempuan" height="100">
                             <p id="jumlahPenduduk" class="card-demografi-penduduk__jumlah mb-0 mt-4 fw-semibold">3651</p>
@@ -151,9 +162,9 @@
                                         <p class="card-idm__text">Pendapatan Desa <br>Tahun {{ $item->tahun }}</p>
                                         @endisset
                                     </div>
-                                    <div class="col-12 text-center center-v">
+                                    <div class="col-12 text-end center-v">
                                         @if($item->anggaran !== null)
-                                        <p class="card-idm__jumlah fw-bold">Rp{{ number_format($item->anggaran, 0, ',', '.') }}</p>
+                                        <p class="card-idm__jumlah fw-bold h2">Rp{{ number_format($item->anggaran, 0, ',', '.') }}</p>
                                         @endif
                                     </div>
                                     @endforeach
@@ -170,9 +181,9 @@
                                     <div class="col-12">
                                         <p class="card-idm__text">Belanja Desa <br>Tahun {{ $item->tahun }}</p>
                                     </div>
-                                    <div class="col-12 text-center center-v ">
+                                    <div class="col-12 text-end center-v ">
                                         @if($latestItem = $item->latest()->first())
-                                        <p class="card-idm__belanja fw-bold">- Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}</p>
+                                        <p class="card-idm__belanja fw-bold text-danger h2">- Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}</p>
                                         @endif
                                     </div>
                                     @endisset
@@ -202,14 +213,14 @@
             <div class="row">
                 @foreach($beritas as $berita)
                 <div class="col-4 Berita d-flex">
-                    <div class="card cardBeritaPengumuman flex-fill" style="border: none;">
+                    <div class="card cardBeritaPengumuman flex-fill " style="border: none;">
                         <a href="{{ route('informasi.berita.detail', $berita->slug) }}" class="h-100 d-flex flex-column">
-                            <div class="card-body artikel-card">
+                            <div class="card-body artikel-card shadow card_color">
                                 <div class="row">
                                     <div class="col-12">
                                         <div id="thumbnail" class="col-12">
                                             <div class="thumbnail-container rounded-20 overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                                <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 bg-light" alt="..." style="object-fit: contain;">
+                                                <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image position-absolute top-0 start-0 w-100 h-100 bg-dark" alt="..." style="object-fit: contain;">
                                             </div>
                                             <p class="JenisBeritaPengumuman my-3">{{ $berita->tipe }}</p>
                                             <p class="artikel-judul">{{ substr($berita->judul_singkat, 0, 42) . '...' }}</p>
@@ -241,17 +252,17 @@
     </article>
 </section>
 
-<section id="Demografi" class="pt-2 Demografi bg-light">
+<section id="Demografi" class="pt-2 Demografi">
     <div class="container p-0">
         <div data-aos="fade-right" data-aos-offset="100" data-aos-delay="200" class="HeaderArticle my-3">
             <h4 class="">Demografi Desa</h4>
         </div>
     </div>
-    <article class=" space-subHeader container">
+    <article class="space-subHeader container">
         <div class="row d-block">
             <div data-aos="fade-up" data-aos-offset="100" data-aos-delay="300" class="DemografiLay KeteranganVisiMisi col-md-6 aos-init aos-animate">
                 <div class="row">
-                    <div class="mt-3 card border-0 shadow ">
+                    <div class="mt-3 card border-0 shadow card_color">
                         <div class="card-body demografiCard">
                             <h5 class="fw-bold my-2 headContent">Peta Desa</h5>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.4224179847984!2d107.03244507462495!3d-6.718196365684395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69b3c15cf56f1b%3A0x321b4a4d7a9721a9!2sKantor%20Desa%20Palasari!5e0!3m2!1sid!2sid!4v1692723106353!5m2!1sid!2sid" class="" width="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style=" border: 2px solid; "></iframe>

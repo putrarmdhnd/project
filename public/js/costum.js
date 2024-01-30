@@ -26,8 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const cardDanaMasuk = document.querySelectorAll(".card-dana-masuk");
   const cardDanaKeluar = document.querySelectorAll(".card-dana-keluar");
 
-  const cardimgStruktur = document.querySelectorAll(".card-imgStruktur");
-
   const detailPembelanjaan = document.querySelectorAll(".detailPembelanjaan");
 
   //Tampilan Dashboard
@@ -46,9 +44,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const textTabel = document.querySelectorAll(".textTable")
 
   //Tampilan header username
-
   const usernameLargeScreen = document.getElementById("usernameLargeScreen");
   const usernameSmallScreen = document.getElementById("usernameSmallScreen");
+
+  //Tampilan card pada Pengelolaan Data Kependudukan
+  const LayoutCardKependudukan = document.querySelectorAll(".LayoutCardKependudukan");
+  const layoutInsideCardKependudukan = document.querySelectorAll(".layoutInsideCardKependudukan");
+  const iconCardKependudukan = document.querySelectorAll(".iconCardKependudukan");
+
+  // Gambar Visi & Misi large dan small screen
+  const imageLargeScreen = document.getElementById("img_Largescreen");
+  const imageSmallScreen = document.getElementById("img_Smallscreen");
+
+  //gambar struktur anggota desa pada halaman kepemerintahan
+  const cardimgStruktur = document.querySelectorAll(".card-imgStruktur");
+
+  //Layout col pada pembuatan surat online
+  const colPembuatanSurat__Online = document.querySelectorAll(".layout__surat");
 
   // Check viewport width and apply styles accordingly
   function checkViewportWidth() {
@@ -71,7 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
     addContainerClassToElement(demografiElement);
     addContainerClassToElement(beritaPengumuman);
     addContainerClassToElement(tentangDesa);
-    removeUserName(usernameLargeScreen)
+    removeElement(usernameLargeScreen);
+    removeElement(imageLargeScreen);
+
     // ... Add more styles for smaller screens if needed
   }
   // Apply styles for smaller screens
@@ -82,8 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
     addContainerClassToElement(demografiElement);
     addContainerClassToElement(beritaPengumuman);
     addContainerClassToElement(tentangDesa);
-    adjustMobile()
-    removeUserName(usernameSmallScreen)
+    adjustMobile();
+    removeElement(usernameSmallScreen);
+    removeElement(imageSmallScreen);
     // ... Add more styles for smaller screens if needed
   }
 
@@ -91,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Apply styles for larger screens
   function applyStylesForLargerScreens() {
     removeContainerClassFromElement(demografiElement);
-
+    removeElement(imageSmallScreen);
   }
 
   function adjustMobile() {
@@ -145,6 +160,12 @@ document.addEventListener("DOMContentLoaded", function () {
       element.style.fontSize = '12px';
     });
 
+    //Gambar Struktur Organisasi
+    cardimgStruktur.forEach(function (element) {
+      element.classList.remove("col-8");
+      element.classList.add("col-12");
+    });
+
   }
 
   function removeDescElementsForMobile() {
@@ -162,6 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
     textDashboard.forEach(function (element) {
       element.classList.remove("text-lg");
       element.classList.remove("text-base");
+
+      element.classList.remove("h6")
 
     });
     textDashboardBottom.forEach(function (element) {
@@ -212,6 +235,28 @@ document.addEventListener("DOMContentLoaded", function () {
       element.style.fontSize = '10px';
     });
 
+    //Card dalam halaman kependudukan
+    layoutInsideCardKependudukan.forEach(function (element) {
+      element.classList.remove("py-3");
+      element.classList.add("py-1");
+    });
+    iconCardKependudukan.forEach(function (element) {
+      element.classList.add("p-0");
+    });
+
+    //Gambar Struktur Organisasi
+    cardimgStruktur.forEach(function (element) {
+      element.classList.remove("col-8");
+      element.classList.add("col-12");
+    });
+
+     // perubahan col dalam pembuatan surat online bagian input
+     colPembuatanSurat__Online.forEach(function(element){
+      element.classList.remove("col-4");
+      element.classList.add("col-6");
+
+    });
+
   }
 
   // Remove latest news element
@@ -221,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function removeUserName(element) {
+  function removeElement(element) {
     if (element) {
       element.remove();
     }
@@ -234,7 +279,10 @@ document.addEventListener("DOMContentLoaded", function () {
       element.classList.add("col-12");
     });
 
-    // ... Add more adjustments for column widths if needed
+    LayoutCardKependudukan.forEach(function (element) {
+      element.classList.remove("col-4")
+      element.classList.add("col-6")
+    });
   }
 
   // Add 'container' class to an element

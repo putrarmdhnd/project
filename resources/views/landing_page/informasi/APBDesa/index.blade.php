@@ -48,7 +48,7 @@ APBDesa
                         <div class="card card-idm card-idm__skor card-dana-masuk">
                             <div class="card-body">
                                 <div class="row d-block">
-                                @foreach ($apb->items() as $item)
+                                    @foreach ($apb->items() as $item)
                                     <div class="col-12">
                                         @isset($item->tahun)
                                         <p class="card-idm__text">Pendapatan Desa <br>Tahun {{ $item->tahun }}</p>
@@ -75,7 +75,7 @@ APBDesa
                                     </div>
                                     <div class="col-12 text-center center-v ">
                                         @if($latestItem = $item->latest()->first())
-                                        <p class="card-idm__belanja fw-bold">- Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}</p>
+                                        <p class="card-idm__belanja fw-bold text-danger">- Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}</p>
                                         @endif
                                     </div>
                                     @endisset
@@ -96,26 +96,25 @@ APBDesa
                             <div class="col-4 Berita">
                                 <div class="card cardBeritaPengumuman" style="border: none;">
                                     <a href="">
-                                        <div class="card-body artikel-card">
+                                        <div class="card-body artikel-card card_color">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div id="thumbnail" class="col-12">
                                                         <div class="thumbnail-container overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                                            <img src="{{ asset($item->gambar) }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100" alt="..." style="object-fit: contain;">
+                                                            <img src="{{ asset($item->gambar) }}" class="thumbnail-image rounded-20 position-absolute top-0 start-0 w-100 h-100 bg-light" alt="..." style="object-fit: contain;">
                                                         </div>
-                                                        <p class="artikel-judul text-black font-large">{{ $item->judulPengeluaran }}</p>
-                                                        <p class="d-block my-1 py-2" align="justify" style="font-size: 15px; color: red;">
-                                                            {{ number_format($item->pengeluaran, 0, ',', '.') }}-
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="col-12 mt-3">
+                                                        <p class="artikel-judul text-black font-large h6">{{ $item->judulPengeluaran }}</p>
                                                         <p class="artikel-tanggal mt-2">
                                                             <i class="fa fa-calendar"></i> <span>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('MMMM , D , Y') }}</span>
                                                         </p>
                                                     </div>
-                                                    <div class="col-md-6 mt-4">
+
+                                                    <div class="col-12 mt-3 text-end ">
+                                                        <p class="h3 text-danger p-2">
+                                                           - {{ number_format($item->pengeluaran, 0, ',', '.') }}
+                                                        </p>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>

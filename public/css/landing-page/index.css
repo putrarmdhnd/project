@@ -139,16 +139,6 @@ a {
 }
 
 
-#BeritaPengumuman,
-.Demografi {
-    background-color: white;
-}
-
-#DataKependudukan,
-#Apbdes {
-    /*background-color: #a5d5ff;*/
-}
-
 #StrukturOrganisasi {
     margin-top: 2rem;
 }
@@ -200,7 +190,6 @@ a {
 }
 
 .card-demografi-penduduk {
-    background: #d9f6ff;
     display: flex;
     justify-content: center;
     margin: auto;
@@ -225,13 +214,10 @@ a {
 .card-idm__jumlah {
     color: rgb(40, 134, 40);
 
-    font-size: 28px;
 }
 
 .card-idm__belanja {
     color: rgb(255, 55, 0);
-    
-    font-size: 28px;
 }
 
 #apbdes {
@@ -249,7 +235,7 @@ a {
 .JenisBeritaPengumuman {
     font-size: small;
     text-decoration: underline;
-    color: #175567;
+    color: #00bff6;
 }
 
 .KeteranganVisiMisi {
@@ -400,8 +386,8 @@ a {
 
 .artikel-card {
     border: 2px solid #E0E0E0;
-    border-radius: 10px;
     padding-bottom: 0px;
+    border-radius: 0.5rem;
 }
 
 .artikel-thumbnail {
@@ -413,8 +399,9 @@ a {
     font-weight: 600;
     margin-top: 1rem;
     margin-bottom: 0px;
-    line-height: 1.45;
-    color: #0091bc;
+    line-height: 1.28;
+    color: black;
+    
 }
 
 .artikel-tanggal,
@@ -422,6 +409,10 @@ a {
     font-size: .8rem;
     color: gray;
 
+}
+
+.card_color{
+    background-color: #f1fcff;
 }
 
 
@@ -518,9 +509,6 @@ a {
         padding: 0;
     }
 
-    .card-demografi-penduduk img {
-        height: 85px;
-    }
 
     #apbdes {
         width: 100%;
@@ -642,10 +630,9 @@ a {
     .jenis-surat-nama {
         font-size: 9px;
     }
-
-
-    .ImgSurat {
-        padding: 0;
+    
+    .ImgSurat img{
+        height: 50px;
     }
 
     .content-desc p {
