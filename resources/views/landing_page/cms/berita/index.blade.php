@@ -34,41 +34,63 @@
 
     <div class="card ">
         <div class="card-header bg-white py-3">
-            <a href="{{ route('cms.berita.create') }}" class="btn btn-sm btn-primary shadow-sm mt-3 mt-md-0 mt-lg-0"><i class="fas fa-plus-circle"></i>
-                Buat Berita</a>
+            <div class="col-12">
+                <div id="btn__up_mobileKependudukan" class="col-md-6 d-flex justify-content-end py-2">
+                    <div class="layoutBtnPengaduan">
+                        <a href="{{ route('cms.berita.create') }}" class="btnPengaduan text-black focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center text-decoration-none" style="background-color: #b7efff;"><i class="fas fa-plus-circle"></i> Tambah Data</a>
+                    </div>
+                </div>
+                <div class="row align-items-center py-2">
+                    <div class="col-md-6 py-2">
+                        <div class="input-group">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search">
+                        </div>
+                    </div>
+                    <div id="btn__down_largeKependudukan" class="col-md-6 d-flex justify-content-end py-2">
+                        <div class="layoutBtnPengaduan">
+                            <a href="{{ route('cms.berita.create') }}" class="btnPengaduan text-black focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center text-decoration-none" style="background-color: #b7efff;"><i class="fas fa-plus-circle"></i> Tambah Data</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card-body">
-            <div class="w-full rounded-lg bg-white divide-y divide-gray overflow-hidden mb-5">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead class="text-center">
+            <div class="w-full rounded-lg bg-white divide-y divide-gray overflow-x-auto mb-5">
+                <table id="informasiTable" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="themeColor text-white text-center">
                         <tr>
-                            <th>No</th>
-                            <th>Waktu Berita</th>
-                            <th>Thumbnail</th>
-                            <th>Judul</th>
-                            <th>Tipe</th>
-                            <th>Author</th>
-                            <th>Aksi</th>
+                            <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-2 align-middle">No</th>
+                            <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-2 align-middle">Judul</th>
+                            <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-2 align-middle">Tipe</th>
+                            <th colspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Waktu Berita</th>
+                            <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-2 align-middle">Author</th>
+                            <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-2 align-middle"> Aksi</th>
+                        </tr>
+                        <tr>
+                            <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle"> Tanggal </th>
+                            <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle"> Waktu</th>
                         </tr>
                     </thead>
 
                     <tbody class="text-center">
                         @foreach ($beritas as $berita)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $berita->created_at }}</td>
-                            <td>
-                                <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" width="180" alt="" class="mx-auto d-block">
+                            <td class="textTable px-2 py-4 text-secondary align-middle align-middle">{{ $loop->iteration }}</td>
+                            <td width="30%" class="textTable px-2 py-4 text-secondary align-middle align-middle">
+                                {{ $berita->judul_singkat }}
                             </td>
-                            <td width="30%">
-                                {{ $berita->judul }}
-                            </td>
-                            <td>
+                            <td class="textTable px-2 py-4 text-secondary align-middle align-middle">
                                 {{ $berita->tipe }}
                             </td>
-                            <td> {{ $berita->author->nama }} </td>
-                            <td>
-                                <a target="blank" href="{{ route('informasi.berita.detail', $berita->slug) }}" class="btn btn-info btn-sm w-full">Detail</a>
+                            <td class="textTable px-2 py-4 text-secondary align-middle align-middle">
+                                {{ $berita->created_at->format('Y-m-d') }} <br>
+                            </td>
+                            <td class="textTable px-2 py-4 text-secondary align-middle align-middle">
+                                {{ $berita->created_at->format('H:i') }}
+                            </td>
+                            <td class="textTable px-2 py-4 text-secondary align-middle"> {{ $berita->author->nama }} </td>
+                            <td class="textTable px-2 py-4 text-secondary align-middle">
+                                <a target="blank" href="{{ route('informasi.berita.detail', $berita->slug) }}" class="btn textTable btn-info btn-sm w-full">Detail</a>
 
                                 <form action="{{ route('cms.berita.destroy', $berita->id) }}" method="post" class="d-flex justify-center">
                                     @csrf
@@ -83,6 +105,17 @@
                     </tbody>
                 </table>
             </div>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('#searchInput').on('keyup', function() {
+                        var value = $(this).val().toLowerCase();
+                        $('#informasiTable tbody tr').filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                        });
+                    });
+                });
+            </script>
         </div>
     </div>
 </div>

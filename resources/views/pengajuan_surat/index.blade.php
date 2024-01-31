@@ -14,40 +14,46 @@
     <div class="layoutBtnPengaduan">
         <a href="{{ route('surat') }}" class="btnPengaduan text-black text-decoration-none focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center themeColor">Buat Surat</a>
     </div>
+
     @endcan
 </div>
+@can('masyarakat')
+<p class="textDashboard fw-bold shadow-md bg-red-200 p-2 my-3 text-center rounded-20 text-[13px] lg:text-lg font-normal text-secondary">Jika Pengajuan Surat di Ajukan Dengan Cap Basah
+    dan Status Surat Sudah Selesai Silahkan Datang ke Desa</p>
+
+@endcan
 <div class="overflow-x-auto">
     <table class="w-full rounded-lg bg-white divide-y divide-gray overflow-hidden mb-5">
-        <thead class="">
-            <tr class=" text-left">
-                <th class="font-semibold text-sm uppercase px-4 py-4">#</th>
-                <th class="font-semibold text-sm uppercase px-4 py-4">Tanggal</th>
-                <th class="font-semibold text-sm uppercase px-4 py-4">Pengaju</th>
+        <thead class="themeColor">
+            <tr class="text-center">
+                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">NO</th>
+                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Tanggal</th>
+                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Pembuat</th>
                 @canany(['petugas', 'admin','kesra','pelayanan','pemerintahan'])
-                    <th class="font-semibold text-sm uppercase px-4 py-4">No Telepon</th>
+                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">No Telepon</th>
                 @endcanany
-                <th class="font-semibold text-sm uppercase px-4 py-4">Jenis Surat</th>
-                <th class="font-semibold text-sm uppercase px-4 py-4 text-center">Status</th>
-                <th class="font-semibold text-sm uppercase px-4 py-4">Aksi</th>
+                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Jenis Surat</th>
+                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 ">Status</th>
+                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Aksi</th>
             </tr>
         </thead>
         <tbody class="divide-y divide-gray">
             @foreach ($pengajuan_saya as $item)
-            <tr>
-                <td class="px-4 py-4 text-secondary">
+            <tr class="text-center">
+                <td class="textTable px-2 py-4 text-secondary">
                     {{ $loop->iteration }}
                 </td>
-                <td class="px-4 py-4 text-secondary">
+                <td class="textTable px-2 py-4 text-secondary">
                     {{ date('d F Y', strtotime($item->created_at)) }}
-                <td class="px-4 py-4 text-secondary">
+                <td class="textTable px-2 py-4 text-secondary">
                     {{ $item->masyarakat->nama }}
                 </td>
-                @canany(['petugas', 'admin' , 'kesra','pemerintahan','pelayanan'])
-                    <td class="px-4 py-4 text-secondary">
-                        {{ $item->masyarakat->telepon }}
-                    </td>
+                @canany(['petugas', 'admin','kesra','pelayanan','pemerintahan'])
+                <td class="textTable px-2 py-4 text-secondary">
+                    {{ $item->masyarakat->telepon }}
+                </td>
                 @endcanany
-                <td class="px-4 py-4 text-secondary">
+                <td class="textTable px-2 py-4 text-secondary">
                     {{ $item->jenis_surat }}
                 </td>
 
@@ -113,6 +119,23 @@
                             <i class="bx bxs-pencil text-lg px-2"></i>
                         </a>
 
+                        @canany(['admin', 'petugas'])
+                        <a href="{{ route('pengajuan_surat.preview.surat', $item->id) }}" target="__blank" class="underline text-primary">Preview Surat</a>
+>>>>>>> d5cef480b7c8cbb1781d946b81455c1d007d7b28
+                        @endcanany
+
+                        @can('masyarakat')
+                        <a href="{{ route('pengajuan_surat.download.surat', $item->id) }}" target="__blank" class="underline text-primary">
+                            <i class="bx bx-import text-lg px-2"></i>
+                        </a>
+                        @endcan
+
+                        @canany(['admin', 'petugas'])
+                        <a href="{{ route('pengajuan_surat.previewew.surat', $item->id) }}" target="__blank" class="underline text-primary">Preview Surat</a>
+                        <a href="{{ route('pengajuan_surat.downloaded.surat', $item->id) }}" target="__blank" class="underline text-primary">
+                            <i class="bx bx-import text-lg px-2"></i>
+                        </a>
+                        @endcanany
                     </div>
                 </td>
             </tr>

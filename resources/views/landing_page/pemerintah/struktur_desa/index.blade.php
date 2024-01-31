@@ -54,6 +54,10 @@ Struktur Organisasi
                                             <i>{{ $item->jabatan }}</i>
                                         </div>
                                     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e3e712cd0228a7ef4e5838c68a8301c7c91540b
                                     <div class="row mt-1 isi-profil bg-light mx-2 d-flex rounded-20 border text-justify">
                                         <ul class="m-0">
                                             <li class="py-1"><i>Nama : <b>{{ $item->nama }}</b></i></li>
