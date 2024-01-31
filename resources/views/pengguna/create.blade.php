@@ -47,6 +47,7 @@
                     <option value="admin">Admin</option>
                     <option value="kesra">kesra</option>
                     <option value="pemerintahan">pemerintahan</option>
+                    <option value="pelayanan">pelayanan</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <i class='bx bx-chevron-down text-xl'></i>

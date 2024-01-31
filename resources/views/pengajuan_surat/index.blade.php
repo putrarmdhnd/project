@@ -23,7 +23,7 @@
                     <th class="font-semibold text-sm uppercase px-4 py-4">#</th>
                     <th class="font-semibold text-sm uppercase px-4 py-4">Tanggal</th>
                     <th class="font-semibold text-sm uppercase px-4 py-4">Pengaju</th>
-                    @canany(['petugas', 'admin','kesra'])
+                    @canany(['petugas', 'admin','kesra','pelayanan','pemerintahan'])
                         <th class="font-semibold text-sm uppercase px-4 py-4">No Telepon</th>
                     @endcanany
                     <th class="font-semibold text-sm uppercase px-4 py-4">Jenis Surat</th>
@@ -42,7 +42,7 @@
                         <td class="px-4 py-4 text-secondary">
                             {{ $item->masyarakat->nama }}
                         </td>
-                        @canany(['petugas', 'admin' , 'kesra'])
+                        @canany(['petugas', 'admin' , 'kesra','pemerintahan','pelayanan'])
                             <td class="px-4 py-4 text-secondary">
                                 {{ $item->masyarakat->telepon }}
                             </td>
