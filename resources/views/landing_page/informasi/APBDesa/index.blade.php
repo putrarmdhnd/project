@@ -48,15 +48,15 @@ APBDesa
                         <div class="card card-idm card-idm__skor card-dana-masuk">
                             <div class="card-body">
                                 <div class="row d-block">
-                                    @foreach ($apb->items() as $item)
+                                    @foreach($apb as $item)
                                     <div class="col-12">
                                         @isset($item->tahun)
                                         <p class="card-idm__text">Pendapatan Desa <br>Tahun {{ $item->tahun }}</p>
                                         @endisset
                                     </div>
-                                    <div class="col-12 text-center center-v">
+                                    <div class="col-12 text-end center-v">
                                         @if($item->anggaran !== null)
-                                        <p class="card-idm__jumlah fw-bold">Rp{{ number_format($item->anggaran, 0, ',', '.') }}</p>
+                                        <p class="card-idm__jumlah fw-bold h2">Rp{{ number_format($item->anggaran, 0, ',', '.') }}</p>
                                         @endif
                                     </div>
                                     @endforeach
@@ -73,9 +73,9 @@ APBDesa
                                     <div class="col-12">
                                         <p class="card-idm__text">Belanja Desa <br>Tahun {{ $item->tahun }}</p>
                                     </div>
-                                    <div class="col-12 text-center center-v ">
+                                    <div class="col-12 text-end center-v ">
                                         @if($latestItem = $item->latest()->first())
-                                        <p class="card-idm__belanja fw-bold text-danger">- Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}</p>
+                                        <p class="card-idm__belanja fw-bold text-danger h2">- Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}</p>
                                         @endif
                                     </div>
                                     @endisset
@@ -110,8 +110,8 @@ APBDesa
                                                     </div>
 
                                                     <div class="col-12 mt-3 text-end ">
-                                                        <p class="h3 text-danger p-2">
-                                                           - {{ number_format($item->pengeluaran, 0, ',', '.') }}
+                                                        <p class="h3 text-danger p-2 fw-bold">
+                                                            - {{ number_format($item->pengeluaran, 0, ',', '.') }}
                                                         </p>
                                                     </div>
 
