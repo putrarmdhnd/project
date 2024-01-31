@@ -11,34 +11,34 @@ class StrukturDesaController extends Controller
 {
     public function index()
     {
-        $pegawais = Pegawai::with('jabatan_pegawai')->where('jabatan_pegawai_id', '!=', null)->get();
+        $pegawais = Pegawai::all();
 
         // make query jabatan where id jabatan not in pegawai and is_kepala_jabatan = 1
         // $jabatans = JabatanPegawai::whereNotIn('id', Pegawai::where('is_kepala_jabatan', 1)->pluck('jabatan_pegawai_id'))->get();
-        $jabatans = JabatanPegawai::all();
-        $pegawais_form = Pegawai::where('jabatan_pegawai_id', null)->get();
-        return view('landing_page.cms.pemerintah.struktur_desa.index', compact('pegawais', 'jabatans', 'pegawais_form'));
+        // $jabatans = Pegawai::all();
+        // $pegawais_form = Pegawai::where('jabatan_pegawai_id', null)->get();
+        return view('landing_page.cms.pemerintah.struktur_desa.index', compact('pegawais'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'pegawai_id' => 'required',
-            'jabatan_pegawai_id' => 'required',
+            // 'jabatan_pegawai_id' => 'required',
         ]);
 
-        $jabatan  = JabatanPegawai::with('pegawai')->findOrFail($request->jabatan_pegawai_id);
+        // $jabatan  = Pegawai::with('pegawai')->findOrFail($request->jabatan); // rubah jadi jabaran aja
 
-        foreach ($jabatan->pegawai as $pegawai) {
-            if ($pegawai->is_kepala_jabatan == 1) {
-                return redirect()->back()->with('error', 'Ketua untuk jabatan atau struktur tersebut sudah terdaftar');
-            }
-        }
+        // foreach ($jabatan->pegawai as $pegawai) {
+        //     if ($pegawai->is_kepala_jabatan == 1) {
+        //         return redirect()->back()->with('error', 'Ketua untuk jabatan atau struktur tersebut sudah terdaftar');
+        //     }
+        // }
 
         $pegawai = Pegawai::findOrFail($request->pegawai_id);
 
         $pegawai->update([
-            'jabatan_pegawai_id' => $request->jabatan_pegawai_id,
+            // 'jabatan_pegawai_id' => $request->jabatan_pegawai_id,
             'is_kepala_jabatan' => $request->is_kepala_jabatan == 'on' ? '1' : '0'
         ]);
 

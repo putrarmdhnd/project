@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('telepon')->nullable();
             // $table->string('level');
-            $table->enum('level', ['admin', 'petugas', 'masyarakat','kesra','pemerintahan','keuangan']);
+            $table->enum('level', ['admin', 'petugas', 'masyarakat','kesra','pemerintahan','pelayanan']);
             $table->rememberToken();
             $table->timestamps();
         });

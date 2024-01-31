@@ -81,8 +81,10 @@
                         @csrf
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama Jabatan</label>
-                            <input type="text" name="nama" value="{{ old('nama') }}" class="form-control"
-                                id="judul" placeholder="cth: Sekretaris Desa">
+                            <select name="nama" class="form-select" id="nama">
+                                <option value="SEKRETARIS DESA">SEKRETARIS DESA</option>
+                                <option value="KEPALA DESA">KEPALA DESA</option>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">

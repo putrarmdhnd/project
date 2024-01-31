@@ -45,17 +45,26 @@ Struktur Organisasi
                         <div class="col-12 ">
                             <div class="card card-profil-desa">
                                 <div class="card-body">
-                                    @isset($item->pegawai)
-                                    @foreach($item->pegawai as $pegawai)
                                     <div class="col-12 text-center content-profil-desa">
                                         <div class="img-round center-img">
-                                            <img alt="" class="img-round" src="{{ asset($pegawai->foto ? 'storage/' . $pegawai->foto : 'img/no-image.png') }}" style="border-radius: 50%;">
+                                            <img alt="" class="img-round" src="{{ asset($item->foto ? 'storage/' . $item->foto : 'img/no-image.png') }}" style="border-radius: 50%;">
                                         </div>
                                         <div class="mt-3">
-                                            <p>{{ $pegawai->nama }}</p>
-                                            <i>{{ $item->nama }}</i>
+                                            <p>{{ $item->nama }}</p>
+                                            <i>{{ $item->jabatan }}</i>
                                         </div>
                                     </div>
+<<<<<<< HEAD
+                                    <div class="row d-flex text-start mt-1 isi-profil">
+                                        <ul class="">
+                                            <li><i>{{ $item->nama }}</i></li>
+                                            <li><i>{{ $item->ttl }}</i></li>
+                                            <li><i>{{ $item->status }}</i></li>
+                                            <li><i>{{ $item->alamat }}</i></li>
+                                            <li><i>{{ $item->pendidikan }}</i></li>
+                                        </ul>
+                                    </div>
+=======
                                     <div class="row mt-1 isi-profil bg-light mx-2 d-flex rounded-20 border text-justify">
                                         <ul class="m-0">
                                             <li class="py-1"><i>Nama : <b>{{ $pegawai->nama }}</b></i></li>
@@ -68,6 +77,7 @@ Struktur Organisasi
 
                                     @endforeach
                                     @endisset
+>>>>>>> d5cef480b7c8cbb1781d946b81455c1d007d7b28
                                 </div>
                             </div>
                         </div>

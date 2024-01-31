@@ -52,6 +52,34 @@
                                     id="pendidikan" placeholder="Masukkan Pendidikan pegawai">
                             </div>
                             <div class="mb-3">
+                                <label for="jabatan" class="form-label">Nama Jabatan</label>
+                                <select name="jabatan" class="form-select" id="jabatan">
+                                    <option value="SEKRETARIS DESA">SEKRETARIS DESA</option>
+                                    <option value="KEPALA DESA">KEPALA DESA</option>
+                                    <option value="KETUA BPD">KETUA BPD</option>
+                                    <option value="BHABINKAMTIBNAS">BHABINKAMTIBNAS</option>
+                                    <option value="BABINSA">BABINSA</option>
+                                    <option value="KASI KESRA">KASI KESRA</option>
+                                    <option value="STAF KASI KESRA">STAF KASI KESRA</option>
+                                    <option value="STAF KASI KESRA DRIVER AMBULANCE">STAF KASI KESRA DRIVER AMBULANCE</option>
+                                    <option value="KASI PEMERINTAHAN">KASI PEMERINTAHAN</option>
+                                    <option value="STAF KASI PEMERINTAHAN">STAF KASI PEMERINTAHAN</option>
+                                    <option value="KASI PELAYANAN">KASI PELAYANAN</option>
+                                    <option value="STAF KASI PELAYANAN">STAF KASI PELAYANAN</option>
+                                    <option value="KAUR KEUANGAN">KAUR KEUANGAN</option>
+                                    <option value="STAF KAUR KEUANGAN">STAF KAUR KEUANGAN</option>
+                                    <option value="KAUR TATA USAHA & UMUM">KAUR TATA USAHA & UMUM</option>
+                                    <option value="STAF KAUR TATA USAHA & UMUM">STAF KAUR TATA USAHA & UMUM</option>
+                                    <option value="STAF KAUR UMUM">STAF KAUR UMUM</option>
+                                    <option value="KAUR PERENCANAAN">KAUR PERENCANAAN</option>
+                                    <option value="KEPALA DUSUN I">KEPALA DUSUN I</option>
+                                    <option value="KEPALA DUSUN II">KEPALA DUSUN II</option>
+                                    <option value="KEPALA DUSUN III">KEPALA DUSUN III</option>
+                                    <option value="KEPALA DUSUN IV">KEPALA DUSUN IV</option>
+                                    <option value="KEPALA DUSUN V">KEPALA DUSUN V</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="foto" class="form-label">Foto</label>
                                 <input type="file" name="foto" value="{{ old('foto') }}" class="form-control"
                                     id="foto" placeholder="Masukkan foto pegawai">
