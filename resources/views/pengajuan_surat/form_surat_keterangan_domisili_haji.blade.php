@@ -25,10 +25,10 @@
                         @enderror
                     </div>
                     <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Jenis Kelammin</label>
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Jenis Kelamin</label>
                         <input type="text" name="JK"
                             class="mt-1 px-3 py-2 @error('JK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Keperluan Surat" value="{{ old('JK') }}" />
+                            placeholder="Jenis Kelamin" value="{{ old('JK') }}" />
                         @error('JK')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror

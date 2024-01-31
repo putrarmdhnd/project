@@ -66,7 +66,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $pegawai->is_kepala_jabatan ? 'Kepala Jabatan' : 'Anggota' }}</td>
-                                        <td>{{ $pegawai->jabatan_pegawai->nama }}</td>
+                                        <td>{{ $pegawai->jabatan }}</td>
                                         <td>{{ $pegawai->nama }}</td>
                                         <td>{{ $pegawai->alamat }}</td>
                                         <td>
@@ -113,12 +113,12 @@
                             <label for="pegawai" class="form-label">Pegawai</label>
                             <select name="pegawai_id" class="form-control">
                                 <option value="">-- Pilih Pegawai --</option>
-                                @foreach ($pegawais_form as $item)
+                                @foreach ($pegawais as $item)
                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="jabatan" class="form-label">Jabatan/Struktur</label>
                             <select name="jabatan_pegawai_id" class="form-control">
                                 <option value="">-- Pilih Jabatan --</option>
@@ -126,7 +126,7 @@
                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="mb-3 form-group form-check">
                             <input type="checkbox" name="is_kepala_jabatan" class="form-check-input" id="ketua">
                             <label class="form-check-label" for="ketua">Kepala Jabatan ?</label>

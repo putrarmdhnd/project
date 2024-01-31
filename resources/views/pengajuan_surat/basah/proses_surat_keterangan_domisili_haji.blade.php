@@ -4,7 +4,7 @@
         $surat = json_decode($pengajuan_surat->surat);
     @endphp
     <div class="bg-white py-6 px-9 mb-5 rounded-lg">
-        <form action="{{ route('pengajuan-surat.update', $pengajuan_surat->id) }}" target="blank" method="POST"
+        <form action="{{ route('pengajuan_surat.updatebasah', $pengajuan_surat->id) }}" target="blank" method="POST"
             class="
     [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark 
     [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm

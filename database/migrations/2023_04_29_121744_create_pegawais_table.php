@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('ttl');
             $table->string('status');
             $table->string('alamat');
-            $table->foreignId('jabatan_pegawai_id')->nullable()->constrained('jabatan_pegawais')->cascadeOnUpdate()->nullOnDelete();
+            $table->string('jabatan');
+            // $table->foreignId('jabatan_pegawai_id')->nullable()->constrained('jabatan_pegawais')->cascadeOnUpdate()->nullOnDelete();
             $table->string('is_kepala_jabatan')->default(0);
             $table->text('pendidikan')->nullable();
             $table->string('foto')->nullable();

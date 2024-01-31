@@ -127,7 +127,7 @@
                 <p>Palasari, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</p>
                 <p style="margin-top: -10px !important">Kepala Desa Palasari</p>
                 
-                <p style="margin-top: 90px !important">H.Ridwan.SH</p>
+                <p style="margin-top: 120px !important">H.Ridwan.SH</p>
             </div>
         </div>
     </div>
