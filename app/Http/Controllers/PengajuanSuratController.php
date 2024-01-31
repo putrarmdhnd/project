@@ -26,14 +26,14 @@ class PengajuanSuratController extends Controller
                 ->get();
         } else if (in_array(Auth::user()->level, ['kesra', 'pelayanan', 'pemerintahan'])) {
             $pengajuan_saya = PengajuanSurat::with('masyarakat')
-                ->where("status", "verifikasi" && "Diproses")
+                ->whereIn("status", ["verifikasi", "Diproses"])
                 ->orderBy('created_at', 'desc')
                 ->get();
-        } else if(Auth::user()->level == 'admin'){
+        } else if (Auth::user()->level == 'admin') {
             $pengajuan_saya = PengajuanSurat::with('masyarakat')
-            ->where("status", "Selesai")
-            ->orderBy('created_at', 'desc')
-            ->get();
+                ->where("status", ["Selesai", "Diproses"])
+                ->orderBy('created_at', 'desc')
+                ->get();
         }
 
         return view('pengajuan_surat.index', [
