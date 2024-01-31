@@ -54,30 +54,15 @@ Struktur Organisasi
                                             <i>{{ $item->jabatan }}</i>
                                         </div>
                                     </div>
-<<<<<<< HEAD
-                                    <div class="row d-flex text-start mt-1 isi-profil">
-                                        <ul class="">
-                                            <li><i>{{ $item->nama }}</i></li>
-                                            <li><i>{{ $item->ttl }}</i></li>
-                                            <li><i>{{ $item->status }}</i></li>
-                                            <li><i>{{ $item->alamat }}</i></li>
-                                            <li><i>{{ $item->pendidikan }}</i></li>
-                                        </ul>
-                                    </div>
-=======
                                     <div class="row mt-1 isi-profil bg-light mx-2 d-flex rounded-20 border text-justify">
                                         <ul class="m-0">
-                                            <li class="py-1"><i>Nama : <b>{{ $pegawai->nama }}</b></i></li>
-                                            <li class="py-1"><i>TTL : <b>{{ $pegawai->ttl }}</b></i></li>
-                                            <li class="py-1"><i>Status Pegawai : <b>{{ $pegawai->status }}</b></i></li>
-                                            <li class="py-1"><i>Alamat : <b>{{ $pegawai->alamat }}</b></i></li>
-                                            <li class="py-1"><i>Pendidikan Terakhir: <b>{{ $pegawai->pendidikan }}</b></i></li>
+                                            <li class="py-1"><i>Nama : <b>{{ $item->nama }}</b></i></li>
+                                            <li class="py-1"><i>TTL : <b>{{ $item->ttl }}</b></i></li>
+                                            <li class="py-1"><i>Status Pegawai : <b>{{ $item->status }}</b></i></li>
+                                            <li class="py-1"><i>Alamat : <b>{{ $item->alamat }}</b></i></li>
+                                            <li class="py-1"><i>Pendidikan Terakhir: <b>{{ $item->pendidikan }}</b></i></li>
                                         </ul>
                                     </div>
-
-                                    @endforeach
-                                    @endisset
->>>>>>> d5cef480b7c8cbb1781d946b81455c1d007d7b28
                                 </div>
                             </div>
                         </div>
