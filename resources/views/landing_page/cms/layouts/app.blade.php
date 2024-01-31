@@ -54,6 +54,7 @@
     <div id="overlay" class="fixed hidden z-40 w-screen h-screen inset-0 bg-secondary bg-opacity-40"></div>
 
     <script src="{{ asset('js/main.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/costum.js') }}" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
     

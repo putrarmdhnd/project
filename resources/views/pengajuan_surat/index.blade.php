@@ -6,38 +6,6 @@
         <p class="textDashboard text-base text-[13px] lg:text-lg font-normal text-secondary">Semua pengajuan surat yang masuk</p>
         <br>
     </div>
-<<<<<<< HEAD
-    <div class="overflow-x-auto">
-        <table class="w-full rounded-lg bg-white divide-y divide-gray overflow-hidden mb-5">
-            <thead class="">
-                <tr class=" text-left">
-                    <th class="font-semibold text-sm uppercase px-4 py-4">#</th>
-                    <th class="font-semibold text-sm uppercase px-4 py-4">Tanggal</th>
-                    <th class="font-semibold text-sm uppercase px-4 py-4">Pengaju</th>
-                    @canany(['petugas', 'admin','kesra','pelayanan','pemerintahan'])
-                        <th class="font-semibold text-sm uppercase px-4 py-4">No Telepon</th>
-                    @endcanany
-                    <th class="font-semibold text-sm uppercase px-4 py-4">Jenis Surat</th>
-                    <th class="font-semibold text-sm uppercase px-4 py-4 text-center">Status</th>
-                    <th class="font-semibold text-sm uppercase px-4 py-4">Aksi</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-gray">
-                @foreach ($pengajuan_saya as $item)
-                    <tr>
-                        <td class="px-4 py-4 text-secondary">
-                            {{ $loop->iteration }}
-                        </td>
-                        <td class="px-4 py-4 text-secondary">
-                            {{ date('d F Y', strtotime($item->created_at)) }}
-                        <td class="px-4 py-4 text-secondary">
-                            {{ $item->masyarakat->nama }}
-                        </td>
-                        @canany(['petugas', 'admin' , 'kesra','pemerintahan','pelayanan'])
-                            <td class="px-4 py-4 text-secondary">
-                                {{ $item->masyarakat->telepon }}
-                            </td>
-=======
     @can('masyarakat')
     <div class="layoutBtnPengaduan">
         <a href="{{ route('surat') }}" class="btnPengaduan text-black text-decoration-none focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center themeColor">Buat Surat</a>
@@ -57,7 +25,7 @@
                 <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">NO</th>
                 <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Tanggal</th>
                 <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Pembuat</th>
-                @canany(['petugas', 'admin','kesra'])
+                @canany(['petugas', 'admin','kesra','pelayanan','pemerintahan'])
                 <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">No Telepon</th>
                 @endcanany
                 <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Jenis Surat</th>
@@ -76,7 +44,7 @@
                 <td class="textTable px-2 py-4 text-secondary">
                     {{ $item->masyarakat->nama }}
                 </td>
-                @canany(['petugas', 'admin' , 'kesra'])
+                @canany(['petugas', 'admin' , 'kesra','pemerintahan','pelayanan'])
                 <td class="textTable px-2 py-4 text-secondary">
                     {{ $item->masyarakat->telepon }}
                 </td>
@@ -134,7 +102,6 @@
 
                         @canany(['admin', 'petugas'])
                         <a href="{{ route('pengajuan_surat.preview.surat', $item->id) }}" target="__blank" class="underline text-primary">Preview Surat</a>
->>>>>>> d5cef480b7c8cbb1781d946b81455c1d007d7b28
                         @endcanany
 
                         @can('masyarakat')

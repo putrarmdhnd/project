@@ -15,10 +15,15 @@ class PengajuanSuratController extends Controller
     {
 
         if (Auth::user()->level == 'masyarakat') {
-            $pengajuan_saya = PengajuanSurat::with('masyarakat')->whereMasyarakatId(Auth::user()->id)->get();
+            $pengajuan_saya = PengajuanSurat::with('masyarakat')
+                ->whereMasyarakatId(Auth::user()->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
         } else {
-            $pengajuan_saya = PengajuanSurat::with('masyarakat')->get();
-        }
+            $pengajuan_saya = PengajuanSurat::with('masyarakat')
+                ->orderBy('created_at', 'desc')
+                ->get();
+        }        
 
         return view('pengajuan_surat.index', [
             'title' => 'Pengajuan Surat Online',
