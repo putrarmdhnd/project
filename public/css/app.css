@@ -2222,7 +2222,7 @@ video {
 }
 
 .themeColor {
-  background-color: #b7efff;
+  background-color: #b7efff !important;
 }
 .themeColor th {
   background-color: #b7efff !important;

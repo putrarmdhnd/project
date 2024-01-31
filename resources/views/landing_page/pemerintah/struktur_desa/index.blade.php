@@ -15,7 +15,7 @@ Struktur Organisasi
 
     <section class="space-subHeader">
         <div class="row d-flex">
-            <div class="card-imgStruktur col-8 justify-content-center m-auto text-center ">
+            <div class="card-imgStruktur col-8 m-auto">
                 <div class="card " style="border:1px solid black;">
                     <img src="{{ asset('img/landing-page/struktur-organisasi.jpg') }}" width="100%" alt="" class="">
                 </div>
@@ -54,6 +54,7 @@ Struktur Organisasi
                                             <i>{{ $item->jabatan }}</i>
                                         </div>
                                     </div>
+<<<<<<< HEAD
                                     <div class="row d-flex text-start mt-1 isi-profil">
                                         <ul class="">
                                             <li><i>{{ $item->nama }}</i></li>
@@ -63,6 +64,20 @@ Struktur Organisasi
                                             <li><i>{{ $item->pendidikan }}</i></li>
                                         </ul>
                                     </div>
+=======
+                                    <div class="row mt-1 isi-profil bg-light mx-2 d-flex rounded-20 border text-justify">
+                                        <ul class="m-0">
+                                            <li class="py-1"><i>Nama : <b>{{ $pegawai->nama }}</b></i></li>
+                                            <li class="py-1"><i>TTL : <b>{{ $pegawai->ttl }}</b></i></li>
+                                            <li class="py-1"><i>Status Pegawai : <b>{{ $pegawai->status }}</b></i></li>
+                                            <li class="py-1"><i>Alamat : <b>{{ $pegawai->alamat }}</b></i></li>
+                                            <li class="py-1"><i>Pendidikan Terakhir: <b>{{ $pegawai->pendidikan }}</b></i></li>
+                                        </ul>
+                                    </div>
+
+                                    @endforeach
+                                    @endisset
+>>>>>>> d5cef480b7c8cbb1781d946b81455c1d007d7b28
                                 </div>
                             </div>
                         </div>
@@ -109,9 +124,8 @@ Struktur Organisasi
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-md-8">
+            <div class="iconLembagaDesa col-md-8">
                 <div class="row text-center">
-
                     <div class="col-6 col-lg-4 mb-3">
                         <div class="card penduduk-card">
                             <div class="card-body">
@@ -175,7 +189,7 @@ Struktur Organisasi
 
                 </div>
             </div>
-            <div class="col-md-4 mb-5">
+            <div class="AnggotaLembaga col-md-4 mb-5">
                 <div class="tg-wrap">
                     <table>
                         <thead>
