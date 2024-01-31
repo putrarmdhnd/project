@@ -12,7 +12,7 @@ class BerandaController extends Controller
     public function index()
     {
         $apb = ApbDesa::all();
-        $beritas = Berita::all();
+        $beritas = Berita::paginate(6);
         $chart = DB::table('apb_desas')->get();
         return view('landing_page.beranda.index', compact('apb','beritas','chart'));
     }

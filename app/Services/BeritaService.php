@@ -10,7 +10,7 @@ class BeritaService {
     public function storeBerita($request) {
         $data = $request->all();
 
-        $data['judul_singkat'] = Str::limit(strip_tags($request->judul), 50);
+        $data['judul_singkat'] = Str::limit(strip_tags($request->judul), 30);
         $data['slug'] = Str::slug($data['judul'],'-');
         $data['deskripsi_singkat'] = Str::limit(strip_tags($request->deskripsi), 200);
         $data['author_id'] = auth()->user()->id;

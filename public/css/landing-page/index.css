@@ -139,16 +139,6 @@ a {
 }
 
 
-#BeritaPengumuman,
-.Demografi {
-    background-color: white;
-}
-
-#DataKependudukan,
-#Apbdes {
-    /*background-color: #a5d5ff;*/
-}
-
 #StrukturOrganisasi {
     margin-top: 2rem;
 }
@@ -200,12 +190,11 @@ a {
 }
 
 .card-demografi-penduduk {
-    background: #d9f6ff;
     display: flex;
     justify-content: center;
     margin: auto;
 
-    width: 75%;
+
 }
 
 .card-demografi-penduduk__info,
@@ -224,9 +213,10 @@ a {
 
 .card-idm__jumlah {
     color: rgb(40, 134, 40);
+
 }
 
-.card-idm__infoStatus {
+.card-idm__belanja {
     color: rgb(255, 55, 0);
 }
 
@@ -245,7 +235,7 @@ a {
 .JenisBeritaPengumuman {
     font-size: small;
     text-decoration: underline;
-    color: #175567;
+    color: #00bff6;
 }
 
 .KeteranganVisiMisi {
@@ -395,31 +385,35 @@ a {
 }
 
 .artikel-card {
-    min-height: 360px;
     border: 2px solid #E0E0E0;
-    border-radius: 10px;
     padding-bottom: 0px;
-  }
+    border-radius: 0.5rem;
+}
 
-  .artikel-thumbnail {
+.artikel-thumbnail {
     width: 100% !important;
-  }
+}
 
-  .artikel-judul {
+.artikel-judul {
     font-size: 1.2rem;
     font-weight: 600;
     margin-top: 1rem;
     margin-bottom: 0px;
-    line-height: 1.45;
-    color: #0091bc;
-  }
+    line-height: 1.28;
+    color: black;
+    
+}
 
-  .artikel-tanggal,
-  .artikel-penulis {
+.artikel-tanggal,
+.artikel-penulis {
     font-size: .8rem;
     color: gray;
 
-  }
+}
+
+.card_color{
+    background-color: #f1fcff;
+}
 
 
 .isiSurat1 {
@@ -488,6 +482,10 @@ a {
         font-size: 10px;
     }
 
+    .card-idm__jumlah , .card-idm__belanja {
+        font-size: 18px;
+    }
+
     .cardBeritaPengumuman h6,
     .headGraph {
         font-size: 12px;
@@ -511,9 +509,6 @@ a {
         padding: 0;
     }
 
-    .card-demografi-penduduk img {
-        height: 85px;
-    }
 
     #apbdes {
         width: 100%;
@@ -635,11 +630,19 @@ a {
     .jenis-surat-nama {
         font-size: 9px;
     }
-
-
-    .ImgSurat {
-        padding: 0;
+    
+    .ImgSurat img{
+        height: 50px;
     }
+
+    .content-desc p {
+        font-size: 12px;
+    }
+
+    .textDashboard {
+        font-size: 11px;
+    }
+
 }
 
 /* Media query untuk tampilan laptop */
@@ -667,7 +670,15 @@ a {
     #carousel .c-img {
         height: 500vh;
     }
+
+    /* font untuk dashboard */
+
+    .textDashboardBottom {
+        font-size: 12px;
+        line-height: 1.5rem;
+    }
 }
+
 
 /* Footer */
 .footer-2-3 {
@@ -1094,7 +1105,38 @@ a {
 
 }
 
-.font-table{
+.font-table {
     font-size: 12px;
-    
+
 }
+
+/* Ukuran layar antara 768 dan 991 piksel */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* Gaya untuk tablet dalam orientasi potrait */
+
+    .HeaderArticle {
+        width: 45%;
+    }
+
+    .artikel-judul {
+        font-size: 14px;
+    }
+}
+
+/*CSS untuk tabel*/
+
+/* Adjust the existing styles */
+.textTabelTop,
+.textTable {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+/* Optionally, you can add max-width to prevent extremely long content from causing issues */
+.textTabelTop,
+.textTable {
+    max-width: 200px; /* Adjust the value based on your needs */
+}
+

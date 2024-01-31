@@ -98,20 +98,20 @@ Informasi Berita
     <div class="row">
 
         @forelse ($beritas as $berita)
-        <div class="col-4">
-            <div class="card cardBeritaPengumuman" style="border: none;">
-                <a href="{{ route('informasi.berita.detail', $berita->slug) }}">
-                    <div class="card-body artikel-card">
+        <div class="col-4 Berita d-flex">
+            <div class="card cardBeritaPengumuman flex-fill " style="border: none;">
+                <a href="{{ route('informasi.berita.detail', $berita->slug) }}" class="h-100 d-flex flex-column">
+                    <div class="card-body artikel-card shadow card_color">
                         <div class="row">
                             <div class="col-12">
                                 <div id="thumbnail" class="col-12">
                                     <div class="thumbnail-container rounded-20 overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                        <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image object-cover position-absolute top-0 start-0 w-100 h-100 rounded-20 bg-light p-2" alt="..." style="object-fit: contain;">
+                                        <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image position-absolute top-0 start-0 w-100 h-100 bg-dark" alt="..." style="object-fit: contain;">
                                     </div>
                                     <p class="JenisBeritaPengumuman my-3">{{ $berita->tipe }}</p>
-                                    <p class="artikel-judul">{{ $berita->judul_singkat }}</p>
+                                    <p class="artikel-judul">{{ substr($berita->judul_singkat, 0, 42) . '...' }}</p>
                                     <p id="desc" class=" d-block desc text-black my-1" align="justify" style="font-size: 12px;">
-                                        {{ $berita->deskripsi_singkat }}
+                                        {{ substr($berita->deskripsi_singkat, 0, 110) . '...' }}
                                     </p>
                                 </div>
 
