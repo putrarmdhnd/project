@@ -11,5 +11,23 @@ class bayi1sampai5tahun extends Model
     protected $table = 'bayi1sampai5tahun';
 
     // Kolom yang dapat diisi (fillable)
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'NIK',
+        'namaLengkap',
+        'jk',
+        'tempatLahir',
+        'tanggalLahir',
+        'agama',
+        'namaAyah',
+        'namaIbu',
+        'namaKepalaKeluarga',
+        'alamat',
+        'rt',
+        'rw',
+        'kodePos',
+        'desa',
+        'kecamatan',
+        'kabupaten',
+        'provinsi',
+    ];
 }

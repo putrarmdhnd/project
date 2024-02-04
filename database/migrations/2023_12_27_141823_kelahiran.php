@@ -15,8 +15,25 @@ return new class extends Migration
     {
         Schema::create('kelahirans', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK');
+            $table->string('noKK');
             $table->string('namaLengkap');
+            $table->string('NIK');
+            $table->string('jk');
+            $table->string('tempatLahir');
+            $table->string('tanggalLahir');
+            $table->string('agama');
+            $table->string('namaAyah');
+            $table->string('namaIbu');
+            $table->string('namaKepalaKeluarga');
+            $table->string('alamat');
+            $table->string('kewarganegaraan');
+            $table->string('rt');
+            $table->string('rw');
+            $table->string('kodePos');
+            $table->string('desa');
+            $table->string('kecamatan');
+            $table->string('kabupaten');
+            $table->string('provinsi');
             $table->rememberToken();
             $table->timestamps();
         });

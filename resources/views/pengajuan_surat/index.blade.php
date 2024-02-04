@@ -4,11 +4,6 @@
     <div class="">
         <h1 class="text-lg lg:text-2xl font-bold mb-2 headDash">Pengajuan Surat Online</h1>
         <p class="textDashboard text-base text-[13px] lg:text-lg font-normal text-secondary">Semua pengajuan surat yang masuk</p>
-        <br>
-        @can('masyarakat')
-        <p class="textDashboard fw-bold shadow-md bg-red-200 p-2 my-3 text-center rounded-20 text-[13px] lg:text-lg font-normal text-secondary">Jika Pengajuan Surat di Ajukan Dengan Cap Basah
-            dan Status Surat Sudah Selesai Silahkan Datang ke Desa</p>
-        @endcan
     </div>
     @can('masyarakat')
     <div class="layoutBtnPengaduan">
