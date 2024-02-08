@@ -32,7 +32,7 @@
     </div>
     @endif
 
-    <div class="card ">
+    <div class="card">
         <div class="card-header bg-white py-3">
             <div class="col-12">
                 <div id="btn__up_mobileKependudukan" class="col-md-6 d-flex justify-content-end py-2">

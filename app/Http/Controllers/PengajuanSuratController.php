@@ -12,35 +12,35 @@ class PengajuanSuratController extends Controller
 {
 
     public function index()
-    {
-
-        if (Auth::user()->level == 'masyarakat') {
-            $pengajuan_saya = PengajuanSurat::with('masyarakat')
-                ->whereMasyarakatId(Auth::user()->id)
-                ->orderBy('created_at', 'desc')
-                ->get();
-        } else if (Auth::user()->level == 'petugas') {
-            $pengajuan_saya = PengajuanSurat::with('masyarakat')
-                ->where("status", "Pending")
-                ->orderBy('created_at', 'desc')
-                ->get();
-        } else if (in_array(Auth::user()->level, ['kesra', 'pelayanan', 'pemerintahan'])) {
-            $pengajuan_saya = PengajuanSurat::with('masyarakat')
-                ->whereIn("status", ["verifikasi", "Diproses"])
-                ->orderBy('created_at', 'desc')
-                ->get();
-        } else if (Auth::user()->level == 'admin') {
-            $pengajuan_saya = PengajuanSurat::with('masyarakat')
-                ->where("status", ["Selesai", "Diproses"])
-                ->orderBy('created_at', 'desc')
-                ->get();
-        }
-
-        return view('pengajuan_surat.index', [
-            'title' => 'Pengajuan Surat Online',
-            'pengajuan_saya' => $pengajuan_saya
-        ]);
+{
+    if (Auth::user()->level == 'masyarakat') {
+        $pengajuan_saya = PengajuanSurat::with('masyarakat')
+            ->whereMasyarakatId(Auth::user()->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+    } else if (Auth::user()->level == 'petugas') {
+        $pengajuan_saya = PengajuanSurat::with('masyarakat')
+            ->whereIn("status", ["Pending", "Selesai"]) 
+            ->orderBy('created_at', 'desc')
+            ->get();
+    } else if (in_array(Auth::user()->level, ['kesra', 'pelayanan', 'pemerintahan'])) {
+        $pengajuan_saya = PengajuanSurat::with('masyarakat')
+            ->whereIn("status", ["verifikasi"])
+            ->orderBy('created_at', 'desc')
+            ->get();
+    } else if (Auth::user()->level == 'admin') {
+        $pengajuan_saya = PengajuanSurat::with('masyarakat')
+            ->whereIn("status", ["Diproses", "Selesai"])
+            ->orderBy('created_at', 'desc')
+            ->get();
     }
+
+    return view('pengajuan_surat.index', [
+        'title' => 'Pengajuan Surat Online',
+        'pengajuan_saya' => $pengajuan_saya
+    ]);
+}
+
 
     public function create(Request $request)
     {
@@ -926,24 +926,52 @@ class PengajuanSuratController extends Controller
         }
     }
 
+    public function romawi($num)
+    {
+        $romans = array(
+            1 => 'I',
+            2 => 'II',
+            3 => 'III',
+            4 => 'IV',
+            5 => 'V',
+            6 => 'VI',
+            7 => 'VII',
+            8 => 'VIII',
+            9 => 'IX',
+            10 => 'X',
+            11 => 'XI',
+            12 => 'XII'
+        );
+
+        return $romans[$num];
+    }
 
     public function edit(PengajuanSurat $pengajuanSurat)
     {
+        $bulanRomawi = $this->romawi(date("n"));
+
         if (Auth::user()->level == 'masyarakat') {
             return redirect('/');
         } else {
             if ($pengajuanSurat->status == 'Diproses') {
                 if ($pengajuanSurat->jenis_surat == 'Surat Keterangan') {
+
                     return view('pengajuan_surat.proses_surat_keterangan', [
                         'title' => 'Proses Surat Keterangan',
                         'pengajuan_surat' => $pengajuanSurat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili Haji') {
+
+                    $nomor_surat = $pengajuanSurat->id . '/456/kesra/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_domisili_haji', [
                         'title' => 'Proses Surat Keterangan Dimisili Haji',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili Yayasan') {
+
+
                     return view('pengajuan_surat.proses_surat_keterangan_domisili_yayasan', [
                         'title' => 'Proses Surat Keterangan Dimisili Yayasan',
                         'pengajuan_surat' => $pengajuanSurat
@@ -979,9 +1007,13 @@ class PengajuanSuratController extends Controller
                         'pengajuan_surat' => $pengajuanSurat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tidak Mampu') {
+
+                    $nomor_surat = $pengajuanSurat->id . '/400/kesra/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_tidak_mampu', [
                         'title' => 'Proses Surat Keterangan Tidak Mampu',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Duda Janda') {
                     return view('pengajuan_surat.proses_surat_keterangan_duda_janda', [

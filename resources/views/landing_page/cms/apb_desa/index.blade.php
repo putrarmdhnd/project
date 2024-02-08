@@ -54,7 +54,7 @@
                             @foreach ($apb_desas as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->judul }} - Tahun {{ $item->tahun }}</td>
+                                    <td>{{ $item->judulPengeluaran }} - Tahun {{ $item->tahun }}</td>
                                     <td>
                                         @if ($item->gambar)
                                             <img src="{{ asset($item->gambar) }}" width="200" alt="">

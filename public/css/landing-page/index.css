@@ -401,7 +401,7 @@ a {
     margin-bottom: 0px;
     line-height: 1.28;
     color: black;
-    
+
 }
 
 .artikel-tanggal,
@@ -411,7 +411,7 @@ a {
 
 }
 
-.card_color{
+.card_color {
     background-color: #f1fcff;
 }
 
@@ -426,9 +426,32 @@ a {
     text-decoration: none;
 }
 
+.layout__bodySurat {
+    padding: 4.5rem;
+}
+
 /**/
 
 /* Media Query */
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+    #carousel .c-img {
+        height: 500vh;
+    }
+
+    /* font untuk dashboard */
+
+    .textDashboardBottom {
+        font-size: 12px;
+        line-height: 1.5rem;
+    }
+
+    /*Detail Surat*/
+    .layout__bodySurat {
+        padding: 2.5rem;
+    }
+
+}
 
 /* CSS for mobile */
 @media (max-width: 450px) {
@@ -484,7 +507,8 @@ a {
         font-size: 10px;
     }
 
-    .card-idm__jumlah , .card-idm__belanja {
+    .card-idm__jumlah,
+    .card-idm__belanja {
         font-size: 18px;
     }
 
@@ -632,8 +656,8 @@ a {
     .jenis-surat-nama {
         font-size: 9px;
     }
-    
-    .ImgSurat img{
+
+    .ImgSurat img {
         height: 50px;
     }
 
@@ -644,6 +668,15 @@ a {
     .textDashboard {
         font-size: 11px;
     }
+
+    /*Detail Surat*/
+    .text__jenisSurat{
+        font-size: large;
+    }
+    .layout__bodySurat {
+        padding: 0;
+    }
+
 
 }
 
@@ -667,19 +700,7 @@ a {
 /* // Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {}
 
-/* // X-Large devices (large desktops, 1200px and up) */
-@media (max-width: 1200px) {
-    #carousel .c-img {
-        height: 500vh;
-    }
 
-    /* font untuk dashboard */
-
-    .textDashboardBottom {
-        font-size: 12px;
-        line-height: 1.5rem;
-    }
-}
 
 
 /* Footer */
@@ -1139,6 +1160,6 @@ a {
 /* Optionally, you can add max-width to prevent extremely long content from causing issues */
 .textTabelTop,
 .textTable {
-    max-width: 200px; /* Adjust the value based on your needs */
+    max-width: 200px;
+    /* Adjust the value based on your needs */
 }
-

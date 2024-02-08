@@ -98,7 +98,7 @@ APBDesa
                                     <a href="">
                                         <div class="card-body artikel-card card_color">
                                             <div class="row">
-                                                <div class="col-12">
+                                                <div class="col-12">    
                                                     <div id="thumbnail" class="col-12">
                                                         <div class="thumbnail-container overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
                                                             <img src="{{ asset($item->gambar) }}" class="thumbnail-image rounded-20 position-absolute top-0 start-0 w-100 h-100 bg-light" alt="..." style="object-fit: contain;">
