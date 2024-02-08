@@ -32,7 +32,7 @@
                                     <label for="judulPengeluaran" class="form-label">Judul Kegiatan <span
                                             class="text-danger">*</span></label>
                                     <input type="text" name="judulPengeluaran" value="{{ old('judulPengeluaran') }}" class="form-control"
-                                        id="judulPengeluaran" placeholder="Masukkan jumlah">
+                                        id="judulPengeluaran" placeholder="Masukkan Judul Kegiatan">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="pengeluaran" class="form-label">pengeluaran <span

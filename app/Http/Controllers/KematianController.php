@@ -40,7 +40,7 @@ class KematianController extends Controller
     { {
             $request->validate([
                 'nik' => 'required|numeric',
-                'namaLengkap' => 'required|numeric',
+                'namaLengkap' => 'required',
                 'ttl' => 'required',
                 'ttm' => 'required',
                 'namaPelapor' => 'required',

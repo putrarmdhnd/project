@@ -63,14 +63,15 @@
                 </a>
             </li>
             @endcanany
-
-            @can('admin')
+            @canany('kesra')
             <li>
                 <a href="/pengelolaan-data/masyarakat" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-group {{ Request::is('pengguna/masyarakat*') ? 'text-primary' : '' }}"></i></span>
                     <span class="text-sm font-medium">Pengelolaan Data Masyarakat</span>
                 </a>
             </li>
+            @endcanany
+            @can('admin')
             <li class="relative" x-data="{ open: false }">
                 <button class="transform hover:translate-x-2 transition-transform ease-in duration-200 flex items-center w-full text-sm font-medium text-left rounded-t-lg focus:outline-none" @click="open = !open">
                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="text-white bx bx-user-check"></i></span>

@@ -38,15 +38,9 @@
                                     class="form-control" id="nama" placeholder="Masukkan nama pegawai">
                             </div>
                             <div class="mb-3">
-                                <label for="nip" class="form-label">NIP</label>
-                                <input type="text" name="nip" value="{{ old('nip', $pegawai->nip) }}"
-                                    class="form-control" id="nip" placeholder="Masukkan nip pegawai">
-                            </div>
-                            <div class="mb-3">
-                                <label for="keterangan" class="form-label">Keterangan</label>
-                                <input type="text" name="keterangan"
-                                    value="{{ old('keterangan', $pegawai->keterangan) }}" class="form-control"
-                                    id="keterangan" placeholder="Masukkan keterangan pegawai">
+                                <label for="pendidikan" class="form-label">Pendidikan Trakhir</label>
+                                <input type="text" name="pendidikan" value="{{ old('pendidikan', $pegawai->pendidikan) }}" class="form-control"
+                                    id="pendidikan" placeholder="Masukkan Pendidikan pegawai">
                             </div>
                             <div class="mb-3">
                                 <label for="foto" class="form-label">Foto</label>

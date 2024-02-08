@@ -11,5 +11,23 @@ class bansos extends Model
     protected $table = 'bantuansosial';
 
     // Kolom yang dapat diisi (fillable)
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'NIK',
+        'namaLengkap',
+        'jk',
+        'tempatLahir',
+        'tanggalLahir',
+        'agama',
+        'namaAyah',
+        'namaIbu',
+        'namaKepalaKeluarga',
+        'alamat',
+        'rt',
+        'rw',
+        'kodePos',
+        'desa',
+        'kecamatan',
+        'kabupaten',
+        'provinsi',
+    ];
 }

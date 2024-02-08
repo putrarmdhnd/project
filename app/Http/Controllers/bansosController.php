@@ -36,17 +36,62 @@ class bansosController extends Controller
     { {
             $request->validate([
                 'nik' => 'required|numeric',
-                'namaLengkap' => 'required|numeric',
+                'namaLengkap' => 'required',
+                'jk' => 'required',
+                'tempatLahir' => 'required',
+                'tanggalLahir' => 'required',
+                'agama' => 'required',
+                'namaAyah' => 'required',
+                'namaIbu' => 'required',
+                'namaKepalaKeluarga' => 'required',
+                'alamat' => 'required',
+                'rt' => 'required',
+                'rw' => 'required',
+                'kodePos' => 'required',
+                'desa' => 'required',
+                'kecamatan' => 'required',
+                'kabupaten' => 'required',
+                'provinsi' => 'required',
             ]);
 
             // Ambil data dari tabel kependudukan berdasarkan NIK
             $nik_pendudukan = penduduk::where('nik', $request->nik)->first();
             $nama_pendudukan = penduduk::where('nik', $request->nik)->first('namaLengkap');
+            $jk_pendudukan = penduduk::where('nik', $request->nik)->first('jk');
+            $tempat_pendudukan = penduduk::where('nik', $request->nik)->first('tempatLahir');
+            $tanggal_pendudukan = penduduk::where('nik', $request->nik)->first('tanggalLahir');
+            $agama_pendudukan = penduduk::where('nik', $request->nik)->first('agama');
+            $ayah_pendudukan = penduduk::where('nik', $request->nik)->first('namaAyah');
+            $ibu_pendudukan = penduduk::where('nik', $request->nik)->first('namaIbu');
+            $kepalaKeluarga_pendudukan = penduduk::where('nik', $request->nik)->first('namaKepalaKeluarga');
+            $alamat_pendudukan = penduduk::where('nik', $request->nik)->first('alamat');
+            $rt_pendudukan = penduduk::where('nik', $request->nik)->first('rt');
+            $rw_pendudukan = penduduk::where('nik', $request->nik)->first('rw');
+            $kodePos_pendudukan = penduduk::where('nik', $request->nik)->first('kodePos');
+            $desa_pendudukan = penduduk::where('nik', $request->nik)->first('desa');
+            $kecamatan_pendudukan = penduduk::where('nik', $request->nik)->first('kecamatan');
+            $kabupaten_pendudukan = penduduk::where('nik', $request->nik)->first('kabupaten');
+            $provinsi_pendudukan = penduduk::where('nik', $request->nik)->first('provinsi');
 
             // Simpan data ke tabel kematian
             $bansos = new bansos();
             $bansos->NIK = $nik_pendudukan->NIK;
             $bansos->namaLengkap = $nama_pendudukan->namaLengkap;
+            $bansos->jk = $jk_pendudukan->jk;
+            $bansos->tempatLahir = $tempat_pendudukan->tempatLahir;
+            $bansos->tanggalLahir = $tanggal_pendudukan->tanggalLahir;
+            $bansos->agama = $agama_pendudukan->agama;
+            $bansos->namaAyah = $ayah_pendudukan->namaAyah;
+            $bansos->namaIbu = $ibu_pendudukan->namaIbu;
+            $bansos->namaKepalaKeluarga = $kepalaKeluarga_pendudukan->namaKepalaKeluarga;
+            $bansos->alamat = $alamat_pendudukan->alamat;
+            $bansos->rt = $rt_pendudukan->rt;
+            $bansos->rw = $rw_pendudukan->rw;
+            $bansos->kodePos = $kodePos_pendudukan->kodePos;
+            $bansos->desa = $desa_pendudukan->desa;
+            $bansos->kecamatan = $kecamatan_pendudukan->kecamatan;
+            $bansos->kabupaten = $kabupaten_pendudukan->kabupaten;
+            $bansos->provinsi = $provinsi_pendudukan->provinsi;
             // Tambahkan kolom-kolom lain sesuai kebutuhan
             $bansos->save();
 

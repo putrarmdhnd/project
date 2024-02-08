@@ -4,7 +4,6 @@
     <div class="">
         <h1 class="text-lg lg:text-2xl font-bold mb-2 headDash">Pengajuan Surat Online</h1>
         <p class="textDashboard text-base text-[13px] lg:text-lg font-normal text-secondary">Semua pengajuan surat yang masuk</p>
-        <br>
     </div>
     @can('masyarakat')
     <div class="layoutBtnPengaduan">
@@ -122,6 +121,7 @@
                         @endcan
                     </td>
 
+<<<<<<< HEAD
                     </tr>
                     @endforeach
                 </tbody>
@@ -139,5 +139,19 @@
             });
         </script>
     </div>
+=======
+                        @canany(['admin', 'petugas'])
+                        <a href="{{ route('pengajuan_surat.previewew.surat', $item->id) }}" target="__blank" class="underline text-primary">Preview Surat</a>
+                        <a href="{{ route('pengajuan_surat.downloaded.surat', $item->id) }}" target="__blank" class="underline text-primary">
+                            <i class="bx bx-import text-lg px-2"></i>
+                        </a>
+                        @endcanany
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+            </tbody>
+    </table>
+>>>>>>> 89c9f3106fcfd40621861519659452d1f56dc856
 </div>
 @endsection

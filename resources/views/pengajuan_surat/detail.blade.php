@@ -29,21 +29,26 @@ $surat = json_decode($pengajuan_surat->surat);
 
             @endif
             @endcanany
+
             @canany(['admin'])
+
             @if ($pengajuan_surat->status == 'Diproses')
 
-            @if ($surat->kttd == 'basah')
-            <a href="{{ route('pengajuan-surat.edit', $pengajuan_surat->id) }}" class="text-white bg-success focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">
-                Proses Surat
-            </a>
+                @if ($surat->kttd == 'basah')
+                <a href="{{ route('pengajuan-surat.edit', $pengajuan_surat->id) }}" class="text-white bg-success focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">
+                    Proses Surat
+                </a>
+                @endif
+
+                @if ($surat->kttd == 'barcode')
+                <a href="{{ route('pengajuan_surat.basah', $pengajuan_surat->id) }}" class="text-white bg-success focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">
+                    Proses Surat basah
+                </a>
+                @endif
             @endif
-            @if ($surat->kttd == 'null')
-            <a href="{{ route('pengajuan_surat.basah', $pengajuan_surat->id) }}" class="text-white bg-success focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">
-                Proses Surat basah
-            </a>
-            @endif
-            @endif
+
             @endcanany
+            
             @canany(['kesra'])
             @if ($pengajuan_surat->status == 'verifikasi' && in_array($pengajuan_surat->jenis_surat, ['Surat Keterangan Numpang Nikah','Surat Keterangan Duda Janda','Surat Keterangan Tentang Perkawinan','Surat Keterangan Tidak Mampu']))
             <form class="mt-3 ml-0 lg:ml-3 lg:mt-0" action="{{ route('pengajuan_surat.approve', $pengajuan_surat->id) }}" method="post">
