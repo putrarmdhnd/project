@@ -11,5 +11,23 @@ class anakyatim extends Model
     protected $table = 'anakyatim1sampai12tahun';
 
     // Kolom yang dapat diisi (fillable)
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'NIK',
+        'namaLengkap',
+        'jk',
+        'tempatLahir',
+        'tanggalLahir',
+        'agama',
+        'namaAyah',
+        'namaIbu',
+        'namaKepalaKeluarga',
+        'alamat',
+        'rt',
+        'rw',
+        'kodePos',
+        'desa',
+        'kecamatan',
+        'kabupaten',
+        'provinsi',
+    ];
 }

@@ -114,10 +114,8 @@
                             <button class="text-primary text-center detailKependudukan" data-user="">
                                 <i class='bx bx-edit-alt'></i>
                             </button>
-                        </td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">
                             <button class="text-danger text-center deletePenduduk" data-id="{{ $item->id }}">
-                                <i class="bx bxs-trash"></i>
+                                <i class="bx bxs-trash" style="margin-left:10px;"></i>
                             </button>
                         </td>
                     </tr>
