@@ -114,24 +114,14 @@ class APBDesaController extends Controller
      * @param  \App\Models\LandingPage\ApbDesa  $apbDesa
      * @return \Illuminate\Http\Response
      */
-    public function edit(ApbDesa $apb)
-    {
-        return view('landing_page.cms.apb_desa.edit', compact('apb'));
+    public function editPengeluaran (ApbDesa $apb){
+        return view('landing_page.cms.apb_desa.editPengeluaran', compact('apb'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\LandingPage\ApbDesa  $apbDesa
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ApbDesa $apb)
+    public function updatePengeluaran(Request $request, ApbDesa $apb)
     {
         $request->validate([
-            'judul' => 'required',
-            'tahun' => 'required',
-            'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'judulPengeluaran' => 'required',
+            'pengeluaran' => 'required',
         ]);
 
         // loop $request->all() if value is array convert to json
@@ -149,6 +139,32 @@ class APBDesaController extends Controller
 
             if ($apb->gambar) {
                 Storage::delete(substr($apb->gambar, 8));
+            }
+        }
+        
+        $apb->update($data);
+
+        return redirect()->route('cms.apb.index')->with('success', 'APB Desa berhasil diubah');
+    }
+    public function edit(ApbDesa $apb)
+    {
+        return view('landing_page.cms.apb_desa.edit', compact('apb'));
+    }
+
+    public function update(Request $request, ApbDesa $apb)
+    {
+        $request->validate([
+            'tahun' => 'required',
+            'anggaran' => 'required',
+        ]);
+
+        // loop $request->all() if value is array convert to json
+        $data = [];
+        foreach ($request->all() as $key => $value) {
+            if (is_array($value)) {
+                $data[$key] = json_encode($value);
+            } else {
+                $data[$key] = $value;
             }
         }
 

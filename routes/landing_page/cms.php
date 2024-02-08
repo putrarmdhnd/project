@@ -28,6 +28,8 @@ Route::prefix('LandingPage')->middleware(['auth', 'petugasAdmin'])->name('cms.')
     Route::resource('pengumuman', PengumumanController::class);
     Route::resource('galeri', GaleriController::class);
     Route::resource('apb', APBDesaController::class);
+    Route::get('apb/{apb}/editPengeluaran', [APBDesaController::class, 'editPengeluaran'])->name('apb.editPengeluaran');
+    Route::put('apb/{apb}/updatePengeluaran', [APBDesaController::class, 'updatePengeluaran'])->name('apb.updatePengeluaran');
 
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('jabatan', JabatanPegawaiController::class);

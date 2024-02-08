@@ -44,8 +44,10 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Judul</th>
-                                <th>Gambar</th>
+                                <th>Tahun</th>
+                                <th>Anggaran</th>
+                                <th>Judul Kegiatan</th>
+                                <th>Pengeluaran</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -55,13 +57,9 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->judul }} - Tahun {{ $item->tahun }}</td>
-                                    <td>
-                                        @if ($item->gambar)
-                                            <img src="{{ asset($item->gambar) }}" width="200" alt="">
-                                        @else
-                                            <p>-</p>
-                                        @endif
-                                    </td>
+                                    <td>{{ number_format($item->anggaran, 0, ',', '.') }}</td>
+                                    <td>{{ $item->judulPengeluaran }}</td>
+                                    <td>{{ number_format($item->pengeluaran, 0, ',', '.') }}</td>
                                     <td>
                                         <div class="d-flex justify-content-evenly">
                                             <div class="pr-2">
@@ -69,9 +67,10 @@
                                                     class="btn btn-info btn-sm me-3">View</a>
                                             </div>
                                             <div class="pr-2">
-                                                <a href="{{ route('cms.apb.edit', $item->id) }}"
+                                                <a href="{{ $item->tahun !== null ? route('cms.apb.edit', $item->id) : route('cms.apb.editPengeluaran', $item->id) }}"
                                                     class="btn btn-primary btn-sm me-3">Edit</a>
                                             </div>
+                                            
                                             <form action="{{ route('cms.apb.destroy', $item->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
