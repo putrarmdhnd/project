@@ -66,6 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnDown_largeKependudukan = document.getElementById("btn__down_largeKependudukan");
   const btnUP_mobileKependudukan = document.getElementById("btn__up_mobileKependudukan");
 
+  //layout konfirmasi untuk detail pengajuan surat
+  const  layout__KonfirmasiDesktop = document.querySelectorAll(".layout__Konfirmasi--Desktop");
+
+
   // Check viewport width and apply styles accordingly
   function checkViewportWidth() {
     if (window.innerWidth <= 450) {
@@ -173,6 +177,11 @@ document.addEventListener("DOMContentLoaded", function () {
       element.classList.add("col-12");
     });
 
+    //layout Konfirmasi detail pengajuan surat
+    layout__KonfirmasiDesktop.forEach(function (element) {
+      element.classList.remove("col-6");
+    });
+
   }
 
   function removeDescElementsForMobile() {
@@ -262,6 +271,11 @@ document.addEventListener("DOMContentLoaded", function () {
       element.classList.remove("col-4");
       element.classList.add("col-6");
 
+    });
+
+    //layout Konfirmasi detail pengajuan surat
+    layout__KonfirmasiDesktop.forEach(function (element) {
+      element.classList.remove("col-6");
     });
 
   }

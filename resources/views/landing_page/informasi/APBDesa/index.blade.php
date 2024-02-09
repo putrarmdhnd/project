@@ -48,15 +48,15 @@ APBDesa
                         <div class="card card-idm card-idm__skor card-dana-masuk">
                             <div class="card-body">
                                 <div class="row d-block">
-                                    @foreach ($apb->items() as $item)
+                                    @foreach($apb as $item)
                                     <div class="col-12">
                                         @isset($item->tahun)
                                         <p class="card-idm__text">Pendapatan Desa <br>Tahun {{ $item->tahun }}</p>
                                         @endisset
                                     </div>
-                                    <div class="col-12 text-center center-v">
+                                    <div class="col-12 text-end center-v">
                                         @if($item->anggaran !== null)
-                                        <p class="card-idm__jumlah fw-bold">Rp{{ number_format($item->anggaran, 0, ',', '.') }}</p>
+                                        <p class="card-idm__jumlah fw-bold h2">Rp{{ number_format($item->anggaran, 0, ',', '.') }}</p>
                                         @endif
                                     </div>
                                     @endforeach
@@ -73,9 +73,9 @@ APBDesa
                                     <div class="col-12">
                                         <p class="card-idm__text">Belanja Desa <br>Tahun {{ $item->tahun }}</p>
                                     </div>
-                                    <div class="col-12 text-center center-v ">
+                                    <div class="col-12 text-end center-v ">
                                         @if($latestItem = $item->latest()->first())
-                                        <p class="card-idm__belanja fw-bold text-danger">- Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}</p>
+                                        <p class="card-idm__belanja fw-bold text-danger h2">- Rp{{ number_format($latestItem->jumlah, 0, ',', '.') }}</p>
                                         @endif
                                     </div>
                                     @endisset
@@ -98,7 +98,7 @@ APBDesa
                                     <a href="">
                                         <div class="card-body artikel-card card_color">
                                             <div class="row">
-                                                <div class="col-12">
+                                                <div class="col-12">    
                                                     <div id="thumbnail" class="col-12">
                                                         <div class="thumbnail-container overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
                                                             <img src="{{ asset($item->gambar) }}" class="thumbnail-image rounded-20 position-absolute top-0 start-0 w-100 h-100 bg-light" alt="..." style="object-fit: contain;">
@@ -110,8 +110,8 @@ APBDesa
                                                     </div>
 
                                                     <div class="col-12 mt-3 text-end ">
-                                                        <p class="h3 text-danger p-2">
-                                                           - {{ number_format($item->pengeluaran, 0, ',', '.') }}
+                                                        <p class="h3 text-danger p-2 fw-bold">
+                                                            - {{ number_format($item->pengeluaran, 0, ',', '.') }}
                                                         </p>
                                                     </div>
 

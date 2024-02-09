@@ -103,7 +103,7 @@
                 <div data-aos="flip-right" data-aos-offset="100" data-aos-delay="200" class="col-6 col-lg-4 mb-3 text-center">
                     <div class="card card-demografi-penduduk card_color shadow">
                         <div class="card-body">
-                            <p class="card-demografi-penduduk__info mb-4 fw-semibold">Perempuan</p><img src="{{ asset('img/landing-page/iconPendudukPerempuan.svg') }}" alt="icon jumlah perempuan" height="100">
+                            <p class="card-demografi-penduduk__info mb-4 fw-semibold">Perempuan</p><img src="{{ asset('img/landing-page/iconPendudukPerempuan.png') }}" alt="icon jumlah perempuan" height="100">
                             <p id="jumlahPerempuan" class="card-demografi-penduduk__jumlah mb-0 mt-4 fw-semibold">1802</p>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                 <div data-aos="flip-right" data-aos-offset="100" data-aos-delay="400" class="col-6 col-lg-4 mb-3 text-center">
                     <div class="card card-demografi-penduduk card_color shadow">
                         <div class="card-body">
-                            <p class="card-demografi-penduduk__info mb-4 fw-semibold">Laki-Laki</p><img src="{{ asset('img/landing-page/iconPendudukLaki.svg') }}" alt="icon jumlah perempuan" height="100">
+                            <p class="card-demografi-penduduk__info mb-4 fw-semibold">Laki-Laki</p><img src="{{ asset('img/landing-page/iconPendudukLaki.png') }}" alt="icon jumlah perempuan" height="100">
                             <p id="jumlahLaki" class="card-demografi-penduduk__jumlah mb-0 mt-4 fw-semibold">1849</p>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                 <div data-aos="flip-right" data-aos-offset="100" data-aos-delay="600" class="iconKeluarga  col-lg-4 mb-3 text-center">
                     <div class="card card-demografi-penduduk card_color shadow">
                         <div class="card-body">
-                            <p class="card-demografi-penduduk__info mb-4 fw-semibold">Total Penduduk</p><img src="{{ asset('img/landing-page/iconPenduduk.svg') }}" alt="icon jumlah perempuan" height="100">
+                            <p class="card-demografi-penduduk__info mb-4 fw-semibold">Total Penduduk</p><img src="{{ asset('img/landing-page/iconPenduduk.png') }}" alt="icon jumlah perempuan" height="100">
                             <p id="jumlahPenduduk" class="card-demografi-penduduk__jumlah mb-0 mt-4 fw-semibold">3651</p>
                         </div>
                     </div>

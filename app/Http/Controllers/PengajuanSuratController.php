@@ -13,7 +13,6 @@ class PengajuanSuratController extends Controller
 
     public function index()
     {
-
         if (Auth::user()->level == 'masyarakat') {
             $pengajuan_saya = PengajuanSurat::with('masyarakat')
                 ->whereMasyarakatId(Auth::user()->id)
@@ -21,17 +20,17 @@ class PengajuanSuratController extends Controller
                 ->get();
         } else if (Auth::user()->level == 'petugas') {
             $pengajuan_saya = PengajuanSurat::with('masyarakat')
-                ->where("status", "Pending")
+                ->whereIn("status", ["Pending", "Selesai"])
                 ->orderBy('created_at', 'desc')
                 ->get();
         } else if (in_array(Auth::user()->level, ['kesra', 'pelayanan', 'pemerintahan'])) {
             $pengajuan_saya = PengajuanSurat::with('masyarakat')
-                ->whereIn("status", ["verifikasi", "Diproses"])
+                ->whereIn("status", ["verifikasi"])
                 ->orderBy('created_at', 'desc')
                 ->get();
         } else if (Auth::user()->level == 'admin') {
             $pengajuan_saya = PengajuanSurat::with('masyarakat')
-                ->where("status", ["Selesai", "Diproses"])
+                ->whereIn("status", ["Diproses", "Selesai"])
                 ->orderBy('created_at', 'desc')
                 ->get();
         }
@@ -41,6 +40,7 @@ class PengajuanSuratController extends Controller
             'pengajuan_saya' => $pengajuan_saya
         ]);
     }
+
 
     public function create(Request $request)
     {
@@ -926,107 +926,196 @@ class PengajuanSuratController extends Controller
         }
     }
 
+    public function romawi($num)
+    {
+        $romans = array(
+            1 => 'I',
+            2 => 'II',
+            3 => 'III',
+            4 => 'IV',
+            5 => 'V',
+            6 => 'VI',
+            7 => 'VII',
+            8 => 'VIII',
+            9 => 'IX',
+            10 => 'X',
+            11 => 'XI',
+            12 => 'XII'
+        );
+
+        return $romans[$num];
+    }
 
     public function edit(PengajuanSurat $pengajuanSurat)
     {
+        $bulanRomawi = $this->romawi(date("n"));
+
         if (Auth::user()->level == 'masyarakat') {
             return redirect('/');
         } else {
             if ($pengajuanSurat->status == 'Diproses') {
-                if ($pengajuanSurat->jenis_surat == 'Surat Keterangan') {
-                    return view('pengajuan_surat.proses_surat_keterangan', [
-                        'title' => 'Proses Surat Keterangan',
-                        'pengajuan_surat' => $pengajuanSurat
-                    ]);
-                } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili Haji') {
+                if ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili Haji') {
+
+                    $nomor_surat = '456/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_domisili_haji', [
                         'title' => 'Proses Surat Keterangan Dimisili Haji',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili Yayasan') {
+
+                    $nomor_surat = '500/' . $pengajuanSurat->id . '/EKB/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_domisili_yayasan', [
                         'title' => 'Proses Surat Keterangan Dimisili Yayasan',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Penguburan') {
+
+                    $nomor_surat = '469.1/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_penguburan', [
                         'title' => 'Proses Surat Keterangan Penguburan',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tentang Perkawinan') {
+
+                    $nomor_surat = '472.2/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_tentang_perkawinan', [
                         'title' => 'Proses Surat Keterangan tentang perkawinan',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang Nikah') {
+
+                    $nomor_surat = '472.2/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_numpang_nikah', [
                         'title' => 'Proses Surat Keterangan numpang nikah',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
+
+                    $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_orang_tua_wali', [
                         'title' => 'Proses Surat Keterangan orang tua wali',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Kehilangan') {
+
+                    $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_kehilangan', [
                         'title' => 'Proses Surat Keterangan kehilangan',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Belum Nikah') {
+
+                    $nomor_surat = '472.2/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_belum_nikah', [
                         'title' => 'Proses Surat Keterangan Belum Nikah',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tidak Mampu') {
+
+                    $nomor_surat = '400/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_tidak_mampu', [
                         'title' => 'Proses Surat Keterangan Tidak Mampu',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Duda Janda') {
+
+                    $nomor_surat = '474.2/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_duda_janda', [
                         'title' => 'Proses Surat Keterangan Duda Janda',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili') {
+
+                    $nomor_surat = '471.1/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_domisili', [
                         'title' => 'Proses Surat Keterangan Domisili',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Usaha') {
+
+                    $nomor_surat = '510/' . $pengajuanSurat->id . '/EKB/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_usaha', [
                         'title' => 'Proses Surat Keterangan Usaha',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Keterangan Catatan Kepolisian') {
+
+                    $nomor_surat = '331.1/' . $pengajuanSurat->id . '/PEL/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_pengantar_keterangan_catatan_kepolisian', [
                         'title' => 'Proses Surat Keterangan catatan Kepolisian',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Akad Nikah') {
+
+                    $nomor_surat = '472.2/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_pernyataan_akad_nikah', [
                         'title' => 'Proses Surat pernyataan Akad Nikah',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Ahli Waris') {
+
+                    $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_pernyataan_ahli_waris', [
                         'title' => 'Proses Surat pernyataan Ahli Waris',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Beda Nama Data') {
+
+                    $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_keterangan_beda_nama_data', [
                         'title' => 'Proses Surat Keterangan Beda Nama Data',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Kelahiran') {
+
+                    $nomor_surat = '472.1.11/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_kelahiran', [
                         'title' => 'Proses Surat Keterangan Kelahiran',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Kematian') {
+
+                    $nomor_surat = '472.1.12/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                     return view('pengajuan_surat.proses_surat_kematian', [
                         'title' => 'Proses Surat Keterangan Kematian',
-                        'pengajuan_surat' => $pengajuanSurat
+                        'pengajuan_surat' => $pengajuanSurat,
+                        'nomor_surat' => $nomor_surat
                     ]);
                 } else {
                     return redirect()->route('pengajuan-surat.index');
@@ -1039,101 +1128,171 @@ class PengajuanSuratController extends Controller
 
     public function basah(PengajuanSurat $pengajuanSurat)
     {
+        $bulanRomawi = $this->romawi(date("n"));
+
         if ($pengajuanSurat->status == 'Diproses') {
-            if ($pengajuanSurat->jenis_surat == 'Surat Keterangan') {
-                return view('pengajuan_surat.proses_surat_keterangan', [
-                    'title' => 'Proses Surat Keterangan',
-                    'pengajuan_surat' => $pengajuanSurat
-                ]);
-            } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili Haji') {
+            if ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili Haji') {
+
+                $nomor_surat = '456/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_domisili_haji', [
                     'title' => 'Proses Surat Keterangan Dimisili Haji',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili Yayasan') {
+
+                $nomor_surat = '500/' . $pengajuanSurat->id . '/EKB/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_domisili_yayasan_basah', [
                     'title' => 'Proses Surat Keterangan Dimisili Yayasan',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Penguburan') {
+
+                $nomor_surat = '469.1/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_penguburan', [
                     'title' => 'Proses Surat Keterangan Penguburan',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tentang Perkawinan') {
+
+                $nomor_surat = '472.2/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_tentang_perkawinan', [
                     'title' => 'Proses Surat Keterangan tentang perkawinan',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang Nikah') {
+
+                $nomor_surat = '472.2/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_numpang_nikah', [
                     'title' => 'Proses Surat Keterangan numpang nikah',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
+
+                $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_orang_tua_wali', [
                     'title' => 'Proses Surat Keterangan orang tua wali',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Kehilangan') {
+
+                $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_kehilangan', [
                     'title' => 'Proses Surat Keterangan kehilangan',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Belum Nikah') {
+
+                $nomor_surat = '472.2/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_belum_nikah', [
                     'title' => 'Proses Surat Keterangan Belum Nikah',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tidak Mampu') {
+
+                $nomor_surat = '400/' . $pengajuanSurat->id . '/kesra/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_tidak_mampu', [
                     'title' => 'Proses Surat Keterangan Tidak Mampu',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Duda Janda') {
+
+                $nomor_surat = '474.2/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_duda_janda', [
                     'title' => 'Proses Surat Keterangan Duda Janda',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili') {
+
+                $nomor_surat = '471.1/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_domisili', [
                     'title' => 'Proses Surat Keterangan Domisili',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Usaha') {
+
+                $nomor_surat = '510/' . $pengajuanSurat->id . '/EKB/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_usaha', [
                     'title' => 'Proses Surat Keterangan Usaha',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Keterangan Catatan Kepolisian') {
+
+                $nomor_surat = '331.1/' . $pengajuanSurat->id . '/PEL/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_pengantar_keterangan_catatan_kepolisian', [
                     'title' => 'Proses Surat Keterangan catatan Kepolisian',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Akad Nikah') {
+
+                $nomor_surat = '472.2/' . $pengajuanSurat->id . '/KESRA/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_pernyataan_akad_nikah', [
                     'title' => 'Proses Surat pernyataan Akad Nikah',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Pernyataan Ahli Waris') {
+
+                $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_pernyataan_ahli_waris', [
                     'title' => 'Proses Surat pernyataan Ahli Waris',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Beda Nama Data') {
+
+                $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_keterangan_beda_nama_data', [
                     'title' => 'Proses Surat Keterangan Beda Nama Data',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Kelahiran') {
+
+                $nomor_surat = '472.1.11/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_kelahiran', [
                     'title' => 'Proses Surat Keterangan Kelahiran',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Kematian') {
+
+                $nomor_surat = '472.1.12/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
                 return view('pengajuan_surat.basah.proses_surat_kematian', [
                     'title' => 'Proses Surat Keterangan Kematian',
-                    'pengajuan_surat' => $pengajuanSurat
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
                 ]);
             } else {
                 return redirect()->route('pengajuan-surat.index');

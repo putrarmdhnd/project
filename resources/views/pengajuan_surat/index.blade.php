@@ -17,114 +17,129 @@
     dan Status Surat Sudah Selesai Silahkan Datang ke Desa</p>
 
 @endcan
-<div class="overflow-x-auto">
-    <table class="w-full rounded-lg bg-white divide-y divide-gray overflow-hidden mb-5">
-        <thead class="themeColor">
-            <tr class="text-center">
-                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">NO</th>
-                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Tanggal</th>
-                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Pembuat</th>
-                @canany(['petugas', 'admin','kesra','pelayanan','pemerintahan'])
-                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">No Telepon</th>
-                @endcanany
-                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Jenis Surat</th>
-                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 ">Status</th>
-                <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Aksi</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-gray">
-            @foreach ($pengajuan_saya as $item)
-            <tr class="text-center">
-                <td class="textTable px-2 py-4 text-secondary">
-                    {{ $loop->iteration }}
-                </td>
-                <td class="textTable px-2 py-4 text-secondary">
-                    {{ date('d F Y', strtotime($item->created_at)) }}
-                <td class="textTable px-2 py-4 text-secondary">
-                    {{ $item->masyarakat->nama }}
-                </td>
-                @canany(['petugas', 'admin','kesra','pelayanan','pemerintahan'])
-                <td class="textTable px-2 py-4 text-secondary">
-                    {{ $item->masyarakat->telepon }}
-                </td>
-                @endcanany
-                <td class="textTable px-2 py-4 text-secondary">
-                    {{ $item->jenis_surat }}
-                </td>
+<div class="card">
+    <div class="card-header bg-white py-3">
+        <div class="row align-items-center py-2">
+            <div class="col-md-12 py-2">
+                <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="w-full rounded-lg bg-white divide-y divide-gray overflow-x-auto">
+            <table id="informasiTable" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead class="themeColor text-center align-middle">
+                    <tr>
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4">NO</th>
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Tanggal</th>
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Pembuat</th>
+                        @canany(['petugas', 'admin','kesra','pelayanan','pemerintahan'])
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4">No Telepon</th>
+                        @endcanany
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Jenis Surat</th>
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4 ">Status</th>
+                        @canany(['petugas', 'admin','kesra','pelayanan','pemerintahan'])
+                        <th colspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Aksi</th>
+                        @endcanany
+                    </tr>
+                    <tr>
+                        @canany(['petugas', 'admin','kesra','pelayanan','pemerintahan'])
+                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Lihat</th>
+                        @endcanany
+                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4">Unduh</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center" @foreach ($pengajuan_saya as $item) <tr>
+                    <td class="textTable px-2 py-4 text-secondary align-middle align-middle">
+                        {{ $loop->iteration }}
+                    </td>
+                    <td class="textTable px-2 py-4 text-secondary align-middle align-middle">
+                        {{ date('d F Y', strtotime($item->created_at)) }}
+                    <td class="textTable px-2 py-4 text-secondary align-middle align-middle">
+                        {{ $item->masyarakat->nama }}
+                    </td>
+                    @canany(['petugas', 'admin' , 'kesra','pemerintahan','pelayanan'])
+                    <td class="textTable px-2 py-4 text-secondary align-middle align-middle">
+                        {{ $item->masyarakat->telepon }}
+                    </td>
+                    @endcanany
+                    <td class="textTable px-2 py-4 text-secondary align-middle align-middle">
+                        {{ $item->jenis_surat }}
+                    </td>
 
-                <td class="px-4 py-4 text-secondary text-center">
+                    <td class="textTable px-2 py-4 text-secondary align-middle align-middle">
 
-                    @if ($item->status == 'Pending')
-                        <span class="text-dark text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-warning ">
+                        @if ($item->status == 'Pending')
+                        <span class="textTable text-dark text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-warning ">
                             Pending
                         </span>
-                    @endif
+                        @endif
 
-                    @if ($item->status == 'verifikasi')
-                        <span class="text-white text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-orange ">
+                        @if ($item->status == 'verifikasi')
+                        <span class="textTable text-white text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-orange ">
                             sudah Terverifikasi
                         </span>
-                    @endif
-                    @if ($item->status == 'Diproses')
-                        <span class="text-white text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-orange ">
+                        @endif
+                        @if ($item->status == 'Diproses')
+                        <span class="textTable text-white text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-orange ">
                             Sedang Diproses
                         </span>
-                    @endif
-                    @if ($item->status == 'Ditolak')
-                        <span class="text-white text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-danger ">
+                        @endif
+                        @if ($item->status == 'Ditolak')
+                        <span class="textTable text-white text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-danger ">
                             Ditolak
                         </span>
-                    @endif
-                    @if ($item->status == 'Selesai')
-                        <span class="text-white text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-success ">
+                        @endif
+                        @if ($item->status == 'Selesai')
+                        <span class="textTable text-white text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-success ">
                             Selesai
                         </span>
-
-                        <br>
-                        <br>
+                        @endif
+                    
+                    </td>
+                    @canany(['petugas', 'admin' , 'kesra','pemerintahan','pelayanan'])
+                    <td class="textTable px-2 py-4 text-secondary  align-middle ">
+                        <div class="d-flex gap-3 justify-content-center align-items-center ">
+                            <a href="{{ route('pengajuan-surat.show', $item->id) }}" class="text-primary">
+                                <i class="bx bxs-pencil text-lg px-2"></i>
+                            </a>
+                        </div>
+                    </td>
+                    @endcanany
+                    <td class="align-middle">
                         @canany(['admin', 'petugas'])
-                            <a href="{{ route('pengajuan_surat.preview.surat', $item->id) }}" target="__blank"
-                                class="underline text-primary">Preview Surat</a>
-                        @endcanany
-
-                        @can('masyarakat')
-                            <a href="{{ route('pengajuan_surat.download.surat', $item->id) }}" target="__blank"
-                                class="underline text-primary">Download Surat</a>
-                        @endcan
-                    @endif
-                    @if ($item->status == 'beres')
-                        <span class="text-white text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-success ">
-                            selesai
-                        </span>
-                        <br>
-                        <br>
-                        @canany(['admin', 'petugas'])
-                        <a href="{{ route('pengajuan_surat.previewew.surat', $item->id) }}" target="__blank"
-                            class="underline text-primary">Preview Surat</a>
-                        <a href="{{ route('pengajuan_surat.downloaded.surat', $item->id) }}" target="__blank"
-                            class="underline text-primary">Download Surat</a>
-                        @endcanany
-                    @endif
-                </td>
-
-                <td class="px-4 py-4 text-secondary">
-                    <div class="flex w-1/6 justify-between">
-
-                        <a href="{{ route('pengajuan-surat.show', $item->id) }}" class="text-primary">
-                            <i class="bx bxs-pencil text-lg px-2"></i>
+                        <a href="{{ route('pengajuan_surat.downloaded.surat', $item->id) }}" target="__blank" class="underline text-primary">
+                            <i class="bx bx-import text-lg px-2"></i>
                         </a>
-
-                        @canany(['admin', 'petugas'])
-                        <a href="{{ route('pengajuan_surat.preview.surat', $item->id) }}" target="__blank" class="underline text-primary">Preview Surat</a>
->>>>>>> d5cef480b7c8cbb1781d946b81455c1d007d7b28
                         @endcanany
-
                         @can('masyarakat')
                         <a href="{{ route('pengajuan_surat.download.surat', $item->id) }}" target="__blank" class="underline text-primary">
                             <i class="bx bx-import text-lg px-2"></i>
                         </a>
                         @endcan
+                    </td>
 
+<<<<<<< HEAD
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#searchInput').on('keyup', function() {
+                    var value = $(this).val().toLowerCase();
+                    $('#informasiTable tbody tr').filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                    });
+                });
+            });
+        </script>
+    </div>
+=======
                         @canany(['admin', 'petugas'])
                         <a href="{{ route('pengajuan_surat.previewew.surat', $item->id) }}" target="__blank" class="underline text-primary">Preview Surat</a>
                         <a href="{{ route('pengajuan_surat.downloaded.surat', $item->id) }}" target="__blank" class="underline text-primary">
@@ -137,5 +152,6 @@
         @endforeach
             </tbody>
     </table>
+>>>>>>> 89c9f3106fcfd40621861519659452d1f56dc856
 </div>
 @endsection
