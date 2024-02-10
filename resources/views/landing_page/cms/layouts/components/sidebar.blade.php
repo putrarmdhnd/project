@@ -26,12 +26,6 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('cms.jabatan.index') }}" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
-                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-bookmarks {{ Request::is('/dashboard') ? 'text-primary' : '' }}"></i></span>
-                    <span class="text-sm font-medium">Jabatan Pegawai</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('cms.apb.index') }}" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-money-withdraw {{ Request::is('/dashboard') ? 'text-primary' : '' }}"></i></span>
                     <span class="text-sm font-medium">APBDes</span>

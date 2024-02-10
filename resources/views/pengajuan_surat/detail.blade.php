@@ -206,7 +206,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
                     </div>
                 </div>
 
@@ -382,7 +382,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -836,7 +836,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -929,7 +929,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -999,7 +999,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="nama">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->status_perkawinan }}" readonly />
+                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->Status_Perkawinan }}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1078,7 +1078,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1154,7 +1154,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1224,7 +1224,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1336,7 +1336,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">

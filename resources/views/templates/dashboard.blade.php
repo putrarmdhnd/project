@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 
-    <title>{{$title}}</title>
+    <title>@yield('title', 'Desa Palasari') | Website Resmi desa Palasari</title>
 </head>
 
 <body class="bg-gray">
