@@ -73,24 +73,16 @@
             <table id="pendudukTable" class="table table-bordered border w-full rounded-lg bg-white divide-y divide-gray overflow-hidden">
                 <thead class="themeColor text-white text-center">
                     <tr>
-                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">No</th>
-                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">No KK</th>
-                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">NIK</th>
-                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Nama</th>
-                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Jenis Kelamin</th>
-                        <th colspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Kelahiran</th>
-                        <th colspan="6" class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Tempat Tinggal</th>
-                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Aksi</th>
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">No</th>
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">No KK</th>
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">NIK</th>
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Nama</th>
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Jenis Kelamin</th>
+                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Aksi</th>
                     </tr>
                     <tr>
-                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Tempat</th>
-                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Tanggal</th>
-                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Alamat</th>
-                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">RT</th>
-                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">RW</th>
-                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Desa</th>
-                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Kec.</th>
-                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-4 align-middle">Kab.</th>
+                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Edit</th>
+                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Hapus</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray">
