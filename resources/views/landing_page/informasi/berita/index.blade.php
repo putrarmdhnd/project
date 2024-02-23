@@ -99,40 +99,41 @@ Informasi Berita
 
         @forelse ($beritas as $berita)
         <div class="col-4 Berita d-flex">
-            <div class="card cardBeritaPengumuman flex-fill " style="border: none;">
-                <a href="{{ route('informasi.berita.detail', $berita->slug) }}" class="h-100 d-flex flex-column">
-                    <div class="card-body artikel-card shadow card_color">
-                        <div class="row">
-                            <div class="col-12">
-                                <div id="thumbnail" class="col-12">
-                                    <div class="thumbnail-container rounded-20 overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                        <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image position-absolute top-0 start-0 w-100 h-100 bg-dark" alt="..." style="object-fit: contain;">
+                    <div class="card cardBeritaPengumuman flex-fill " style="border: none;">
+                        <a href="{{ route('informasi.berita.detail', $berita->slug) }}" class="h-100 d-flex flex-column">
+                            <div class="card-body artikel-card shadow card_color">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div id="thumbnail" class="col-12">
+                                            <div class="thumbnail-container overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
+                                                <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image position-absolute top-0 start-0 w-100 h-100 bg-dark" alt="..." style="object-fit: contain;">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="JenisBeritaPengumuman my-3">{{ $berita->tipe }}</p>
+                                            <p class="artikel-judul">{{ substr($berita->judul_singkat, 0, 42) . '...' }}</p>
+                                            <p id="desc" class=" d-block desc text-black my-1" align="justify" style="font-size: 12px;">
+                                                {{ substr($berita->deskripsi_singkat, 0, 110) . '...' }}
+                                            </p>
+                                        </div>
+
+                                        <div class="col-12 mt-3">
+                                            <p class="artikel-penulis">
+                                                <i class="fa fa-user"></i> <span>{{ $berita->author->nama }}</span>
+                                            </p>
+                                            <p class="artikel-tanggal mt-2">
+                                                <i class="fa fa-calendar"></i> <span>{{ \Carbon\Carbon::parse($berita->created_at)->isoFormat('MMMM , D , Y') }}</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6 mt-4">
+
+                                        </div>
                                     </div>
-                                    <p class="JenisBeritaPengumuman my-3">{{ $berita->tipe }}</p>
-                                    <p class="artikel-judul">{{ substr($berita->judul_singkat, 0, 42) . '...' }}</p>
-                                    <p id="desc" class=" d-block desc text-black my-1" align="justify" style="font-size: 12px;">
-                                        {{ substr($berita->deskripsi_singkat, 0, 110) . '...' }}
-                                    </p>
-                                </div>
-
-                                <div class="col-12 mt-3">
-                                    <p class="artikel-penulis">
-                                        <i class="fa fa-user"></i> <span>{{ $berita->author->nama }}</span>
-                                    </p>
-                                    <p class="artikel-tanggal mt-2">
-                                        <i class="fa fa-calendar"></i> <span>{{ \Carbon\Carbon::parse($berita->created_at)->isoFormat('MMMM , D , Y') }}</span>
-                                    </p>
-                                </div>
-                                <div class="col-md-6 mt-4">
-
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-        </div>
-
+                </div>
         @empty
         <div id="card-news" class="row mb-4">
             <h5 class="text-center text-secondary">Berita belum ditemukan</h5>

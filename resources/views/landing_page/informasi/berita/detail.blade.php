@@ -10,7 +10,7 @@
             <article id="breadcrumb" class="card container px-5 bg-white">
                 <div id="details-news">
                     <div class="">
-                        <div class="p-3">
+                        <div class="pt-3">
                             <h1><b>{{ $berita->judul }}</b></h1>
                             <h6 class="ml-3 text-decoration-underline ">Berita</h6>
                         </div>

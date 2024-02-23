@@ -18,7 +18,7 @@
     <div class="bg-white py-4 px-9 mb-3 rounded-lg flex justify-between items-center">
         <div class="">
             <h1 class="text-lg lg:text-2xl headDash font-bold mb-2">Berita & Pengumuman</h1>
-            <p class="text-base font-normal text-secondary">Data dari setiap berita dan pengumuman desa</p>
+            <p class="textDashboard text-base font-normal text-secondary">Data dari setiap berita dan pengumuman desa</p>
         </div>
     </div>
 

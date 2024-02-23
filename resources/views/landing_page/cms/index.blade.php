@@ -16,7 +16,7 @@
                 <h1 class="text-lg lg:text-2xl font-bold mb-2 headDash">Selamat datang petugas,
                     <span class="capitalize"><b class="text-black">{{ auth()->user()->nama }}!</b></span>
                 </h1>
-                <p class="text-base font-normal text-secondary">Halaman ini adalah tempat menambah data dari landing-page utama!</p>
+                <p class="textDashboard text-base font-normal text-secondary">Halaman ini adalah tempat menambah data dari landing-page utama!</p>
             </div>
         </div>
     </div>

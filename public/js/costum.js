@@ -73,6 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // layout btn login pada landing-page
   const  layout__btnLogin = document.querySelectorAll(".layout__btnLogin--Desktop");
 
+  // layot content mobile 
+  const  layout__contentMobile = document.querySelectorAll(".Dashboard__content--layoutMobile");
+  
+
 
   // Check viewport width and apply styles accordingly
   function checkViewportWidth() {
@@ -130,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addContainerClassToElement(tentangDesa);
     adjustMobile();
     removeElement(usernameSmallScreen);
+    removeElement(usernameMoreSmallScreen);
     removeElement(imageSmallScreen);
     removeElement(btnUP_mobileKependudukan);
     // ... Add more styles for smaller screens if needed
@@ -138,9 +143,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Apply styles for larger screens
   function applyStylesForLargerScreens() {
-    removeDescElementsForDesktop()
-    removeContainerClassFromElement(demografiElement);
     removeElement(imageSmallScreen);
+    removeDescElementsForDesktop();
+    removeContainerClassFromElement(demografiElement);
     removeElement(btnUP_mobileKependudukan);
   }
 
@@ -205,6 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
     layout__KonfirmasiDesktop.forEach(function (element) {
       element.classList.remove("col-6");
     });
+    
 
   }
 
@@ -242,6 +248,9 @@ document.addEventListener("DOMContentLoaded", function () {
       element.classList.remove("py-4");
       element.classList.add("py-5");
       element.classList.add("pt-4");
+
+      element.classList.remove("px-10")
+      element.classList.add("px-2")
     });
 
     layoutBaganWelcome.forEach(function (element) {
@@ -300,6 +309,11 @@ document.addEventListener("DOMContentLoaded", function () {
     //layout Konfirmasi detail pengajuan surat
     layout__KonfirmasiDesktop.forEach(function (element) {
       element.classList.remove("col-6");
+    });
+
+     //layout dashboard content mobile
+     layout__contentMobile .forEach(function (element) {
+      element.classList.remove("px-10");
     });
 
   }

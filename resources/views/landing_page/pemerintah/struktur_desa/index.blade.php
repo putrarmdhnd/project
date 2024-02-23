@@ -25,7 +25,7 @@ Struktur Organisasi
 </section>
 
 
-<section id="ProfilPegawai" class="p-5 bg-light">
+<section id="ProfilPegawai" class="px-5 bg-light">
     <div class="container">
         <div class="text-center my-3 d-flex justify-content-center">
             <div class="HeaderArticle-mengenaiDesa">
@@ -42,27 +42,29 @@ Struktur Organisasi
                     @foreach ($strukturs as $item)
                     <div class="owl-item">
                         <!-- Your first carousel item -->
-                        <div class="col-12 ">
+                        <div class="col-12 d-flex justify-content-center align-items-center m-auto">
                             <div class="card card-profil-desa">
                                 <div class="card-body">
                                     <div class="col-12 text-center content-profil-desa">
                                         <div class="img-round center-img">
-                                            <img alt="" class="img-round" src="{{ asset($item->foto ? 'storage/' . $item->foto : 'img/no-image.png') }}" style="border-radius: 50%;">
+                                            <img alt="" class="img-round" src="{{ asset($item->foto ? 'storage/' . $item->foto : 'img/no-image.png') }}" style="border-radius: 50%; box-shadow: 0 0 0 2px #4facfe, 0 0 0 4px #00f2fe;">
                                         </div>
-                                        <div class="mt-3">
+                                        <div class="mt-3 mb-3">
                                             <p>{{ $item->nama }}</p>
                                             <i>{{ $item->jabatan }}</i>
                                         </div>
                                     </div>
-                                    <div class="row mt-1 isi-profil bg-light mx-2 d-flex rounded-20 border text-justify">
-                                        <ul class="m-0">
-                                            <li class="py-1"><i>Nama : <b>{{ $item->nama }}</b></i></li>
-                                            <li class="py-1"><i>TTL : <b>{{ $item->ttl }}</b></i></li>
-                                            <li class="py-1"><i>Status Pegawai : <b>{{ $item->status }}</b></i></li>
-                                            <li class="py-1"><i>Alamat : <b>{{ $item->alamat }}</b></i></li>
-                                            <li class="py-1"><i>Pendidikan Terakhir: <b>{{ $item->pendidikan }}</b></i></li>
-                                        </ul>
+                                    <div class="col-12 rounded-1 bg-white">
+                                        <div class="row my-4 p-3">
+                                            <div class="col-12 isi-profil d-flex justify-content-center">
+                                                <ul class="m-0 p-0">
+                                                    <li class="py-1">Status Pegawai : <b>{{ $item->status }}</b></li>
+                                                    <li class="py-1">TTL : <b>{{ $item->ttl }}</b></li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

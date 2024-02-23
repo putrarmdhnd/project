@@ -53,7 +53,7 @@
             </div>
         </nav>
 
-        <div class="container w-full mx-auto mt-24 px-10 lg:px-4">
+        <div class="Dashboard__content--layoutMobile container w-full mx-auto mt-24 px-10 lg:px-4">
             @yield('content')
         </div>
     </div>
