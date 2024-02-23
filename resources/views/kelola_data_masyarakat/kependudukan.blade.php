@@ -82,6 +82,7 @@
                     </tr>
                     <tr>
                         <th class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Detail</th>
+
                         <th class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Hapus</th>
                     </tr>
                 </thead>
@@ -94,14 +95,6 @@
                         <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->NIK }}</td>
                         <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->namaLengkap }}</td>
                         <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->jk }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->tempatLahir }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->tanggalLahir }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->alamat }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->rt }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->rw }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->desa }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->kecamatan }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->kabupaten }}</td>
                         <td class="textTable px-2 py-4 text-secondary align-middle">
                             <button class="text-primary text-center detailKependudukan" data-user="">
                                 <i class='bx bx-edit-alt'></i>

@@ -60,7 +60,7 @@
                             <span class="text-white text-sm w-1/3 pb-1 {{ $aduan->status == 'proses' ? 'bg-warning' : '' }} {{ $aduan->status == 'selesai' ? 'bg-success' : '' }} {{ $aduan->status == '0' ? 'bg-orange' : '' }} font-semibold px-2 rounded-full">{{ $aduan->status == '0' ? 'menunggu' : $aduan->status }}</span>
                         </td>
                         <td class="textTable px-4 py-4 flex flex-wrap justify-start">
-                            <a href="/pengaduan/{{ $aduan->id }}" class="text-primary">
+                            <a href="/pengaduan/{{ $aduan->id }}" class="text-primary"  style="margin-left:10px;">
                                 <i class="bx bxs-comment-dots text-lg"></i>
                             </a>
                             @can('masyarakat')

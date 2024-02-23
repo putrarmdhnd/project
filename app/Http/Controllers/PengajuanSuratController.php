@@ -20,7 +20,7 @@ class PengajuanSuratController extends Controller
                 ->get();
         } else if (Auth::user()->level == 'petugas') {
             $pengajuan_saya = PengajuanSurat::with('masyarakat')
-                ->whereIn("status", ["Pending", "Selesai"])
+                ->whereIn("status", ["Pending", "Selesai","beres"])
                 ->orderBy('created_at', 'desc')
                 ->get();
         } else if (in_array(Auth::user()->level, ['kesra', 'pelayanan', 'pemerintahan'])) {
@@ -181,7 +181,9 @@ class PengajuanSuratController extends Controller
                 'ttl' => 'required',
                 'nik' => 'required',
                 'no_kk' => 'required',
-                'negara_agama' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'JK' => 'required',
@@ -294,12 +296,12 @@ class PengajuanSuratController extends Controller
                 'nama_laki' => 'required',
                 'ttl' => 'required',
                 'pekerjaan_laki' => 'required',
-                'warganegara_laki' => 'required',
+                'kewarganegaraan_laki' => 'required',
                 'alamat_laki' => 'required',
                 'nama_perempuan' => 'required',
                 'ttl_perempuan' => 'required',
                 'pekerjaan_perempuan' => 'required',
-                'warganegara_perempuan' => 'required',
+                'kewarganegaraan_perempuan' => 'required',
                 'alamat_perempuan' => 'required',
                 'fotoktp' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'fotokk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -377,7 +379,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'fotoktp' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -447,7 +449,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pendidikan' => 'required',
                 'pekerjaan' => 'required',
                 'nama_ayah_ibu' => 'required',
@@ -484,7 +486,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'keterangan_status' => 'required',
@@ -520,7 +522,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pendidikan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
@@ -548,6 +550,78 @@ class PengajuanSuratController extends Controller
             $data['jenis_surat'] = 'Surat Keterangan Domisili';
 
             // Simpan data ke database atau lakukan operasi lainnya sesuai kebutuhan
+        } elseif ($request->jenis_surat == 'Keterangan Pindah WNI') {
+            $request->validate([
+                'nama' => 'required',
+                'ttl' => 'required',
+                'nik' => 'required',
+                'no_kk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+                'keterangan_surat' => 'required',
+                'fotoktp' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'fotokk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'fotoketeranganrt' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ], [
+                'fotoktp.required' => 'Foto KTP harus diunggah.',
+                'fotokk.required' => 'Foto KK harus diunggah.',
+                'fotoketeranganrt.required' => 'Foto Keterangan RT/RW harus diunggah.',
+            ]);
+
+            $data = $request->except('_token');
+
+            // Memproses foto-foto yang diunggah
+            foreach (['fotoktp', 'fotokk', 'fotoketeranganrt'] as $photoField) {
+                if ($request->hasFile($photoField)) {
+                    $photo = $request->file($photoField);
+                    $nama_photo = $photoField . '_' . time() . '.' . $photo->getClientOriginalExtension();
+                    $photo->move(public_path('uploads'), $nama_photo);
+                    $data[$photoField] = $nama_photo;
+                }
+            }
+
+            $data['jenis_surat'] = 'Surat Keterangan Pindah WNI';
+
+            // Simpan data ke database atau lakukan operasi lainnya sesuai kebutuhan
+        } elseif ($request->jenis_surat == 'Keterangan Pindah') {
+            $request->validate([
+                'nama' => 'required',
+                'ttl' => 'required',
+                'nik' => 'required',
+                'no_kk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+                'keterangan_surat' => 'required',
+                'fotoktp' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'fotokk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'fotoketeranganrt' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ], [
+                'fotoktp.required' => 'Foto KTP harus diunggah.',
+                'fotokk.required' => 'Foto KK harus diunggah.',
+                'fotoketeranganrt.required' => 'Foto Keterangan RT/RW harus diunggah.',
+            ]);
+
+            $data = $request->except('_token');
+
+            // Memproses foto-foto yang diunggah
+            foreach (['fotoktp', 'fotokk', 'fotoketeranganrt'] as $photoField) {
+                if ($request->hasFile($photoField)) {
+                    $photo = $request->file($photoField);
+                    $nama_photo = $photoField . '_' . time() . '.' . $photo->getClientOriginalExtension();
+                    $photo->move(public_path('uploads'), $nama_photo);
+                    $data[$photoField] = $nama_photo;
+                }
+            }
+
+            $data['jenis_surat'] = 'Surat Keterangan Pindah';
+
+            // Simpan data ke database atau lakukan operasi lainnya sesuai kebutuhan
         } elseif ($request->jenis_surat == 'keterangan Orang Tua Wali') {
             $request->validate([
                 'nama' => 'required',
@@ -556,7 +630,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'kewarganegaraan' => 'required',
                 'agama' => 'required',
-                'status_kawin' => 'required',
+                'status_perkawinan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'nama_anak' => 'required',
@@ -565,7 +639,7 @@ class PengajuanSuratController extends Controller
                 'jk_anak' => 'required',
                 'kewarganegaraan_anak' => 'required',
                 'agama_anak' => 'required',
-                'status_kawin_anak' => 'required',
+                'status_perkawinan_anak' => 'required',
                 'pekerjaan_anak' => 'required',
                 'alamat_anak' => 'required',
                 'fotoktp' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -597,7 +671,7 @@ class PengajuanSuratController extends Controller
                 'nama' => 'required',
                 'ttl' => 'required',
                 'jk' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'status_perkawinan' => 'required',
                 'agama' => 'required',
                 'pekerjaan' => 'required',
@@ -639,7 +713,7 @@ class PengajuanSuratController extends Controller
                 'ttl' => 'required',
                 'jk' => 'required',
                 'agama' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'status_perkawinan' => 'required',
                 'pendidikan_trakhir' => 'required',
                 'pekerjaan' => 'required',
@@ -667,6 +741,42 @@ class PengajuanSuratController extends Controller
             }
 
             $data['jenis_surat'] = 'Surat Pengantar Keterangan Catatan Kepolisian';
+
+            // Simpan data ke database atau lakukan operasi lainnya sesuai kebutuhan
+        } elseif ($request->jenis_surat == 'Pengantar Pembuatan Kartu Keluarga') {
+            $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'ttl' => 'required',
+                'no_kk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+                'keterangan_surat' => 'required',
+                'fotoktp' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'fotokk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'fotoketeranganrt' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ], [
+                'fotoktp.required' => 'Foto KTP harus diunggah.',
+                'fotokk.required' => 'Foto KK harus diunggah.',
+                'fotoketeranganrt.required' => 'Foto Keterangan RT/RW harus diunggah.',
+            ]);
+
+            $data = $request->except('_token');
+
+            // Memproses foto-foto yang diunggah
+            foreach (['fotoktp', 'fotokk', 'fotoketeranganrt'] as $photoField) {
+                if ($request->hasFile($photoField)) {
+                    $photo = $request->file($photoField);
+                    $nama_photo = $photoField . '_' . time() . '.' . $photo->getClientOriginalExtension();
+                    $photo->move(public_path('uploads'), $nama_photo);
+                    $data[$photoField] = $nama_photo;
+                }
+            }
+
+            $data['jenis_surat'] = 'Surat Pengantar Pembuatan Kartu Keluarga';
 
             // Simpan data ke database atau lakukan operasi lainnya sesuai kebutuhan
         } elseif ($request->jenis_surat == 'Pernyataan Akad Nikah') {
@@ -795,7 +905,7 @@ class PengajuanSuratController extends Controller
                 'umur_ayah' => 'required',
                 'agama_ayah' => 'required',
                 'pekerjaan_ayah' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'alamat' => 'required',
                 'nama_pelapor' => 'required',
                 'hub_pelapor_anak' => 'required',
@@ -1276,6 +1386,33 @@ class PengajuanSuratController extends Controller
                     'pengajuan_surat' => $pengajuanSurat,
                     'nomor_surat' => $nomor_surat
                 ]);
+            } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Pindah WNI') {
+
+                $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
+                return view('pengajuan_surat.basah.proses_surat_keterangan_pindah_wni', [
+                    'title' => 'Proses Surat Keterangan Pindah WNI',
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
+                ]);
+            } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Pindah') {
+
+                $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
+                return view('pengajuan_surat.basah.proses_surat_keterangan_pindah', [
+                    'title' => 'Proses Surat Keterangan Pindah',
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
+                ]);
+            } elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Pembuatan Kartu Keluarga') {
+
+                $nomor_surat = '470/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
+
+                return view('pengajuan_surat.basah.proses_surat_pengantar_pembuatan_kartu_keluarga', [
+                    'title' => 'Surat Pengantar Pembuatan Kartu Keluarga',
+                    'pengajuan_surat' => $pengajuanSurat,
+                    'nomor_surat' => $nomor_surat
+                ]);
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Kelahiran') {
 
                 $nomor_surat = '472.1.11/' . $pengajuanSurat->id . '/PEM/' . $bulanRomawi . '/' . date("Y");
@@ -1325,7 +1462,9 @@ class PengajuanSuratController extends Controller
                 'ttl' => 'required',
                 'nik' => 'required',
                 'no_kk' => 'required',
-                'negara_agama' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'JK' => 'required',
@@ -1376,12 +1515,12 @@ class PengajuanSuratController extends Controller
                 'nama_laki' => 'required',
                 'ttl' => 'required',
                 'pekerjaan_laki' => 'required',
-                'warganegara_laki' => 'required',
+                'kewarganegaraan_laki' => 'required',
                 'alamat_laki' => 'required',
                 'nama_perempuan' => 'required',
                 'ttl_perempuan' => 'required',
                 'pekerjaan_perempuan' => 'required',
-                'warganegara_perempuan' => 'required',
+                'kewarganegaraan_perempuan' => 'required',
                 'alamat_perempuan' => 'required',
             ]);
 
@@ -1417,7 +1556,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'kewarganegaraan' => 'required',
                 'agama' => 'required',
-                'status_kawin' => 'required',
+                'status_perkawinan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'nama_anak' => 'required',
@@ -1426,7 +1565,7 @@ class PengajuanSuratController extends Controller
                 'jk_anak' => 'required',
                 'kewarganegaraan_anak' => 'required',
                 'agama_anak' => 'required',
-                'status_kawin_anak' => 'required',
+                'status_perkawinan_anak' => 'required',
                 'pekerjaan_anak' => 'required',
                 'alamat_anak' => 'required',
             ]);
@@ -1440,7 +1579,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
             ]);
@@ -1468,7 +1607,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pendidikan' => 'required',
                 'pekerjaan' => 'required',
                 'nama_ayah_ibu' => 'required',
@@ -1484,7 +1623,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'keterangan_status' => 'required',
@@ -1499,7 +1638,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pendidikan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
@@ -1511,7 +1650,7 @@ class PengajuanSuratController extends Controller
                 'nama' => 'required',
                 'ttl' => 'required',
                 'jk' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'status_perkawinan' => 'required',
                 'agama' => 'required',
                 'pekerjaan' => 'required',
@@ -1525,6 +1664,36 @@ class PengajuanSuratController extends Controller
             ]);
 
             $data = $request->except('_token');
+        } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Pindah WNI') {
+            $request->validate([
+                'nama' => 'required',
+                'ttl' => 'required',
+                'nik' => 'required',
+                'no_kk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+                'keterangan_surat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Pindah') {
+            $request->validate([
+                'nama' => 'required',
+                'ttl' => 'required',
+                'nik' => 'required',
+                'no_kk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+                'keterangan_surat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
         } elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Keterangan Catatan Kepolisian') {
             $request->validate([
                 'nama' => 'required',
@@ -1532,12 +1701,27 @@ class PengajuanSuratController extends Controller
                 'ttl' => 'required',
                 'jk' => 'required',
                 'agama' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'status_perkawinan' => 'required',
                 'pendidikan_trakhir' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'keperluan' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        } elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Pembuatan Kartu Keluarga') {
+            $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'ttl' => 'required',
+                'no_kk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+                'keterangan_surat' => 'required',
             ]);
 
             $data = $request->except('_token');
@@ -1595,7 +1779,7 @@ class PengajuanSuratController extends Controller
                 'kk' => 'required',
                 'ankk' => 'required',
                 'ayahkk' => 'required',
-                'ibuKK' => 'required',
+                'ibukk' => 'required',
                 'data_benar' => 'required',
                 'atas_nama' => 'required',
                 'perbaikan_data' => 'required',
@@ -1638,7 +1822,7 @@ class PengajuanSuratController extends Controller
                 'umur_ayah' => 'required',
                 'agama_ayah' => 'required',
                 'pekerjaan_ayah' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'alamat' => 'required',
                 'nama_pelapor' => 'required',
                 'hub_pelapor_anak' => 'required',
@@ -1698,7 +1882,9 @@ class PengajuanSuratController extends Controller
                 'ttl' => 'required',
                 'nik' => 'required',
                 'no_kk' => 'required',
-                'negara_agama' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'status_perkawinan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'JK' => 'required',
@@ -1749,12 +1935,12 @@ class PengajuanSuratController extends Controller
                 'nama_laki' => 'required',
                 'ttl' => 'required',
                 'pekerjaan_laki' => 'required',
-                'warganegara_laki' => 'required',
+                'kewarganegaraan_laki' => 'required',
                 'alamat_laki' => 'required',
                 'nama_perempuan' => 'required',
                 'ttl_perempuan' => 'required',
                 'pekerjaan_perempuan' => 'required',
-                'warganegara_perempuan' => 'required',
+                'kewarganegaraan_perempuan' => 'required',
                 'alamat_perempuan' => 'required',
             ]);
 
@@ -1790,7 +1976,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'kewarganegaraan' => 'required',
                 'agama' => 'required',
-                'status_kawin' => 'required',
+                'status_perkawinan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'nama_anak' => 'required',
@@ -1799,7 +1985,7 @@ class PengajuanSuratController extends Controller
                 'jk_anak' => 'required',
                 'kewarganegaraan_anak' => 'required',
                 'agama_anak' => 'required',
-                'status_kawin_anak' => 'required',
+                'status_perkawinan_anak' => 'required',
                 'pekerjaan_anak' => 'required',
                 'alamat_anak' => 'required',
             ]);
@@ -1813,7 +1999,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
             ]);
@@ -1841,7 +2027,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pendidikan' => 'required',
                 'pekerjaan' => 'required',
                 'nama_ayah_ibu' => 'required',
@@ -1857,7 +2043,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'keterangan_status' => 'required',
@@ -1872,7 +2058,7 @@ class PengajuanSuratController extends Controller
                 'jk' => 'required',
                 'agama' => 'required',
                 'status_perkawinan' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'pendidikan' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
@@ -1884,7 +2070,7 @@ class PengajuanSuratController extends Controller
                 'nama' => 'required',
                 'ttl' => 'required',
                 'jk' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'status_perkawinan' => 'required',
                 'agama' => 'required',
                 'pekerjaan' => 'required',
@@ -1898,6 +2084,36 @@ class PengajuanSuratController extends Controller
             ]);
 
             $data = $request->except('_token');
+        } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Pindah WNI') {
+            $request->validate([
+                'nama' => 'required',
+                'ttl' => 'required',
+                'nik' => 'required',
+                'no_kk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+                'keterangan_surat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Pindah') {
+            $request->validate([
+                'nama' => 'required',
+                'ttl' => 'required',
+                'nik' => 'required',
+                'no_kk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+                'keterangan_surat' => 'required',
+            ]);
+
+            $data = $request->except('_token');
         } elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Keterangan Catatan Kepolisian') {
             $request->validate([
                 'nama' => 'required',
@@ -1905,12 +2121,27 @@ class PengajuanSuratController extends Controller
                 'ttl' => 'required',
                 'jk' => 'required',
                 'agama' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'status_perkawinan' => 'required',
                 'pendidikan_trakhir' => 'required',
                 'pekerjaan' => 'required',
                 'alamat' => 'required',
                 'keperluan' => 'required',
+            ]);
+
+            $data = $request->except('_token');
+        } elseif ($pengajuanSurat->jenis_surat === 'Surat Pengantar Pembuatan Kartu Keluarga') {
+            $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'ttl' => 'required',
+                'no_kk' => 'required',
+                'kewarganegaraan' => 'required',
+                'agama' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'keperluan' => 'required',
+                'keterangan_surat' => 'required',
             ]);
 
             $data = $request->except('_token');
@@ -1968,7 +2199,7 @@ class PengajuanSuratController extends Controller
                 'kk' => 'required',
                 'ankk' => 'required',
                 'ayahkk' => 'required',
-                'ibuKK' => 'required',
+                'ibukk' => 'required',
                 'data_benar' => 'required',
                 'atas_nama' => 'required',
                 'perbaikan_data' => 'required',
@@ -2011,7 +2242,7 @@ class PengajuanSuratController extends Controller
                 'umur_ayah' => 'required',
                 'agama_ayah' => 'required',
                 'pekerjaan_ayah' => 'required',
-                'warganegara' => 'required',
+                'kewarganegaraan' => 'required',
                 'alamat' => 'required',
                 'nama_pelapor' => 'required',
                 'hub_pelapor_anak' => 'required',
@@ -2070,6 +2301,8 @@ class PengajuanSuratController extends Controller
                     $html = 'pengajuan_surat.templates.surat_keterangan_tentang_perkawinan';
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang Nikah') {
                     $html = 'pengajuan_surat.templates.surat_keterangan_numpang_nikah';
+                } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Pindah') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_pindah';
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
                     $html = 'pengajuan_surat.templates.surat_keterangan_orang_tua_wali';
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Kehilangan') {
@@ -2105,6 +2338,8 @@ class PengajuanSuratController extends Controller
         } else {
             if ($pengajuanSurat->jenis_surat == 'Surat Keterangan') {
                 $html = 'pengajuan_surat.templates.surat_keterangan';
+            } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Pindah') {
+                $html = 'pengajuan_surat.templates.surat_keterangan_pindah';
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili Haji') {
                 $html = 'pengajuan_surat.templates.surat_keterangan_domisili_haji';
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Domisili Yayasan') {
@@ -2264,6 +2499,8 @@ class PengajuanSuratController extends Controller
                     $html = 'pengajuan_surat.templates.surat_keterangan_penguburan';
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tentang Perkawinan') {
                     $html = 'pengajuan_surat.templates.surat_keterangan_tentang_perkawinan';
+                } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Pindah WNI') {
+                    $html = 'pengajuan_surat.templates.surat_keterangan_tentang_perkawinan';
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang Nikah') {
                     $html = 'pengajuan_surat.templates.surat_keterangan_numpang_nikah';
                 } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
@@ -2407,7 +2644,7 @@ class PengajuanSuratController extends Controller
                 $html = 'pengajuan_surat.templates.basah.surat_keterangan_penguburan_basah';
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Tentang Perkawinan') {
                 $html = 'pengajuan_surat.templates.basah.surat_keterangan_tentang_perkawinan_basah';
-            } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang_nikah') {
+            } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Numpang Nikah') {
                 $html = 'pengajuan_surat.templates.basah.surat_keterangan_numpang_nikah_basah';
             } elseif ($pengajuanSurat->jenis_surat === 'Surat Keterangan Orang Tua Wali') {
                 $html = 'pengajuan_surat.templates.basah.surat_keterangan_orang_tua_wali_basah';

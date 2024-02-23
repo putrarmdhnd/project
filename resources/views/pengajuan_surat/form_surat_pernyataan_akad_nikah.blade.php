@@ -12,8 +12,9 @@
             <input type="hidden" value="Pernyataan Akad Nikah" name="jenis_surat">
             <div class="flex flex-col lg:flex-row gap-5 justify-center">
                 <div
-                    class="w-full 
+                class="w-full 
                 [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
+                [&>div>div>select]:border [&>div>div>select]:p-2.5 [&>div>div>select]:shadow-sm [&>div>div>select]:placeholder-secondary [&>div>div>select]:text-secondary [&>div>div>select]:w-full [&>div>div>select]:block [&>div>div>select]:rounded-lg [&>div>div>select]:sm:text-sm
                 ">
                 <h1 class="text-2xl text-center my-8">Form Isian untuk Pembuat Pernyataan</h1>
                     <div class="flex flex-col mb-6">

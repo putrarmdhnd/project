@@ -128,10 +128,10 @@
                 [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm">
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Warga Negara</label>
-                    <input type="text" name="warganegara"
+                    <input type="text" name="kewarganegaraan"
                         class="mt-1 px-3 py-2 @error('warganegara') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                        placeholder="Warga Negara" value="{{ old('warganegara', $surat->warganegara) }}" />
-                    @error('warganegara')
+                        placeholder="Warga Negara" value="{{ old('kewarganegaraan', $surat->kewarganegaraan) }}" />
+                    @error('kewarganegaraan')
                         <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
                 </div>

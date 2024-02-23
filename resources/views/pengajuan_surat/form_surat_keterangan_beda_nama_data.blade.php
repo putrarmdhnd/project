@@ -45,10 +45,10 @@
                     </div>
                     <div class="flex flex-col mb-6">
                         <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nama Ibu Dari a.n KK</label>
-                        <input type="text" name="ibuKK"
-                            class="mt-1 px-3 py-2 @error('ibuKK') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Nama Ibu Dari a.n KK" value="{{ old('ibuKK') }}" />
-                        @error('ibuKK')
+                        <input type="text" name="ibukk"
+                            class="mt-1 px-3 py-2 @error('ibukk') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Nama Ibu Dari a.n KK" value="{{ old('ibukk') }}" />
+                        @error('ibukk')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
