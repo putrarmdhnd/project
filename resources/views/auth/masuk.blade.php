@@ -3,7 +3,7 @@
 
 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
     <h1 class=" text-xl leading-tight tracking-tight text-dark md:text-2xl text-center">
-    <b>Login</b> Pengajuan Surat Online
+        Pengajuan Surat Online
     </h1>
     <form action="/masuk" method="POST" class="space-y-4 md:space-y-6 [&>div>label]:block [&>div>label]:mb-2 [&>div>label]:text-sm [&>div>label]:font-medium [&>div>label]:text-dark [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm  [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm">
         @csrf

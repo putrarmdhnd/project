@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //Tampilan header username
   const usernameLargeScreen = document.getElementById("usernameLargeScreen");
   const usernameSmallScreen = document.getElementById("usernameSmallScreen");
+  const usernameMoreSmallScreen = document.getElementById("usernameMoreSmallScreen");
 
   //Tampilan card pada Pengelolaan Data Kependudukan
   const LayoutCardKependudukan = document.querySelectorAll(".LayoutCardKependudukan");
@@ -69,10 +70,16 @@ document.addEventListener("DOMContentLoaded", function () {
   //layout konfirmasi untuk detail pengajuan surat
   const  layout__KonfirmasiDesktop = document.querySelectorAll(".layout__Konfirmasi--Desktop");
 
+  // layout btn login pada landing-page
+  const  layout__btnLogin = document.querySelectorAll(".layout__btnLogin--Desktop");
+
 
   // Check viewport width and apply styles accordingly
   function checkViewportWidth() {
-    if (window.innerWidth <= 450) {
+    if (window.innerWidth <= 390) {
+      applyStylesForMobile__MoreSmall_Screens()
+    }
+    else if (window.innerWidth <= 450) {
       applyStylesForMobileScreens()
     }
     else if (window.innerWidth <= 1200) {
@@ -84,6 +91,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Apply styles for smaller screens
+  function  applyStylesForMobile__MoreSmall_Screens() {
+    removeDescElementsForMobile()
+    removeLatestNewsElement();
+    adjustColumnWidths();
+    addContainerClassToElement(demografiElement);
+    addContainerClassToElement(beritaPengumuman);
+    addContainerClassToElement(tentangDesa);
+    removeElement(usernameLargeScreen);
+    removeElement(usernameSmallScreen);
+    removeElement(imageLargeScreen);
+    removeElement(btnDown_largeKependudukan);
+
+    // ... Add more styles for smaller screens if needed
+  }
+  // Apply styles for smaller screens
   function applyStylesForMobileScreens() {
     removeDescElementsForMobile()
     removeLatestNewsElement();
@@ -92,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addContainerClassToElement(beritaPengumuman);
     addContainerClassToElement(tentangDesa);
     removeElement(usernameLargeScreen);
+    removeElement(usernameMoreSmallScreen);
     removeElement(imageLargeScreen);
     removeElement(btnDown_largeKependudukan);
 
@@ -115,6 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Apply styles for larger screens
   function applyStylesForLargerScreens() {
+    removeDescElementsForDesktop()
     removeContainerClassFromElement(demografiElement);
     removeElement(imageSmallScreen);
     removeElement(btnUP_mobileKependudukan);
@@ -277,6 +301,16 @@ document.addEventListener("DOMContentLoaded", function () {
     layout__KonfirmasiDesktop.forEach(function (element) {
       element.classList.remove("col-6");
     });
+
+  }
+  function removeDescElementsForDesktop() {
+
+    layout__btnLogin.forEach(function (element) {
+      element.classList.add("d-flex ");
+      element.classList.add("justify-center ");
+      element.classList.add("m-auto");
+    });
+
 
   }
 

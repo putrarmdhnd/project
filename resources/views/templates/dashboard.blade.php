@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 
-    <title>{{$title}}</title>
+     <title>@yield('title', 'Desa Palasari') | Website Resmi desa Palasari</title>
 </head>
 
 <body class="bg-gray">
@@ -42,6 +42,9 @@
 
                         <!-- Display abbreviated name on smaller screens -->
                         <span id="usernameSmallScreen" class="lg:hidden">{{ substr(auth()->user()->nama, 0, 12) . '...' }}</span>
+
+                        <!-- Display abbreviated name on more smaller screens -->
+                        <span id="usernameMoreSmallScreen" class="lg:hidden">{{ substr(auth()->user()->nama, 0, 6) . '..' }}</span>
                     </span>
                     <img class=" inline-block h-6 w-6 lg:h-8 lg:w-8 rounded-full themeColor" src="{{ asset('img/user.png') }}" alt="{{ auth()->user()->nama }}">
                 </span>

@@ -34,27 +34,6 @@
                 </a>
             </li>
 
-            @canany(['masyarakat', 'petugas'])
-            <li>
-                <a href="/pengaduan/belum" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
-                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-time-five {{ Request::is('pengaduan/belum') ? 'text-primary' : '' }}"></i></span>
-                    <span class="text-sm font-medium">Pengaduan Belum Ditanggapi</span>
-                </a>
-            </li>
-            <li>
-                <a href="/pengaduan/proses" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
-                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-loader-circle {{ Request::is('pengaduan/proses') ? 'text-primary' : '' }}"></i></span>
-                    <span class="text-sm font-medium">Pengaduan Diproses</span>
-                </a>
-            </li>
-            <li>
-                <a href="/pengaduan/selesai" class="transform hover:translate-x-2 transition-transform ease-in duration-200">
-                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg"><i class="bx bx-check-circle {{ Request::is('pengaduan/selesai') ? 'text-primary' : '' }}"></i></span>
-                    <span class="text-sm font-medium">Pengaduan Selesai</span>
-                </a>
-            </li>
-            @endcan
-
             @canany(['petugas', 'admin'])
             <li>
                 <a href="/tanggapan" class="transform hover:translate-x-2 transition-transform ease-in duration-200">

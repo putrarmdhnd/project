@@ -83,13 +83,20 @@ a {
 }
 
 .login-item {
-    padding: 0px 15px 0px 15px;
     background: #ffffff;
     text-align: center;
     border-radius: 2.5rem;
     border: .12rem solid;
+    width: 8rem;
 }
 
+.btn__nav {
+    background-color: #4facfe;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
 
 #carousel .c-img {
     max-height: 84vh;
@@ -434,7 +441,11 @@ a {
 
 /* Media Query */
 /* // X-Large devices (large desktops, 1200px and up) */
-@media (max-width: 1200px) {
+@media (max-width: 1920px) {
+    .nav__list {
+        padding: 1rem !important;
+    }
+
     #carousel .c-img {
         height: 500vh;
     }
@@ -453,8 +464,109 @@ a {
 
 }
 
+@media (max-width: 800px) {
+
+    .navbar {
+        transition: 0.3s;
+    }
+
+    .nav__list {
+        padding: 3rem;
+    }
+    
+    .navbar-collapse{
+        transition: 0.3s;
+    }
+
+    .navbar-nav {
+        position: absolute;
+        top: 100%;
+        right: -20%;
+        background: whitesmoke;
+        width: 30rem; /* Initial width set to 0 */
+        height: 100vh;
+        padding: 0 3rem; /* Removed padding-right since it's not necessary */
+        transition: width 0.3s ease; /* Apply transition to width property */
+
+    }
+
+    .nav-item {
+        display: block;
+        padding: 0.5rem;
+    }
+
+    .nav-item-costume ::before {
+        content: ". ";
+        position: relative;
+        bottom: 3px;
+    }
+
+    .login-item ::before {
+        content: none;
+    }
+
+    .login-item {
+        margin: 0.8rem 0 0.8rem 0;
+        margin-left: 5rem;
+    }
+
+    /* Atur styling atau tata letak tambahan untuk perangkat dengan lebar layar kurang dari atau sama dengan 768px */
+    .footer-2-3 {
+        /* Tambahkan gaya atau tata letak yang sesuai dengan perangkat mobile di sini */
+    }
+
+    /* Misalnya, untuk mengubah ukuran teks atau mengatur margin */
+    .footer-link {
+        font-size: 14px;
+    }
+
+
+}
+
 /* CSS for mobile */
 @media (max-width: 450px) {
+    .nav__list {
+        padding: 3rem;
+    }
+
+    .navbar-nav {
+        position: absolute;
+        top: 100%;
+        right: -20%;
+        background-image: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%);
+        width: 20rem;
+        height: 100vh;
+        padding: 0 3rem 0 3rem;
+        transition: 0.3s;
+    }
+
+    .nav-item {
+        display: block;
+        padding: 0.5rem;
+    }
+
+    #navbar nav ul li a:hover,
+    #navbar nav ul li .pageLink:hover {
+    
+    }
+
+    .nav-item-costume ::before {
+        content: ". ";
+        position: relative;
+        bottom: 4px;
+    }
+
+    .login-item ::before {
+        content: " ";
+        border: #000000 2px solid;
+        background-color: #0091bc;
+    }
+
+    .login-item {
+        margin: 0.8rem 0 0.8rem 0;
+    }
+
+
 
     #hero img {
         width: 100% !important;
@@ -477,11 +589,7 @@ a {
         margin-top: 0 !important;
     }
 
-    .navbar-togglera:focus {
-        border: none;
-        box-shadow: 0;
-        outline: none;
-    }
+
 
 
     .space-subHeader {
@@ -670,9 +778,10 @@ a {
     }
 
     /*Detail Surat*/
-    .text__jenisSurat{
+    .text__jenisSurat {
         font-size: large;
     }
+
     .layout__bodySurat {
         padding: 0;
     }
@@ -757,18 +866,7 @@ a {
 }
 
 /* Untuk membuat footer responsive */
-@media (max-width: 768px) {
 
-    /* Atur styling atau tata letak tambahan untuk perangkat dengan lebar layar kurang dari atau sama dengan 768px */
-    .footer-2-3 {
-        /* Tambahkan gaya atau tata letak yang sesuai dengan perangkat mobile di sini */
-    }
-
-    /* Misalnya, untuk mengubah ukuran teks atau mengatur margin */
-    .footer-link {
-        font-size: 14px;
-    }
-}
 
 
 /* Berita */
