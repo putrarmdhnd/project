@@ -89,12 +89,16 @@
                 <td class="fs-1"> : {{ $surat->no_kk }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Kewarganegaraan & Agama</td>
-                <td class="fs-1"> : {{ $surat->negara_agama }}</td>
+                <td width="35%" class="fs-1">Kewarganegaraan</td>
+                <td class="fs-1"> : {{ $surat->kewarganegaraan }}</td>
+            </tr>
+            <tr>
+                <td width="35%" class="fs-1">Agama</td>
+                <td class="fs-1"> : {{ $surat->agama }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Status Perkawinan</td>
-                <td class="fs-1"> : {{ $surat->Status_Perkawinan }}</td>
+                <td class="fs-1"> : {{ $surat->status_perkawinan }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Pekerjaan</td>
@@ -128,17 +132,17 @@
                 <p style="margin-top: -10px !important">Kepala Desa Palasari</p>
                 <img style="margin-top: -1em !important"
                     src="https://raw.githubusercontent.com/Ibnumaggie27/project/main/public/img/barttd.png"
-                    width="120" alt="">
+                    width="100" alt="">
     
                 <p style="margin-top: -2px !important">H.Ridwan.SH</p>
             </div>
         </div>
     </div>
-    <div style="width: 100%;margin-top:-40px">
+    <div style="width: 100%;margin-top:-30px">
         <div align="center" class="fs-1">
             <p>Mencatat:</p>
             <p style="margin-top: -10px !important">camat Kecamatan Cipanas</p>
-            <p style="margin-top: 90px; font-weight: bold; text-decoration: underline; !important">FIRMAN EDI. S.STP., M.Si</p>
+            <p style="margin-top: 80px; font-weight: bold; text-decoration: underline; !important">FIRMAN EDI. S.STP., M.Si</p>
             <p style="margin-top: -15px !important">NIP. 197604121996121001</p>
         </div>
     </div>

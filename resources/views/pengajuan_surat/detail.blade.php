@@ -34,13 +34,13 @@ $surat = json_decode($pengajuan_surat->surat);
 
             @if ($pengajuan_surat->status == 'Diproses')
 
-                @if ($surat->kttd == 'basah')
+                @if ($surat->kttd == 'barcode')
                 <a href="{{ route('pengajuan-surat.edit', $pengajuan_surat->id) }}" class="text-white bg-success focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">
                     Proses Surat
                 </a>
                 @endif
 
-                @if ($surat->kttd == 'barcode')
+                @if ($surat->kttd == 'basah')
                 <a href="{{ route('pengajuan_surat.basah', $pengajuan_surat->id) }}" class="text-white bg-success focus:outline-none font-medium text-xs rounded-lg lg:text-sm px-5 py-2.5 text-center ">
                     Proses Surat basah
                 </a>
@@ -50,7 +50,7 @@ $surat = json_decode($pengajuan_surat->surat);
             @endcanany
             
             @canany(['kesra'])
-            @if ($pengajuan_surat->status == 'verifikasi' && in_array($pengajuan_surat->jenis_surat, ['Surat Keterangan Numpang Nikah','Surat Keterangan Duda Janda','Surat Keterangan Tentang Perkawinan','Surat Keterangan Tidak Mampu']))
+            @if ($pengajuan_surat->status == 'verifikasi' && in_array($pengajuan_surat->jenis_surat, ['Surat Keterangan Numpang Nikah','Surat Keterangan Duda Janda','Surat Keterangan Tentang Perkawinan','Surat Keterangan Tidak Mampu','Surat Keterangan Kehilangan']))
             <form class="mt-3 ml-0 lg:ml-3 lg:mt-0" action="{{ route('pengajuan_surat.approve', $pengajuan_surat->id) }}" method="post">
                 @csrf
                 @method('PUT')
@@ -72,7 +72,7 @@ $surat = json_decode($pengajuan_surat->surat);
             @endif
             @endcanany
             @canany(['pemerintahan'])
-            @if ($pengajuan_surat->status == 'verifikasi' && in_array($pengajuan_surat->jenis_surat, ['Surat Keterangan Domisili Haji','Surat Keterangan Domisili Yayasan','Surat Keterangan Pindah WNI','Surat Keterangan Beda Nama Data','Surat Pengantar Pembuatan Kartu Keluarga','Surat Kematian','Surat Kelahiran','Surat Keterangan Penguburan']))
+            @if ($pengajuan_surat->status == 'verifikasi' && in_array($pengajuan_surat->jenis_surat, ['Surat Keterangan Domisili Haji','Surat Keterangan Domisili Yayasan','Surat Keterangan Pindah WNI','Surat Keterangan Pindah','Surat Keterangan Beda Nama Data','Surat Pengantar Pembuatan Kartu Keluarga','Surat Kematian','Surat Kelahiran','Surat Keterangan Penguburan']))
             <form class="mt-3 ml-0 lg:ml-3 lg:mt-0" action="{{ route('pengajuan_surat.approve', $pengajuan_surat->id) }}" method="post">
                 @csrf
                 @method('PUT')
@@ -193,8 +193,15 @@ $surat = json_decode($pengajuan_surat->surat);
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="negara_agama">Kewarganegaraan & Agama</label>
-                        <input type="text" class="form-control my-1" name="negara_agama" id="negara_agama" value="{{ $surat->negara_agama}}" readonly />
+                        <label class="fw-bold" for="kewarganegaraan">Kewarganegaraan</label>
+                        <input type="text" class="form-control my-1" name="kewarganegaraan" id="kewarganegaraan" value="{{ $surat->kewarganegaraan}}" readonly />
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="agama">Agama</label>
+                        <input type="text" class="form-control my-1" name="agama" id="agama" value="{{ $surat->agama}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -206,7 +213,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
                     </div>
                 </div>
 
@@ -267,67 +274,47 @@ $surat = json_decode($pengajuan_surat->surat);
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="ttl">Alamat</label>
-                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->alamat}}" readonly />
+                        <label class="fw-bold" for="ttl">Nama Yayasan</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->nama_yayasan}}" readonly />
                     </div>
                 </div>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Nama Yayasan
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->nama_yayasan }} <br> <br></td>
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Jenis / Klasifikasi Yayasan
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->jenis_yayasan }} <br> <br></td>
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Alamat Yayasan
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->alamat_yayasan }} <br> <br></td>
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Akta Pendirian
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->akta_pendirian }} <br> <br></td>
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        SK Kemenkumham
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->sk_kemenkumham }} <br> <br></td>
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Jumlah Pengurus
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->jumlah_pengurus }} <br> <br></td>
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Penanggung Jawab Yayasan
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->penanggung_jawab_yayasan }} <br> <br></td>
-                </tr>
-
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Jenis / Klasifikasi Yayasan</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->jenis_yayasan}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Alamat Yayasan</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->alamat_yayasan}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Akta Pendirian</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->akta_pendirian}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">SK Kemenkumham</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->sk_kemenkumham}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Jumlah Pengurus</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->jumlah_pengurus}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Penanggung Jawab Yayasan</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->penanggung_jawab_yayasan}}" readonly />
+                    </div>
+                </div>
+                </div>
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
                         Jenis Tanda Tangan
@@ -382,7 +369,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -399,32 +386,32 @@ $surat = json_decode($pengajuan_surat->surat);
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="jk"> Pada hari/Tanggal</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->hari_tanggal }}" readonly />
+                        <label class="fw-bold" for="hari_tanggal"> Pada hari/Tanggal</label>
+                        <input type="text" class="form-control my-1" name="hari_tanggal" id="hari_tanggal" value="{{ $surat->hari_tanggal }}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="jk"> Tempat Meniggal </label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->tempat_meninggal }}" readonly />
+                        <label class="fw-bold" for="tempat_meninggal"> Tempat Meniggal </label>
+                        <input type="text" class="form-control my-1" name="tempat_meninggal" id="tempat_meninggal" value="{{ $surat->tempat_meninggal }}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="jk"> Dikuburkan Hari </label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->dikuburkan }}" readonly />
+                        <label class="fw-bold" for="dikuburkan"> Dikuburkan Hari </label>
+                        <input type="text" class="form-control my-1" name="dikuburkan" id="dikuburkan" value="{{ $surat->dikuburkan }}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="jk"> Waktu </label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->waktu }}" readonly />
+                        <label class="fw-bold" for="waktu"> Waktu </label>
+                        <input type="text" class="form-control my-1" name="waktu" id="waktu" value="{{ $surat->waktu }}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="jk"> Tempat Penguburan </label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->tempat_penguburan }}" readonly />
+                        <label class="fw-bold" for="tempat_penguburan"> Tempat Penguburan </label>
+                        <input type="text" class="form-control my-1" name="tempat_penguburan" id="tempat_penguburan" value="{{ $surat->tempat_penguburan }}" readonly />
                     </div>
                 </div>
 
@@ -445,11 +432,41 @@ $surat = json_decode($pengajuan_surat->surat);
 
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="jk"> Nama </label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->nama_laki }}" readonly />
+                        <label class="fw-bold" for="nama_laki"> Nama </label>
+                        <input type="text" class="form-control my-1" name="nama_laki" id="nama_laki" value="{{ $surat->nama_laki }}" readonly />
                     </div>
                 </div>
-
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nama_perempuan"> Nama</label>
+                        <input type="text" class="form-control my-1" name="nama_perempuan" id="nama_perempuan" value="{{ $surat->nama_perempuan }}" readonly />
+                    </div>
+                </div>
+                
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="kewarganegaraan_laki"> Warga Negara</label>
+                        <input type="text" class="form-control my-1" name="kewarganegaraan_laki" id="kewarganegaraan_laki" value="{{ $surat->kewarganegaraan_laki }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="kewarganegaraan_perempuan"> Warga Negara</label>
+                        <input type="text" class="form-control my-1" name="kewarganegaraan_perempuan" id="kewarganegaraan_perempuan" value="{{ $surat->kewarganegaraan_perempuan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="pekerjaan_laki"> Pekerjaan</label>
+                        <input type="text" class="form-control my-1" name="pekerjaan_laki" id="pekerjaan_laki" value="{{ $surat->pekerjaan_laki }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="pekerjaan_perempuan"> Pekerjaan</label>
+                        <input type="text" class="form-control my-1" name="pekerjaan_perempuan" id="pekerjaan_perempuan" value="{{ $surat->pekerjaan_perempuan }}" readonly />
+                    </div>
+                </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="ttl">Tempat, Tanggal Lahir</label>
@@ -458,61 +475,23 @@ $surat = json_decode($pengajuan_surat->surat);
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="jk"> Pekerjaan</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->pekerjaan_laki }}" readonly />
+                        <label class="fw-bold" for="ttl_perempuan"> Tempat tanggal lahir</label>
+                        <input type="text" class="form-control my-1" name="ttl_perempuan" id="ttl_perempuan" value="{{ $surat->ttl_perempuan }}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="jk"> Warga Negara</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->warganegara_laki }}" readonly />
+                        <label class="fw-bold" for="alamat_laki"> Alamat</label>
+                        <input type="text" class="form-control my-1" name="alamat_laki" id="alamat_laki" value="{{ $surat->alamat_laki}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
-                        <label class="fw-bold" for="jk"> Alamat</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->alamat_laki}}" readonly />
+                        <label class="fw-bold" for="alamat_perempuan"> Alamat</label>
+                        <input type="text" class="form-control my-1" name="alamat_perempuan" id="alamat_perempuan" value="{{ $surat->alamat_perempuan }}" readonly />
                     </div>
                 </div>
-                <div class="col-md-6 my-2">
-                    <div class="form-group">
-                        <label class="fw-bold" for="jk"> Nama</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->nama_perempuan }}" readonly />
-                    </div>
                 </div>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Tempat tanggal lahir
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->ttl_perempuan }} <br> <br></td>
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Pekerjaan
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->pekerjaan_perempuan }} <br> <br></td>
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Warga Negara
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->warganegara_perempuan }} <br> <br></td>
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Alamat
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->alamat_perempuan }} <br> <br></td>
-                </tr>
-
                 <tr>
                     <td class="w-[40%] lg:w-[15%] font-bold">
                         Jenis Tanda Tangan
@@ -525,6 +504,154 @@ $surat = json_decode($pengajuan_surat->surat);
 
 
                 @endif
+                @if ($pengajuan_surat->jenis_surat == 'Surat Keterangan Pindah WNI')
+
+
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nama"> Nama </label>
+                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->nama }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl"> Tempat Tanggal Lahir</label>
+                        <input type="text" class="form-control my-1" name="ttl" id="ttl" value="{{ $surat->ttl }}" readonly />
+                    </div>
+                </div>
+                
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nik"> Nik</label>
+                        <input type="text" class="form-control my-1" name="kewarganegaraan_laki" id="nik" value="{{ $surat->nik }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="no_kk"> Nomor Kartu Keluarga</label>
+                        <input type="text" class="form-control my-1" name="no_kk" id="no_kk" value="{{ $surat->no_kk }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="kewarganegaraan"> Kewarganegaraan</label>
+                        <input type="text" class="form-control my-1" name="kewarganegaraan" id="kewarganegaraan" value="{{ $surat->kewarganegaraan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="agama"> Agama</label>
+                        <input type="text" class="form-control my-1" name="agama" id="agama" value="{{ $surat->agama }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="pekerjaan">Pekerjaan</label>
+                        <input type="text" class="form-control my-1" name="pekerjaan" id="pekerjaan" value="{{ $surat->pekerjaan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="alamat"> Alamat</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->alamat }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="keperluan"> Keperluan Surat</label>
+                        <input type="text" class="form-control my-1" name="keperluan" id="keperluan" value="{{ $surat->keperluan}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="keterangan_surat"> Keterangan Surat</label>
+                        <input type="text" class="form-control my-1" name="keterangan_surat" id="keterangan_surat" value="{{ $surat->keterangan_surat }}" readonly />
+                    </div>
+                </div>
+                </div>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                @endif
+                @if ($pengajuan_surat->jenis_surat == 'Surat Keterangan Pindah')
+
+
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nama"> Nama </label>
+                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->nama }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl"> Tempat Tanggal Lahir</label>
+                        <input type="text" class="form-control my-1" name="ttl" id="ttl" value="{{ $surat->ttl }}" readonly />
+                    </div>
+                </div>
+                
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nik"> Nik</label>
+                        <input type="text" class="form-control my-1" name="kewarganegaraan_laki" id="nik" value="{{ $surat->nik }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="no_kk"> Nomor Kartu Keluarga</label>
+                        <input type="text" class="form-control my-1" name="no_kk" id="no_kk" value="{{ $surat->no_kk }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="kewarganegaraan"> Kewarganegaraan</label>
+                        <input type="text" class="form-control my-1" name="kewarganegaraan" id="kewarganegaraan" value="{{ $surat->kewarganegaraan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="agama"> Agama</label>
+                        <input type="text" class="form-control my-1" name="agama" id="agama" value="{{ $surat->agama }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="pekerjaan">Pekerjaan</label>
+                        <input type="text" class="form-control my-1" name="pekerjaan" id="pekerjaan" value="{{ $surat->pekerjaan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="alamat"> Alamat</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->alamat }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="keperluan"> Keperluan Surat</label>
+                        <input type="text" class="form-control my-1" name="keperluan" id="keperluan" value="{{ $surat->keperluan}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="keterangan_surat"> Keterangan Surat</label>
+                        <input type="text" class="form-control my-1" name="keterangan_surat" id="keterangan_surat" value="{{ $surat->keterangan_surat }}" readonly />
+                    </div>
+                </div>
+                </div>
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+                @endif
                 @if ($pengajuan_surat->jenis_surat == 'Surat Keterangan Numpang Nikah')
 
 
@@ -534,117 +661,78 @@ $surat = json_decode($pengajuan_surat->surat);
                         <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->nama }}" readonly />
                     </div>
                 </div>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Bin/Binti
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->bin }} <br> <br></td>
-
-                </tr>
-                <div class="col-md-6 my-2">
-                    <div class="form-group">
-                        <label class="fw-bold" for="nik">NIK</label>
-                        <input type="text" class="form-control my-1" name="nik" id="nik" value="{{ $surat->nik }}" readonly />
-                    </div>
-                </div>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Tempat/Tanggal Lahir
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->ttl }} <br> <br></td>
-
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Kewarganegaraan
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->kewarganegaraan }} <br> <br></td>
-
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Agama
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->agama }} <br> <br></td>
-
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Status Perkawinan
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->status_pernikahan }} <br> <br></td>
-
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Pekrjaan
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->pekerjaan }} <br> <br></td>
-
-                </tr>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Tempat Tinggal
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->tempat_tinggal }} <br> <br></td>
-
-                </tr>
-
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="jk"> Nama</label>
                         <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->nama_perempuan }}" readonly />
                     </div>
                 </div>
-                <tr>
-                    <div class="col-md-6 my-2">
-                        <div class="form-group">
-                            <label class="fw-bold" for="jk"> Bin/Binti</label>
-                            <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->bin_perempuan }}" readonly />
-                        </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nik">NIK</label>
+                        <input type="text" class="form-control my-1" name="nik" id="nik" value="{{ $surat->nik }}" readonly />
                     </div>
-                    <div class="col-md-6 my-2">
-                        <div class="form-group">
-                            <label class="fw-bold" for="jk"> NIK</label>
-                            <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->nik_perempuan }}" readonly />
-                        </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="jk"> NIK</label>
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->nik_perempuan }}" readonly />
                     </div>
-                <tr>
-                    <div class="col-md-6 my-2">
-                        <div class="form-group">
-                            <label class="fw-bold" for="jk"> Tempat/Tanggal Lahir</label>
-                            <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->ttl_perempuan }}" readonly />
-                        </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nama">Bin/Binti</label>
+                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->bin }}" readonly />
                     </div>
-                    <div class="col-md-6 my-2">
-                        <div class="form-group">
-                            <label class="fw-bold" for="jk"> Kewarganegaraan</label>
-                            <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->kewarganegaraan_perempuan }}" readonly />
-                        </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="jk"> Bin/Binti</label>
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->bin_perempuan }}" readonly />
                     </div>
-                <tr>
-                    <td class="w-[40%] lg:w-[15%] font-bold">
-                        Agama
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ $surat->agama_perempuan }} <br> <br></td>
-
-                </tr>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nik">Tempat/Tanggal Lahir</label>
+                        <input type="text" class="form-control my-1" name="nik" id="nik" value="{{ $surat->ttl }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="jk"> Tempat/Tanggal Lahir</label>
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->ttl_perempuan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nik">Agama</label>
+                        <input type="text" class="form-control my-1" name="nik" id="nik" value="{{ $surat->agama }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="jk"> Agama</label>
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->agama_perempuan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nik">Kewarganegaraan</label>
+                        <input type="text" class="form-control my-1" name="nik" id="nik" value="{{ $surat->kewarganegaraan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="jk"> Kewarganegaraan</label>
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->kewarganegaraan_perempuan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nik">Status Perkawinan</label>
+                        <input type="text" class="form-control my-1" name="nik" id="nik" value="{{ $surat->status_pernikahan }}" readonly />
+                    </div>
+                </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="jk"> Status Perkawinan</label>
@@ -653,8 +741,20 @@ $surat = json_decode($pengajuan_surat->surat);
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
+                        <label class="fw-bold" for="nik">Pekerjaan</label>
+                        <input type="text" class="form-control my-1" name="nik" id="nik" value="{{ $surat->pekerjaan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
                         <label class="fw-bold" for="jk"> Pekerjaan </label>
                         <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->pekerjaan_perempuan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nik">Tempat Tinggal</label>
+                        <input type="text" class="form-control my-1" name="nik" id="nik" value="{{ $surat->tempat_tinggal }}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -700,7 +800,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="jk">Jenis Kelamin</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->JK}}" readonly />
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->jk}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -718,7 +818,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_kawin">Status Kawin</label>
-                        <input type="text" class="form-control my-1" name="status_kawin" id="status_kawin" value="{{ $surat->status_kawin}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_kawin" id="status_kawin" value="{{ $surat->status_perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -772,7 +872,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_kawin">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->status_kawin_anak}}" readonly />
+                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->status_perkawinan_anak}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -824,7 +924,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="jk">Jenis Kelamin</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->JK}}" readonly />
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->jk}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -836,13 +936,13 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_kawin">Warga Negara</label>
-                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->warganegara}}" readonly />
+                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->kewarganegaraan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -917,7 +1017,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="jk">Jenis Kelamin</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->JK}}" readonly />
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->jk}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -929,7 +1029,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -999,13 +1099,13 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="nama">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->Status_Perkawinan }}" readonly />
+                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->status_perkawinan }}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="nama">Warga Negara</label>
-                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->warganegara }}" readonly />
+                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->kewarganegaraan }}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1066,7 +1166,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="jk">Jenis Kelamin</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->JK}}" readonly />
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->jk}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1078,13 +1178,13 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_kawin">Warga Negara</label>
-                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->warganegara}}" readonly />
+                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->kewarganegaraan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1142,7 +1242,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="jk">Jenis Kelamin</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->JK}}" readonly />
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->jk}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1154,13 +1254,13 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_kawin">Warga Negara</label>
-                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->warganegara}}" readonly />
+                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->kewarganegaraan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1212,19 +1312,19 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="jk">Jenis Kelamin</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->JK}}" readonly />
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->jk}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_kawin">Warga Negara</label>
-                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->warganegara}}" readonly />
+                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->kewarganegaraan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1318,7 +1418,7 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="jk">Jenis Kelamin</label>
-                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->JK}}" readonly />
+                        <input type="text" class="form-control my-1" name="jk" id="jk" value="{{ $surat->jk}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1330,19 +1430,19 @@ $surat = json_decode($pengajuan_surat->surat);
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_kawin">Warga Negara</label>
-                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->warganegara}}" readonly />
+                        <input type="text" class="form-control my-1" name="agama_anak" id="agama_anak" value="{{ $surat->kewarganegaraan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="status_perkawinan">Status Perkawinan</label>
-                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->Status_Perkawinan}}" readonly />
+                        <input type="text" class="form-control my-1" name="status_perkawinan" id="status_perkawinan" value="{{ $surat->status_perkawinan}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <div class="form-group">
                         <label class="fw-bold" for="ttl">Pendidikan Terakhir</label>
-                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->pendidikan_terakhir}}" readonly />
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->pendidikan_trakhir}}" readonly />
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
@@ -1465,6 +1565,344 @@ $surat = json_decode($pengajuan_surat->surat);
                     <div class="form-group">
                         <label class="fw-bold" for="ttl">Alamat Acara</label>
                         <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->alamat_acara}}" readonly />
+                    </div>
+                </div>
+
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+
+                @endif
+                @if ($pengajuan_surat->jenis_surat == 'Surat Kelahiran')
+
+
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nama">Hari</label>
+                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->hari }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Tanggal</label>
+                        <input type="text" class="form-control my-1" name="ttl" id="ttl" value="{{ $surat->tanggal }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl"> Tempat Lahir</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->tempat_lahir}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="no_kk">Anak Ke</label>
+                        <input type="text" class="form-control my-1" name="pekerjaan" id="pekerjaan" value="{{ $surat->anak_ke }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Jenis Kelamin</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->kelamin}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Nama Anak</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->nama_anak}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Nama Ibu</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->nama_ibu}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Umur</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->umur}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Agama</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->agama}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl"> Nama Ayah</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->nama_ayah}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Agama Ayah</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->agama_ayah }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Pekerjaan Ayah</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->pekerjaan_ayah }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Kewarganegaraan</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->kewarganegaraan}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Alamat</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->alamat}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Nama Pelapor</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->nama_pelapor}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Hubungan Pelapor Dengan Anak</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->hub_pelapor_anak}}" readonly />
+                    </div>
+                </div>
+
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+
+
+
+                @endif
+                @if ($pengajuan_surat->jenis_surat == 'Surat Pengantar Pembuatan Kartu Keluarga')
+
+
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nama">Nama</label>
+                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->nama }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">NIK</label>
+                        <input type="text" class="form-control my-1" name="ttl" id="ttl" value="{{ $surat->nik }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl"> Tempat Tanggal Lahir</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->ttl}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Nomor Kartu Keluarga</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->no_kk}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="no_kk">Kewarganegaraan</label>
+                        <input type="text" class="form-control my-1" name="pekerjaan" id="pekerjaan" value="{{ $surat->kewarganegaraan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Agama</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->agama}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Pekerjaan</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->pekerjaan}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Alamat</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->alamat}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Keperluan Surat</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->keperluan}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl"> Keterangan Surat</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->keterangan_surat}}" readonly />
+                    </div>
+                </div>
+
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+
+
+
+                @endif
+                @if ($pengajuan_surat->jenis_surat == 'Surat Keterangan Beda Nama Data')
+
+
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nama">Nomor Kartu Keluarga</label>
+                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->kk }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Atas Nama Kartu Keluarga</label>
+                        <input type="text" class="form-control my-1" name="ttl" id="ttl" value="{{ $surat->ankk }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl"> Ayah Atas Nama Kartu Keluarga</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->ayahkk}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="no_kk">Ibu Atas Nama Kartu Keluarga</label>
+                        <input type="text" class="form-control my-1" name="pekerjaan" id="pekerjaan" value="{{ $surat->ibukk }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Daya Yang Benar</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->data_benar}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Atas Nama</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->atas_nama}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Yang Ingin Di Perbaiki</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->perbaikan_data}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Keterangan</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->keterangan}}" readonly />
+                    </div>
+                </div>
+
+                <tr>
+                    <td class="w-[40%] lg:w-[15%] font-bold">
+                        Jenis Tanda Tangan
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ $surat->kttd }} <br> <br></td>
+                </tr>
+
+
+
+                @endif
+                @if ($pengajuan_surat->jenis_surat == 'Surat Kematian')
+
+
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="nama">Nama</label>
+                        <input type="text" class="form-control my-1" name="nama" id="nama" value="{{ $surat->nama }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Nik</label>
+                        <input type="text" class="form-control my-1" name="ttl" id="ttl" value="{{ $surat->nik }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl"> Jenis Kelamin</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->kelamin}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="no_kk">Umur</label>
+                        <input type="text" class="form-control my-1" name="pekerjaan" id="pekerjaan" value="{{ $surat->umur }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Pekerjaan</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->pekerjaan}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Alamat</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->alamat}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Hari Meninggal</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->hari_meninggal}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Tanggal Meninggal</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->tanggal_meninggal}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Tempat Meninggal</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->tempat_meninggal}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl"> Nama Pelapor</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->nama_pelapor}}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Nik Pelapor</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->nik_pelapor }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-6 my-2">
+                    <div class="form-group">
+                        <label class="fw-bold" for="ttl">Hubungan Pelapor Dengan Almarhum</label>
+                        <input type="text" class="form-control my-1" name="alamat" id="alamat" value="{{ $surat->hub_pelapor_almarhum }}" readonly />
                     </div>
                 </div>
 

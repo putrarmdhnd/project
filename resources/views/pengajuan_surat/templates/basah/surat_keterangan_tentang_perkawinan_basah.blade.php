@@ -83,7 +83,7 @@
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Warga Negara</td>
-                <td class="fs-1"> : {{ $surat->warganegara_laki }}</td>
+                <td class="fs-1"> : {{ $surat->kewarganegaraan_laki }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Alamat</td>
@@ -111,7 +111,7 @@
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Warga Negara</td>
-                <td class="fs-1"> : {{ $surat->warganegara_perempuan }}</td>
+                <td class="fs-1"> : {{ $surat->kewarganegaraan_perempuan }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Alamat</td>

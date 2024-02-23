@@ -73,9 +73,19 @@
                     </div>
                     <div class="flex flex-col mb-6">
                         <label class="after:content-['*'] after:ml-0.5 after:text-danger">Kewarganegaraan</label>
-                        <input type="text" name="kewarganegaraan"
-                            class="mt-1 px-3 py-2 @error('kewarganegaraan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Kewarganegaraan" value="{{ old('kewarganegaraan') }}" />
+                        <div class="relative">
+                            <select
+                                class="appearance-none px-3 py-2 @error('kewarganegaraan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                                id="grid-state" name="kewarganegaraan">
+                                <option value="">Pilih Kewarganegaraan</option>
+                                <option value="WNI">WNI</option>
+                                <option value="WNA">WNA</option>
+                            </select>
+                            <div
+                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <i class='bx bx-chevron-down text-xl'></i>
+                            </div>
+                        </div>
                         @error('kewarganegaraan')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror

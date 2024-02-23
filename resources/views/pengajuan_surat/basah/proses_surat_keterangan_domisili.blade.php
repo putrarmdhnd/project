@@ -120,10 +120,10 @@
                 </div>
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Warganegara</label>
-                    <input type="text" name="warganegara"
+                    <input type="text" name="kewarganegaraan"
                         class="mt-1 px-3 py-2 @error('warganegara') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                        placeholder="Warganegara" value="{{ old('warganegara', $surat->warganegara) }}" />
-                    @error('warganegara')
+                        placeholder="kewarganegaraan" value="{{ old('kewarganegaraan', $surat->kewarganegaraan) }}" />
+                    @error('kewarganegaraan')
                         <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
                 </div>

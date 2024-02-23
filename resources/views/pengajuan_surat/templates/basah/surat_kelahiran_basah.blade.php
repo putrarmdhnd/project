@@ -139,7 +139,7 @@
             </tr>
             <tr>
                 <td width="37%" class="fs-1">Warga Negara</td>
-                <td class="fs-1"> : {{ $surat->warganegara }}</td>
+                <td class="fs-1"> : {{ $surat->kewarganegaraan }}</td>
             </tr>
             <tr>
                 <td width="37%" class="fs-1">Alamat</td>

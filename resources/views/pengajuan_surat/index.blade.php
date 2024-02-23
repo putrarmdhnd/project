@@ -97,6 +97,11 @@
                             Selesai
                         </span>
                         @endif
+                        @if ($item->status == 'beres')
+                        <span class="textTable text-white text-sm w-1/3 py-2 font-semibold px-2 rounded-full bg-success ">
+                            Selesai
+                        </span>
+                        @endif
                     
                     </td>
                     @canany(['petugas', 'admin' , 'kesra','pemerintahan','pelayanan'])
@@ -110,15 +115,22 @@
                     @endcanany
                     <td class="align-middle">
                         @canany(['admin', 'petugas'])
-                        <a href="{{ route('pengajuan_surat.downloaded.surat', $item->id) }}" target="__blank" class="underline text-primary">
+                        @if ($item->status == 'beres')
+                        <a href="{{ route('pengajuan_surat.preview.surat', $item->id) }}" target="__blank"
+                            class="underline text-primary">Preview Surat</a>
+                        {{-- <a href="{{ route('pengajuan_surat.downloaded.surat', $item->id) }}" target="__blank" class="underline text-primary">
                             <i class="bx bx-import text-lg px-2"></i>
-                        </a>
+                        </a> --}}
+                        @endif
                         @endcanany
                         @can('masyarakat')
+                        @if ($item->status == 'Selesai')
                         <a href="{{ route('pengajuan_surat.download.surat', $item->id) }}" target="__blank" class="underline text-primary">
                             <i class="bx bx-import text-lg px-2"></i>
                         </a>
-                        @endcan
+                        @endif
+                    @endcan
+                    
                     </td>
 
                     </tr>

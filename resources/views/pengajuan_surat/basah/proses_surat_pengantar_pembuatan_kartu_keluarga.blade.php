@@ -12,22 +12,13 @@
     [&>div>textarea]:text-secondary [&>div>textarea]:rounded-lg [&>div>textarea]:text-sm [&>div>textarea]:block [&>div>textarea]:w-full [&>div>textarea]:border [&>div>textarea]:shadow-sm ">
             @csrf
             @method('PUT')
-            <h1 class="text-2xl my-8">Proses Surat Keterangan Pengantar</h1>
+            <h1 class="text-2xl my-8">Proses Surat Keterangan Pembuatan Kartu Keluarga</h1>
 
             <div class="flex flex-col lg:flex-row gap-5 justify-center">
                 <div
                     class="w-full 
                 [&>div>input]:border [&>div>input]:p-2.5 [&>div>input]:shadow-sm [&>div>input]:placeholder-secondary [&>div>input]:text-secondary [&>div>input]:w-full [&>div>input]:block [&>div>input]:rounded-lg [&>div>input]:sm:text-sm
                 ">
-                    <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">No. Kode Desa</label>
-                        <input type="text" name="kode_desa"
-                            class="mt-1 px-3 py-2 @error('kode_desa') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Masukkan Nomor Kode Desa" value="{{ old('kode_desa') }}" required />
-                        @error('kode_desa')
-                            <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
-                        @enderror
-                    </div>
                     <div class="flex flex-col mb-6">
                         <label class="after:content-['*'] after:ml-0.5 after:text-danger">Nomor Surat</label>
                         <small class="text-secondary">Contoh penulisan : 474.3 / 016 / I / 2022</small>
@@ -98,12 +89,22 @@
                         @enderror
                     </div>
                     <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Kewarganegaraan & Agama</label>
-                        <input type="text" name="negara_agama"
-                            class="mt-1 px-3 py-2 @error('negara_agama') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Kewarganegaraan & Agama"
-                            value="{{ old('negara_agama', $surat->negara_agama) }}" />
-                        @error('negara_agama')
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Kewarganegaraan</label>
+                        <input type="text" name="kewarganegaraan"
+                            class="mt-1 px-3 py-2 @error('kewarganegaraan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Kewarganegaraan"
+                            value="{{ old('kewarganegaraan', $surat->kewarganegaraan) }}" />
+                        @error('kewarganegaraan')
+                            <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="flex flex-col mb-6">
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Agama</label>
+                        <input type="text" name="agama"
+                            class="mt-1 px-3 py-2 @error('agama') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="Agama"
+                            value="{{ old('agama', $surat->agama) }}" />
+                        @error('agama')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
