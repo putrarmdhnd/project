@@ -89,12 +89,17 @@
                 <td class="fs-1"> : {{ $surat->no_kk }}</td>
             </tr>
             <tr>
-                <td width="35%" class="fs-1">Kewarganegaraan & Agama</td>
-                <td class="fs-1"> : {{ $surat->negara_agama }}</td>
+                <td width="35%" class="fs-1">Kewarganegaraan</td>
+                <td class="fs-1"> : {{ $surat->kewarganegaraan }}</td>
+            </tr>
+            </tr>
+            <tr>
+                <td width="35%" class="fs-1">Agama</td>
+                <td class="fs-1"> : {{ $surat->agama }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Status Perkawinan</td>
-                <td class="fs-1"> : {{ $surat->Status_Perkawinan }}</td>
+                <td class="fs-1"> : {{ $surat->status_perkawinan }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Pekerjaan</td>
@@ -135,7 +140,7 @@
         <div align="center" class="fs-1">
             <p>Mencatat:</p>
             <p style="margin-top: -10px !important">camat Kecamatan Cipanas</p>
-            <p style="margin-top: 90px; font-weight: bold; text-decoration: underline; !important">FIRMAN EDI. S.STP., M.Si</p>
+            <p style="margin-top: 80px; font-weight: bold; text-decoration: underline; !important">FIRMAN EDI. S.STP., M.Si</p>
             <p style="margin-top: -15px !important">NIP. 197604121996121001</p>
         </div>
     </div>

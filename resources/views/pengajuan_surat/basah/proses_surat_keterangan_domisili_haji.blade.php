@@ -88,12 +88,21 @@
                         @enderror
                     </div>
                     <div class="flex flex-col mb-6">
-                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Kewarganegaraan & Agama</label>
-                        <input type="text" name="negara_agama"
-                            class="mt-1 px-3 py-2 @error('negara_agama') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Kewarganegaraan & Agama"
-                            value="{{ old('negara_agama', $surat->negara_agama) }}" />
-                        @error('negara_agama')
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Kewarganegaraan</label>
+                        <input type="text" name="kewarganegaraan"
+                            class="mt-1 px-3 py-2 @error('kewarganegaraan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="kewarganegaraan" value="{{ old('kewarganegaraan', $surat->kewarganegaraan) }}" />
+                        @error('kewarganegaraan')
+                            <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="flex flex-col mb-6">
+                        <label class="after:content-['*'] after:ml-0.5 after:text-danger">Agama</label>
+                        <input type="text" name="agama"
+                            class="mt-1 px-3 py-2 @error('agama') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                            placeholder="agama"
+                            value="{{ old('agama', $surat->agama) }}" />
+                        @error('agama')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>
@@ -130,11 +139,11 @@
                     </div>
                     <div class="flex flex-col mb-6">
                         <label class="after:ml-0.5 after:text-danger">Status Perkawinan</label>
-                        <input type="text" name="Status_Perkawinan"
-                            class="mt-1 px-3 py-2 @error('Status_Perkawinan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                        <input type="text" name="status_perkawinan"
+                            class="mt-1 px-3 py-2 @error('status_perkawinan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
                             placeholder="Keterangan lain-lain"
-                            value="{{ old('Status_Perkawinan', $surat->Status_Perkawinan) }}" />
-                        @error('Status_Perkawinan')
+                            value="{{ old('status_perkawinan', $surat->status_perkawinan) }}" />
+                        @error('status_perkawinan')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
                     </div>

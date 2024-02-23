@@ -78,14 +78,14 @@
                         <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">NIK</th>
                         <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Nama</th>
                         <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Jenis Kelamin</th>
-                        <th rowspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Aksi</th>
+                        <th colspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Aksi</th>
                     </tr>
                     <tr>
-                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Edit</th>
+                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">detail</th>
                         <th class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Hapus</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray">
+                <tbody class="divide-y divide-gray text-center">
                     <!-- Example row, replace with your actual data -->
                     @foreach($penduduk as $item)
                     <tr>
@@ -94,18 +94,12 @@
                         <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->NIK }}</td>
                         <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->namaLengkap }}</td>
                         <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->jk }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->tempatLahir }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->tanggalLahir }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->alamat }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->rt }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->rw }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->desa }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->kecamatan }}</td>
-                        <td class="textTable px-2 py-4 text-secondary align-middle">{{ $item->kabupaten }}</td>
                         <td class="textTable px-2 py-4 text-secondary align-middle">
                             <button class="text-primary text-center detailKependudukan" data-user="">
                                 <i class='bx bx-edit-alt'></i>
                             </button>
+                        </td>
+                        <td class="textTable px-2 py-4 text-secondary align-middle">
                             <button class="text-danger text-center deletePenduduk" data-id="{{ $item->id }}">
                                 <i class="bx bxs-trash" style="margin-left:10px;"></i>
                             </button>

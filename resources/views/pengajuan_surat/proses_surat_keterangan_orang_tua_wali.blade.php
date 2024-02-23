@@ -110,10 +110,10 @@
                 </div>
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Status Perkawinan</label>
-                    <input type="text" name="status_kawin"
-                        class="mt-1 px-3 py-2 @error('status_kawin') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                        placeholder="Status Perkawinan" value="{{ old('status_kawin', $surat->status_kawin) }}" />
-                    @error('status_kawin')
+                    <input type="text" name="status_perkawinan"
+                        class="mt-1 px-3 py-2 @error('status_perkawinan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                        placeholder="Status Perkawinan" value="{{ old('status_perkawinan', $surat->status_perkawinan) }}" />
+                    @error('status_perkawinan')
                         <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
                 </div>
@@ -196,10 +196,10 @@
                 </div>
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Status Perkawinan</label>
-                    <input type="text" name="status_kawin_anak"
-                        class="mt-1 px-3 py-2 @error('status_kawin_anak') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                        placeholder="Status Perkawinan" value="{{ old('status_kawin_anak', $surat->status_kawin_anak) }}" />
-                    @error('status_kawin_anak')
+                    <input type="text" name="status_perkawinan_anak"
+                        class="mt-1 px-3 py-2 @error('status_perkawinan_anak') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                        placeholder="Status Perkawinan" value="{{ old('status_perkawinan_anak', $surat->status_perkawinan_anak) }}" />
+                    @error('status_perkawinan_anak')
                         <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
                 </div>
