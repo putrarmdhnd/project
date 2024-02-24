@@ -54,7 +54,7 @@ Struktur Organisasi
                                             <i>{{ $item->jabatan }}</i>
                                         </div>
                                     </div>
-                                    <div class="col-12 rounded-1 bg-white">
+                                    <div class="col-12 rounded-1 bg-white rounded-1">
                                         <div class="row my-4 p-3">
                                             <div class="col-12 isi-profil d-flex justify-content-center">
                                                 <ul class="m-0 p-0">

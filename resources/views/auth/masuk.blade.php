@@ -14,13 +14,20 @@
             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
             @enderror
         </div>
-        <div>
+        <div class="relative">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Masukan Pasword" class="@error('password') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1">
+            <input type="password" name="password" id="password" placeholder="Masukan Password" class="block w-full pr-10 @error('password') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1">
+            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-0 transform -translate-y-1/2 px-3 flex items-center bg-transparent focus:outline-none" style="top: 70%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                </svg>
+            </button>
             @error('password')
             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
             @enderror
         </div>
+
         <button type="submit" class="w-full bg-danger rounded-lg text-sm px-5 py-2.5 text-center btn-color">
             <p class="font-bold">Masuk</p>
         </button>
@@ -29,5 +36,14 @@
         </p>
     </form>
 </div>
-
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>
 @endsection
