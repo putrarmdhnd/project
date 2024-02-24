@@ -219,9 +219,11 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div id="thumbnail" class="col-12">
-                                            <div class="thumbnail-container rounded-20 overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
+                                            <div class="thumbnail-container overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
                                                 <img src="{{ asset($berita->gambar ? 'storage/' . $berita->gambar : 'img/no-picture.png') }}" class="thumbnail-image position-absolute top-0 start-0 w-100 h-100 bg-dark" alt="..." style="object-fit: contain;">
                                             </div>
+                                        </div>
+                                        <div class="col-12">
                                             <p class="JenisBeritaPengumuman my-3">{{ $berita->tipe }}</p>
                                             <p class="artikel-judul">{{ substr($berita->judul_singkat, 0, 42) . '...' }}</p>
                                             <p id="desc" class=" d-block desc text-black my-1" align="justify" style="font-size: 12px;">

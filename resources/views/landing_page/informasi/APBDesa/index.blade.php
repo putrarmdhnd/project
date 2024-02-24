@@ -36,7 +36,7 @@ APBDesa
     <div class="container mb-5">
         <div class="card bg-light">
 
-            <div class="text-center my-3 d-flex justify-content-center">
+            <div class="text-center my-5 d-flex justify-content-center">
                 <div class="HeaderArticle-mengenaiDesa">
                     <h4 class="shadow">Pendapatan dan Belanja Desa Tahun 2023</h4>
                 </div>
@@ -84,41 +84,44 @@ APBDesa
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 detailPembelanjaan m-4">
-                        <div class="row">
-                            <div class="text-center my-3 d-flex justify-content-center">
-                                <div class="HeaderArticle-mengenaiDesa">
-                                    <h4 class="shadow mb-5">Detail Belanja Desa</h4>
-                                </div>
-                            </div>
+                </div>
+            </section>
+
+            <div class="text-center my-5 d-flex justify-content-center">
+                <div class="HeaderArticle-mengenaiDesa">
+                    <h4 class="shadow">Detail Belanja Desa</h4>
+                </div>
+            </div>
+
+            <div class="detailPembelanjaan d-flex m-2">
+                <div class="owl-carousel owl-carousel owl-theme owl-loaded owl-drag">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage" style="transition: all 0.25s ease 0s; width: 16665px; transform: translate3d(-9999px, 0px, 0px);">
                             @foreach ($apb->items() as $index => $item)
                             @if ($index >= 1)
-                            <div class="col-4 Berita">
-                                <div class="card cardBeritaPengumuman" style="border: none;">
-                                    <a href="">
-                                        <div class="card-body artikel-card card_color">
-                                            <div class="row">
-                                                <div class="col-12">    
-                                                    <div id="thumbnail" class="col-12">
-                                                        <div class="thumbnail-container overflow-hidden" style="position: relative; padding-bottom: 75%; /* Adjust the aspect ratio as needed */">
-                                                            <img src="{{ asset($item->gambar) }}" class="thumbnail-image rounded-20 position-absolute top-0 start-0 w-100 h-100 bg-light" alt="..." style="object-fit: contain;">
-                                                        </div>
-                                                        <p class="artikel-judul text-black font-large h6">{{ $item->judulPengeluaran }}</p>
-                                                        <p class="artikel-tanggal mt-2">
-                                                            <i class="fa fa-calendar"></i> <span>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('MMMM , D , Y') }}</span>
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="col-12 mt-3 text-end ">
-                                                        <p class="h3 text-danger p-2 fw-bold">
-                                                            - {{ number_format($item->pengeluaran, 0, ',', '.') }}
-                                                        </p>
-                                                    </div>
-
-                                                </div>
+                            <div class="owl-item">
+                                <!-- Your first carousel item -->
+                                <div class="col-12 d-flex justify-content-center align-items-center m-auto">
+                                    <div class="card card-profil-apbdes">
+                                        <div id="thumbnail" class="col-12">
+                                            <div class="thumbnail-container overflow-hidden" style="position: relative; padding-bottom: 70%; background: transparent; /* Adjust the aspect ratio as needed */">
+                                                <img src="{{ asset($item->gambar) }}" class="thumbnail-image position-absolute top-0 start-0 w-100 h-100 " alt="..." style="object-fit: cover;">
                                             </div>
                                         </div>
-                                    </a>
+                                        <div class="card-body p-1" style="background-color: #ffa58d;">
+                                            <div class="col-12 text-center content-profil-desa">
+                                                <div class="mt-3 mb-3">
+                                                    <p>{{ $item->judulPengeluaran }}</p>
+                                                    <i class="fa fa-calendar text-black"></i> <span>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('MMMM , D , Y') }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 position-relative text-end" style="top: 6%;">
+                                                <p class="h6 text-danger p-2 fw-bold">
+                                                    - {{ number_format($item->pengeluaran, 0, ',', '.') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             @endif
@@ -126,8 +129,29 @@ APBDesa
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $(".owl-carousel").owlCarousel({
+                        items: 1, // You can customize the number of items displayed.
+                        loop: true,
+                        margin: 10,
+                        responsiveClass: true,
+                        responsive: {
+                            0: {
+                                items: 1 // Adjust the number of items displayed on different screen sizes.
+                            },
+                            768: {
+                                items: 2
+                            },
+                            1024: {
+                                items: 3
+                            }
+                        }
+                    });
+                });
+            </script>
         </div>
-    </div>
 </section>
 @endsection

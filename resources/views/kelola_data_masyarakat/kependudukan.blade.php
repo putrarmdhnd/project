@@ -81,7 +81,8 @@
                         <th colspan="2" class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Aksi</th>
                     </tr>
                     <tr>
-                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">detail</th>
+                        <th class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Detail</th>
+
                         <th class="textTabelTop font-semibold text-sm uppercase px-4 py-3 align-middle">Hapus</th>
                     </tr>
                 </thead>

@@ -17,13 +17,7 @@
     <div class="bg-white py-4 px-9 mb-3 rounded-lg flex justify-between items-center">
         <div class="">
             <h1 class="text-lg lg:text-2xl headDash font-bold mb-2">Struktur Desa</h1>
-            <p class="text-base font-normal text-secondary">Data dari pegawai yang di tampilkan pada Website Desa Palasari</p>
-        </div>
-    </div>
-    <div class="d-sm-flex align-items-center justify-content-between mb-4 col-md-">
-        <h1 class="h3 mb-0 text-gray-800">Struktur Desa</h1>
-        <div>
-
+            <p class="textDashboard text-base font-normal text-secondary">Data dari pegawai yang di tampilkan pada Website Desa Palasari</p>
         </div>
     </div>
 

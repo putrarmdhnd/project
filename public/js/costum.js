@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //Tampilan header username
   const usernameLargeScreen = document.getElementById("usernameLargeScreen");
   const usernameSmallScreen = document.getElementById("usernameSmallScreen");
+  const usernameMoreSmallScreen = document.getElementById("usernameMoreSmallScreen");
 
   //Tampilan card pada Pengelolaan Data Kependudukan
   const LayoutCardKependudukan = document.querySelectorAll(".LayoutCardKependudukan");
@@ -69,10 +70,20 @@ document.addEventListener("DOMContentLoaded", function () {
   //layout konfirmasi untuk detail pengajuan surat
   const  layout__KonfirmasiDesktop = document.querySelectorAll(".layout__Konfirmasi--Desktop");
 
+  // layout btn login pada landing-page
+  const  layout__btnLogin = document.querySelectorAll(".layout__btnLogin--Desktop");
+
+  // layot content mobile 
+  const  layout__contentMobile = document.querySelectorAll(".Dashboard__content--layoutMobile");
+  
+
 
   // Check viewport width and apply styles accordingly
   function checkViewportWidth() {
-    if (window.innerWidth <= 450) {
+    if (window.innerWidth <= 390) {
+      applyStylesForMobile__MoreSmall_Screens()
+    }
+    else if (window.innerWidth <= 450) {
       applyStylesForMobileScreens()
     }
     else if (window.innerWidth <= 1200) {
@@ -84,6 +95,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Apply styles for smaller screens
+  function  applyStylesForMobile__MoreSmall_Screens() {
+    removeDescElementsForMobile()
+    removeLatestNewsElement();
+    adjustColumnWidths();
+    addContainerClassToElement(demografiElement);
+    addContainerClassToElement(beritaPengumuman);
+    addContainerClassToElement(tentangDesa);
+    removeElement(usernameLargeScreen);
+    removeElement(usernameSmallScreen);
+    removeElement(imageLargeScreen);
+    removeElement(btnDown_largeKependudukan);
+
+    // ... Add more styles for smaller screens if needed
+  }
+  // Apply styles for smaller screens
   function applyStylesForMobileScreens() {
     removeDescElementsForMobile()
     removeLatestNewsElement();
@@ -92,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addContainerClassToElement(beritaPengumuman);
     addContainerClassToElement(tentangDesa);
     removeElement(usernameLargeScreen);
+    removeElement(usernameMoreSmallScreen);
     removeElement(imageLargeScreen);
     removeElement(btnDown_largeKependudukan);
 
@@ -107,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addContainerClassToElement(tentangDesa);
     adjustMobile();
     removeElement(usernameSmallScreen);
+    removeElement(usernameMoreSmallScreen);
     removeElement(imageSmallScreen);
     removeElement(btnUP_mobileKependudukan);
     // ... Add more styles for smaller screens if needed
@@ -115,8 +143,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Apply styles for larger screens
   function applyStylesForLargerScreens() {
-    removeContainerClassFromElement(demografiElement);
     removeElement(imageSmallScreen);
+    removeDescElementsForDesktop();
+    removeContainerClassFromElement(demografiElement);
     removeElement(btnUP_mobileKependudukan);
   }
 
@@ -181,6 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
     layout__KonfirmasiDesktop.forEach(function (element) {
       element.classList.remove("col-6");
     });
+    
 
   }
 
@@ -218,6 +248,9 @@ document.addEventListener("DOMContentLoaded", function () {
       element.classList.remove("py-4");
       element.classList.add("py-5");
       element.classList.add("pt-4");
+
+      element.classList.remove("px-10")
+      element.classList.add("px-2")
     });
 
     layoutBaganWelcome.forEach(function (element) {
@@ -277,6 +310,21 @@ document.addEventListener("DOMContentLoaded", function () {
     layout__KonfirmasiDesktop.forEach(function (element) {
       element.classList.remove("col-6");
     });
+
+     //layout dashboard content mobile
+     layout__contentMobile .forEach(function (element) {
+      element.classList.remove("px-10");
+    });
+
+  }
+  function removeDescElementsForDesktop() {
+
+    layout__btnLogin.forEach(function (element) {
+      element.classList.add("d-flex ");
+      element.classList.add("justify-center ");
+      element.classList.add("m-auto");
+    });
+
 
   }
 

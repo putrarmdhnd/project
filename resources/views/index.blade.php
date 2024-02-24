@@ -14,12 +14,6 @@
         <p class="textDashboard text-base font-normal text-secondary">Buat proses pengaduan jadi lebih mudah dengan aplikasi!</p>
         @endcan
     </div>
-    @can('masyarakat')
-    <div class="layoutBtnPengaduan">
-        <a href="/pengaduan/create" class="btnPengaduan text-black text-decoration-none focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center themeColor">Buat Pengaduan</a>
-    </div>
-
-    @endcan
 </div>
 <div class="layoutBaganWelcome bg-white py-6 px-9 rounded-lg">
     <ol class="items-center px-1 d-flex rounded-md">

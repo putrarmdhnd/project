@@ -19,7 +19,7 @@ class KependudukanController extends Controller
     public function Kependudukan() {
     
         return view('kelola_data_masyarakat.kependudukan', [
-            'penduduk'  => penduduk::paginate(25), // Sesuaikan nama variabel dengan yang Anda gunakan di tampilan
+            'penduduk'  => penduduk::paginate(25), 
             'title' => 'Data Kependudukan',
             'page'  => 'kependudukan'
             //'users' => User::where('level', 'masyarakat')->get()
