@@ -291,7 +291,7 @@ a {
 }
 
 .content-profil-desa p {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 500;
 
     margin-bottom: 0;
@@ -741,6 +741,15 @@ a {
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         background: white;
         height: 26vh;
+        width: 75%;
+        border: solid 1px;
+        border-color: black;
+    }
+
+    .card-profil-desa {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background-color: #f1fcff;
+        height: 30vh;
         width: 75%;
         border: solid 1px;
         border-color: black;

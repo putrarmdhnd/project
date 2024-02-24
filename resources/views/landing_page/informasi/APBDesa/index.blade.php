@@ -108,9 +108,9 @@ APBDesa
                                                 <img src="{{ asset($item->gambar) }}" class="thumbnail-image position-absolute top-0 start-0 w-100 h-100 " alt="..." style="object-fit: cover;">
                                             </div>
                                         </div>
-                                        <div class="card-body p-1">
+                                        <div class="card-body p-1" style="background-color: #ffa58d;">
                                             <div class="col-12 text-center content-profil-desa">
-                                                <div class="mt-3 mb-3 bg-light">
+                                                <div class="mt-3 mb-3">
                                                     <p>{{ $item->judulPengeluaran }}</p>
                                                     <i class="fa fa-calendar text-black"></i> <span>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('MMMM , D , Y') }}</span>
                                                 </div>
