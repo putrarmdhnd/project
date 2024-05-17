@@ -1,35 +1,75 @@
 @extends('landing_page.layouts.app')
 
 @section('title')
-    {{ $berita->judul }}
+{{ $berita->judul }}
 @endsection
 @section('content')
-    <div id="breadcrumb" class="container my-4 my-md-4 my-lg-5">
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
-            aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}">Beranda</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('informasi.berita.index') }}">Berita</a></li>
-                <li class="breadcrumb-item">{{ $berita->judul_singkat }}</li>
-            </ol>
-        </nav>
-    </div>
+<div class="container-fluid" style="padding-top: 5rem; padding-bottom: 3rem;">
+    <div class="row">
+        <div class="BeritaDetail col-8 bg-light">
+            <article id="breadcrumb" class="card container px-5 bg-white">
+                <div id="details-news">
+                    <div class="">
+                        <div class="pt-3">
+                            <h1><b>{{ $berita->judul }}</b></h1>
+                            <h6 class="ml-3 text-decoration-underline ">Berita</h6>
+                        </div>
 
-    <div id="details-news" class="container">
-        <h1>{{ $berita->judul }}</h1>
-        <p id="info-news" class="my-4"><i class="fa-solid fa-calendar-days me-1"></i>
-            {{ \Carbon\Carbon::parse($berita->created_at)->isoFormat('MMMM , D , Y') }}
+                        <div class="d-flex justify-content-between mt-4 mx-3">
+                            <p id="info-news" class="">Ditulis oleh : <b>{{ $berita->author->nama }}</b></p>
+                            <p id="info-news" class=""> <i class="fa fa-calendar"></i> {{ \Carbon\Carbon::parse($berita->created_at)->isoFormat('MMMM , D , Y') }} </p>
 
-            <i class="fa-solid fa-user ms-2 me-1"></i>
-            {{ $berita->author->nama }}
-        </p>
+                        </div>
+                    </div>
 
-        @if ($berita->gambar)
-            <img id="thumbnail" src="{{ asset('storage/' . $berita->gambar) }}">
-        @endif
+                    <div id="thumbnail" class="bg-dark">
+                        @if ($berita->gambar)
+                        <img id="thumbnail" src="{{ asset('storage/' . $berita->gambar) }}">
+                        @endif
+                    </div>
 
-        <div id="content-desc" class="my-5 lh-lg" align="justify">
-            {!! $berita->deskripsi !!}
+                    <div class=" overflow-hidden">
+                        <div id="content-desc" class="content-desc py-5 px-5 lh-lg content-p thumbnail-image object-cover" alt="..." style="object-fit: contain;"> {!! $berita->deskripsi !!}</div>
+                    </div>
+
+                </div>
+            </article>
+        </div>
+        <div class="LatestNews col-4">
+            <div class="bg-white">
+                <div id="latest-news">
+                    <div id="body" class="card py-3 px-4 row ">
+                        <div class="col-12 border">
+                            <h5 class="mt-2"><b>TERBARU</b>
+                                <hr>
+                            </h5>
+
+                            <div class="mt-4"></div>
+                            @foreach ($berita_terbaru as $berita_baru)
+                            <a href="{{ route('informasi.berita.detail', $berita_baru->slug) }}">
+                                <div id="card-new-latest" class="row mb-1 justify-content-center">
+                                    <div class="col-4 bg-dark " style="border-radius: 10px;">
+                                        <img src="{{ asset($berita_baru->gambar ? 'storage/' . $berita_baru->gambar : 'img/no-picture.png') }}" width="100%" height="103" class=" d-block" style="object-fit: contain;">
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="fw-bold text-black" style="font-size: 12px;">{{ $berita_baru->judul_singkat }} </p>
+                                        <p id="info-news" class="mt-3" style="font-size: 10px;"><i class="fa-solid fa-calendar-days me-1"></i>
+                                            {{ \Carbon\Carbon::parse($berita_baru->created_at)->isoFormat('MMMM , D , Y') }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
+
+
+
+
 @endsection

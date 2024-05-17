@@ -4,18 +4,15 @@ namespace App\Models\LandingPage;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pegawai extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function jabatan_pegawai()
+    public function pegawai()
     {
-        return $this->belongsTo(JabatanPegawai::class)->withDefault([
-            'nama' => 'Anggota',
-        ]);
+        return $this->hasMany(Pegawai::class);
     }
 }

@@ -52,7 +52,7 @@ class AuthController extends Controller
 
         if(Auth::attempt($data)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/pengajuan-surat');
         }
 
         return back()->with('gagal', 'Gagal masuk!');

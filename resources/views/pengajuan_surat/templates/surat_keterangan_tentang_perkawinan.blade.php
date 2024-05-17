@@ -83,7 +83,7 @@
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Warga Negara</td>
-                <td class="fs-1"> : {{ $surat->warganegara_laki }}</td>
+                <td class="fs-1"> : {{ $surat->kewarganegaraan_laki }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Alamat</td>
@@ -111,7 +111,7 @@
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Warga Negara</td>
-                <td class="fs-1"> : {{ $surat->warganegara_perempuan }}</td>
+                <td class="fs-1"> : {{ $surat->kewarganegaraan_perempuan }}</td>
             </tr>
             <tr>
                 <td width="35%" class="fs-1">Alamat</td>
@@ -131,11 +131,11 @@
         <div align="center" style="width: 200px; position: relative; right: -30em" class="fs-1">
             <p>Palasari, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</p>
             <p style="margin-top: -10px !important">Kepala Desa Palasari</p>
-            <img style="margin-top: -2em !important"
-                src="https://raw.githubusercontent.com/Ibnumaggie27/sistem-informasi-desa-palasari/main/public/img/ttd.png"
-                width="230" alt="">
+            <img style="margin-top: -1em !important"
+                src="https://raw.githubusercontent.com/Ibnumaggie27/project/main/public/img/barttd.png"
+                width="120" alt="">
 
-            <p style="margin-top: -30px !important">H.Ridwan.SH</p>
+            <p style="margin-top: -2px !important">H.Ridwan.SH</p>
         </div>
     </div>
 </body>

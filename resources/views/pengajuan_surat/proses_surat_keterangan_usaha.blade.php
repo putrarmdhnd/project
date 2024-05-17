@@ -24,7 +24,7 @@
                         <small class="text-secondary">Contoh penulisan : 474.3 / 016 / I / 2022</small>
                         <input type="text" name="nomor_surat"
                             class="mt-1 px-3 py-2 @error('nomor_surat') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                            placeholder="Masukkan Nomor Surat" value="{{ old('nomor_surat') }}" required />
+                            placeholder="Masukkan Nomor Surat" value="{{ $nomor_surat }}" required />
                         @error('nomor_surat')
                             <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                         @enderror
@@ -81,10 +81,10 @@
                 </div>
                 <div class="flex flex-col mb-6">
                     <label class="after:content-['*'] after:ml-0.5 after:text-danger">Warga Negara</label>
-                    <input type="text" name="warganegara"
-                        class="mt-1 px-3 py-2 @error('warganegara') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
-                        placeholder="Warga Negara" value="{{ old('warganegara', $surat->warganegara) }}" />
-                    @error('warganegara')
+                    <input type="text" name="kewarganegaraan"
+                        class="mt-1 px-3 py-2 @error('kewarganegaraan') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1"
+                        placeholder="Warga Negara" value="{{ old('kewarganegaraan', $surat->kewarganegaraan) }}" />
+                    @error('kewarganegaraan')
                         <p class="mt-1 text-xs text-danger" id="file_input_help">{{ $message }}</p>
                     @enderror
                 </div>

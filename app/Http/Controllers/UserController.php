@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\penduduk;
 
 class UserController extends Controller
 {
@@ -16,12 +17,41 @@ class UserController extends Controller
     }
     
     public function masyarakat() {
-        return view('pengguna/index', [
+        return view('kelola_data_masyarakat/index', [
             'title' => 'Data Masyarakat',
             'page'  => 'masyarakat',
             'users' => User::where('level', 'masyarakat')->get()
         ]);
     }
+
+    public function Kematian() {
+        return view('kelola_data_masyarakat/kematian', [
+            'title' => 'Data Kematian',
+            'page'  => 'kematian'
+        ]);
+    }
+    
+    public function getDataByNIK($NIK){
+        $pendudukan = penduduk::find($NIK);
+       return response()->json($pendudukan);
+   }
+
+    public function KematianInput() {
+        return view('kelola_data_masyarakat/input', [
+            'title' => 'Input Kematian',
+            'page'  => 'Input Kematian'
+        ]);
+    }
+
+    public function input() {
+        return view('kelola_data_masyarakat/input', [
+            'title' => 'input Kependudukan',
+            'page'  => 'input',
+            //'users' => User::where('level', 'masyarakat')->get()
+        ]);
+    }
+
+    
     
     public function petugas() {
         return view('pengguna/index', [
@@ -40,7 +70,6 @@ class UserController extends Controller
             'title' => 'Tambah Petugas',
         ]);
     }
-
     public function store(Request $request) {
         $validated = $request->validate([
             'username' => 'required|min:6|unique:users',
@@ -62,7 +91,7 @@ class UserController extends Controller
             return redirect()->back()->with('gagal', 'Gagal menambahkan petugas!');
         }
     }
-
+    
     public function update(Request $request, User $pengguna) {
         $validated = $request->validate([
             'username' => 'required|min:6|unique:users,username,' . $pengguna->id . ',id',

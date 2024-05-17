@@ -95,14 +95,12 @@ class PegawaiController extends Controller
 
 
         if ($request->hasFile('foto')) {
-            $data['foto'] = $request->file('foto')->store('public/pegawai', 'public');
+            $data['foto'] = $request->file('foto')->store('public/public/pegawai', 'public');
 
             if ($pegawai->foto) {
                 Storage::delete($pegawai->foto);
             }
         }
-
-        $data['nip'] = $request->nip ?: '-';
 
         $pegawai->update($data);
 

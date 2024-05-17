@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\LandingPage\ApbDesa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+
 
 class APBDesaController extends Controller
 {
@@ -25,9 +27,16 @@ class APBDesaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('landing_page.cms.apb_desa.create');
+        // Check the 'type' parameter to determine the form to display
+        $type = $request->input('type', 'apb');
+
+        if ($type === 'pengeluaran') {
+            return view('landing_page.cms.apb_desa.pengeluaran');
+        } else {
+            return view('landing_page.cms.apb_desa.create');
+        }
     }
 
     /**
@@ -36,32 +45,68 @@ class APBDesaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function validateApbDesa(Request $request)
     {
         $request->validate([
-            'judul' => 'required',
             'tahun' => 'required',
+            'anggaran' => 'required',
+        ]);
+    }
+    
+    public function validateApbdPengeluaran(Request $request)
+    {
+        $request->validate([
+            'judulPengeluaran' => 'required',
+            'pengeluaran' => 'required',
             'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5048',
         ]);
-
-        // loop $request->all() if value is array convert to json
-        $data = [];
-        foreach ($request->all() as $key => $value) {
-            if (is_array($value)) {
-                $data[$key] = json_encode($value);
-            } else {
-                $data[$key] = $value;
-            }
-        }
-
-        if ($request->hasFile('gambar')) {
-            $data['gambar'] = 'storage/' . $request->file('gambar')->store('public/apb_desa', 'public');
-        }
-
-        ApbDesa::create($data);
-
-        return redirect()->route('cms.apb.index')->with('success', 'APB Desa berhasil ditambah');
     }
+    
+    public function store(Request $request)
+{
+    $rules = [];
+    
+    if ($request->input('type') === 'apb') {
+        $rules = [
+            'tahun' => 'required',
+            'anggaran' => 'required',
+        ];
+    } elseif ($request->input('type') === 'pengeluaran') {
+        $rules = [
+            'judulPengeluaran' => 'required',
+            'pengeluaran' => 'required',
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+        ];
+    }
+
+    $request->validate($rules);
+
+    $result = DB::table('apb_desas')->whereNotNull('jumlah')->exists();
+
+    if ($result) {
+        $totalPengeluaran = DB::table('apb_desas')->sum('pengeluaran');
+        $jumlah = $totalPengeluaran + $request->pengeluaran;
+    } else {
+        $jumlah = $request->pengeluaran;
+    }
+
+    $data = [
+        'tahun' => $request->tahun,
+        'anggaran' => $request->anggaran,
+        'pengeluaran' => $request->input('type') === 'pengeluaran' ? $request->pengeluaran : null,
+        'judulPengeluaran' => $request->input('type') === 'pengeluaran' ? $request->judulPengeluaran : null,
+        'jumlah' => $jumlah,
+    ];
+
+    if ($request->hasFile('gambar')) {
+        $data['gambar'] = 'storage/' . $request->file('gambar')->store('public/apb_desa', 'public');
+    }
+
+    ApbDesa::create($data);
+
+    return redirect()->route('cms.apb.index')->with('success', 'Data berhasil ditambah');
+}
+
 
     /**
      * Show the form for editing the specified resource.
@@ -69,24 +114,14 @@ class APBDesaController extends Controller
      * @param  \App\Models\LandingPage\ApbDesa  $apbDesa
      * @return \Illuminate\Http\Response
      */
-    public function edit(ApbDesa $apb)
-    {
-        return view('landing_page.cms.apb_desa.edit', compact('apb'));
+    public function editPengeluaran (ApbDesa $apb){
+        return view('landing_page.cms.apb_desa.editPengeluaran', compact('apb'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\LandingPage\ApbDesa  $apbDesa
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ApbDesa $apb)
+    public function updatePengeluaran(Request $request, ApbDesa $apb)
     {
         $request->validate([
-            'judul' => 'required',
-            'tahun' => 'required',
-            'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'judulPengeluaran' => 'required',
+            'pengeluaran' => 'required',
         ]);
 
         // loop $request->all() if value is array convert to json
@@ -104,6 +139,32 @@ class APBDesaController extends Controller
 
             if ($apb->gambar) {
                 Storage::delete(substr($apb->gambar, 8));
+            }
+        }
+        
+        $apb->update($data);
+
+        return redirect()->route('cms.apb.index')->with('success', 'APB Desa berhasil diubah');
+    }
+    public function edit(ApbDesa $apb)
+    {
+        return view('landing_page.cms.apb_desa.edit', compact('apb'));
+    }
+
+    public function update(Request $request, ApbDesa $apb)
+    {
+        $request->validate([
+            'tahun' => 'required',
+            'anggaran' => 'required',
+        ]);
+
+        // loop $request->all() if value is array convert to json
+        $data = [];
+        foreach ($request->all() as $key => $value) {
+            if (is_array($value)) {
+                $data[$key] = json_encode($value);
+            } else {
+                $data[$key] = $value;
             }
         }
 

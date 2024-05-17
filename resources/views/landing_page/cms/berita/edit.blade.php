@@ -17,7 +17,7 @@
             </div>
         @endif
 
-        <div class="col-md-6">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h6>Edit Berita</h6>
@@ -36,8 +36,8 @@
                             <label for="gambar" class="form-label">Thumbnail</label>
 
                             @if ($berita->gambar)
-                                <div class="my-5">
-                                    <img src="{{ asset('storage/' . $berita->gambar) }}" width="500" alt="">
+                                <div class="thumbnail-container">
+                                    <img src="{{ asset('storage/' . $berita->gambar) }}" class="thumbnail-image object-cover" width="500" alt="">
                                     <label for="gambar" class="form-label">Thumbnail Saat ini</label>
                                 </div>
                             @endif
@@ -53,9 +53,9 @@
                                 <option value="TOP NEWS">TOP NEWS</option>
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 d-flex">
                             <label for="editor" class="form-label">Deskripsi Berita</label>
-                            <textarea name="deskripsi" id="editor" rows="10">
+                            <textarea name="deskripsi" class="mx-5" id="editor" rows="10" style="width: 80%;">
                                 {{ old('deskripsi', $berita->deskripsi) }}
                             </textarea>
                         </div>

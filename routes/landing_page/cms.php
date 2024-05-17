@@ -8,10 +8,13 @@ use App\Http\Controllers\LandingPage\CMS\LembagaDesaController;
 use App\Http\Controllers\LandingPage\CMS\PegawaiController;
 use App\Http\Controllers\LandingPage\CMS\PengumumanController;
 use App\Http\Controllers\landingPage\CMS\StrukturDesaController;
+use Illuminate\Support\Facades\Route;
 
-Route::prefix('cms')->middleware(['auth', 'petugasAdmin'])->name('cms.')->group(function () {
+Route::prefix('LandingPage')->middleware(['auth', 'petugasAdmin'])->name('cms.')->group(function () {
     Route::get('/', function () {
-        return view('landing_page.cms.index');
+        return view('landing_page.cms.index', [
+            'title'           => 'Dashboard'
+        ]);
     })->name('index');
 
     Route::post('berita/img/upload', [BeritaController::class, 'CKEditorUpload'])->name('ckeditor.upload');
@@ -25,6 +28,8 @@ Route::prefix('cms')->middleware(['auth', 'petugasAdmin'])->name('cms.')->group(
     Route::resource('pengumuman', PengumumanController::class);
     Route::resource('galeri', GaleriController::class);
     Route::resource('apb', APBDesaController::class);
+    Route::get('apb/{apb}/editPengeluaran', [APBDesaController::class, 'editPengeluaran'])->name('apb.editPengeluaran');
+    Route::put('apb/{apb}/updatePengeluaran', [APBDesaController::class, 'updatePengeluaran'])->name('apb.updatePengeluaran');
 
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('jabatan', JabatanPegawaiController::class);

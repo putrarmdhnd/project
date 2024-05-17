@@ -5,6 +5,7 @@ module.exports = {
         "./resources/**/*.js",
         "./public/js/*.js",
         "./resources/**/*.vue",
+        
     ],
     theme: {
         colors: {

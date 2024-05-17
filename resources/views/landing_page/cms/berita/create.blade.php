@@ -17,7 +17,7 @@
             </div>
         @endif
 
-        <div class="col-md-6">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h6>Buat Berita</h6>
@@ -36,11 +36,11 @@
                                 placeholder="Masukkan Thumnail Berita">
                         </div>
                         <div class="mb-3">
-                            <label for="tipe" class="form-label">Tipe Berita</label>
+                            <label for="tipe" class="form-label">Jenis Berita</label>
                             <select class="form-control" id="tipe" name="tipe">
-                                <option value="">Masukkan Tipe Berita</option>
-                                <option value="default" selected>Default</option>
-                                <option value="TOP NEWS">TOP NEWS</option>
+                                <option value="">Masukkan Jenis Berita</option>
+                                <option value="Berita" selected>Berita</option>
+                                <option value="Pengumuman">Pengumuman</option>
                             </select>
                         </div>
                         <div class="mb-3">

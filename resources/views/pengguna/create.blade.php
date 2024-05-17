@@ -45,6 +45,9 @@
                 <select class="appearance-none px-3 py-2 @error('level') border-danger @else border-gray @enderror focus:outline-none focus:border-gray focus:ring-gray focus:ring-1" id="grid-state" name="level">
                     <option value="petugas">Petugas</option>
                     <option value="admin">Admin</option>
+                    <option value="kesra">kesra</option>
+                    <option value="pemerintahan">pemerintahan</option>
+                    <option value="pelayanan">pelayanan</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <i class='bx bx-chevron-down text-xl'></i>
@@ -56,7 +59,7 @@
         </div>
 
         <div class="flex justify-end">
-            <button type="submit" class="text-white bg-danger focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+            <button type="submit" class="text-black themeColor focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
         </div>
     </form>
 </div>
